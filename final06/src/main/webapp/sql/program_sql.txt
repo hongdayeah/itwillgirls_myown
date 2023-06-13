@@ -1,0 +1,26 @@
+--program_sql.txt
+
+--프로그램 정보 테이블 생성
+CREATE TABLE  program_info  (
+	 pro_obj  	  varchar(50)	    NOT NULL PRIMARY KEY,			--프로그램 구분
+	 pro_name 	  varchar(100)		NOT NULL,						--프로그램 명
+	 prochar_no   varchar(50)   	NOT NULL						--성향정보
+	 pro_limit 	  int		        NOT NULL,						--정원
+	 pro_fee 	  int		        NOT NULL,						--수강료
+	 prorec_start varchar(10)	 	NOT NULL,						--접수시작
+	 prorec_end   varchar(10) 		NOT NULL,						--접수종료
+	 proper_start varchar(10)	 	NOT NULL,						--수강시작
+	 proper_end   varchar(10) 		NOT NULL,						--수강종료
+	 pro_day      varchar(5)	 	NOT NULL,						--수강요일
+	 pro_age      varchar(20)	 	NOT NULL,						--대상
+	 pro_exp      varchar(2000)   	NULL,							--설명
+	 pro_poster   varchar(20)		DEFAULT 'pro_poster.jpg' NULL,  --포스터
+	 pro_img      varchar(20)   	NULL,							--이미지이름
+	 pro_imgsize  int				NULL,							--파일사이즈
+	 pro_regdate  date	        	NOT NULL,						--등록일
+	 pro_readcnt  int		        NOT NULL,						--조회수 
+);
+
+--프로그램 목록 조회
+SELECT * FROM program_info
+ORDER BY pro_regdate DESC;
