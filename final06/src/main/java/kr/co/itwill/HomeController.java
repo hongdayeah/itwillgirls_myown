@@ -21,6 +21,7 @@ public class HomeController {
 		//mav.setViewName("hello");
 		//mav.setViewName("header");
 		mav.setViewName("intro2");
+		
 		//mav.setViewName("footer");
 		return mav;
 	}//home() end
