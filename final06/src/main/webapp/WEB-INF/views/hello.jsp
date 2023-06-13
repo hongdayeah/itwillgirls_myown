@@ -7,6 +7,7 @@
 	<title>hello.jsp</title>
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
 
+
 </head>
 <body>
 	<div class=e1_2>
