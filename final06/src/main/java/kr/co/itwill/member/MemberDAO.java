@@ -28,4 +28,8 @@ public class MemberDAO {
 		sqlSession.insert("member.memberJoinForm", map);
 	}//insert() end
 	
+	public void login(Map<String, Object> map) {
+		sqlSession.insert("member.memberLoginForm", map);
+	}//login() end
+	
 }//class end

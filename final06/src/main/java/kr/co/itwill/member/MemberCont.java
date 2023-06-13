@@ -18,9 +18,16 @@ public class MemberCont {
 	@Autowired
 	private MemberDAO dao;
 	
-	@RequestMapping("/insert")
+	@RequestMapping("/login")
+	public String login() {
+		return "member/memberLoginForm";
+	}//login() end
+	
+	@RequestMapping("/join")
 	public String insert() {
 		return "member/memberJoinForm";
-	}//write() end
+	}//insert() end
+	
+	
 	
 }//class end

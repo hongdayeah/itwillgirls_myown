@@ -4,12 +4,12 @@
 <%@ include file="../header.jsp" %>
 
 
-    <!-- 본문 시작 memberForm.jsp -->
+    <!-- 본문 시작 memberJoinForm.jsp -->
     <h3>* 회/원/가/입 *</h3>
     <span style="color: red; font-weight: bold">* 필수입력</span>
 	<br>
 	
-	<form name="memfrm" id="memfrm" method="post" action="insert">
+	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="join">
 		<table border="1">
 			<tr>
 				<th>* 아이디</th>
@@ -156,7 +156,6 @@
                 element_wrap.style.display = 'block';
             }
         </script>
-    <!-- 본문 끝 -->	
     <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
