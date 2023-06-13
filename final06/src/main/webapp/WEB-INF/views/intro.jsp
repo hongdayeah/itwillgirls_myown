@@ -15,7 +15,7 @@
 	<!-- header -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
 		<h1>어린이 문화센터</h1>
-		로그인 
+		<a href="/views/member/MemberJoinForm.jsp">로그인</a>
 	</div>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
