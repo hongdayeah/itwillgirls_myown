@@ -1,10 +1,24 @@
 package kr.co.itwill.member;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class MemberDTO {
 
+	@NotBlank(message = "아이디는 필수 입력값 입니다.")
+	@Size(max = 20, message = "아이디는 영어+숫자 조합으로 최대 20글자까지 입력 가능합니다.")
 	private String p_id;
+	
+	@NotBlank(message = "비밀번호는 필수 입력값 입니다.")
+	@Size(max = 20, message = "비밀번호는 최대 20글자까지 입력 가능합니다.")
 	private String p_passwd;
+	
+	@NotBlank(message = "이름은 필수 입력값 입니다.")
+	@Size(max = 20, message = "이름은 최대 6글자까지 입력 가능합니다.")
 	private String p_name;
+	
+	@NotBlank(message = "생년월일은 필수 입력값 입니다.")
+	@Size(max = 20, message = "생년월일은 최대 6글자까지 입력 가능합니다.")
 	private String p_birth;
 	private int p_gender;
 	private String p_tell;

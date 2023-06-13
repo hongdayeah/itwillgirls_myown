@@ -9,7 +9,7 @@
     <span style="color: red; font-weight: bold">* 필수입력</span>
 	<br>
 	
-	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="join">
+	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="joinProc" onsubmit="retunr joinCheck()">
 		<table border="1">
 			<tr>
 				<th>* 아이디</th>
@@ -38,38 +38,32 @@
 			<tr>
 				<th>* 생년월일</th>
 				<td style="text-align: left">
-					<input type="text" name="p_birth" id="p_birth" size="6" maxlength="6" placeholder="ex) 910912" required>
+					<input type="text" name="p_birth" id="p_birth" size="20" maxlength="6" placeholder="ex) 910912" required>
 				</td>
 			</tr>
 			<tr>
 				<th>* 전화번호</th>
 				<td style="text-align: left">
-					<input type="text" name="tel" id="tel" size="15" maxlength="14" placeholder="ex) 01012345678" required>
+					<input type="text" name="p_tel" id="p_tel" size="20" maxlength="14" placeholder="ex) 01012345678" required>
 				</td>
 			</tr>			
 			<tr>
-				<th>* 우편번호</th>
-				<td style="text-align: left">
-					<input type="text" name="zipcode" id="zipcode" size="7" readonly>
-					<input type="button" value="주소찾기" onclick="DaumPostcode()">
-				</td>
-			</tr>							
-			<tr>
 				<th>* 주소</th>
 				<td style="text-align: left">
-					<input type="text" name="address1" id="address1" size="45" readonly>
+					<input type="text" name="p_addr1" id="p_addr1" size="20" readonly>
+					<input type="button" value="주소찾기" onclick="DaumPostcode()">
 				</td>
 			</tr>
 			<tr>
-				<th>나머지주소</th>
+				<th>* 나머지주소</th>
 				<td style="text-align: left">
-					<input type="text" name="address2" id="address2" size="45">
+					<input type="text" name="p_addr2" id="p_addr2" size="20">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="회원가입" class="btn btn-success">
-					<input type="reset"  value="취소" class="btn btn-danger">
+					<input type="reset"  value="취소" class="btn btn-danger" onclick="history.back()">
 				</td>
 			</tr>								
 		</table>				
@@ -125,17 +119,16 @@
                                 extraAddr = ' (' + extraAddr + ')';
                             }
                             // 조합된 참고항목을 해당 필드에 넣는다.
-                            document.getElementById("address2").value = extraAddr;
+                            document.getElementById("p_addr2").value = extraAddr;
                         
                         } else {
-                            document.getElementById("address2").value = '';
+                            document.getElementById("p_addr2").value = '';
                         }
         
                         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                        document.getElementById('zipcode').value = data.zonecode;
-                        document.getElementById("address1").value = addr;
+                        document.getElementById("p_addr1").value = addr;
                         // 커서를 상세주소 필드로 이동한다.
-                        document.getElementById("address2").focus();
+                        document.getElementById("p_addr2").focus();
         
                         // iframe을 넣은 element를 안보이게 한다.
                         // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
