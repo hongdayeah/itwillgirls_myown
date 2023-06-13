@@ -41,7 +41,7 @@
 	<!-- header -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
 		<a href="/home.do"><h1>어린이 문화센터</h1></a>
-		<button type="button" class="btn btn-warning" onclick="location.href='/member/insert'">로그인</button>
+		<button type="button" class="btn btn-warning" onclick="location.href='/member/join'">로그인</button>
 	</div>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
