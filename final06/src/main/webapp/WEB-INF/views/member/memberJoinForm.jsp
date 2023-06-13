@@ -42,20 +42,20 @@
 				</td>
 			</tr>
 			<tr>
-				<th>전화번호</th>
+				<th>* 전화번호</th>
 				<td style="text-align: left">
 					<input type="text" name="tel" id="tel" size="15" maxlength="14" placeholder="ex) 01012345678" required>
 				</td>
 			</tr>			
 			<tr>
-				<th>우편번호</th>
+				<th>* 우편번호</th>
 				<td style="text-align: left">
 					<input type="text" name="zipcode" id="zipcode" size="7" readonly>
 					<input type="button" value="주소찾기" onclick="DaumPostcode()">
 				</td>
 			</tr>							
 			<tr>
-				<th>주소</th>
+				<th>* 주소</th>
 				<td style="text-align: left">
 					<input type="text" name="address1" id="address1" size="45" readonly>
 				</td>
