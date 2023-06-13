@@ -1,12 +1,22 @@
 package kr.co.itwill.member;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-@Controller
+@Repository
 public class MemberDAO {
 
+	//DBOpen dbopen = new DBOpen()와 동일한 형태
+	//@Autowired 스프링컨테이너가 생성해 준 객체를 연결
+	@Autowired
+	private JdbcTemplate jt;
+
+	StringBuilder sql = null;
+	
 	public MemberDAO() {
 		System.out.println("-----MemberDAO() 객체 생성됨");
 	}//end
@@ -14,8 +24,8 @@ public class MemberDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public int memberlistInsert(MemberDTO dto) {
-		return sqlSession.insert("member.memberlistInsert", dto);
-	}//orderlistInsert() end	
+	public void insert(Map<String, Object> map) {
+		sqlSession.insert("member.memberJoinForm", map);
+	}//insert() end
 	
 }//class end

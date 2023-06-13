@@ -10,91 +10,11 @@
 <mapper namespace="member">
 
 	<!-- ? 기호를 대신하는 문법: 파라미터 바인딩 표기법 #{property(=변수명)} -->
-	<insert id="insertRow" parameterType="MemberDTO">
-		INSERT INTO mem (num, name, age)
-		VALUES (mem_seq.nextval, #{name}, #{age})
+	<!-- <insert id="insert" parameterType="kr.co.itwill.member.MemberDTO"> -->
+	<insert id="insert" parameterType="java.util.Map">
+		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_grade, p_date)
+		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, #{p_grade}, #{p_date})
 	</insert>
-	
-	
-	<select id="selectAll" resultMap="rs">
-		SELECT num, name, age
-		FROM mem
-		ORDER BY num DESC
-	</select>
-	
-	
-	<!-- ResultSet에서 행값을 가져와서 DTO에 담고, ArrayList에 추가하는 기능 -->
-	<!-- DB에서 가져온 행값을 객체에 매핑하는 방법을 정의 -->
-	<resultMap type="net.mem.MemDTO" id="rs">
-		<result column="num"  property="num"/>
-		<result column="name" property="name"/>
-		<result column="age"  property="age"/>
-	</resultMap>
-	
-	
-	
-	<update id="updateRow" parameterType="memDTO">
-		UPDATE mem
-		SET name=#{name}, age=#{age}
-		WHERE num=#{num}
-	</update>
-	
-	
-	<!-- SQL문에서 특수문자 < > / 등을 사용해야 하는 경우 <![CDATA[ 안에 SQL문 작성 ]]> -->
-	<!-- int a라는 매개변수 -->
-	<delete id="deleteRow" parameterType="int">
-		<![CDATA[	
-			DELETE FROM mem
-			WHERE age>=#{a}
-		]]>
-	</delete>
-	
 
-	<sql id="tablename">
-		SELECT num, name, age
-		FROM mem
-	</sql>
-	
-	<sql id="sort">
-		ORDER BY num DESC
-	</sql>
-	
-
-	<select id="search" parameterType="String" resultMap="rs">
-		<include refid="tablename"></include>
-		WHERE name LIKE '%' || #{keyword} || '%'
-		<include refid="sort"></include>
-	</select>
-	
-					<!-- 파라미터타입 기본형(int)이 아닌 클래스(Integer)로 받아도 됨 -->
-	<select id="selectRead" parameterType="Integer" resultType="net.mem.MemDTO">
-		<![CDATA[	
-			SELECT num, name, age
-			FROM mem
-			WHERE num=#{n}
-		]]>
-	</select>
-	
-	
-	<select id="rowCount" resultType="int">
-		<![CDATA[
-			SELECT count(*)
-			FROM mem
-		]]>		
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 </mapper>
