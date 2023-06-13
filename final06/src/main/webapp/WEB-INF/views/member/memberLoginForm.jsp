@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>memberLoginForm.jsp</title>
-</head>
-<body>
+    
+<%@ include file="../header.jsp" %>
+
+
+<!-- 본문 시작 memberJoinForm.jsp -->
+
 	<h3>* 로 그 인 *</h3>
 
 	<form name="memberLoginfrm" id="memberLoginfrm" method="post" action="login">
@@ -27,5 +26,6 @@
 	<button type="button" class="btn btn-warning" onclick="location.href='/member/join'">회원가입</button>
 	<button type="button" class="btn btn-info" onclick="">아이디/비밀번호 찾기</button>
 	
-</body>
-</html>
+    <!-- 본문 끝 -->
+        
+<%@ include file="../footer.jsp" %>
