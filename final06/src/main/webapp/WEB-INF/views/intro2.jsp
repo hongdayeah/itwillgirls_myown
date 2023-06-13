@@ -51,18 +51,42 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="#">프로그램</a>
+				<!-- Dropdown -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						프로그램
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">프로그램 소개</a>
+						<a class="dropdown-item" href="#">강사 소개</a>
+						<a class="dropdown-item" href="#">성향이란?</a>
+						<a class="dropdown-item" href="#">성향테스트하기</a>
+					</div>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">공연</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">예약</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						예약
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">프로그램 예약</a>
+						<a class="dropdown-item" href="#">공연 예매</a>
+						<a class="dropdown-item" href="#">대관 신청</a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">소식</a>
-				</li> 
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						소식
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">공지사항</a>
+						<a class="dropdown-item" href="#">공간 소개</a>
+						<a class="dropdown-item" href="#">자주묻는 질문</a>
+						<a class="dropdown-item" href="#">문의하기</a>
+					</div>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">마이페이지</a>
 				</li>  
