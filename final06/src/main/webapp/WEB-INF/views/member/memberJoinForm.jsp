@@ -5,69 +5,100 @@
 
 
     <!-- 본문 시작 memberJoinForm.jsp -->
-    <h3>* 회/원/가/입 *</h3>
-    <span style="color: red; font-weight: bold">* 필수입력</span>
-	<br>
-	
-	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="joinProc" onsubmit="return joinCheck()">
-		<table border="1">
-			<tr>
-				<th>* 아이디</th>
-				<td style="text-align: left">
-					<input type="text" name="p_id" id="p_id" size="20" maxlength="20" autofocus required>
-				</td>
-			</tr>
-			<tr>
-				<th>* 비밀번호</th>
-				<td style="text-align: left">
-					<input type="text" name="p_passwd" id="p_passwd" size="20" maxlength="20" required>
-				</td>
-			</tr>
-			<tr>
-				<th>* 비밀번호 확인</th>
-				<td style="text-align: left">
-					<input type="text" name="re_p_passwd" id="re_p_passwd" size="20" maxlength="20" required>
-				</td>
-			</tr>			
-			<tr>
-				<th>* 이름</th>
-				<td style="text-align: left">
-					<input type="text" name="p_name" id="p_name" size="20" maxlength="20" required>
-				</td>
-			</tr>
-			<tr>
-				<th>* 생년월일</th>
-				<td style="text-align: left">
-					<input type="text" name="p_birth" id="p_birth" size="20" maxlength="6" placeholder="ex) 910912" required>
-				</td>
-			</tr>
-			<tr>
-				<th>* 전화번호</th>
-				<td style="text-align: left">
-					<input type="text" name="p_tell" id="p_tell" size="20" maxlength="14" placeholder="ex) 01012345678" required>
-				</td>
-			</tr>			
-			<tr>
-				<th>* 주소</th>
-				<td style="text-align: left">
-					<input type="text" name="p_addr1" id="p_addr1" size="20" readonly>
-					<input type="button" value="주소찾기" onclick="DaumPostcode()">
-				</td>
-			</tr>
-			<tr>
-				<th>* 나머지주소</th>
-				<td style="text-align: left">
-					<input type="text" name="p_addr2" id="p_addr2" size="20">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="가입하기" class="btn btn-success">
-					<input type="reset"  value="취소" class="btn btn-danger" onclick="history.back()">
-				</td>
-			</tr>								
-		</table>				
-	</form>
+    <div class="container">
+		<div class="input-form-backgroud row">
+			<div class="input-form col-md-12 mx-auto">
+				
+				<h4 class="mb-3">회원가입</h4>
+				<br>
+				
+				<form name="memfrm" id="memfrm" method="post" action="joinProc" onsubmit="return joinCheck()">
+					
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="p_id">아이디</label>
+							<input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요" autofocus required>
+							<span class="idchk"></span>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="p_name">이름</label>
+							<input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="이름을 입력해 주세요" value="" required>
+							<span class="memberNamechk"></span>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="p_passwd">비밀번호</label>
+							<input type="password" class="form-control" id="p_passwd" name="p_passwd" maxlength="20" placeholder="비밀번호를 입력해 주세요" value="" required>
+							<span class="pwchk1"></span>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<label for="re_p_passwd">비밀번호 확인</label>
+							<input type="password" class="form-control" id="re_p_passwd" name="re_p_passwd" maxlength="20" placeholder="비밀번호를 다시 한 번 입력해 주세요" value="" required>
+							<span class="pwchk"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="p_birth">생년월일</label>
+							<input type="text" class="form-control" id="p_birth" name="p_birth" maxlength="6" placeholder="생년월일을 입력해 주세요 ex) 910912" value="" required>
+							<span class="birthchk"></span>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<label for="p_tell">핸드폰 번호</label>
+							<input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="핸드폰 번호를 입력해 주세요 ex) 01012345678" value="" required>
+							<span class="tellchk"></span>
+						</div>
+					</div>
+					
+					<div>
+						<p class="fieldset">
+						<label for="p_addr1">성별
+						&nbsp;
+				            <input type="radio" name="p_gender" id="p_gender" value="1">남
+				            &nbsp;
+				            <input type="radio" name="p_gender" id="p_gender" value="2">여
+				         </label>
+				         </p>
+					</div>
+
+					<div class="mb-3">
+						<label for="p_addr1">주소
+							<span class="text-muted">
+								<button type="button" class="btn" id="check_btn" onclick="DaumPostcode()">찾기</button>
+							</span>
+						</label>
+						<input type="text" class="form-control" id="p_addr1" placeholder="찾기를 눌러 주소를 입력하세요" readonly>
+					</div>
+
+					<div class="mb-3">
+						<label for="p_addr2">나머지 주소
+						</label>
+						<input type="text" class="form-control" id="p_addr2" placeholder="주소를 입력해 주세요.">
+					</div>
+					<div class="mb-4"></div>
+					
+					<div>
+						<p class="fieldset">
+				            <input type="checkbox" id="agreeterms">
+				            <label for="agreeterms">약관 동의 <a href="#0">(약관 보기)</a></label>
+				         </p>
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+				</form>
+				<br>
+				<button class="btn btn-primary btn-lg btn-block" onclick="history.back()">뒤로가기</button>
+
+			</div>
+		</div>
+		</div>
+							
+
 	
 <!-- DAUM 우편번호 API 시작 -->
 	<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
@@ -151,7 +182,7 @@
         </script>
         
         
-        <<script>
+        <script>
 		function joinCheck() {
 			//회원가입 유효성 검사
 		      
@@ -178,36 +209,68 @@
 			  re_p_passwd=re_p_passwd.trim();
 		      if(p_passwd!=re_p_passwd) {
 				  alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
+				  document.getElementById("re_p_passwd").focus();
 				  return false;
 			  }//if end
 			  
 			  //4)이름 2글자 이상인지?
 			  let p_name=document.getElementById("p_name").value;
 			  p_name=p_name.trim();
-		      if(p_name<2) {
+		      if(p_name.length<2) {
 				  alert("이름을 2글자 이상 입력해 주세요");
+				  document.getElementById("p_name").focus();
 				  return false;
 			  }//if end
 			  
 			  //5)생년월일이 6자리의 숫자인지?
 			  let p_birth=document.getElementById("p_birth").value;
 			  p_birth=p_birth.trim();
-		      if(p_birth<6 || isNaN(p_birth)) {
+		      if(p_birth.length!=6 || isNaN(p_birth)) {
 				  alert("생년월일을 6자리 숫자로 입력해 주세요");
+				  document.getElementById("p_birth").focus();
 				  return false;
 			  }//if end
 			  
 			  //6)전화번호가 10~11자리의 숫자인지?
 			  let p_tell=document.getElementById("p_tell").value;
 			  p_tell=p_tell.trim();
-		      if(p_tell<9 || isNaN(p_tell)) {
+		      if(p_tell.length<10 || p_tell.length>11 || isNaN(p_tell)) {
 				  alert("전화번호는 '-' 기호를 생략하고 숫자형식으로 입력해 주세요");
+				  document.getElementById("p_tell").focus();
 				  return false;
 			  }//if end
 			  
+			  //7)성별을 선택했는지?
+		      let flag = false;
+		      for(i=0; i < memfrm.p_gender.length; i++){
+		            if(memfrm.p_gender[i].checked == true) {
+		                flag = true; // 하나라도 체크되면 true값 저장
+		                // 하나도 체크되지 않으면 false 값 그대로 유지
+		            }//if end
+		        }//for end
+		        
+		        if(flag == false) { // 하나도 체크되지 않았을 경우
+		        	alert("성별 체크해 주세요");
+		            return false;
+		        }//if end
+		      
+		      //8)주소 입력했는지?
+			  let p_addr1=document.getElementById("p_addr1").value;
+		      if(p_addr1 == "") {
+				  alert("주소를 입력해 주세요");
+				  return false;
+			  }//if end
+			        
+		      //9)약관 동의 체크했는지?
+		      if(document.getElementById("agreeterms").checked == false){
+					alert("약관 동의 후 회원가입이 가능합니다")
+					return false;
+				}//if end		    
+
 			  return true;
 		}//joinCheck() end
         </script>
+        
     <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
