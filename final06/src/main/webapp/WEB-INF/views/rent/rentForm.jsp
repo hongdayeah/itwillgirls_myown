@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
-<h3>대관신청</h3>
+
 <hr>
 <form name="notice" id="notice" method="post">
 	<ul>
@@ -13,4 +13,36 @@
 </form>
 <hr>
 
+<h3>대관신청</h3>
+어린이 문화센터의 야외 및 극장을 대관할 수 있습니다.
+<table border="1" align="center" width="98%" height="40%">
+	<tr>
+		<td align="center">대관일자</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">대관목적</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">단체명</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">담당자 성함</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">연락처</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">이메일 주소</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">대관신청서 다운로드</td>
+		<td>대관신청을 위해 사전에 미리 신청서를 다운로드하여 작성해주시길 바랍니다. </td>
+	</tr>
+</table>
 <%@ include file="../footer.jsp" %>
