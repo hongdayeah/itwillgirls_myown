@@ -21,6 +21,9 @@ public class RentCont {
 		return "rent/rentForm";
 	}//form() end
 	
-	  
+	 @RequestMapping("/info.do")
+	 public String info() {
+		 return "rent/rentInfo";
+	 }//info() end
 }
 	
