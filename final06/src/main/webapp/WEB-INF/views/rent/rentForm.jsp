@@ -11,6 +11,12 @@
 
 </head>
 <body>
+<div class=tab>
+	<ul class="category">
+	<li><a href="/rent/info.do">대관안내</a></li>
+	<li><a href="/rent/form.do">대관신청</a></li>
+	</ul>
+</div>
 <hr>
 <form name="notice" id="notice" method="post">
 	<ul>
@@ -27,7 +33,7 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관일자</td>
 		<td class="cal_sel">
-			<input type="text" id=rent_date name="rent_date" readonly="readonly" class="datepicker">
+			<input type="text" id=rentdate name="rentdate" readonly="readonly" class="datepicker">
 		<script>
 		$.datepicker.setDefaults({
 			  dateFormat: 'yy-mm-dd',
@@ -51,37 +57,37 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관목적</td>
 		<td>
-			<input type="text" style="width:500px" id="rent_per" name="rent_per" placeholder="대관 목적을 입력해주세요.">
+			<input type="text" style="width:500px" id="rentpurpose" name="rentpurpose" placeholder="대관 목적을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">단체명</td>
 		<td>
-			<input type="text" style="width:500px" id="rent_group" name="rent_group" placeholder="단체명을 입력해주세요.">
+			<input type="text" style="width:500px" id="groupname" name="groupname" placeholder="단체명을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">담당자 성함</td>
 		<td>
-			<input type="text" style="width:500px" id="rent_name" name="rent_name" placeholder="담당자 성함을 입력해주세요.">
+			<input type="text" style="width:500px" id="readername" name="readername" placeholder="담당자 성함을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">연락처</td>
 		<td>
-			<input type="text" class="numberOnly" id="rent_phone" name="rent_phone" maxlength="4" value>
+			<input type="text" class="numberOnly" id="rentphone" name="rentphone" maxlength="4" value>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">이메일 주소</td>
 		<td>
-			<input type="text" style="width:500px" id="rent_email" name="rent_email" placeholder="이메일 주소를 입력해주세요.">
+			<input type="text" style="width:500px" id="rentemail" name="rentemail" placeholder="이메일 주소를 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 	<td align="center" style="background-color:#FAF9F9">장소</td>
 	<td>
-	<select>
+	<select id="rentwhere" name="rentwhere">
 		<option>야외</option>
 		<option>극장</option>
 	</select>
@@ -297,20 +303,21 @@
 
 <script>
 //대관신청 유효성 검사
+function rentCheck() {
 //1) 대관일자선택
 //2) 대관목적
 //3) 단체명
 //4) 담당자 성함
-let readername=document.getElementById("rent_name").value;
-id=id.trim();
-if(rent_name <2) {
+readername=readername.trim();
+if(readername <2) {
 	alert("성함을 2글자 이상 입력해주세요.");
-	document.getElementById("rent_name".focus();
+	document.getElementById("readername".focus();
 	return false;
 }//if end
 //5) 연락처
 //6) 이메일 주소
 //7) 개인정보 수집동의
+}//rentCheck() end
 </script>
 <br>
 <%@ include file="../footer.jsp" %>
