@@ -27,9 +27,7 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관일자</td>
 		<td class="cal_sel">
-			<input type="text" id=startdate name="startdate" readonly="readonly" class="datepicker">
-			<span>~</span>
-			<input type="text" id=enddate name="enddate" readonly="readonly" class="datepicker">
+			<input type="text" id=rent_date name="rent_date" readonly="readonly" class="datepicker">
 		<script>
 		$.datepicker.setDefaults({
 			  dateFormat: 'yy-mm-dd',
@@ -53,45 +51,40 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관목적</td>
 		<td>
-			<input type="text" style="width:500px" id="rentpurpose" name="rentpurpose" placeholder="대관 목적을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_per" name="rent_per" placeholder="대관 목적을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">단체명</td>
 		<td>
-			<input type="text" style="width:500px" id="groupname" name="groupname" placeholder="단체명을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_group" name="rent_group" placeholder="단체명을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">담당자 성함</td>
 		<td>
-			<input type="text" style="width:500px" id="readername" name="readername" placeholder="담당자 성함을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_name" name="rent_name" placeholder="담당자 성함을 입력해주세요.">
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">연락처</td>
 		<td>
-		<select name="te1" id="te1" style="width=:98%; height:26px;">
-		
-			<option value="010" selected>010</option>
-			<option value="011">011</option>
-			<option value="016">016</option>
-			<option value="017">017</option>
-			<option value="018">018</option>
-			<option value="019">019</option>
-			</select>
-			<span>-</span>
-			<input type="text" class="numberOnly" id="tel2" name="tel2" maxlength="4" value>
-			<span>-</span>
-			<input type="text" class="numberOnly" id="tel3" name="tel3" maxlength="4" value>
+			<input type="text" class="numberOnly" id="rent_phone" name="rent_phone" maxlength="4" value>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">이메일 주소</td>
 		<td>
-			<input type="text" style="width:500px" id="emailaddr" name="emailaddr" placeholder="이메일 주소를 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_email" name="rent_email" placeholder="이메일 주소를 입력해주세요.">
 		</td>
 	</tr>
+	<tr>
+	<td align="center" style="background-color:#FAF9F9">장소</td>
+	<td>
+	<select>
+		<option>야외</option>
+		<option>극장</option>
+	</select>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관신청서 다운로드</td>
 		<td>대관신청을 위해 사전에 미리 신청서를 다운로드하여 작성해주시길 바랍니다. 
@@ -298,5 +291,26 @@
 <div style="text-align: center;">
 <button type="button" style="text-align:center" class="btn btn-info">신청하기</button>
 </div>
+
+
+
+
+<script>
+//대관신청 유효성 검사
+//1) 대관일자선택
+//2) 대관목적
+//3) 단체명
+//4) 담당자 성함
+let readername=document.getElementById("rent_name").value;
+id=id.trim();
+if(rent_name <2) {
+	alert("성함을 2글자 이상 입력해주세요.");
+	document.getElementById("rent_name".focus();
+	return false;
+}//if end
+//5) 연락처
+//6) 이메일 주소
+//7) 개인정보 수집동의
+</script>
 <br>
 <%@ include file="../footer.jsp" %>
