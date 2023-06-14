@@ -16,10 +16,10 @@ public class RentCont {
 	private RentDAO dao;
 	
 	
-	@RequestMapping("/insert")
-	public String insert() {
+	@RequestMapping("/form.do")
+	public String form() {
 		return "rent/rentForm";
-	}
+	}//form() end
 	
 	  
 }
