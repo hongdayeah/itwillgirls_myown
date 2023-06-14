@@ -13,8 +13,8 @@
    		<c:forEach var="row" items="${list}" varStatus="vs">
    			<td>
    			<c:choose>
-   				<c:when test="${row.PRO_POSTER != '-'}">
-   					<img src="../storage/${row.PRO_POSTER}" width="100px">
+   				<c:when test="${row.PRO_IMG != '-'}">
+   					<img src="../storage/${row.PRO_IMG}" width="100px">
    				</c:when>
    				<c:otherwise>
    					등록된 사진 없음<br>
