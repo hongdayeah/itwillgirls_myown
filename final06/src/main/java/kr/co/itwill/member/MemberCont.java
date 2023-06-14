@@ -20,7 +20,7 @@ public class MemberCont {
 	
 	@Autowired
 	private MemberDAO dao;
-	
+	  
 	//로그인 페이지 이동
 	@RequestMapping("/login.do")
 	public String login() {
