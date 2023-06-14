@@ -8,11 +8,11 @@ public class PerformanceDTO {
 	private String per_name;
 	private String per_date;
 	private String per_time;
-	private String per_fee;
+	private int	   per_fee;
 	private String per_exp;
 	private String per_img;
 	private long   per_size;
-	private long   per_filename;
+	private String  per_filename;
 	private String class_code;
 	private int per_limit;
 	
@@ -22,11 +22,9 @@ public class PerformanceDTO {
 	//첨부된 파일 저장하기 위해 
 	
 	//1)스프링 파일 객체 멤버변수 선언
-    //<input type='file' name='posterMF'>
+    //<input type='file' name='per_imgMF'>
     private MultipartFile per_imgMF;
-    //<input type='file' name='filenameMF'>
-    private MultipartFile per_filenameMF;
-    
+
     //2)getter와 setter함수 작성
 
 	public MultipartFile getPer_imgMF() {
@@ -35,12 +33,9 @@ public class PerformanceDTO {
 	public void setPer_imgMF(MultipartFile per_imgMF) {
 		this.per_imgMF = per_imgMF;
 	}
-	public MultipartFile getPer_filenameMF() {
-		return per_filenameMF;
-	}
-	public void setPer_filenameMF(MultipartFile per_filenameMF) {
-		this.per_filenameMF = per_filenameMF;
-	}
+	
+
+	
 	///////////////////////////////////////////////////////////// 
 	
 	public String getPer_code() {
@@ -67,10 +62,10 @@ public class PerformanceDTO {
 	public void setPer_time(String per_time) {
 		this.per_time = per_time;
 	}
-	public String getPer_fee() {
+	public int getPer_fee() {
 		return per_fee;
 	}
-	public void setPer_fee(String per_fee) {
+	public void setPer_fee(int per_fee) {
 		this.per_fee = per_fee;
 	}
 	public String getPer_exp() {
@@ -91,10 +86,10 @@ public class PerformanceDTO {
 	public void setPer_size(long per_size) {
 		this.per_size = per_size;
 	}
-	public long getPer_filename() {
+	public String getPer_filename() {
 		return per_filename;
 	}
-	public void setPer_filename(long per_filename) {
+	public void setPer_filename(String per_filename) {
 		this.per_filename = per_filename;
 	}
 	public String getClass_code() {
@@ -114,8 +109,9 @@ public class PerformanceDTO {
 		return "PerformanceDTO [per_code=" + per_code + ", per_name=" + per_name + ", per_date=" + per_date
 				+ ", per_time=" + per_time + ", per_fee=" + per_fee + ", per_exp=" + per_exp + ", per_img=" + per_img
 				+ ", per_size=" + per_size + ", per_filename=" + per_filename + ", class_code=" + class_code
-				+ ", per_limit=" + per_limit + "]";
+				+ ", per_limit=" + per_limit + ", per_imgMF=" + per_imgMF + "]";
 	}
+
 	
 	
 	
