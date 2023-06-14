@@ -138,6 +138,7 @@
 <!--  움직이는 상자 끝 -->
     
 </div>
+</div>
 
 <!-- footer -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
