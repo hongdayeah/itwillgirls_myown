@@ -20,6 +20,11 @@
 		INSERT INTO member_parent (p_id, p_passwd)
 		VALUES (#{p_id}, #{p_passwd})
 	</insert>
-
+	
+	<insert id="joinProc" parameterType="java.util.Map">
+		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_grade, p_date)
+		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, #{p_grade}, #{p_date})
+	</insert>
+	
 	
 </mapper>

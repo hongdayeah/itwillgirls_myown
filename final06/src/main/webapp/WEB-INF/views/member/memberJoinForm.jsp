@@ -62,7 +62,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="회원가입" class="btn btn-success">
+					<input type="submit" value="가입하기" class="btn btn-success">
 					<input type="reset"  value="취소" class="btn btn-danger" onclick="history.back()">
 				</td>
 			</tr>								
