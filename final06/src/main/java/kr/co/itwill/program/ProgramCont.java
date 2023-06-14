@@ -14,14 +14,4 @@ public class ProgramCont {
 		System.out.println("-----ProgramCont()객체 생성됨");
 	}
 	
-	@RequestMapping("/program/list.do")
-	public ModelAndView list(String pro_obj) {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("program/list");
-		
-		mav.addObject("list", dao.list(pro_obj));
-		mav.addObject("pro_obj", pro_obj);
-		
-		return mav;
-	}//list() end
 }//class end
