@@ -9,7 +9,7 @@
     <span style="color: red; font-weight: bold">* 필수입력</span>
 	<br>
 	
-	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="joinProc" onsubmit="retunr joinCheck()">
+	<form name="memberJoinfrm" id="memberJoinfrm" method="post" action="joinProc" onsubmit="return joinCheck()">
 		<table border="1">
 			<tr>
 				<th>* 아이디</th>
@@ -44,7 +44,7 @@
 			<tr>
 				<th>* 전화번호</th>
 				<td style="text-align: left">
-					<input type="text" name="p_tel" id="p_tel" size="20" maxlength="14" placeholder="ex) 01012345678" required>
+					<input type="text" name="p_tell" id="p_tell" size="20" maxlength="14" placeholder="ex) 01012345678" required>
 				</td>
 			</tr>			
 			<tr>
@@ -148,6 +148,65 @@
                 // iframe을 넣은 element를 보이게 한다.
                 element_wrap.style.display = 'block';
             }
+        </script>
+        
+        
+        <<script>
+		function joinCheck() {
+			//회원가입 유효성 검사
+		      
+		      //1)아이디 5~10글자 인지?
+		      let p_id=document.getElementById("p_id").value;
+		      p_id=p_id.trim();
+		      if(p_id.length<5 || p_id.length>10) {
+		          alert("아이디를 5글자~10글자 사이로 입력해 주세요");
+		          document.getElementById("p_id").focus();
+		          return false; //전송하지 않음
+		      }//if end
+			
+			  //2)비밀번호 5~10글자 인지?
+		      let p_passwd=document.getElementById("p_passwd").value;
+		      p_passwd=p_passwd.trim();
+		      if(p_passwd.length<5 || p_passwd.length>10) {
+		          alert("비밀번호를 5글자~10글자 사이로 입력해 주세요");
+		          document.getElementById("p_passwd").focus();
+		          return false;
+		      }//if end
+		      		
+			  //3)비밀번호와 비밀번호확인이 서로 일치하는지?
+			  let re_p_passwd=document.getElementById("re_p_passwd").value;
+			  re_p_passwd=re_p_passwd.trim();
+		      if(p_passwd!=re_p_passwd) {
+				  alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
+				  return false;
+			  }//if end
+			  
+			  //4)이름 2글자 이상인지?
+			  let p_name=document.getElementById("p_name").value;
+			  p_name=p_name.trim();
+		      if(p_name<2) {
+				  alert("이름을 2글자 이상 입력해 주세요");
+				  return false;
+			  }//if end
+			  
+			  //5)생년월일이 6자리의 숫자인지?
+			  let p_birth=document.getElementById("p_birth").value;
+			  p_birth=p_birth.trim();
+		      if(p_birth<6 || isNaN(p_birth)) {
+				  alert("생년월일을 6자리 숫자로 입력해 주세요");
+				  return false;
+			  }//if end
+			  
+			  //6)전화번호가 10~11자리의 숫자인지?
+			  let p_tell=document.getElementById("p_tell").value;
+			  p_tell=p_tell.trim();
+		      if(p_tell<9 || isNaN(p_tell)) {
+				  alert("전화번호는 '-' 기호를 생략하고 숫자형식으로 입력해 주세요");
+				  return false;
+			  }//if end
+			  
+			  return true;
+		}//joinCheck() end
         </script>
     <!-- 본문 끝 -->
         
