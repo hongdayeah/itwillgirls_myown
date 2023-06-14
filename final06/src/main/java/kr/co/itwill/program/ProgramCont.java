@@ -19,6 +19,7 @@ public class ProgramCont {
 	public ModelAndView list() {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("program/list");
+		mav.addObject("list",dao.list());
 
 		return mav;
 	}//list() end
