@@ -22,30 +22,30 @@ public class ProgramDTO {
 	private int pro_readcnt;	//조회수
 	
 	public ProgramDTO() {}
-	
+
 	/////////////////////////////////////////////////
 	//첨부된 파일을 저장하기 위해 
 	//1) 스프링 파일 객체 멤버변수 선언
 	//<input type='file' name='posterMF'>
-	private MultipartFile posterMF;
+	private MultipartFile pro_posterMF;
 	//<input type='file' name='filenameMF'>
-	private MultipartFile filenameMF;
+	private MultipartFile pro_imgMF;
 	
 	//2) getter setter 함수 선언
-	public MultipartFile getPosterMF() {
-		return posterMF;
+	public MultipartFile getPro_posterMF() {
+		return pro_posterMF;
 	}
 
-	public void setPosterMF(MultipartFile posterMF) {
-		this.posterMF = posterMF;
+	public void setPro_posterMF(MultipartFile pro_posterMF) {
+		this.pro_posterMF = pro_posterMF;
 	}
 
-	public MultipartFile getFilenameMF() {
-		return filenameMF;
+	public MultipartFile getPro_imgMF() {
+		return pro_imgMF;
 	}
 
-	public void setFilenameMF(MultipartFile filenameMF) {
-		this.filenameMF = filenameMF;
+	public void setPro_imgMF(MultipartFile pro_imgMF) {
+		this.pro_imgMF = pro_imgMF;
 	}
 	/////////////////////////////////////////////////
 
