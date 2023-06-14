@@ -3,12 +3,15 @@
 
 <%@ include file="../header.jsp" %>
 
-<!-- 본문 시작 ProgramList.jsp -->
-
-<div>프로그램 목록</div>
-
-
-
-<!-- 본문 끝 -->
+    <!-- program -- list.jsp -->
+    
+    <button type="button" class="btn btn-outline-primary" onclick="location.href='create'">프로그램등록</button>
+    <br>
+    프로그램 목록
+    <br>
+    
+    
+    
+    <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
