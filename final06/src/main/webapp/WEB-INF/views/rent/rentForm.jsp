@@ -14,7 +14,7 @@
 <div class=tab>
 	<ul class="category">
 	<li><a href="/rent/info.do">대관안내</a></li>
-	<li><a href="/rent/form.do">대관신청</a></li>
+	<li><a href="/rent/form.do">대관신청</a></li> 
 	</ul>
 </div>
 <hr>
