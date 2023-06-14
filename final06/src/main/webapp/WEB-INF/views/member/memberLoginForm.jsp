@@ -22,7 +22,7 @@
 		</div>
 	</form>
 	
-	<button type="button" class="btn btn-warning" onclick="location.href='/member/join'">회원가입</button>
+	<button type="button" class="btn btn-warning" onclick="location.href='/member/join.do'">회원가입</button>
 	<button type="button" class="btn btn-info" onclick="">아이디/비밀번호 찾기</button>
 	
 	
