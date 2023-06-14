@@ -28,8 +28,14 @@ public class MemberDAO {
 		sqlSession.insert("member.memberJoinForm", map);
 	}//insert() end
 	
+	//로그인은 인서트가 아닌 것 같은데 조금 더 고민해 보자~
 	public void login(Map<String, Object> map) {
 		sqlSession.insert("member.memberLoginForm", map);
 	}//login() end
+	
+	public void joinProc(Map<String, Object> map) {
+		sqlSession.insert("member.joinProc", map);
+	}//login() end
+	
 	
 }//class end
