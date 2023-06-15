@@ -18,7 +18,7 @@
 	</ul>
 </div>
 <hr>
-<form name="rentform" id="rentform" method="post">
+<form name="rentform" id="rentform" method="post" action="rentProc.jsp" onsubmit="return rentCheck()"> <!-- myscript.js -->
 	<ul>
 		<li>야외와 극장은 어린이 관련 기관 또는 단체 행사를 위해 대관을 진행합니다.</li>
 		<li>대관은 신청 후, 담당자와 전화 상담(02-1234-1234)을 통하여 확정됩니다.</li>
@@ -33,7 +33,7 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관일자</td>
 		<td class="cal_sel">
-			<input type="text" id=rentdate name="rentdate" readonly="readonly" class="datepicker">
+			<input type="text" id=rent_date name="rent_date" readonly="readonly" class="datepicker" required>
 		<script>
 		$.datepicker.setDefaults({
 			  dateFormat: 'yy-mm-dd',
@@ -57,39 +57,39 @@
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관목적</td>
 		<td>
-			<input type="text" style="width:500px" id="rentpurpose" name="rentpurpose" placeholder="대관 목적을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_per" name="rent_per" placeholder="대관 목적을 입력해주세요." value="" required>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">단체명</td>
 		<td>
-			<input type="text" style="width:500px" id="groupname" name="groupname" placeholder="단체명을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_group" name="rent_group" placeholder="단체명을 입력해주세요." value="" required>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">담당자 성함</td>
 		<td>
-			<input type="text" style="width:500px" id="readername" name="readername" placeholder="담당자 성함을 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_name" name="rent_name" placeholder="담당자 성함을 입력해주세요." value="" required>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">연락처</td>
 		<td>
-			<input type="text" class="numberOnly" id="rentphone" name="rentphone" maxlength="4" value>
+			<input type="text" class="numberOnly" id="rent_phone" name="rent_phone" maxlength="4" value="" required>
 		</td>
 	</tr>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">이메일 주소</td>
 		<td>
-			<input type="text" style="width:500px" id="rentemail" name="rentemail" placeholder="이메일 주소를 입력해주세요.">
+			<input type="text" style="width:500px" id="rent_email" name="rent_email" placeholder="이메일 주소를 입력해주세요." value="" required>
 		</td>
 	</tr>
 	<tr>
 	<td align="center" style="background-color:#FAF9F9">장소</td>
 	<td>
-	<select id="rentwhere" name="rentwhere">
-		<option>야외</option>
-		<option>극장</option>
+	<select id="class_code" name="class_code" required>
+		<option value="outdoor">야외</option>
+		<option value="theater" selected>극장</option>
 	</select>
 	<tr>
 		<td align="center" style="background-color:#FAF9F9">대관신청서 다운로드</td>
@@ -102,7 +102,7 @@
 <div class="reservation">
 <h3>개인정보 수업 이용동의</h3>
 <div class="check" style="text-align:right; margin-right:20px;">
-	<input type="checkbox" id=agreement checked="checked">
+	<input type="checkbox" id=agree checked="checked" required>
 	<label for="cb_ag01">
 	개인정보 수집 이용에 동의합니다.</label>
 </div>
@@ -295,29 +295,12 @@
 </div> <!-- reservation 끝 -->
 <br>
 <div style="text-align: center;">
-<button type="button" style="text-align:center" class="btn btn-info">신청하기</button>
+<button type="submit" style="text-align:center" class="btn btn-info">신청하기</button>
 </div>
 </form>
 
 
 
-<script>
-//대관신청 유효성 검사
-function rentCheck() {
-//1) 대관일자선택
-//2) 대관목적
-//3) 단체명
-//4) 담당자 성함
-readername=readername.trim();
-if(readername <2) {
-	alert("성함을 2글자 이상 입력해주세요.");
-	document.getElementById("readername".focus();
-	return false;
-}//if end
-//5) 연락처
-//6) 이메일 주소
-//7) 개인정보 수집동의
-}//rentCheck() end
-</script>
+
 <br>
 <%@ include file="../footer.jsp" %>
