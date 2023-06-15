@@ -63,19 +63,20 @@ public class PerformanceCont {
 				// /perstorage폴더에 파일 저장하고, 리네임된 파일명 반환
 				String Per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
 				dto.setPer_img(Per_img); //리네임된 파일명을 dto 객체 담기
+				dto.setPer_size(per_imgMF.getSize());
 			
 		///////////////////////////////////////////////////////////		
 				
 	int cnt=dao.create(dto);
 	if(cnt==0) {
-		 String msg1="<p>파일 등록 실패</p>";
+		 String msg1="<p>공연 등록 실패</p>";
 		 String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
          String link2="<input type='button' value='목록으로' onclick='#'>";
          mav.addObject("msg1", msg1);
          mav.addObject("link1", link1); 
          mav.addObject("link2", link2); 
 	} else {
-		 String msg1="<p>파일 등록 성공</p>";
+		 String msg1="<p>공연 등록 성공</p>";
 		 mav.addObject("msg1", msg1);
 		 String link1="<input type='button' value='목록으로' onclick='#'>";
 		 mav.addObject("link1", link1); 
@@ -83,6 +84,6 @@ public class PerformanceCont {
 	
 	return mav;
 	
-	}
+	}//createProc() end
 
-}//createProc() end
+}
