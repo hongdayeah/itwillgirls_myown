@@ -9,7 +9,7 @@
     강사 등록
     <br>
     
-    <form name="teacherfrm" id="teacherfrm" method="POST" action="create.do" enctype="multipart/form">
+    <form name="teacherfrm" id="teacherfrm" method="POST" action="create.do" enctype="multipart/form-data">
     	<table border="1">
     	<tr>
     		<th>강사코드</th>
