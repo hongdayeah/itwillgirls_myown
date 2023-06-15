@@ -26,5 +26,7 @@ public class RentDAO {
 		sqlSession.insert("rent.rentForm", map);
 	}//insert() end
 	
-	
+	public void rentProc(Map<String, Object> map) {
+		sqlSession.insert("rent.rentProc", map);
+	}
 }//class end

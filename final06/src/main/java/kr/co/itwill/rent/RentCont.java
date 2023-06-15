@@ -25,5 +25,10 @@ public class RentCont {
 	 public String info() {
 		 return "rent/rentInfo";
 	 }//info() end
+	 
+	 @RequestMapping("/rentProc")
+	 public String rentProc() {
+		 return "rent/rentProc";
+	 }
 }
 	

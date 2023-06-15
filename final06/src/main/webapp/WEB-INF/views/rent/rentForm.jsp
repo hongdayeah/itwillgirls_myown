@@ -18,7 +18,7 @@
 	</ul>
 </div>
 <hr>
-<form name="rentform" id="rentform" method="post" action="rentProc.jsp" onsubmit="return rentCheck()"> <!-- myscript.js -->
+<form name="rentform" id="rentform" method="post" action="rentProc" onsubmit="return rentCheck()"> <!-- myscript.js -->
 	<ul>
 		<li>야외와 극장은 어린이 관련 기관 또는 단체 행사를 위해 대관을 진행합니다.</li>
 		<li>대관은 신청 후, 담당자와 전화 상담(02-1234-1234)을 통하여 확정됩니다.</li>
