@@ -9,7 +9,7 @@
 	신청서 검토 후, 기재해주신 연락처로 연락드릴 예정입니다.
 	감사합니다.
 	<br><br>
-	<button ><a href='http://localhost:9095/home.do'>뒤로가기</a></button>
+	<button ><a href='http://localhost:9095/list.do'>신청확인하기</a></button>
 	<br>
 	<br>
 	</form>

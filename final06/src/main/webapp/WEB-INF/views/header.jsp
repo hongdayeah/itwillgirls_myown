@@ -138,7 +138,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">프로그램 예약</a>
 						<a class="dropdown-item" href="#">공연 예매</a>
-						<a class="dropdown-item" onclick="location.href='/rent/form.do'">대관 신청</a>  
+						<a class="dropdown-item" onclick="location.href='/rent/create.do'">대관 신청</a>  
 					</div>
 				</li>
 				<li class="nav-item dropdown">

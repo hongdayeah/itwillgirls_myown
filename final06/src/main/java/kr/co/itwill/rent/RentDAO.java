@@ -23,16 +23,31 @@ public class RentDAO {
 		System.out.println("-----RentDAO() 객체 생성됨");
 	}//end
 	
-	
-	
-	@Autowired
-	SqlSession sqlSession;
-	
-	public void insert(Map<String, Object> map) {
-		sqlSession.insert("rent.rentForm", map);
-	}//insert() end
-	
-	public void rentProc(Map<String, Object> map) {
-		sqlSession.insert("rent.rentProc", map);
+	public List<RentDTO> list(String rent_code){
+		List<RentDTO> list=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT rent_app, rent_group, rent_name, rent_date, rent_per, class_code" );
+			sql.append(" FROM rent ");
+			
+			RowMapper<RentDTO> rowMapper=new RowMapper<RentDTO>() {
+				@Override
+				public RentDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+					RentDTO dto=new RentDTO();
+					dto.setRent_app(rs.getString("rent_app"));
+					dto.setRent_group(rs.getString("rent_group"));
+					dto.setRent_name(rs.getString("rent_name"));
+					dto.setRent_date(rs.getString("rent_date"));
+					dto.setRent_per(rs.getString("rent_per"));
+					dto.setClass_code(rs.getString("class_code"));
+					return dto;
+				}
+			};
+			list=jt.query(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("rent 목록 실패: " + e);
+		}
+		return list;
 	}
+	
 }//class end
