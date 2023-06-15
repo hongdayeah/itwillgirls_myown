@@ -23,7 +23,7 @@ public class RentDAO {
 		System.out.println("-----RentDAO() 객체 생성됨");
 	}//end
 	
-	public List<RentDTO> list(String rent_code){
+	public List<RentDTO> list(){
 		List<RentDTO> list=null;
 		try {
 			sql=new StringBuilder();
@@ -49,5 +49,21 @@ public class RentDAO {
 		}
 		return list;
 	}
+	
+	
+	public int create(RentDTO dto) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			
+			sql.append(" INSERT INTO rent(rent_code, rent_date, rent_per, rent_name, rent_phone, rent_email, class_code, rent_app, rent_form, rent_size ");
+			sql.append("VALUES(?, ?, ?, ?, ?, ? ,? ,SYSDATE, ?, ?)");
+			
+			cnt=jt.update(sql.toString(), dto.getRent_code(), dto.getRent_date(), dto.getRent_per(), dto.getRent_name(), dto.getRent_phone(), dto.getRent_email(), dto.getClass_code(), dto.getRent_app(), dto.getRent_form(), dto.getRent_size());
+		} catch(Exception e) {
+			System.out.println("제출 실패: "+e);
+		}
+		return cnt;
+	}//create end
 	
 }//class end
