@@ -27,7 +27,7 @@
 	
 	<c:forEach var="dto" items="${list}">
 		<tr>
-			<td>${dto.per_img}</td>
+			<td><img src="../perstorage/${dto.per_img}"></td>
 			<td><a href="#">${dto.per_name}</a></td>
 			<td>${dto.per_exp}</td>
 			<td>${dto.per_date}</td>
