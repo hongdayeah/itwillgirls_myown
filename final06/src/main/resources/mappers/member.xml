@@ -15,27 +15,18 @@
 		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
 	</insert>
  -->
+ 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="java.util.Map">
 		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
 		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
 	</insert> 
  
-	<!-- ? 기호를 대신하는 문법: 파라미터 바인딩 표기법 #{property(=변수명)} -->
-	<!-- <insert id="insert" parameterType="kr.co.itwill.member.MemberDTO"> -->
-	<insert id="join" parameterType="java.util.Map">
-		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_grade, p_date)
-		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, #{p_grade}, #{p_date})
-	</insert>
-	
-	<insert id="login" parameterType="java.util.Map"> <!-- form에 입력한 값을 전달하여 저장된 정보와 일치하면 로그인 성공, 정보가 없으면 로그인 실패 -->
-		INSERT INTO member_parent (p_id, p_passwd)
-		VALUES (#{p_id}, #{p_passwd})
-	</insert>
-	
-	<insert id="joinProc" parameterType="java.util.Map">
-		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_grade, p_date)
-		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, #{p_grade}, #{p_date})
-	</insert>
+	<!-- 아이디 중복검사 -->
+  	<select id="idCheck" resultType="int">
+  		SELECT count(*)
+  		FROM member_parent
+  		WHERE p_id = #{p_id}
+  	</select>
 	
 	
 	

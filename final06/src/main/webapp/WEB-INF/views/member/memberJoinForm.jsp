@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+  
 <%@ include file="../header.jsp" %>
 
     <!-- 본문 시작 memberJoinForm.jsp -->
@@ -18,6 +18,8 @@
 							<label for="p_id">아이디</label>
 							<input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요" autofocus required>
 							<span class="idchk"></span>
+							<span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
+							<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="p_name">이름</label>
@@ -179,8 +181,34 @@
                 element_wrap.style.display = 'block';
             }
         </script>
-        
-        
+       
+       <script>
+       //아이디 중복검사
+		$('#p_id').on("propertychange change keyup paste input", function(){
+		
+			let p_id = $('#p_id').val();			// .id_input에 입력되는 값
+			let data = {p_id : p_id}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+			
+			$.ajax({
+				type : "post",
+				url : "/member/memberIdChk",
+				data : data,
+				success : function(result){
+
+					if(result != 'fail'){
+						$('.id_input_re_1').css("display","inline-block");
+						$('.id_input_re_2').css("display", "none");				
+					} else {
+						$('.id_input_re_2').css("display","inline-block");
+						$('.id_input_re_1').css("display", "none");				
+					}//if end
+				}// success 종료
+			
+			}); // ajax 종료	
+		
+		});// function 종료
+		</script>
+		
         <script>
 		function joinCheck() {
 			//회원가입 유효성 검사

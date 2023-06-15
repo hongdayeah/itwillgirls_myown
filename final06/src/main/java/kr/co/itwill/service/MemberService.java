@@ -12,4 +12,7 @@ public interface MemberService {
 	/*
 	public void memberJoin(Map<String, Object> map) throws Exception;
 	*/
+	
+	//아이디 중복확인
+	public int idCheck(String p_id) throws Exception;
 }//interface end
