@@ -61,8 +61,8 @@ public class PerformanceCont {
 		//1)<input type='file' name='per_imgMF'>
 				MultipartFile per_imgMF=dto.getPer_imgMF(); //파일 가져오기
 				// /perstorage폴더에 파일 저장하고, 리네임된 파일명 반환
-				String Per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
-				dto.setPer_img(Per_img); //리네임된 파일명을 dto 객체 담기
+				String per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
+				dto.setPer_img(per_img); //리네임된 파일명을 dto 객체 담기
 				dto.setPer_size(per_imgMF.getSize());
 			
 		///////////////////////////////////////////////////////////		
