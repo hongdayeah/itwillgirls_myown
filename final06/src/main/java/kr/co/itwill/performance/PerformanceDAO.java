@@ -85,7 +85,7 @@ public class PerformanceDAO {
 			sql = new StringBuilder();
 			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code  ");
 			sql.append(" FROM performance ");
-			sql.append(" WHERE per_code = ? ");
+			sql.append(" WHERE per_code = '" + per_code + "'");
 			
 			RowMapper<PerformanceDTO> rowMapper=new RowMapper<PerformanceDTO>() {
 				@Override
