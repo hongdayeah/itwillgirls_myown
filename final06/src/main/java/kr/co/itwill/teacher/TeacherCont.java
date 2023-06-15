@@ -1,5 +1,7 @@
 package kr.co.itwill.teacher;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,5 +50,15 @@ public class TeacherCont {
 		}//if end
 		return mav;
 	}//createProc() end
+	
+	@RequestMapping("teacher/list.do")
+	public ModelAndView list() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("teacher/list");
+		List<TeacherDTO> list = dao.list();
+		mav.addObject("list", list);
+		
+		return mav;
+	}//list() end
 	
 }//class end
