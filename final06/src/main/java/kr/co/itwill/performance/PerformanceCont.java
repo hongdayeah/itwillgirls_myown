@@ -56,7 +56,7 @@ public class PerformanceCont {
 		
 		//파일 저장 폴더의 실제 물리적인 경로 가져오기
 		ServletContext application=req.getServletContext();
-		String basePath=application.getRealPath("/WEB-INF/views/perstorage");
+		String basePath=application.getRealPath("../perstorage");
 		
 		//1)<input type='file' name='per_imgMF'>
 				MultipartFile per_imgMF=dto.getPer_imgMF(); //파일 가져오기
