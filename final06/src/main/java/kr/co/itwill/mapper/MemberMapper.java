@@ -15,4 +15,7 @@ public interface MemberMapper {
 	/*
 	public void memberJoin(Map<String, Object> map);
 	*/
+	
+	//아이디 중복확인
+	public int idCheck(String p_id);
 }//interface end

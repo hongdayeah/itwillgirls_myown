@@ -14,6 +14,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberMapper membermapper;
 	
+	//회원가입
 	@Override
 	public void memberJoin(MemberDTO dto) throws Exception {
 		membermapper.memberJoin(dto);
@@ -25,4 +26,10 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.memberJoin(map);
 	}
 	*/
+	
+	//아이디 중복확인
+	@Override
+	public int idCheck(String p_id) throws Exception {
+		return membermapper.idCheck(p_id);
+	}//idCheck() end
 }//class end

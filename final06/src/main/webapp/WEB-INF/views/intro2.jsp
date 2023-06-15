@@ -37,6 +37,14 @@
   .carousel-indicators li.active {
     background-color: #f4511e;
   }
+  .id_input_re_1{
+	color: green;
+	display: none;
+   }
+   .id_input_re_2{
+	 color: red;
+	 display: none;
+    }
 	</style>
 </head>
 <body>

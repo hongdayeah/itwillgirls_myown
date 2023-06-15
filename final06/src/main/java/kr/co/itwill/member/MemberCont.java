@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.itwill.service.MemberService;
 
@@ -65,4 +66,17 @@ public class MemberCont {
 		return "redirect:/home.do";
 	}//joinPOST() end
 	*/
+	
+	//아이디 중복 확인
+	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberIdChkPOST(String p_id)  throws Exception {
+	int result = memberservice.idCheck(p_id);
+	
+			if(result != 0) {			
+				return "fail";	// 중복 아이디가 존재
+			} else {
+				return "success";	// 중복 아이디 x
+			}//if end
+	}//memberIdChkPOST() end
 }//class end
