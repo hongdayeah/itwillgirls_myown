@@ -12,7 +12,7 @@
 				<h4 class="mb-3">회원가입</h4>
 				<br>
 				
-				<form name="memfrm" id="memfrm" method="post" onsubmit="return joinCheck()">
+				<form name="memfrm" id="memfrm" method="post" action="joinProc" onsubmit="return joinCheck()">
 					
 					<div class="row">
 						<div class="col-md-6 mb-3">
@@ -89,9 +89,7 @@
 				         </p>
 					</div>
 
-					<div class="btn btn-primary btn-lg btn-block">
-						<button type="submit" class="button">가입하기</button>
-					</div>
+					<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
 				</form>
 				<br>
 				<button class="btn btn-primary btn-lg btn-block" onclick="history.back()">뒤로가기</button>
@@ -265,25 +263,13 @@
 			        
 		      //9)약관 동의 체크했는지?
 		      if(document.getElementById("agreeterms").checked == false){
-					alert("약관 동의 후 회원가입이 가능합니다");
+					alert("약관 동의 후 회원가입이 가능합니다")
 					return false;
 				}//if end		    
 
 			  return true;
 		}//joinCheck() end
         </script>
-        
-        <script>
-
-		$(document).ready(function(){
-			//회원가입 버튼(회원가입 기능 작동)
-			$(".button").click(function(){
-				$("#memfrm").attr("action", "/member/memberJoinForm");
-				$("#memfrm").submit();
-			});
-		});
-
-</script>
         
     <!-- 본문 끝 -->
         
