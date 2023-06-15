@@ -9,12 +9,17 @@
 
 <!-- <mapper namespace="member"> -->
 <mapper namespace="kr.co.itwill.mapper.MemberMapper">
-
+<!-- 
 	<insert id="memberJoin">
 		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
 		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
 	</insert>
-
+ -->
+	<insert id="memberJoin" parameterType="java.util.Map">
+		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
+		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
+	</insert> 
+ 
 	<!-- ? 기호를 대신하는 문법: 파라미터 바인딩 표기법 #{property(=변수명)} -->
 	<!-- <insert id="insert" parameterType="kr.co.itwill.member.MemberDTO"> -->
 	<insert id="join" parameterType="java.util.Map">

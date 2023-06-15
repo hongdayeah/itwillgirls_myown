@@ -3,7 +3,6 @@
     
 <%@ include file="../header.jsp" %>
 
-
     <!-- 본문 시작 memberJoinForm.jsp -->
     <div class="container">
 		<div class="input-form-backgroud row">
@@ -89,9 +88,7 @@
 				         </p>
 					</div>
 
-					<div class="btn btn-primary btn-lg btn-block">
-						<button type="submit" class="button">가입하기</button>
-					</div>
+					<button type="submit" class="btn btn-primary btn-lg btn-block" id="button">가입하기</button>
 				</form>
 				<br>
 				<button class="btn btn-primary btn-lg btn-block" onclick="history.back()">뒤로가기</button>
@@ -277,7 +274,7 @@
 
 		$(document).ready(function(){
 			//회원가입 버튼(회원가입 기능 작동)
-			$(".button").click(function(){
+			$("#button").click(function(){
 				$("#memfrm").attr("action", "/member/memberJoinForm");
 				$("#memfrm").submit();
 			});
