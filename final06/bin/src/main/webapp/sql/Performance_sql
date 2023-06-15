@@ -1,0 +1,18 @@
+-- Performanca_sql.txt
+
+-- 퍼포먼스 테이블 생성
+CREATE TABLE  performance  (
+	 per_code 		varchar(20)		    NOT NULL PRIMARY KEY,
+	 per_name 		varchar(100)		  NOT NULL,
+	 per_date 		date     	       	NOT NULL,
+	 per_time 		varchar(20)	     	NOT NULL,
+	 per_fee 		int		            NOT NULL,
+	 per_exp  		varchar(2000) 		NULL,
+	 per_img 		varchar(20)	    	NULL,
+	 per_filename	varchar(50)			NOT NULL,
+	 per_filesize	bigint				DEFAULT 0 NOT NULL,
+	 per_limit 		int		            NULL,
+	 class_code 	varchar(50)	    	NOT NULL
+);
+ 
+ commit;
