@@ -1,0 +1,11 @@
+--teacher_sql.txt
+
+--테이블추가
+CREATE TABLE teacher (
+	t_code	  varchar(4)	NOT NULL PRIMARY KEY,
+	t_name	  varchar(20)	NOT NULL,
+	t_phone	  varchar(13)	NULL,
+	t_birth	  varchar(6)	NOT NULL,
+	t_gender  int			    NOT NULL,
+	t_photo	  varchar(20)	NULL
+);
