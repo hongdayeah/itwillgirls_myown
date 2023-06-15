@@ -87,39 +87,139 @@
 나중에 김효원이가 좌석배치도 만들어서 삽입예정:)
 <br><br>
 <h3>야외 및 극장 부대/부대시설 사용료</h3>
- <table border="1" align="center" width="98%" height="270px">
- <tr align="center" style="background-color:#EFEFEF">
- 	<td>구분</td>
- 	<td>항목</td>
- 	<td>기준</td>
- 	<td>사용료</td>
- 	<td>비고</td>
- </tr>
- <tr align="center">
- 	<td rowspan="2">무대</td>
- 	<td>덧마루</td>
- 	<td>1회</td>
- 	<td>30,000</td>
- 	<td>설치 및 처거, 재료비 사용자 부담</td>
- </tr>
- <tr align="center">
- 	<td>연주용 기자재</td>
- 	<td>1회</td>
- 	<td>50,000</td>
- 	<td>설치 및 철거 사용자 부담<br>(연주자 의자 50개, 보면대 5개)</td>
- </tr>
- <tr align="center">
- 	<td>악기</td>
- 	<td>디지털피아노</td>
- 	<td>1회</td>
- 	<td>10,000</td>
- </tr>
- <tr align="center">
- 	<td rowspan="5"></td>
- 	<td>유선마이크</td>
- 	<td>1회</td>
- 	<td>10,000</td>
+ <table border="1" align="center" width="98%" height="800px">
+	 <tr align="center" style="background-color:#EFEFEF">
+	 	<td>구분</td>
+	 	<td>항목</td>
+	 	<td>기준</td>
+	 	<td>사용료</td>
+	 	<td>비고</td>
+	 </tr>
+	 <tr align="center">
+	 	<td rowspan="2">무대</td>
+	 	<td>덧마루</td>
+	 	<td>1회</td>
+	 	<td>30,000</td>
+	 	<td>설치 및 처거, 재료비 사용자 부담</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>연주용 기자재</td>
+	 	<td>1회</td>
+	 	<td>50,000</td>
+	 	<td>설치 및 철거 사용자 부담<br>(연주자 의자 50개, 보면대 5개)</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>악기</td>
+	 	<td>디지털피아노</td>
+	 	<td>1회</td>
+	 	<td>10,000</td>
+	 </tr>
+	 <tr align="center">
+	 	<td rowspan="5"></td>
+	 	<td>유선마이크</td>
+	 	<td>1회</td>
+	 	<td>10,000</td>
+	 <tr align="center">
+	 	<td>무선마이크</td>
+	 	<td>1회</td>
+	 	<td>20,000</td>
+	 	<td>배터리 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>음향 콘솔</td>
+	 	<td>1회</td>
+	 	<td>20,000</td>
+	 	<td>운영요원 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>빔 프로젝터</td>
+	 	<td>1회</td>
+	 	<td>100,000</td>
+	 	<td>운영요원 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>모니터 스피커</td>
+	 	<td>1회</td>
+	 	<td>10,000</td>
+	 </tr>
+	 <tr align="center">
+	 	<td rowspan="3">조명</td>
+	 	<td>기본조명(화이트)</td>
+	 	<td>1시간당</td>
+	 	<td>20,000</td>
+	 	<td>연습 및 장치 설치 시 사용료의 50%</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>무빙 라이트</td>
+	 	<td>1회</td>
+	 	<td>20,000</td>
+	 	<td>운영요원 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>조명 콘솔</td>
+	 	<td>1회</td>
+	 	<td>5,000</td>
+	 	<td>운영요원 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td rowspan="2">녹음</td>
+	 	<td>녹화</td>
+	 	<td>1회</td>
+	 	<td>20,000</td>
+	 	<td rowspan="2">재료비 사용자 부담</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>녹음</td>
+	 	<td>1회</td>
+	 	<td>20,000</td>
+	 </tr>
+	 <tr align="center">
+	 	<td rowspan="2">냉방</td>
+	 	<td>냉방</td>
+	 	<td>1시간당</td>
+	 	<td>20,000</td>
+	 	<td rowspan="2">냉방은 6~9월까지, 난방은 11~2월까지 원칙으로 함</td>
+	 </tr>
+	  <tr align="center">
+	  	<td>난방</td>
+	  	<td>1시간당</td>
+	  	<td>20,000</td>
+	 </tr>
+	  <tr align="center">
+	  	<td rowspan="3"></td>
+	  	<td>라디오</td>
+	  	<td>1회</td>
+	  	<td>100,000</td>
+	  	<td rowspan="3"></td>
+	 </tr>
+	  <tr align="center">
+	  	<td>텔레비전</td>
+	  	<td>1회</td>
+	  	<td>200,000</td>
+	 </tr>
+	 <tr align="center">
+	  	<td>영화촬영</td>
+	  	<td>1시간당</td>
+	  	<td>40,000</td>
+	 </tr>
+	  <tr align="center">
+	  	<td rowspan="2">기타</td>
+	  	<td>드라이아이스</td>
+	  	<td>1회</td>
+	  	<td>10,000</td>
+	  	<td>재료비 사용자 부담, 운영요원 별도</td>
+	 </tr>
+	 <tr align="center">
+	 	<td>강연대</td>
+	 	<td>1회</td>
+	 	<td>10,000</td>
+	 </tr>
  </table>
+<br>
+ <div style="text-align: center;">
+<button type="button" style="text-align:center" class="btn btn-info" onclick="location.href='http://localhost:9095/rent/form.do'">대관신청하기</button>
+</div>
+<br><br>
  </form>
  
 <%@ include file="../footer.jsp" %>
