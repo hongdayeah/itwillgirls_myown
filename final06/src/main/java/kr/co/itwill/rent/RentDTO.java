@@ -10,7 +10,7 @@ public class RentDTO {
 	private String rent_phone;
 	private String rent_email;
 	private String class_code;
-	private String rent2_date;
+	private String rent_app;
 	private String rent_form;
 	
 	public RentDTO() {}
@@ -79,12 +79,12 @@ public class RentDTO {
 		this.class_code = class_code;
 	}
 
-	public String getRent2_date() {
-		return rent2_date;
+	public String getRent_app() {
+		return rent_app;
 	}
 
-	public void setRent2_date(String rent2_date) {
-		this.rent2_date = rent2_date;
+	public void setRent_app(String rent_app) {
+		this.rent_app = rent_app;
 	}
 
 	public String getRent_form() {
@@ -99,8 +99,10 @@ public class RentDTO {
 	public String toString() {
 		return "RentDTO [rent_code=" + rent_code + ", rent_date=" + rent_date + ", rent_per=" + rent_per
 				+ ", rent_group=" + rent_group + ", rent_name=" + rent_name + ", rent_phone=" + rent_phone
-				+ ", rent_email=" + rent_email + ", class_code=" + class_code + ", rent2_date=" + rent2_date
+				+ ", rent_email=" + rent_email + ", class_code=" + class_code + ", rent_app=" + rent_app
 				+ ", rent_form=" + rent_form + "]";
 	}
+
+	
 	
 }
