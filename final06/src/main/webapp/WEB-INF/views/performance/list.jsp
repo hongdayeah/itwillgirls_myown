@@ -38,7 +38,7 @@
 			
 			<td>
                 <input type="button" value="수정" onclick="#">
-                <input type="button" value="삭제" onclick="#">
+                <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
             </td>
 	
 		</tr>

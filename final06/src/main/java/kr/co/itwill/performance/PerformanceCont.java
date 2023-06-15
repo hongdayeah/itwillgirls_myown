@@ -98,4 +98,14 @@ public class PerformanceCont {
 		return mav;
 	} //read() end
 
+	@RequestMapping(value="/performance/delete.do", method = RequestMethod.GET)
+	public ModelAndView deleteForm(String per_code) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("performance/deleteForm");
+		mav.addObject("per_code", per_code);
+		return mav;
+	} //deleteForm() end
+	
+	
+	
 }
