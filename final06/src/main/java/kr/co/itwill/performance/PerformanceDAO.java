@@ -114,5 +114,18 @@ public class PerformanceDAO {
 		
 	} //read() end
 	
+	public int delete(String per_code) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" DELETE FROM performance");
+			sql.append(" WHERE per_code = ? " );
+			cnt=jt.update(sql.toString(), per_code);
+		} catch(Exception e) {
+			System.out.println("공연 삭제 실패: " +e );
+		} //end
+		return cnt;
+	} //delete() end
+	
 	
 }
