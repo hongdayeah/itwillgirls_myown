@@ -28,11 +28,10 @@ public class TeacherDAO {
 		try {
 			sql = new StringBuilder();
 			
-			sql.append(" INSERT INTO teacher(t_code, t_name, t_phone, t_birth, t_gender, t_photo) ");
-			sql.append(" VALUES( ?, ?, ?, ?, ?, ?) ");
-			sql.append(" ORDER BY t_code ASC ");
+			sql.append(" INSERT INTO teacher(t_code, t_name, t_phone, t_birth, t_gender, t_photo, t_photosize) ");
+			sql.append(" VALUES( ?, ?, ?, ?, ?, ?, ?) ");
 			
-			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo());
+			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo(), dto.getT_photosize());
 		}catch(Exception e){
 			System.out.println("강사 등록 실패 : " + e);
 		}//end

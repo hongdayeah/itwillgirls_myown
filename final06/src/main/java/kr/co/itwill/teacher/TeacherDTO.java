@@ -9,6 +9,7 @@ public class TeacherDTO {
 	private String t_birth;
 	private int t_gender;
 	private String t_photo;
+	private long t_photosize;
 	
 	public TeacherDTO() {}
 	//첨부된 파일을 저장하기 위해 (createForm.jsp 참조)
@@ -26,7 +27,7 @@ public class TeacherDTO {
 		this.t_photoMF = t_photoMF;
 	}
 	/////////////////////////////////////////
-	
+
 	public String getT_code() {
 		return t_code;
 	}
@@ -75,9 +76,18 @@ public class TeacherDTO {
 		this.t_photo = t_photo;
 	}
 
+	public long getT_photosize() {
+		return t_photosize;
+	}
+
+	public void setT_photosize(long t_photosize) {
+		this.t_photosize = t_photosize;
+	}
+
 	@Override
 	public String toString() {
 		return "TeacherDTO [t_code=" + t_code + ", t_name=" + t_name + ", t_phone=" + t_phone + ", t_birth=" + t_birth
-				+ ", t_gender=" + t_gender + ", t_photo=" + t_photo + "]";
+				+ ", t_gender=" + t_gender + ", t_photo=" + t_photo + ", t_photosize=" + t_photosize + ", t_photoMF="
+				+ t_photoMF + "]";
 	}
 }

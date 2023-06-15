@@ -2,12 +2,18 @@ package kr.co.itwill.teacher;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.utility.UploadSaveManager;
 
 @Controller
 public class TeacherCont {
@@ -19,39 +25,8 @@ public class TeacherCont {
 		System.out.println("-----TeacherCont() 객체 생성됨");
 	}
 	
-	/*
-	@RequestMapping("/list")
-	public ModelAndView list() {
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("teacher/list");
-		mav.addObject("list",dao.list());
-
-		return mav;
-	}//list() end
-	*/
-	
-	//강사 등록
-	//http://localhost:9095/teacher/create.do
-	@RequestMapping(value="teacher/create.do", method=RequestMethod.GET)
-	public String createForm() {
-		return "teacher/createForm";
-	}//createForm() end
-	
-	@RequestMapping(value="teacher/create.do", method = RequestMethod.POST)
-	public ModelAndView createProc(@ModelAttribute TeacherDTO dto) {
-		ModelAndView mav = new ModelAndView();
-		
-		int cnt = dao.create(dto);
-		if(cnt==0) {
-			mav.setViewName("teacher/msgView");
-			String msg1 = "<p>강사 등록 실패</p>";
-		}else {
-			mav.setViewName("redirect:/teacher/list.do");
-		}//if end
-		return mav;
-	}//createProc() end
-	
-	@RequestMapping("teacher/list.do")
+	//목록
+	@RequestMapping("/teacher/list.do")
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("teacher/list");
@@ -60,5 +35,52 @@ public class TeacherCont {
 		
 		return mav;
 	}//list() end
+	
+	
+	//강사 등록
+	@RequestMapping(value="/teacher/create.do", method=RequestMethod.GET)
+	public ModelAndView createForm() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("teacher/createForm");
+		
+		return mav;
+	}//createForm() end
+	
+	@RequestMapping(value="/teacher/create.do", method = RequestMethod.POST)
+	public ModelAndView createProc(@ModelAttribute TeacherDTO dto, HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("teacher/msgView");
+		
+		//파일처리
+		//tstorage에 저장
+		
+		//파일 저장 폴더의 실제 물리적인 경로 가져오기
+		ServletContext application = req.getServletContext();
+		String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
+		//System.out.println(basePath);
+		//1) <input type="file" name="t_photoMF">
+		MultipartFile t_photoMF = dto.getT_photoMF(); //파일 가져오기
+		// tstorage 폴더에 파일 저장하고 리네임된 파일명 반환
+		String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
+		dto.setT_photo(t_photo); //리네임된 파일명을 dto객체에 담기
+		dto.setT_photosize(t_photoMF.getSize());
+		
+		int cnt = dao.create(dto);
+		if(cnt==0) {
+			mav.setViewName("teacher/msgView");
+			String msg1 = "<p>강사 등록 실패</p>";
+			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2 = "<input type='button' value='목록으로' onclick='#'>"; //수정
+			mav.addObject("msg1", msg1);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		}else {
+			String msg1 = "<p>강사 등록 성공</p>";
+			mav.addObject("msg1", msg1);
+			String link1 = "<input type='button' value='목록으로' onclick='#'>";
+			mav.addObject("link1",link1);
+		}//if end
+		return mav;
+	}//createProc() end
 	
 }//class end
