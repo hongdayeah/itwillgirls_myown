@@ -81,7 +81,7 @@ public class PerformanceDAO {
 
 	public PerformanceDTO read(String per_code) {
 		PerformanceDTO dto = null;
-		try {
+		try { 
 			sql = new StringBuilder();
 			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code  ");
 			sql.append(" FROM performance ");
