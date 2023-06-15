@@ -16,8 +16,8 @@ public class RentCont {
 	private RentDAO dao;
 	
 	
-	@RequestMapping("/form.do")
-	public String form() {
+	@RequestMapping("/create.do")
+	public String create() { 
 		return "rent/rentForm";
 	}//form() end
 	
@@ -29,6 +29,11 @@ public class RentCont {
 	 @RequestMapping("/rentProc")
 	 public String rentProc() {
 		 return "rent/rentProc";
+	 }
+	 
+	 @RequestMapping("/list.do")
+	 public String list() {
+		 return "rent/rentList";
 	 }
 }
 	
