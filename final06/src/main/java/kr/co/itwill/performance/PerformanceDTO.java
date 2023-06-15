@@ -3,7 +3,7 @@ package kr.co.itwill.performance;
 import org.springframework.web.multipart.MultipartFile;
 
 public class PerformanceDTO {
-
+ 
 	private String per_code;
 	private String per_name;
 	private String per_date;
@@ -30,6 +30,7 @@ public class PerformanceDTO {
 	public MultipartFile getPer_imgMF() {
 		return per_imgMF;
 	}
+	
 	public void setPer_imgMF(MultipartFile per_imgMF) {
 		this.per_imgMF = per_imgMF;
 	}
