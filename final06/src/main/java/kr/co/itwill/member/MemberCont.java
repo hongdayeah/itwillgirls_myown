@@ -1,14 +1,14 @@
 package kr.co.itwill.member;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.itwill.service.MemberService;
 
@@ -53,6 +53,16 @@ public class MemberCont {
 		return "redirect:/home.do";
 	}//joinPOST() end
 	
-	
-	
+	/*
+	@RequestMapping(value="/memberJoinForm", method=RequestMethod.POST)
+	public String joinPOST(Map<String, Object> map, @RequestParam(required = false) String p_addr1, @RequestParam(required = false) String p_addr2) throws Exception{
+
+		map.put("p_addr1", p_addr1);
+		map.put("p_addr2", p_addr2);
+		// 회원가입 서비스 실행
+		memberservice.memberJoin(map);
+
+		return "redirect:/home.do";
+	}//joinPOST() end
+	*/
 }//class end
