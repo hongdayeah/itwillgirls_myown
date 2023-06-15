@@ -1,5 +1,7 @@
 package kr.co.itwill.performance;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,11 +26,11 @@ public class PerformanceCont {
 	} //end
 	
 	@RequestMapping("/performance/list.do")
-	public ModelAndView list(String per_code) {
+	public ModelAndView list() {
 		ModelAndView mav=new ModelAndView();
-		
 		mav.setViewName("performance/list");
-		mav.addObject("list", dao.list(per_code));
+	
+		mav.addObject("list", dao.list());
 
 		return mav;
 	}//list() end
@@ -85,5 +87,15 @@ public class PerformanceCont {
 	return mav;
 	
 	}//createProc() end
+	
+	@RequestMapping("/performance/read.do")
+	public ModelAndView read(String per_code){
+		ModelAndView mav=new ModelAndView();
+		PerformanceDTO dto=dao.read(per_code);
+		mav.setViewName("performance/read");
+		
+		mav.addObject("dto", dto);
+		return mav;
+	} //read() end
 
 }

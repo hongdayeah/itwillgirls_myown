@@ -5,31 +5,19 @@
 
 
     <!-- 본문 시작 performanceList.jsp -->
-    <h3>*공연폼*</h3>
+    <h3>*공연상세페이지*</h3>
 
 
-	<input type="button" value="공연등록" onclick="location.href='create.do'">
+	<input type="button" value="공연목록" onclick="location.href='list.do'">
 
 	
 	<table>
-		<thead>
-			<tr>
-				<th>이미지</th>
-				<th>공연제목</th>
-				<th>공연설명</th>
-				<th>날짜</th>
-				<th>시간</th>
-				<th>장소</th>
-				<th>공연료</th>
-			</tr>
-		</thead>				
 	
-	
-	<c:forEach var="dto" items="${list}">
+
 		<tr>
 
-			<td><img src="../perstorage/${dto.per_img}" width="200"></td>
-			<td><a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a></td>
+			<td><img src="../perstorage/${dto.per_img}" width="400"></td>
+			<td>${dto.per_name}</td>
 			<td>${dto.per_exp}</td>
 			<td>${dto.per_date}</td>
 			<td>${dto.per_time}</td>
@@ -43,7 +31,7 @@
 	
 		</tr>
 	
-	</c:forEach>
+
 
 	</table>
     <!-- 본문 끝 -->
