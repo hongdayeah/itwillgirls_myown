@@ -24,7 +24,7 @@ public class PerformanceDAO {
 	}//end
 	
 	
-	public List<PerformanceDTO> list(String per_code){
+	public List<PerformanceDTO> list(){
 		List<PerformanceDTO> list=null;
 		try {
 			sql=new StringBuilder();
@@ -79,6 +79,40 @@ public class PerformanceDAO {
 		
 	}//create() end
 
+	public PerformanceDTO read(String per_code) {
+		PerformanceDTO dto = null;
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code  ");
+			sql.append(" FROM performance ");
+			sql.append(" WHERE per_code = ? ");
+			
+			RowMapper<PerformanceDTO> rowMapper=new RowMapper<PerformanceDTO>() {
+				@Override
+				public PerformanceDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+					PerformanceDTO dto=new PerformanceDTO();
+					dto.setPer_img(rs.getString("per_img"));
+					dto.setPer_code(rs.getString("per_code"));
+					dto.setPer_name(rs.getString("per_name"));
+					dto.setPer_date(rs.getString("per_date"));
+					dto.setPer_time(rs.getString("per_time"));
+					dto.setPer_fee(rs.getInt("per_fee"));
+					dto.setPer_exp(rs.getString("per_exp"));
+					dto.setPer_size(rs.getLong("per_size"));
+					dto.setClass_code(rs.getString("class_code"));
+					return dto;	
+				} //mapRow() end
+			}; //rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
+			
+		} catch(Exception e){
+			System.out.println("상세보기 실패" + e);
+		} //end
+		
+		return dto;
+		
+	} //read() end
 	
 	
 }
