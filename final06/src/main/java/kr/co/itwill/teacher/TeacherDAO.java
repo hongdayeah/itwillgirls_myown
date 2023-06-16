@@ -17,7 +17,7 @@ public class TeacherDAO {
 	@Autowired
 	private JdbcTemplate jt;
 	
-	StringBuilder sql = null;
+	StringBuilder sql = null;   
 	
 	public TeacherDAO() {
 		System.out.println("-----TeacherDAO() 객체 생성됨");
