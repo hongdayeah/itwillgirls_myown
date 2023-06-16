@@ -57,9 +57,9 @@ public class RentDAO {
 			sql=new StringBuilder();
 			
 			sql.append(" INSERT INTO rent(rent_code, rent_date, rent_group, rent_per, rent_name, rent_phone, rent_email, class_code, rent_app, rent_form, rent_size) ");
-			sql.append("VALUES(?, ?, ?, ?, ?, ?, ? ,? ,now(), ?, ?)");
+			sql.append(" VALUES(?, ?, ?, ?, ?, ?, ? ,? ,now(), ?, ?) ");
 			
-			cnt=jt.update(sql.toString(), dto.getRent_code(), dto.getRent_date(), dto.getRent_group(), dto.getRent_per(), dto.getRent_name(), dto.getRent_phone(), dto.getRent_email(), dto.getClass_code(), dto.getRent_app(), dto.getRent_form(), dto.getRent_size());
+			cnt=jt.update(sql.toString(), dto.getRent_code(), dto.getRent_date(), dto.getRent_group(), dto.getRent_per(), dto.getRent_name(), dto.getRent_phone(), dto.getRent_email(), dto.getClass_code(), dto.getRent_form(), dto.getRent_size());
 		} catch(Exception e) {
 			System.out.println("제출 실패: "+e);
 		}
