@@ -27,6 +27,13 @@
   		FROM member_parent
   		WHERE p_id = #{p_id}
   	</select>
+  	
+  	 <!-- 로그인 -->
+      <select id="login" resultType="kr.co.itwill.member.MemberDTO">
+         SELECT p_id, p_passwd, p_name
+         FROM member_parent
+         WHERE p_id = #{p_id} AND p_passwd = #{p_passwd}
+      </select>
 	
 	
 	
