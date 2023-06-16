@@ -25,8 +25,8 @@
 			<td>${dto.per_fee}</td>
 			
 			<td>
-                <input type="button" value="수정" onclick="#">
-                <input type="button" value="삭제" onclick="#">
+                <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}"'>
+                <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}"'>
             </td>
 	
 		</tr>
