@@ -218,7 +218,7 @@
  </table>
 <br>
  <div style="text-align: center;">
-<button type="button" style="text-align:center" class="btn btn-info" onclick="location.href='http://localhost:9095/rent/form.do'">대관신청하기</button>
+<button type="button" style="text-align:center" class="btn btn-info" onclick="location.href='http://localhost:9095/rent/create.do'">대관신청하기</button>
 </div>
 <br><br>
  </form>

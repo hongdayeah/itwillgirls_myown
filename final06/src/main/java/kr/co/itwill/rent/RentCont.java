@@ -89,6 +89,14 @@ public class RentCont {
 		 return "rent/rentInfo";
 	 }//info() end
 	
-	 
+	 @RequestMapping("/read.do")
+	 public ModelAndView read(String rent_code) {
+		 ModelAndView mav=new ModelAndView();
+		 RentDTO dto=dao.read(rent_code);
+		 mav.setViewName("/read");
+		 
+		 mav.addObject("dto", dto);
+		 return mav;
+	 }//read() end
 }
 	
