@@ -31,10 +31,10 @@
 
 <h3>대관신청</h3>
 어린이 문화센터의 야외 및 극장을 대관할 수 있습니다.
-<table align="center" width="98%" height="270px">
+<table align="center" width="98%" height="350px">
 
 	<tr>
-		<td align="center">대관코드</td>
+		<td align="center" style="background-color:#FAF9F9">대관코드</td>
 		<td>
 		<input type="text" style="width:500px" id="rent_code" name="rent_code" placeholder="대관코드가 될 아이디를 입력해주세요." value="" required>
 		</td>
