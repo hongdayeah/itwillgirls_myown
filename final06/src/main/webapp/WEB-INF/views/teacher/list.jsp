@@ -11,7 +11,7 @@
 		<thead>
 			<tr>
 				<th>이미지</th>
-				<th>강사이름</th>
+				<th>강사이름</th> 
 			</tr>
 		</thead>				
 	
