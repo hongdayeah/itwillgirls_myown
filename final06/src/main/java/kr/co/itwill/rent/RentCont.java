@@ -89,6 +89,7 @@ public class RentCont {
 		 return "rent/rentInfo";
 	 }//info() end
 	
+	 
 	 @RequestMapping("/read.do")
 	 public ModelAndView read(String rent_code) {
 		 ModelAndView mav=new ModelAndView();
@@ -98,5 +99,32 @@ public class RentCont {
 		 mav.addObject("dto", dto);
 		 return mav;
 	 }//read() end
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }
 	
