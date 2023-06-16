@@ -18,4 +18,8 @@ public interface MemberMapper {
 	
 	//아이디 중복확인
 	public int idCheck(String p_id);
+	
+	//로그인
+	public MemberDTO login(MemberDTO dto);
+	
 }//interface end

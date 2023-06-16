@@ -59,54 +59,13 @@
 		<!-- 로그인 전 -->
 				<c:if test="${SessionScope.id==null}">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">로그인</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login"  onclick="openLoginModal()">로그인/회원가입</button>
 
 					<!-- Modal -->
 					<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
-
-								<!-- Modal Header -->
-								<div class="modal-header">
-									<h5 class="modal-title" id="loginLabel">로그인/회원가입</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-
-								<!-- Modal Body -->
-								<div class="modal-body">
-									<form action="" class="was-validated">
-										<div class="form-group">
-											<label for="memberId">ID</label> <input type="text" class="form-control" id="memberId" placeholder="아이디를 입력하세요" name="memberId" required>
-											<div class="valid-feedback">확인</div>
-											<div class="invalid-feedback">아이디를 입력해주세요</div>
-										</div><!-- form-group end -->
-										
-										<div class="form-group">
-											<label for="memberPw">PASSWORD</label>
-											<input type="password" class="form-control" id="userPw" placeholder="비밀번호를 입력하세요" name="memberPw" required>
-											<div class="valid-feedback">확인</div>
-											<div class="invalid-feedback">비밀번호를 입력해주세요</div>
-										</div><!-- form-group end -->
-
-										<label><input type="checkbox" name="c_mid" value="SAVE" style="font-size: 5px">&nbsp;&nbsp;ID 저장</label>
-										<br><br><br>
-										
-										<input class="button" type="button" value="ID/Password 찾기" onclick="location.href='#'">
-										
-										<button type="submit" class="btn btn-primary" style="margin-left: 30%;">로그인</button>
-										<button type="button" class="btn btn-secondary" onclick="location.href='/member/join.do'">회원가입</button>
-
-									</form>
-
-								</div><!-- modal-body end -->
-
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-								</div><!-- modal-footer end -->
-
+ 								<!-- 외부 jsp 파일이 들어올 부분 -->
 							</div><!-- modal-content end -->
 						</div><!-- modal-dialog end -->
 					</div><!-- modal fade end -->
@@ -118,7 +77,7 @@
 						ㅇㅇㅇ님 반갑습니다.
 				</c:if>
 	</div>
-	
+		
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<a class="navbar-brand" href="#">CATEGORY</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

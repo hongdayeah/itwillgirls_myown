@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService {
 	public int idCheck(String p_id) throws Exception {
 		return membermapper.idCheck(p_id);
 	}//idCheck() end
+	
+	//로그인
+	@Override
+	public MemberDTO login(MemberDTO dto) throws Exception {
+		return membermapper.login(dto);
+	}//memberLogin() end
 }//class end

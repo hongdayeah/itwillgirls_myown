@@ -83,14 +83,6 @@
 					</div>
 					<div class="mb-4"></div>
 					
-					<div>
-						<p class="fieldset">
-				            <label for="agreeterms"><input type="checkbox" id="agreeterms"> [필수] 개인정보수집/이용 동의
-				        	</label>
-							<a style="color: blue" onclick="agree()">보기></a>
-				         </p>
-					</div>
-
 					<button type="submit" class="btn btn-primary btn-lg btn-block" id="button">가입하기</button>
 				</form>
 				<br>
