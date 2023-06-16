@@ -85,8 +85,9 @@
 					
 					<div>
 						<p class="fieldset">
-				            <input type="checkbox" id="agreeterms">
-				            <label for="agreeterms">약관 동의 <a href="#0">(약관 보기)</a></label>
+				            <label for="agreeterms"><input type="checkbox" id="agreeterms"> [필수] 개인정보수집/이용 동의
+				        	</label>
+							<a style="color: blue" onclick="agree()">보기></a>
 				         </p>
 					</div>
 
@@ -207,6 +208,12 @@
 			}); // ajax 종료	
 		
 		});// function 종료
+		</script>
+		
+		<script>
+		function agree() {
+			window.open('agree.do', '약관', 'width=800px, height=500px, scrollbars=yes');
+		}//agree() end
 		</script>
 		
         <script>
