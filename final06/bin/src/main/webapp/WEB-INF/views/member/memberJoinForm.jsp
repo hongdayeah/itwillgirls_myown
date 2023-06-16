@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+  
 <%@ include file="../header.jsp" %>
-
 
     <!-- 본문 시작 memberJoinForm.jsp -->
     <div class="container">
@@ -12,13 +11,15 @@
 				<h4 class="mb-3">회원가입</h4>
 				<br>
 				
-				<form name="memfrm" id="memfrm" method="post" action="joinProc" onsubmit="return joinCheck()">
+				<form name="memfrm" id="memfrm" method="post" onsubmit="return joinCheck()">
 					
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="p_id">아이디</label>
 							<input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요" autofocus required>
 							<span class="idchk"></span>
+							<span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
+							<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="p_name">이름</label>
@@ -84,12 +85,13 @@
 					
 					<div>
 						<p class="fieldset">
-				            <input type="checkbox" id="agreeterms">
-				            <label for="agreeterms">약관 동의 <a href="#0">(약관 보기)</a></label>
+				            <label for="agreeterms"><input type="checkbox" id="agreeterms"> [필수] 개인정보수집/이용 동의
+				        	</label>
+							<a style="color: blue" onclick="agree()">보기></a>
 				         </p>
 					</div>
 
-					<button type="submit" class="btn btn-primary btn-lg btn-block">가입하기</button>
+					<button type="submit" class="btn btn-primary btn-lg btn-block" id="button">가입하기</button>
 				</form>
 				<br>
 				<button class="btn btn-primary btn-lg btn-block" onclick="history.back()">뒤로가기</button>
@@ -180,8 +182,40 @@
                 element_wrap.style.display = 'block';
             }
         </script>
-        
-        
+       
+       <script>
+       //아이디 중복검사
+		$('#p_id').on("propertychange change keyup paste input", function(){
+		
+			let p_id = $('#p_id').val();			// .id_input에 입력되는 값
+			let data = {p_id : p_id}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+			
+			$.ajax({
+				type : "post",
+				url : "/member/memberIdChk",
+				data : data,
+				success : function(result){
+
+					if(result != 'fail'){
+						$('.id_input_re_1').css("display","inline-block");
+						$('.id_input_re_2').css("display", "none");				
+					} else {
+						$('.id_input_re_2').css("display","inline-block");
+						$('.id_input_re_1').css("display", "none");				
+					}//if end
+				}// success 종료
+			
+			}); // ajax 종료	
+		
+		});// function 종료
+		</script>
+		
+		<script>
+		function agree() {
+			window.open('agree.do', '약관', 'width=800px, height=500px, scrollbars=yes');
+		}//agree() end
+		</script>
+		
         <script>
 		function joinCheck() {
 			//회원가입 유효성 검사
@@ -263,13 +297,25 @@
 			        
 		      //9)약관 동의 체크했는지?
 		      if(document.getElementById("agreeterms").checked == false){
-					alert("약관 동의 후 회원가입이 가능합니다")
+					alert("약관 동의 후 회원가입이 가능합니다");
 					return false;
 				}//if end		    
 
 			  return true;
 		}//joinCheck() end
         </script>
+        
+        <script>
+
+		$(document).ready(function(){
+			//회원가입 버튼(회원가입 기능 작동)
+			$("#button").click(function(){
+				$("#memfrm").attr("action", "/member/memberJoinForm");
+				$("#memfrm").submit();
+			});
+		});
+
+</script>
         
     <!-- 본문 끝 -->
         

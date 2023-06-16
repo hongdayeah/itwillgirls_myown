@@ -37,6 +37,14 @@
   .carousel-indicators li.active {
     background-color: #f4511e;
   }
+  .id_input_re_1{
+	color: green;
+	display: none;
+   }
+   .id_input_re_2{
+	 color: red;
+	 display: none;
+    }
 	</style>
 </head>
 <body>
@@ -121,7 +129,7 @@
 					</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" onclick="location.href='/program/list'">프로그램 소개</a>
-						<a class="dropdown-item" href="#">강사 소개</a>
+						<a class="dropdown-item" onclick="location.href='/teacher/list.do'">강사 소개</a>
 						<a class="dropdown-item" href="#">성향이란?</a>
 						<a class="dropdown-item" href="#">성향테스트하기</a>
 					</div>
@@ -136,7 +144,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">프로그램 예약</a>
 						<a class="dropdown-item" href="#">공연 예매</a>
-						<a class="dropdown-item" href="/rent/form.do">대관 신청</a>
+						<a class="dropdown-item" href="/rent/create.do">대관 신청</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
