@@ -94,7 +94,7 @@ public class RentCont {
 	 public ModelAndView read(String rent_code) {
 		 ModelAndView mav=new ModelAndView();
 		 RentDTO dto=dao.read(rent_code);
-		 mav.setViewName("/read");
+		 mav.setViewName("/rentRead");
 		 
 		 mav.addObject("dto", dto);
 		 return mav;
