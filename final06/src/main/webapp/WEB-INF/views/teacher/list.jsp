@@ -19,7 +19,7 @@
 		<c:forEach var="dto" items="${list}">
 			<tr>
 				<td><img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.t_photo}" width="200"></td>
-				<td><a href="#">${dto.t_name}</a></td>
+				<td><a href="read.do?t_code=${dto.t_code}">${dto.t_name}</a></td>
 				<td>
 		               <input type="button" value="수정" onclick="#">
 		               <input type="button" value="삭제" onclick="#">
