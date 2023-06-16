@@ -8,9 +8,9 @@
     <h3>*공연수정폼*</h3>
 
 
-	<input type="button" value="공연등록" onclick="location.href='create.do'">
+	<input type="button" value="공연등록" onclick="location.href='create.do'" onsubmit="return updateCheck()">
 
-	<div class="title">음원 수정</div>
+
 		
 	<form name='per' method='POST' action="update.do" enctype="multipart/form-data">
 	
@@ -25,43 +25,56 @@
 	        </tr>
 	        <tr>
 	          <th>공연설명</th>
-	          <td><textarea rows="5" cols="50" name='per_exp' value="${dto.per_exp}"></textarea></textarea></td>
+	          <td><textarea rows="5" cols="50" name="per_exp">${dto.per_exp}</textarea></td>
 	        </tr>
 	        <tr>
 	          <th>상영날짜</th>
-	          <td><input type="date" name="per_date" min="2020-01-01" max="2029-12-31"></td>
+	          <td><input type="date" name="per_date"  value="${dto.per_date}"min="2020-01-01" max="2029-12-31"></td>
 	        </tr>
 	        <tr>
 	          <th>상영시간</th>
-	          <td><input type="text" name="per_time" size="20"></td>
+	          <td><input type="time" name="per_time" value="${dto.per_time}" size="20"></td>
 	        </tr>
 	        <tr>
 	          <th>공연료</th>
-	          <td><input type="text" name="per_fee" size="20"></td>
+	          <td><input type="text" name="per_fee" value="${dto.per_fee}" size="20"></td>
 	        </tr>
 	        <tr>
 	          <th>정원</th>
-	          <td><input type="text" name="per_imit" size="20"></td>
+	          <td><input type="text" name="per_limit" value="${dto.per_limit}" size="20"></td>
 	        </tr>
 	        <tr>
 	          <th>장소</th>
 	          <td>
-	          <input type="radio" name="class_code" value="theater" checked="checked">극장
+	          <input type="radio" name="class_code" value="theater">극장
 	          <input type="radio" name="class_code" value="outdoor">야외  
 	          </td>
 	        </tr>
 	        <tr>
 	          <th>포스터</th>
+	          <img src="../perstorage/${dto.per_img}" width="100" }"><br>
 	          <td><input type="file" name="per_imgMF" size="50"></td>    
 	        </tr>
         </table>	   
-		
-	
-	
-	
-	
-	
+        
+        <div class="bottom">
+        	<input type="submit" value="수정">
+        	<input type="button" value="목록" onclick="location.href='list.do'">
+        	<input type="button" value="홈" onclick="location.href='home.do'">
+        </div>
+
 	</form>
+	<script>
+		function updateCheck(){
+			let message=" 삭제됨 수정 하실?";
+			if(confirm(message)){
+				return true;
+			} else {
+				return false;
+			} //if end
+		} //updateCheck() end
+	
+	</script>
 	
 	
 

@@ -28,7 +28,7 @@ public class PerformanceDAO {
 		List<PerformanceDTO> list=null;
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT per_img,per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code  ");
+			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code, per_limit ");
 			sql.append(" FROM performance ");
 			
 			RowMapper<PerformanceDTO> rowMapper=new RowMapper<PerformanceDTO>() {
@@ -44,6 +44,7 @@ public class PerformanceDAO {
 					dto.setPer_exp(rs.getString("per_exp"));
 					dto.setPer_size(rs.getLong("per_size"));
 					dto.setClass_code(rs.getString("class_code"));
+					dto.setPer_limit(rs.getInt("per_limit"));
 					return dto;	
 				} //mapRow() end
 			}; //rowMapper end
@@ -83,7 +84,7 @@ public class PerformanceDAO {
 		PerformanceDTO dto = null;
 		try { 
 			sql = new StringBuilder();
-			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code  ");
+			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code, per_limit  ");
 			sql.append(" FROM performance ");
 			sql.append(" WHERE per_code = '" + per_code + "'");
 			
@@ -100,6 +101,7 @@ public class PerformanceDAO {
 					dto.setPer_exp(rs.getString("per_exp"));
 					dto.setPer_size(rs.getLong("per_size"));
 					dto.setClass_code(rs.getString("class_code"));
+					dto.setPer_limit(rs.getInt("per_limit"));
 					return dto;	
 				} //mapRow() end
 			}; //rowMapper end
@@ -127,5 +129,20 @@ public class PerformanceDAO {
 		return cnt;
 	} //delete() end
 	
+	public int update(PerformanceDTO dto) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" UPDATE performance ");
+			sql.append(" SET per_name=?, per_exp=?, per_date=?, per_time=?, per_fee=?, per_limit=?, class_code=?, per_img=?, per_size=?");
+			sql.append(" WHERE per_code=? ");
+			
+			cnt=jt.update(sql.toString(), dto.getPer_name(), dto.getPer_exp(), dto.getPer_date(), dto.getPer_time(), dto.getPer_fee(), dto.getPer_limit(), dto.getClass_code(), dto.getPer_img(), dto.getPer_size(), dto.getPer_code());
+			
+		}catch(Exception e) {
+			System.out.println("수정실패"+e);
+		}//end
+		return cnt;
+	} //update end
 	
-}
+} //class end

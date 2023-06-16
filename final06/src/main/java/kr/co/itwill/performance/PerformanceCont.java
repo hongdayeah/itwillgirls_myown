@@ -143,5 +143,56 @@ public class PerformanceCont {
 	} //deleteProc() end
 	
 	
+	@RequestMapping(value="/performance/update.do", method=RequestMethod.GET)
+	public ModelAndView updateForm(String per_code) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("performance/UpdateForm");
+		PerformanceDTO dto=dao.read(per_code);
+		mav.addObject("dto", dto);
+		return mav;
+	}
+	
+	@RequestMapping(value="/performance/update.do", method=RequestMethod.POST)
+	public ModelAndView updateProc(@ModelAttribute PerformanceDTO dto, HttpServletRequest req){
+		
+		PerformanceDTO oldDTO=dao.read(dto.getPer_code());
+		
+		ServletContext application=req.getServletContext();
+		String basePath=application.getRealPath("/perstorage");
+		
+		//1)
+		MultipartFile per_imgMF=dto.getPer_imgMF();
+		if(per_imgMF.getSize()>0) {
+			UploadSaveManager.deleteFile(basePath, oldDTO.getPer_img());
+			String per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
+			dto.setPer_img(per_img);
+			dto.setPer_size(per_imgMF.getSize());
+		} else {
+			dto.setPer_img(oldDTO.getPer_img());
+			dto.setPer_size(oldDTO.getPer_size());
+		} //if end
+		
+		ModelAndView mav=new ModelAndView();
+		int cnt=dao.update(dto);
+		if(cnt==0) {
+			mav.setViewName("performance/msgView");
+			String msg1="<p> 수정실패 </p>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+            String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?per_code=" + oldDTO.getPer_code() + "\"'>";
+		
+            mav.addObject("msg1", msg1);
+            mav.addObject("link1", link1); 
+            mav.addObject("link2", link2);
+		}else {
+			
+			mav.setViewName("redirect:/performance/list.do?per_code="+oldDTO.getPer_code());
+				
+		} //if end
+		
+		return mav;
+		
+	} //updateProc() end
+	
+	
 	
 }

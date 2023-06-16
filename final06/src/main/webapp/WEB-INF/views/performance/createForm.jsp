@@ -21,7 +21,7 @@
 	        </tr>
 	        <tr>
 	          <th>공연설명</th>
-	          <td><textarea rows="5" cols="50" name='per_exp'></textarea></textarea></td>
+	          <td><textarea rows="5" cols="50" name='per_exp'></textarea></td>
 	        </tr>
 	        <tr>
 	          <th>상영날짜</th>
@@ -29,7 +29,7 @@
 	        </tr>
 	        <tr>
 	          <th>상영시간</th>
-	          <td><input type="text" name="per_time" ></td>
+	          <td><input type="time" name="per_time" ></td>
 	        </tr>
 	        <tr>
 	          <th>공연료</th>
@@ -37,7 +37,7 @@
 	        </tr>
 	        <tr>
 	          <th>정원</th>
-	          <td><input type="text" name="per_imit" size="20"></td>
+	          <td><input type="text" name="per_limit" size="20"></td>
 	        </tr>
 	        <tr>
 	          <th>장소</th>
