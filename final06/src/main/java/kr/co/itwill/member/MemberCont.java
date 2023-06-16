@@ -79,4 +79,11 @@ public class MemberCont {
 				return "success";	// 중복 아이디 x
 			}//if end
 	}//memberIdChkPOST() end
+	
+	//약관동의 페이지 이동
+	@RequestMapping("/agree.do")
+	public String agree() {
+		return "member/agree";
+	}//agree() end
+	
 }//class end
