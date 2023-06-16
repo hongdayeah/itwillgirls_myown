@@ -29,7 +29,7 @@
 	        </tr>
 	        <tr>
 	          <th>상영시간</th>
-	          <td><input type="text" name="per_time" size="20"></td>
+	          <td><input type="text" name="per_time" ></td>
 	        </tr>
 	        <tr>
 	          <th>공연료</th>
