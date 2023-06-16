@@ -106,6 +106,42 @@ public class PerformanceCont {
 		return mav;
 	} //deleteForm() end
 	
+	@RequestMapping(value="/performance/delete.do", method=RequestMethod.POST)
+	public ModelAndView deleteProc(String per_code, HttpServletRequest req) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("performance/msgView");
+		
+		// 삭제하고자 하는 글 정보 가져오기(/perstrage 폴더에서 삭제 할 파일명 확인하기 위해)
+		PerformanceDTO oldDTO=dao.read(per_code);
+		
+		int cnt=dao.delete(per_code);
+		if(cnt==0) {
+			String msg1="<p> 공연 삭제 실패 </p>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()' >";
+			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?per_code=" + oldDTO.getPer_code() + "\"'>";
+		
+			mav.addObject("msg1", msg1);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		
+		} else {
+			String msg1="<p> 공연 삭제 성공 </p>";
+			String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?per_code=" + oldDTO.getPer_code() + "\"'>";
+		
+			mav.addObject("msg1", msg1);
+			mav.addObject("link2", link1);
+			
+			//첨부했던 파일 삭제
+			ServletContext application=req.getServletContext();
+			String basePath=application.getRealPath("perstorage");
+			UploadSaveManager.deleteFile(basePath, oldDTO.getPer_img());
+		
+		} //if end
+		
+		return mav;
+		
+	} //deleteProc() end
+	
 	
 	
 }

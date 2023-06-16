@@ -8,7 +8,7 @@
     <h3>*공연등록폼*</h3>
 
 	
-	<form name="percreate" method="POST" action="create.do" enctype="multipart/form-data">
+	<form name="per" method="POST" action="create.do" enctype="multipart/form-data">
 	    
 	    <table>
 	        <tr>
