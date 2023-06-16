@@ -28,10 +28,10 @@ public class TeacherDAO {
 		try {
 			sql = new StringBuilder();
 			
-			sql.append(" INSERT INTO teacher(t_code, t_name, t_phone, t_birth, t_gender, t_photo, t_photosize) ");
+			sql.append(" INSERT INTO teacher(t_code, t_name, t_phone, t_birth, t_gender, t_photo) ");
 			sql.append(" VALUES( ?, ?, ?, ?, ?, ?, ?) ");
 			
-			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo(), dto.getT_photosize());
+			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo());
 		}catch(Exception e){
 			System.out.println("강사 등록 실패 : " + e);
 		}//end
@@ -70,17 +70,35 @@ public class TeacherDAO {
 		return list;
 	}//list() end
 	
-	/*
-	public int totalRowCount() {
-		int cnt = 0;
+	public TeacherDTO read(String t_code) {
+		TeacherDTO dto = null;
+		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT COUNT(*) FROM teacher ");
-			cnt = jt.queryForObject(sql.toString(), null);
+			sql.append(" SELECT t_code, t_name, t_phone, t_birth, t_gender, t_photo ");
+			sql.append(" FROM teacher");
+			sql.append(" WHERE t_code = '" + t_code + "' ");
 			
+			RowMapper<TeacherDTO> rowMapper = new RowMapper<TeacherDTO>() {
+				@Override
+				public TeacherDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					TeacherDTO dto = new TeacherDTO();
+					dto.setT_code(rs.getString("t_code"));
+					dto.setT_name(rs.getString("t_name"));
+					dto.setT_phone(rs.getString("t_phone"));
+					dto.setT_birth(rs.getString("t_birth"));
+					dto.setT_gender(rs.getInt("t_gender"));
+					dto.setT_photo(rs.getString("t_photo"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
 		}catch(Exception e) {
-			System.out.println("행 개수 조회 실패 : " + e);
+			System.out.println("강사 상세보기 실패 : " + e);
 		}
-	}//totalRowCount() end
-	*/
+		
+		return dto;
+	}
 }//class end

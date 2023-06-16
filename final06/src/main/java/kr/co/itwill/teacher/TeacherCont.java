@@ -63,7 +63,7 @@ public class TeacherCont {
 		// tstorage 폴더에 파일 저장하고 리네임된 파일명 반환
 		String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
 		dto.setT_photo(t_photo); //리네임된 파일명을 dto객체에 담기
-		dto.setT_photosize(t_photoMF.getSize());
+	
 		
 		int cnt = dao.create(dto);
 		if(cnt==0) {
@@ -82,5 +82,16 @@ public class TeacherCont {
 		}//if end
 		return mav;
 	}//createProc() end
+	
+	@RequestMapping("/teacher/read.do")
+	public ModelAndView read(String t_code) {
+		ModelAndView mav = new ModelAndView();
+		TeacherDTO dto = dao.read(t_code);
+		mav.setViewName("teacher/read");
+		
+		mav.addObject("dto",dto);
+		
+		return mav;
+	}//read() end
 	
 }//class end
