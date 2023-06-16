@@ -66,4 +66,38 @@ public class RentDAO {
 		return cnt;
 	}//create end
 	
+	
+	public RentDTO read(String rent_code) {
+		RentDTO dto=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT rent_app, rent_code, rent_date, rent_per, rent_group, rent_name, rent_phone, rent_email, class_code, rent_form, rent_size ");
+			sql.append(" FROM rent ");
+			sql.append(" WHERE rent_code ='" + rent_code + "' ");
+			
+			RowMapper<RentDTO> rowMapper=new RowMapper<RentDTO>() {
+				@Override
+				public RentDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+					RentDTO dto=new RentDTO();
+					dto.setRent_app(rs.getString("rent_app"));
+					dto.setRent_code(rs.getString("rent_code"));
+					dto.setRent_date(rs.getString("rent_date"));
+					dto.setRent_per(rs.getString("rent_per"));
+					dto.setRent_group(rs.getString("rent_group"));
+					dto.setRent_name(rs.getString("rent_name"));
+					dto.setRent_phone(rs.getString("rent_phone"));
+					dto.setRent_email(rs.getString("rent_email"));
+					dto.setClass_code(rs.getString("class_code"));
+					dto.setRent_form(rs.getString("rent_form"));
+					dto.setRent_size(rs.getLong("rent_size"));
+					return dto;
+				}
+			};
+			dto=jt.queryForObject(sql.toString(), rowMapper);
+		} catch(Exception e) {
+			System.out.println("상세보기 실패: " + e);
+		}
+		return dto;
+	}//read() end
+	
 }//class end
