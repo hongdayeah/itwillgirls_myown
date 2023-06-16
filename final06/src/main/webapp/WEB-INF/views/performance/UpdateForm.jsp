@@ -10,7 +10,7 @@
 
 	<input type="button" value="공연등록" onclick="location.href='create.do'" onsubmit="return updateCheck()">
 
-
+ 
 		
 	<form name='per' method='POST' action="update.do" enctype="multipart/form-data">
 	
