@@ -27,17 +27,19 @@
 	
 	<c:forEach var="dto" items="${list}">
 		<tr>
-			<td>${dto.per_img}</td>
-			<td><a href="#">${dto.per_name}</a></td>
+
+			<td><img src="../perstorage/${dto.per_img}" width="200"></td>
+			<td><a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a></td>
 			<td>${dto.per_exp}</td>
 			<td>${dto.per_date}</td>
 			<td>${dto.per_time}</td>
-			<td>${dto.class_code}</td>
+			<td>${dto.class_code}</td> 
 			<td>${dto.per_fee}</td>
+			<td>${dto.per_limit}</td>
 			
 			<td>
-                <input type="button" value="수정" onclick="#">
-                <input type="button" value="삭제" onclick="#">
+                <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
+                <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
             </td>
 	
 		</tr>
