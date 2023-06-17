@@ -55,7 +55,7 @@ public class TeacherCont {
 		//tstorage에 저장
 		
 		//파일 저장 폴더의 실제 물리적인 경로 가져오기
-		ServletContext application = req.getServletContext();
+		//ServletContext application = req.getServletContext();
 		String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
 		//System.out.println(basePath);
 		//1) <input type="file" name="t_photoMF">
@@ -70,7 +70,7 @@ public class TeacherCont {
 			mav.setViewName("teacher/msgView");
 			String msg1 = "<p>강사 등록 실패</p>";
 			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			String link2 = "<input type='button' value='목록으로' onclick='#'>"; //수정
+			String link2 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>"; //수정
 			mav.addObject("msg1", msg1);
 			mav.addObject("link1", link1);
 			mav.addObject("link2", link2);
@@ -93,5 +93,70 @@ public class TeacherCont {
 		
 		return mav;
 	}//read() end
+	
+	////////////////////////////////////////////수정, 삭제 확인해야함
+	@RequestMapping(value="/teacher/update.do", method=RequestMethod.GET)
+	public ModelAndView update(String t_code) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("teacher/UpdateForm");
+		TeacherDTO dto = dao.read(t_code);
+		mav.addObject("dto", dto);
+	
+		return mav;
+	}//update() end
+	
+	@RequestMapping(value="/teacher/update.do", method=RequestMethod.POST)
+	public ModelAndView updateProc(@ModelAttribute TeacherDTO dto, HttpServletRequest req) {
+		//TeacherDTO oldDTO = dao.read(dto.getT_code());
+		
+		//ServletContext application = req.getServletContext();
+		String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
+		
+		MultipartFile t_photoMF = dto.getT_photoMF(); //파일 가져오기
+		String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
+		dto.setT_photo(t_photo);
+		
+		ModelAndView mav = new ModelAndView();
+		int cnt = dao.update(dto);
+		if(cnt==0) {
+			mav.setViewName("teacher/msgView");
+			String msg1 = "<p>수정실패</p>";
+			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
+			
+			mav.addObject("msg1", msg1);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		}else {
+			mav.setViewName("redirect:/teacher/list.do");
+		}//if end
+		
+		return mav;
+	}//updateProc() end
+	
+	@RequestMapping(value="teacher/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteProc(String t_code) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("teacher/msgView");
+		
+		int cnt = dao.delete(t_code);
+		if(cnt==0) {
+			String msg1 = "<p>강사 삭제 실패</p>";
+			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
+			
+			mav.addObject("msg1", msg1);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		}else {
+			String msg1="<p>강사 삭제 성공</p>";
+			String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
+		
+			mav.addObject("msg1", msg1);
+			mav.addObject("link2", link1);
+		}//if end
+		
+		return mav; 
+	}//deleteProc() end
 	
 }//class end

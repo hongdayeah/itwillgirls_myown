@@ -54,7 +54,7 @@
 <body>
 	<!-- header -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
-		<h1>어린이 문화센터</h1>
+		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
 		<!-- 로그인 전 -->
 				<c:if test="${SessionScope.id==null}">
