@@ -10,7 +10,7 @@
     프로그램 등록하기
     <br>
     
-    <form name="programfrm" id="programfrm" method="post" action="insert" enctype="multipart/form-data">
+    <form name="programfrm" id="programfrm" method="POST" action="insert" enctype="multipart/form-data">
     	<table border="1">
 			<tr>
 				<th>프로그램코드<br>
