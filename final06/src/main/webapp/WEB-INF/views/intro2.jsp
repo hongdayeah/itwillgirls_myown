@@ -52,7 +52,7 @@
 <body>
 	<!-- header -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
-		<h1>어린이 문화센터</h1>
+		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
 		<!-- 로그인 전 -->
 				<c:if test="${SessionScope.id==null}">
@@ -89,7 +89,7 @@
 						프로그램
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" onclick="location.href='/program/list'">프로그램 소개</a>
+						<a class="dropdown-item" onclick="location.href='/program/list.do'">프로그램 소개</a>
 						<a class="dropdown-item" onclick="location.href='/teacher/list.do'">강사 소개</a>
 						<a class="dropdown-item" href="#">성향이란?</a>
 						<a class="dropdown-item" href="#">성향테스트하기</a>

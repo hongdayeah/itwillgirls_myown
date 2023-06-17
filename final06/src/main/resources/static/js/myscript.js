@@ -54,4 +54,5 @@ function rentCheck() {
 			return false;
 		}//if end
 		return true; //서버로 전송
-		}//rentCheck() end
+}//rentCheck() end
+
