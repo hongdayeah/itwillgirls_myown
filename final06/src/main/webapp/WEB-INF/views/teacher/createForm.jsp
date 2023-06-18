@@ -3,7 +3,7 @@
 
 <%@ include file="../header.jsp" %>
 
-<!-- teacher -- createForm.jsp -->
+<!-- 본문시작 teacher -- createForm.jsp -->
 <button type="button" class="btn btn-outline-secondary" onclick="location.href='list.do'">강사 목록가기</button>
 <br>
 강사 등록
