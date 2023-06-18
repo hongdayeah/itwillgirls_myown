@@ -15,9 +15,8 @@ public class ProgramDTO {
 	private String pro_day;		//수강요일
 	private String pro_age;		//대상
 	private String pro_exp;		//설명
-	private String pro_poster;	//포스터
-	private String pro_img;		//이미지이름
-	private int pro_imgsize;	//파일사이즈
+	private String pro_poster;	//썸네일
+	private String pro_img;		//설명이미지
 	private String pro_regdate;	//등록일
 	private int pro_readcnt;	//조회수
 	
@@ -161,14 +160,6 @@ public class ProgramDTO {
 		this.pro_img = pro_img;
 	}
 
-	public int getPro_imgsize() {
-		return pro_imgsize;
-	}
-
-	public void setPro_imgsize(int pro_imgsize) {
-		this.pro_imgsize = pro_imgsize;
-	}
-
 	public String getPro_regdate() {
 		return pro_regdate;
 	}
@@ -191,8 +182,9 @@ public class ProgramDTO {
 				+ ", pro_limit=" + pro_limit + ", pro_fee=" + pro_fee + ", prorec_start=" + prorec_start
 				+ ", prorec_end=" + prorec_end + ", proper_start=" + proper_start + ", proper_end=" + proper_end
 				+ ", pro_day=" + pro_day + ", pro_age=" + pro_age + ", pro_exp=" + pro_exp + ", pro_poster="
-				+ pro_poster + ", pro_img=" + pro_img + ", pro_imgsize=" + pro_imgsize + ", pro_regdate=" + pro_regdate
-				+ ", pro_readcnt=" + pro_readcnt + "]";
+				+ pro_poster + ", pro_img=" + pro_img + ", pro_regdate=" + pro_regdate + ", pro_readcnt=" + pro_readcnt
+				+ ", pro_posterMF=" + pro_posterMF + ", pro_imgMF=" + pro_imgMF + "]";
 	}
+
 	
 }//class end
