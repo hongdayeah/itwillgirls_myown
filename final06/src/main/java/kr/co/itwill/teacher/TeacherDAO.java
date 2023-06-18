@@ -23,14 +23,14 @@ public class TeacherDAO {
 		System.out.println("-----TeacherDAO() 객체 생성됨");
 	}
 	
+	//등록
 	public int create(TeacherDTO dto) {
 		int cnt = 0;
 		
 		try {
 			sql = new StringBuilder();
-			
 			sql.append(" INSERT INTO teacher(t_code, t_name, t_phone, t_birth, t_gender, t_photo) ");
-			sql.append(" VALUES( ?, ?, ?, ?, ?, ?, ?) ");
+			sql.append(" VALUES(?, ?, ?, ?, ?, ?) ");
 			
 			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo());
 		}catch(Exception e){
@@ -40,7 +40,7 @@ public class TeacherDAO {
 		return cnt;
 	}//create() end
 
-	
+	//목록
 	public List<TeacherDTO> list(){
 		List<TeacherDTO> list = null;
 		
@@ -72,6 +72,7 @@ public class TeacherDAO {
 		return list;
 	}//list() end
 	
+	//상세보기
 	public TeacherDTO read(String t_code) {
 		TeacherDTO dto = null;
 		
@@ -104,7 +105,7 @@ public class TeacherDAO {
 		return dto;
 	}//read() end
 	
-	//////////////////////////////////////////////// 확인 필요
+	//수정
 	public int update(TeacherDTO dto) {
 		int cnt = 0;
 		
@@ -112,16 +113,18 @@ public class TeacherDAO {
 			sql = new StringBuilder();
 			sql.append(" UPDATE teacher ");
 			sql.append(" SET t_code = ?, t_name = ?, t_phone = ?, t_birth = ?, t_gender = ?, t_photo = ? ");
-			sql.append("WHERE t_code = ? ");
+			sql.append(" WHERE t_code = ? ");
 			
-			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo());
+			cnt = jt.update(sql.toString(), dto.getT_code(), dto.getT_name(), dto.getT_phone(), dto.getT_birth(), dto.getT_gender(), dto.getT_photo(), dto.getT_code());
 			
 		}catch(Exception e) {
 			System.out.println("강사 수정 실패 : " +  e);
 		}
+		
 		return cnt;
 	}//update() end
 	
+	//////////////////////////////////////////삭제 확인필요
 	public int delete(String t_code) {
 		int cnt = 0;
 		
@@ -132,6 +135,7 @@ public class TeacherDAO {
 		}catch(Exception e) {
 			System.out.println("강사 삭제 실패 : " + e);
 		}
+		
 		return cnt;
 	}//delete() end
 	

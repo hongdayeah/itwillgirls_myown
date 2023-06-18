@@ -19,35 +19,39 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   	
 	<style>
-  .item h4 {
-    font-size: 19px;
-    line-height: 1.375em;
-    font-weight: 400;
-    font-style: italic;
-    margin: 70px 0;
-  }
-  .item span {
-    font-style: normal;
-  }
-   .carousel-control.right, .carousel-control.left {
-   background-image: none;
-   color: #f4511e;
-  }
-  .carousel-indicators li {
-    border-color: #f4511e;
-  }
-  .carousel-indicators li.active {
-    background-color: #f4511e;
-  }
-  
-  .id_input_re_1{
-	color: green;
-	display: none;
+	.item h4 {
+		font-size: 19px;
+		line-height: 1.375em;
+		font-weight: 400;
+		font-style: italic;
+		margin: 70px 0;
 	}
-	
-   .id_input_re_2{
-	 color: red;
-	 display: none;
+	.item span {
+		font-style: normal;
+	}
+	.carousel-control.right, .carousel-control.left {
+		background-image: none;
+		color: #f4511e;
+	}
+	.carousel-indicators li {
+		border-color: #f4511e;
+	}
+	.carousel-indicators li.active {
+		background-color: #f4511e;
+	}
+	.id_input_re_1{
+		color: green;
+		display: none;
+	}
+	.id_input_re_2{
+		color: red;
+		display: none;
+	}
+	.dropdown-item{
+		cursor: pointer;
+	}
+	.nav-link{
+		cursor: pointer;
 	}
 	</style>
 </head>
@@ -91,7 +95,7 @@
 						프로그램
 					</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" onclick="location.href='/program/list'">프로그램 소개</a>
+						<a class="dropdown-item" onclick="location.href='/program/list.do'">프로그램 소개</a>
 						<a class="dropdown-item" onclick="location.href='/teacher/list.do'">강사 소개</a>
 						<a class="dropdown-item" href="#">성향이란?</a>
 						<a class="dropdown-item" href="#">성향테스트하기</a>

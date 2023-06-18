@@ -56,16 +56,16 @@ public class TeacherCont {
 		
 		//파일 저장 폴더의 실제 물리적인 경로 가져오기
 		//ServletContext application = req.getServletContext();
-		String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
+		//String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
 		//System.out.println(basePath);
 		//1) <input type="file" name="t_photoMF">
 		MultipartFile t_photoMF = dto.getT_photoMF(); //파일 가져오기
-		// tstorage 폴더에 파일 저장하고 리네임된 파일명 반환
-		String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
-		dto.setT_photo(t_photo); //리네임된 파일명을 dto객체에 담기
+		//String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
+		String t_photo = t_photoMF.getOriginalFilename();
+		dto.setT_photo(t_photo);
 	
-		
 		int cnt = dao.create(dto);
+		
 		if(cnt==0) {
 			mav.setViewName("teacher/msgView");
 			String msg1 = "<p>강사 등록 실패</p>";
@@ -77,12 +77,14 @@ public class TeacherCont {
 		}else {
 			String msg1 = "<p>강사 등록 성공</p>";
 			mav.addObject("msg1", msg1);
-			String link1 = "<input type='button' value='목록으로' onclick='#'>";
+			String link1 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
 			mav.addObject("link1",link1);
 		}//if end
+		
 		return mav;
 	}//createProc() end
 	
+	//상세보기
 	@RequestMapping("/teacher/read.do")
 	public ModelAndView read(String t_code) {
 		ModelAndView mav = new ModelAndView();
@@ -94,11 +96,11 @@ public class TeacherCont {
 		return mav;
 	}//read() end
 	
-	////////////////////////////////////////////수정, 삭제 확인해야함
+	//수정
 	@RequestMapping(value="/teacher/update.do", method=RequestMethod.GET)
 	public ModelAndView update(String t_code) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("teacher/UpdateForm");
+		mav.setViewName("teacher/updateForm");
 		TeacherDTO dto = dao.read(t_code);
 		mav.addObject("dto", dto);
 	
@@ -110,14 +112,17 @@ public class TeacherCont {
 		//TeacherDTO oldDTO = dao.read(dto.getT_code());
 		
 		//ServletContext application = req.getServletContext();
-		String basePath = "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com";
+		//String basePath = application.getRealPath("/tstorage");
 		
 		MultipartFile t_photoMF = dto.getT_photoMF(); //파일 가져오기
-		String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
+		//String t_photo = UploadSaveManager.saveFileSpring30(t_photoMF, basePath);
+		String t_photo = t_photoMF.getOriginalFilename();
 		dto.setT_photo(t_photo);
 		
 		ModelAndView mav = new ModelAndView();
+		
 		int cnt = dao.update(dto);
+		
 		if(cnt==0) {
 			mav.setViewName("teacher/msgView");
 			String msg1 = "<p>수정실패</p>";
@@ -134,12 +139,24 @@ public class TeacherCont {
 		return mav;
 	}//updateProc() end
 	
-	@RequestMapping(value="teacher/delete.do", method=RequestMethod.GET)
+	///////////////////////////////////삭제 확인해야함
+	@RequestMapping(value="/teacher/delete.do", method=RequestMethod.GET)
+	public ModelAndView delete(String t_code) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("t_code", t_code);
+	
+		return mav;
+	}//delete() end
+	
+	@RequestMapping(value="teacher/delete.do", method=RequestMethod.POST)
 	public ModelAndView deleteProc(String t_code) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("teacher/msgView");
+		mav.addObject("t_code", t_code);
 		
 		int cnt = dao.delete(t_code);
+		
 		if(cnt==0) {
 			String msg1 = "<p>강사 삭제 실패</p>";
 			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
