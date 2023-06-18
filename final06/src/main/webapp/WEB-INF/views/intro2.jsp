@@ -19,34 +19,40 @@
   	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   
 	<style>
-  .item h4 {
-    font-size: 19px;
-    line-height: 1.375em;
-    font-weight: 400;
-    font-style: italic;
-    margin: 70px 0;
-  }
-  .item span {
-    font-style: normal;
-  }
-   .carousel-control.right, .carousel-control.left {
-   background-image: none;
-   color: #f4511e;
-  }
-  .carousel-indicators li {
-    border-color: #f4511e;
-  }
-  .carousel-indicators li.active {
-    background-color: #f4511e;
-  }
-  .id_input_re_1{
-	color: green;
-	display: none;
-   }
-   .id_input_re_2{
-	 color: red;
-	 display: none;
-    }
+		.item h4 {
+			font-size: 19px;
+			line-height: 1.375em;
+			font-weight: 400;
+			font-style: italic;
+			margin: 70px 0;
+		 }
+		.item span {
+			font-style: normal;
+		}
+		.carousel-control.right, .carousel-control.left {
+			background-image: none;
+			color: #f4511e;
+		}
+		.carousel-indicators li {
+			border-color: #f4511e;
+		}
+		.carousel-indicators li.active {
+			background-color: #f4511e;
+		}
+		.id_input_re_1{
+			color: green;
+			display: none;
+		}
+		.id_input_re_2{
+			color: red;
+			display: none;
+		}
+		.dropdown-item{
+			cursor: pointer;
+		}
+		.nav-link{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
