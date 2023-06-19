@@ -17,14 +17,12 @@
 						<div class="col-md-6 mb-3">
 							<label for="p_id">아이디</label>
 							<input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요" autofocus required>
-							<span class="idchk"></span>
 							<span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
 							<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="p_name">이름</label>
 							<input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="이름을 입력해 주세요" value="" required>
-							<span class="memberNamechk"></span>
 						</div>
 					</div>
 					
@@ -32,13 +30,11 @@
 						<div class="col-md-6 mb-3">
 							<label for="p_passwd">비밀번호</label>
 							<input type="password" class="form-control" id="p_passwd" name="p_passwd" maxlength="20" placeholder="비밀번호를 입력해 주세요" value="" required>
-							<span class="pwchk1"></span>
 						</div>
 
 						<div class="col-md-6 mb-3">
 							<label for="re_p_passwd">비밀번호 확인</label>
 							<input type="password" class="form-control" id="re_p_passwd" name="re_p_passwd" maxlength="20" placeholder="비밀번호를 다시 한 번 입력해 주세요" value="" required>
-							<span class="pwchk"></span>
 						</div>
 					</div>
 
@@ -46,20 +42,18 @@
 						<div class="col-md-6 mb-3">
 							<label for="p_birth">생년월일</label>
 							<input type="text" class="form-control" id="p_birth" name="p_birth" maxlength="6" placeholder="생년월일을 입력해 주세요 ex) 910912" value="" required>
-							<span class="birthchk"></span>
 						</div>
 
 						<div class="col-md-6 mb-3">
 							<label for="p_tell">핸드폰 번호</label>
 							<input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="핸드폰 번호를 입력해 주세요 ex) 01012345678" value="" required>
-							<span class="tellchk"></span>
 						</div>
 					</div>
 					
 					<div>
 						<p class="fieldset">
 						<label for="p_addr1">성별
-						&nbsp;
+							&nbsp;
 				            <input type="radio" name="p_gender" id="p_gender" value="1">남
 				            &nbsp;
 				            <input type="radio" name="p_gender" id="p_gender" value="2">여
@@ -184,7 +178,7 @@
 			
 			$.ajax({
 				type : "post",
-				url : "/member/memberIdChk",
+				url : "/member/memberIdChk.do",
 				data : data,
 				success : function(result){
 
@@ -200,12 +194,6 @@
 			}); // ajax 종료	
 		
 		});// function 종료
-		</script>
-		
-		<script>
-		function agree() {
-			window.open('agree.do', '약관', 'width=800px, height=500px, scrollbars=yes');
-		}//agree() end
 		</script>
 		
         <script>

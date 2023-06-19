@@ -39,12 +39,21 @@
 		.carousel-indicators li.active {
 			background-color: #f4511e;
 		}
+		<!-- 추후 따로 member.css 파일 만들 예정 -->
 		.id_input_re_1{
 			color: green;
 			display: none;
 		}
 		.id_input_re_2{
 			color: red;
+			display: none;
+		}
+		.pw_input_1{
+			color: red;
+			display: none;
+		}
+		.pw_input_2{
+			color: green;
 			display: none;
 		}
 		.dropdown-item{
@@ -61,13 +70,13 @@
 		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
 		<c:choose>
-			<c:when test="${program_dto == null}">
+			<c:when test="${member_dto == null}">
 				<a href="/member/login.do">로그인</a>
 				<a href="/member/agree.do">회원가입</a>
 			</c:when>
 			<c:otherwise>
 				<div class="login_success_area">
-					<span><b>'${program_dto.p_name} (${program_dto.p_id})' 님이 로그인 중입니다.</b></span>
+					<span><b>'${member_dto.p_name} (${member_dto.p_id})' 님이 로그인 중입니다.</b></span>
 					<a href="/member/logout.do">로그아웃</a>
 				</div>
 			</c:otherwise>
