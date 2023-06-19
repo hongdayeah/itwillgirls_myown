@@ -42,7 +42,7 @@
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
             </td>
 		</tr> 
-	
+	 
 	</c:forEach>
 
 	</table>
