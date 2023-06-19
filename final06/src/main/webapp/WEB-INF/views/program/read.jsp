@@ -5,7 +5,11 @@
 
 <!-- 본문 시작 program -- read.jsp -->
 프로그램 상세페이지
-
+<br>
+<!-- 관리자만 볼 수 있음 -->
+<input type="button" value="프로그램 시간 추가" onclick="location.href='../programtime/create.do?pro_obj=${dto.pro_obj}'">
+<input type="button" value="프로그램 시간 수정">
+ 
 <input type="button" value="프로그램 목록" onclick="location.href='list.do'">
 <br>
 
@@ -59,6 +63,12 @@
 		</td>
 	</tr>
 </table>
+
+<!-- 예매하기 -->
+<input type="button" value="예매하기" onclick="#">
+
+<!-- 찜하기 -->
+<input type="button" value="찜하기" onclick="location.href='likeInsert.do?pro_obj=${dto.pro_obj}'">
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

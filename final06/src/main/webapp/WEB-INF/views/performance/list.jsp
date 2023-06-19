@@ -36,14 +36,14 @@
 			<td>${dto.class_code}</td> 
 			<td>${dto.per_fee}</td>
 			<td>${dto.per_limit}</td>
+			<p> ggg  </p>
 
 			<td>
                 <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
             </td>
-            <p>효원:    킹ㅇ</p>
-		</tr> 
-	
+		</tr>  
+	 
 	</c:forEach>
 
 	</table>
