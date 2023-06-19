@@ -2,6 +2,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<style>
+.agreeCon {
+    
+    width: 80%;
+    border: 1px solid #000;
+    height: 350px;
+    padding: 20px;
+    overflow-y: scroll;
+    margin: auto;
+    margin-bottom: 30px;
+    
+    box-sizing: border-box;
+    
+    background-color: #fff;
+    
+    border-radius: 3px;    
+    
+    word-spacing: -1px;
+    letter-spacing: 0px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+}
+</style>
 <%@ include file="../header.jsp"%>
 
 <div class="content">
@@ -9,10 +32,10 @@
 	<!-- 본문시작 agree.jsp-->
 	<form action="join.do" onsubmit="return send()">
 		<!-- JavaScript는 현재페이지에 작성 -->
-		<div id="font"
-			style="text-align: center; font-size: 30px; padding-top: 50px; padding-bottom: 50px;">
-			<h6>이 용 약 관</h6>
+		<div id="font" style="text-align: center; font-size: 30px; padding-top: 50px; padding-bottom: 50px;">
+			<h6>이용 약관</h6>
 		</div>
+		
 		<div class="agreeCon" tabindex="0">
 			<div>
 				화성시어린이문화센터 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. </br> 본 약관은 다양한 화성시어린이문화센터
@@ -69,16 +92,20 @@
 				문의 주시기 바랍니다.
 			</div>
 		</div>
-		<div class="agree_checkbox">
-			<input id="form_agree_1" name="extra_datas[&#39;agree_1&#39;]"
-				class="agree_input" type="checkbox" value="Y" /><label
-				for="form_agree_1">위 내용을 읽었으며, &quot;이용약관&quot;에 동의합니다.</label><input
-				type="hidden" name="_extra_datas['agree_1']" value="on" />
+		
+		<div style="text-align: center">
+				<div style="margin-bottom: 30px;">
+					<label><input type="checkbox" name="agree" id="agree">&nbsp;&nbsp;위 내용을 읽었으며, "이용 약관"에 동의합니다</label>
+			  	</div>
 		</div>
-		<h3>
-			<span> 개인정보수집 및 이용에 대한 안내</span>
-		</h3>
-		<div class="agree_content" tabindex="0">
+		
+		<div id="font" style="text-align: center; font-size: 30px; padding-top: 50px; padding-bottom: 50px;">
+			<h6>
+				<span> 개인정보수집 및 이용에 대한 안내</span>
+			</h6>
+		</div>
+
+		<div class="agreeCon" tabindex="0">
 			<div>
 				1. 수집하는 개인정보<br /> 이용자는 비회원으로 가입을 하지 않아도 서비스를 이용할 수 있습니다.
 				화성시어린이문화센터는 서비스 이용을 위해 필요한 최소한의 개인정보를 수집합니다.<br /> 예약결제 시점에
@@ -123,21 +150,14 @@
 				보관<br /> 통신비밀보호법<br /> 예약결제 기록: 3개월<br />
 			</div>
 		</div>
-		<div class="agree_checkbox">
-			<input id="form_agree_2" name="extra_datas[&#39;agree_2&#39;]"
-				class="agree_input" type="checkbox" value="Y" /><label
-				for="form_agree_2">위 내용을 읽었으며, &quot; 개인정보수집 및 이용에 대한
-				안내&quot;에 동의합니다.</label><input type="hidden" name="_extra_datas['agree_2']"
-				value="on" />
-		</div>
-
-
-
 
 		<div style="text-align: center">
-			<div style="margin-bottom: 30px;">
-				<label><input type="checkbox" name="agree" id="agree">&nbsp;&nbsp;약관 전체 동의</label>
-			</div>
+				<div style="margin-bottom: 30px;">
+					<label><input type="checkbox" name="agree1" id="agree1">&nbsp;&nbsp;위 내용을 읽었으며, "개인정보수집 및 이용에 대한 안내"에 동의합니다</label>
+			  	</div>
+		</div>
+
+		<div style="text-align: center">
 			<input class="button" type="submit" value="회원가입 진행">
 			&nbsp;&nbsp; <input class="button" type="button" value="뒤로 가기"
 				onclick="javascript:history.back()">
@@ -146,7 +166,7 @@
 
 	<script>
 		function send() {
-			if (document.getElementById("agree").checked == true) {
+			if (document.getElementById("agree").checked && document.getElementById("agree1").checked == true) {
 				return true;
 			} else {
 				alert("약관에 동의한 후 회원가입이 가능합니다")
