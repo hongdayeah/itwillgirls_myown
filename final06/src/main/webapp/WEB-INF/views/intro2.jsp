@@ -61,13 +61,13 @@
 		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
 		<c:choose>
-			<c:when test="${dto == null}">
+			<c:when test="${program_dto == null}">
 				<a href="/member/login.do">로그인</a>
 				<a href="/member/agree.do">회원가입</a>
 			</c:when>
 			<c:otherwise>
 				<div class="login_success_area">
-					<span><b>'${dto.p_name} (${dto.p_id})' 님이 로그인 중입니다.</b></span>
+					<span><b>'${program_dto.p_name} (${program_dto.p_id})' 님이 로그인 중입니다.</b></span>
 					<a href="/member/logout.do">로그아웃</a>
 				</div>
 			</c:otherwise>
