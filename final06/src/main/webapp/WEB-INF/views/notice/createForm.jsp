@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
- <form name="noticefrm" id="noticefrm" method="post" action=noticeins.jsp" onsubmit="return noticeCheck()">
+ <form name="noticefrm" id="noticefrm" method="post" action="create.do" onsubmit="return noticeCheck()">
   <table class="table" align="center" width="98%" height="350px">
   <tr>
   	<td align="center" width="100px">카테고리</td>
@@ -40,6 +40,8 @@
  		<input type="submit" value="등록" class="btn btn-success" style="align:center;">&nbsp;&nbsp;&nbsp;&nbsp;
  		<input type="reset" value="취소" class="btn btn-danger" style="align:center;">
 </div>
+
+<button type="button"><a href="/notice/list.do">목록으로</a></button>
  <br>
   <br>
  </form> 
