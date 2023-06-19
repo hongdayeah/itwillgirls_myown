@@ -1,7 +1,9 @@
 package kr.co.itwill.program;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
 public class ProgramDTO {
 	private String pro_obj; 	//프로그램 구분
 	private String pro_name;	//프로그램 명

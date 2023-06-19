@@ -26,6 +26,7 @@ public class ProgramDAO {
 	
 	//등록
 	public int create(ProgramDTO dto) {
+		
 		int cnt = 0;
 		
 		try {
