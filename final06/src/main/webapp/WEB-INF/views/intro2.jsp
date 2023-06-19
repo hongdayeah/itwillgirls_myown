@@ -118,8 +118,8 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">마이페이지</a>
-				</li>  
+					<a class="nav-link" onclick="location.href='/mypage/myList.do'">마이페이지</a>
+				</li>
 			</ul>
 		</div>  
 	</nav>
