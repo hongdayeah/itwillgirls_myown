@@ -23,8 +23,6 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}//idCheck() end
-
-	
 	
 	
 	
