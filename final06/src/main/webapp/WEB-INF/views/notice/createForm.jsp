@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
- <form name="noticefrm" id="noticefrm" method="post" action="create.do" onsubmit="return noticeCheck()">
+ <form name="noticefrm" id="noticefrm" method="post" action="create.do"  enctype="multipart/form-data" onsubmit="return noticeCheck()">
   <table class="table" align="center" width="98%" height="350px">
   <tr>
   	<td align="center" width="100px">카테고리</td>
@@ -32,7 +32,7 @@
   </tr>
   <tr>
  	<td align="center">첨부파일</td>
- 	<td><input type="file" name="not_filenameMF" size="100"></td>
+ 	<td><input type="file" name="not_imgMF" size="100"></td>
  </tr>
  </table>
  

@@ -1,5 +1,6 @@
 package kr.co.itwill.notice;
 
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,12 +52,13 @@ public class NoticeCont {
 		
 		ServletContext application=req.getServletContext();
 		String basePath=application.getRealPath("/noticeimg");
+		 
+		MultipartFile not_imgMF=dto.getNot_imgMF();
+		String not_img=UploadSaveManager.saveFileSpring30(not_imgMF, basePath);
+		dto.setNot_img(not_img);
+		dto.setNot_size(not_imgMF.getSize());
 		
-		MultipartFile not_filenameMF=dto.getNot_filenameMF();
-		String not_filename=UploadSaveManager.saveFileSpring30(not_filenameMF, basePath);
-		dto.setNot_filename(not_filename);
-		dto.setNot_size(not_filenameMF.getSize());
-		
+		//////////////////////
 		int cnt=dao.create(dto); 
 		if(cnt==0) {
 			String msg1="<p>공지 등록실패</p>";

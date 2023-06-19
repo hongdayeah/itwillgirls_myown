@@ -25,7 +25,7 @@ public class NoticeDAO {
 		List<NoticeDTO> list=null;
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT not_no, not_cate, not_sub, not_con, not_regdt, not_filename, not_size" );
+			sql.append(" SELECT not_no, not_cate, not_sub, not_con, not_regdt, not_img, not_size" );
 			sql.append(" FROM notice ");
 			
 			RowMapper<NoticeDTO> rowMapper=new RowMapper<NoticeDTO>() {
@@ -37,7 +37,7 @@ public class NoticeDAO {
 				dto.setNot_sub(rs.getString("not_sub"));
 				dto.setNot_con(rs.getString("not_con"));
 				dto.setNot_regdt(rs.getString("not_regdt"));
-				dto.setNot_filename(rs.getString("not_filename"));
+				dto.setNot_filename(rs.getString("not_img"));
 				dto.setNot_size(rs.getLong("not_size"));
 				return dto;
 				}
@@ -54,10 +54,10 @@ public class NoticeDAO {
 		try {
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO notice(not_no, not_cate, not_sub, not_con, not_regdt, not_filename ");
+			sql.append(" INSERT INTO notice(not_no, not_cate, not_sub, not_con, not_regdt, not_img, not_size ");
 			sql.append(" VALUE(notice_seq.nextval, ?, ?, ?, now(), ?) ");
 			
-			cnt=jt.update(sql.toString(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_filename());
+			cnt=jt.update(sql.toString(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_img(), dto.getNot_size());
 		} catch(Exception e) {
 			System.out.println("목록 실패: " + e);
 		}//end
