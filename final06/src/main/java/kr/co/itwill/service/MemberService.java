@@ -1,7 +1,5 @@
 package kr.co.itwill.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import kr.co.itwill.member.MemberDTO;
 
 public interface MemberService {
