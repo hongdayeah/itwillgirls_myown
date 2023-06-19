@@ -28,5 +28,10 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.idCheck(p_id);
 	}//idCheck() end
 	
+	//로그인
+	@Override
+	public MemberDTO login(MemberDTO dto) throws Exception {
+		return membermapper.login(dto);
+	}//login() end
 	
 }//class end

@@ -60,38 +60,18 @@
 	<div class="jumbotron text-center" style="margin-bottom:0">
 		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
-		<!-- 로그인 전 -->
-				<c:if test="${SessionScope.id==null}">
-					<!-- Button trigger modal -->
-					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login"  onclick="location.href='/member/login.do'">로그인/회원가입</button> -->
-
-					<!-- Modal -->
-					<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
- 								<!-- 외부 jsp 파일이 들어올 부분 -->
-							</div><!-- modal-content end -->
-						</div><!-- modal-dialog end -->
-					</div><!-- modal fade end -->
-					
-				</c:if>
-				
-				<!-- 로그인 후 -->
-				<!-- 
-				<c:if test="${msg == 'success'}">
-						<h2>${sessionScope.p_name}(${sessionScope.p_id})님 반갑습니다.</h2>
-				</c:if>
-				 -->
-				<c:choose>
-					<c:when test="${sessionScope.p_id == null}">
-						<a href="/member/login.do">로그인</a>
-						<a href="/member/join.do">회원가입</a>
-					</c:when>
-					<c:otherwise>
-						${sessionScope.p_name}<b>'${sessionScope.p_id}'</b>님이 로그인 중입니다.
-						<a href="">로그아웃</a>
-					</c:otherwise>
-				</c:choose>
+		<c:choose>
+			<c:when test="${dto == null}">
+				<a href="/member/login.do">로그인</a>
+				<a href="/member/agree.do">회원가입</a>
+			</c:when>
+			<c:otherwise>
+				<div class="login_success_area">
+					<span><b>'${dto.p_name} (${dto.p_id})' 님이 로그인 중입니다.</b></span>
+					<a href="/member/logout.do">로그아웃</a>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -208,11 +188,5 @@
 	</div>
 	<!-- footer end -->
 	
-	<script>
-	//로그인 모달창 호출 함수
-	function openLoginModal(){
-		$('.modal-content').load("/member/memberLoginForm");
-	}//openLoginModal() end
-	</script>
 </body>
 </html>

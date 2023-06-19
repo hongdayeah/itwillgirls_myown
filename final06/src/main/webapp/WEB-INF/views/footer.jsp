@@ -18,11 +18,5 @@
 	</div>
 	<!-- footer end -->
 	
-	<script>
-	//로그인 모달창 호출 함수
-	function openLoginModal(){
-		$('.modal-content').load("/member/memberLoginForm");
-	}//openLoginModal() end
-	</script>
 </body>
 </html>

@@ -17,69 +17,63 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<!-- jQuery -->
+  	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   	
 	<style>
-	.item h4 {
-		font-size: 19px;
-		line-height: 1.375em;
-		font-weight: 400;
-		font-style: italic;
-		margin: 70px 0;
-	}
-	.item span {
-		font-style: normal;
-	}
-	.carousel-control.right, .carousel-control.left {
-		background-image: none;
-		color: #f4511e;
-	}
-	.carousel-indicators li {
-		border-color: #f4511e;
-	}
-	.carousel-indicators li.active {
-		background-color: #f4511e;
-	}
-	.id_input_re_1{
-		color: green;
-		display: none;
-	}
-	.id_input_re_2{
-		color: red;
-		display: none;
-	}
-	.dropdown-item{
-		cursor: pointer;
-	}
-	.nav-link{
-		cursor: pointer;
-	}
+		.item h4 {
+			font-size: 19px;
+			line-height: 1.375em;
+			font-weight: 400;
+			font-style: italic;
+			margin: 70px 0;
+		 }
+		.item span {
+			font-style: normal;
+		}
+		.carousel-control.right, .carousel-control.left {
+			background-image: none;
+			color: #f4511e;
+		}
+		.carousel-indicators li {
+			border-color: #f4511e;
+		}
+		.carousel-indicators li.active {
+			background-color: #f4511e;
+		}
+		.id_input_re_1{
+			color: green;
+			display: none;
+		}
+		.id_input_re_2{
+			color: red;
+			display: none;
+		}
+		.dropdown-item{
+			cursor: pointer;
+		}
+		.nav-link{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
-	<!-- header -->
+<!-- header -->
 	<div class="jumbotron text-center" style="margin-bottom:0">
 		<h1><a href="/home.do">어린이 문화센터</a></h1>
 
-		<!-- 로그인 전 -->
-				<c:if test="${SessionScope.id==null}">
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login"  onclick="openLoginModal()">로그인/회원가입</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
- 								<!-- 외부 jsp 파일이 들어올 부분 -->
-							</div><!-- modal-content end -->
-						</div><!-- modal-dialog end -->
-					</div><!-- modal fade end -->
-					
-				</c:if>
-				
-				<!-- 로그인 후 -->
-				<c:if test="${SessionScope.id!=null}">
-						ㅇㅇㅇ님 반갑습니다.
-				</c:if>
+		<c:choose>
+			<c:when test="${dto == null}">
+				<a href="/member/login.do">로그인</a>
+				<a href="/member/agree.do">회원가입</a>
+			</c:when>
+			<c:otherwise>
+				<div class="login_success_area">
+					<span><b>'${dto.p_name} (${dto.p_id})' 님이 로그인 중입니다.</b></span>
+					<a href="/member/logout.do">로그아웃</a>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 		
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
