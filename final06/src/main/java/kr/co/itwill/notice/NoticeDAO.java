@@ -55,9 +55,9 @@ public class NoticeDAO {
 			sql=new StringBuilder();
 			
 			sql.append(" INSERT INTO notice(not_no, not_cate, not_sub, not_con, not_regdt, not_filename ");
-			sql.append(" VALUE(?, ?, ?, ?, ?, ?");
+			sql.append(" VALUE(notice_seq.nextval, ?, ?, ?, now(), ?) ");
 			
-			cnt=jt.update(sql.toString(), dto.getNot_no(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_regdt(), dto.getNot_filename());
+			cnt=jt.update(sql.toString(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_filename());
 		} catch(Exception e) {
 			System.out.println("목록 실패: " + e);
 		}//end

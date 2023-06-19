@@ -15,7 +15,7 @@
 		</tr>
 	</thead>
 	
-	<c:forEach var=dto" items=${list}">
+	<c:forEach var="dto" items="${list}">
 	<tr>
 		<td>${dto.not_no}</td>
 		<td>${dto.not_cate}</td>
@@ -25,6 +25,7 @@
 	</c:forEach>
 </table>
 </form>
+<button type="button"><a href="/notice/create.do">관리자 작성</a></button>
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
