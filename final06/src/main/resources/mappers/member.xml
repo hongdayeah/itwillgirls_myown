@@ -7,14 +7,9 @@
 <!-- 주의사항 : 종결문자 ; 생략해야 함 -->
 <!-- ★ namespace는 대체적으로 테이블명과 동일하게 지정함 -->
 
-<!-- <mapper namespace="member"> -->
-<mapper namespace="kr.co.itwill.mapper.MemberMapper">
-<!-- 
-	<insert id="memberJoin">
-		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
-		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
-	</insert>
- -->
+<mapper namespace="member">
+<!-- <mapper namespace="kr.co.itwill.mapper.MemberMapper"> -->
+
  	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="java.util.Map">
 		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
@@ -28,11 +23,12 @@
   		WHERE p_id = #{p_id}
   	</select>
   	
-  	 <!-- 로그인 -->
-      <select id="login" resultType="kr.co.itwill.member.MemberDTO">
-         SELECT p_id, p_passwd, p_name
+  	 <!-- 로그인 --><!-- 수정해야 함 -->
+      <select id="login" resultType="kr.co.itwill.member.MemberDTO" parameterType="kr.co.itwill.member.MemberDTO">
+         SELECT *
          FROM member_parent
-         WHERE p_id = #{p_id} AND p_passwd = #{p_passwd}
+         WHERE p_id = #{p_id}
+         AND p_passwd = #{p_passwd}
       </select>
 	
 	

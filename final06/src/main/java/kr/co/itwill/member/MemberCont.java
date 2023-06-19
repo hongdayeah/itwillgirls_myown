@@ -1,13 +1,16 @@
 package kr.co.itwill.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.itwill.service.MemberService;
@@ -22,14 +25,14 @@ public class MemberCont {
 
 	@Autowired
 	private MemberService memberservice;
-
+	
 	/*
-	 * //로그인 페이지 이동
-	 * 
-	 * @RequestMapping("/login.do") public String login() { return
-	 * "member/memberLoginForm"; }//login() end
-	 */
-
+	@RequestMapping("/login.do")
+	public String login2() {
+		return "member/memberLoginForm";
+	}//login2() end
+	*/
+	
 	// 로그인 페이지 이동
 	@RequestMapping(value = "/memberLoginForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login() {
@@ -40,20 +43,13 @@ public class MemberCont {
 	@RequestMapping("/agree.do")
 	public String agree() {
 		return "member/agree";
-	}
+	}//agree() end
 
 	// 회원가입 페이지 이동
 	@RequestMapping("/join.do")
 	public String join() {
 		return "member/memberJoinForm";
 	}// login() end
-
-	/*
-	 * //회원가입 요청
-	 * 
-	 * @RequestMapping("/joinProc") public String joinProc() { return
-	 * "member/joinProc"; }//login() end
-	 */
 
 	// 회원가입
 	@RequestMapping(value = "/memberJoinForm", method = RequestMethod.POST)
@@ -64,18 +60,6 @@ public class MemberCont {
 
 		return "redirect:/home.do";
 	}// joinPOST() end
-
-	/*
-	 * @RequestMapping(value="/memberJoinForm", method=RequestMethod.POST) public
-	 * String joinPOST(Map<String, Object> map, @RequestParam(required = false)
-	 * String p_addr1, @RequestParam(required = false) String p_addr2) throws
-	 * Exception{
-	 * 
-	 * map.put("p_addr1", p_addr1); map.put("p_addr2", p_addr2); // 회원가입 서비스 실행
-	 * memberservice.memberJoin(map);
-	 * 
-	 * return "redirect:/home.do"; }//joinPOST() end
-	 */
 
 	// 아이디 중복 확인
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
@@ -89,35 +73,34 @@ public class MemberCont {
 			return "success"; // 중복 아이디 x
 		} // if end
 	}// memberIdChkPOST() end
-
-	// 로그인
-	@RequestMapping("/memberLoginForm")
-	@ResponseBody
-	public String login(HttpServletRequest request, MemberDTO dto, RedirectAttributes rttr) throws Exception {
-
-		// 세션 변수 초기화
-		HttpSession session = request.getSession();
+	
+	//로그인 페이지 이동
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String loginForm() {
+		return "member/loginForm";
+	}//loginForm() end
+	
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public ModelAndView loginProc(@ModelAttribute MemberDTO dto, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 		
-		String result = "";
-		dto = memberservice.login(dto);
+		String p_id = dto.getP_id();
+		String p_passwd = dto.getP_passwd();
 		
-		//일치하는 아이디, 비번 불일치
-		if(dto == null) {
-			result = "fail";
-		} else {
-			if(dto.getP_grade() == null) {
-				System.out.println("탈퇴회원인지 확인 -> 상태" + dto.getP_grade());
-				//탈퇴회원
-				result = "withdraw";
-			} else if(dto.getP_grade() == "P") {
-				//아이디, 비밀번호 일치 시 세션에 로그인 정보 담기
-				//session.setAttribute(result, dto); -> 조금 더 고민해보자
-				result = "success";
-			}//if end
+		ModelAndView mav = new ModelAndView();
+		if(p_id.equals("webmaster") && p_passwd.equals("1234")) { //로그인 성공
+			mav.setViewName("/intro2"); //홈으로 이동
+			session.setAttribute("p_id", p_id);
+			session.setAttribute("p_passwd", p_passwd);
+			req.setAttribute("msg", "success"); //수정 중~
+		} else { //로그인 실패
+			//mav.setViewName("member/msgView");
+			//req.setAttribute("message", "<p>아이디와 비번이 일치하지 않습니다</p>");
+			mav.setViewName("member/loginForm");
+			req.setAttribute("msg", "failure"); //수정 중~
 		}//if end
-		System.out.println("result -> " + result);
 		
-		return result;
-	}// login() end
+		return mav;
+	}//loginProc() end
+
 
 }// class end
