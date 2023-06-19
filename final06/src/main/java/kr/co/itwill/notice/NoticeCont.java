@@ -17,6 +17,16 @@ public class NoticeCont {
 		System.out.println("-----NoticeCont() 객체 생성됨");
 	}//end
 	
+	@RequestMapping("/list.do")
+	public ModelAndView list() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("notice/noticeList");
+		
+		mav.addObject("list", dao.list());
+		
+		return mav;
+	}//list() end
+	
 	@RequestMapping(value="/create.do", method=RequestMethod.GET)
 	public ModelAndView createForm(String not_no) {
 		ModelAndView mav=new ModelAndView();
