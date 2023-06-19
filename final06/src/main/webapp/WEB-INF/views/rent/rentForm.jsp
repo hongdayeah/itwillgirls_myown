@@ -104,7 +104,7 @@
 		<td align="center" style="background-color:#FAF9F9">대관신청서 제출</td>
 		<td>대관신청을 위해 사전에 미리 신청서를 다운로드하여 작성해주시길 바랍니다. 
 		<a class="btn" href="./form.zip" download>대관신청서 다운로드</a><br>
-		<input type="file" name="rent_formMF" size="50">
+		<input type="file" name="rent_formMF" size="100">
 		</td>
 	</tr>
 </table>
