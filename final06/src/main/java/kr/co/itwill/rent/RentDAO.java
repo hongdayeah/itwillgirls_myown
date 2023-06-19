@@ -78,7 +78,7 @@ public class RentDAO {
 			sql=new StringBuilder();
 			sql.append(" SELECT rent_app, rent_code, rent_date, rent_per, rent_group, rent_name, rent_phone, rent_email, class_code, rent_form, rent_size ");
 			sql.append(" FROM rent ");
-			sql.append(" WHERE rent_code ='" + rent_code + "' ");
+			sql.append(" WHERE rent_code ='" + rent_code + "'");
 			
 			RowMapper<RentDTO> rowMapper=new RowMapper<RentDTO>() {
 				@Override

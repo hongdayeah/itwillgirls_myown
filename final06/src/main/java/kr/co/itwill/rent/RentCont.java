@@ -56,7 +56,7 @@ public class RentCont {
 		mav.setViewName("rent/msgView");
 	//////////////////////////////////////////////////////////	
 	ServletContext application=req.getServletContext();
-	String basePath=application.getRealPath("../rentFormimg");
+	String basePath=application.getRealPath("/rentFormimg");
 	 
 	MultipartFile rent_formMF=dto.getRent_formMF();
 	String rent_form=UploadSaveManager.saveFileSpring30(rent_formMF, basePath);
@@ -94,7 +94,7 @@ public class RentCont {
 	 public ModelAndView read(String rent_code) {
 		 ModelAndView mav=new ModelAndView();
 		 RentDTO dto=dao.read(rent_code);
-		 mav.setViewName("/rentRead");
+		 mav.setViewName("rent/rentRead");
 		 
 		 mav.addObject("dto", dto);
 		 return mav;
