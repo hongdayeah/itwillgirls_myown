@@ -87,7 +87,7 @@ public class MemberCont {
 		String p_passwd = dto.getP_passwd();
 		
 		ModelAndView mav = new ModelAndView();
-		if(p_id.equals("webmaster") && p_passwd.equals("1234")) { //로그인 성공  webmaster말고 dto에 있는 아이디, 패스워드로도 로그인 되는지 확인해보자~
+		if(p_id.equals(dto.getP_id()) && p_passwd.equals(dto.getP_passwd())) { //로그인 성공  webmaster말고 dto에 있는 아이디, 패스워드로도 로그인 되는지 확인해보자~
 			mav.setViewName("/intro2"); //홈으로 이동
 			session.setAttribute("p_id", p_id);
 			session.setAttribute("p_passwd", p_passwd);
@@ -101,24 +101,11 @@ public class MemberCont {
 	}//loginProc() end
 	
 	//로그아웃
-	/*
-	@RequestMapping("/logout.do")
-	public ModelAndView logout(HttpSession session) {
-		memberservice.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/login");
-		mav.addObject("msg", "logout");
-		return mav;
-	}//logout() end
-	*/
-	
-	//로그아웃
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest req) throws Exception {
 		
 		//세션 변수 초기화
 		HttpSession session = req.getSession();
-		
 		session.invalidate();
 		
 		return "redirect:/home.do";
