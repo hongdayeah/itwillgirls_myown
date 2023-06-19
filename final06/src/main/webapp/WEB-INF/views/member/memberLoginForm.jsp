@@ -54,7 +54,8 @@ function login() {
 
 	<!-- Modal Body -->
 	<div class="modal-body">
-		<form action="" id="loginfrm" method="post" class="was-validated">
+		<form action="userLogin.do" id="loginfrm" method="post" class="was-validated">
+		<input type="hidden" value="login"><!-- 추가 -->
 			<div class="form-group">
 				<label for="memberId">ID</label> <input type="text"
 					class="form-control" id="memberId" name="memberID"

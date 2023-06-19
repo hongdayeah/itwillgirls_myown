@@ -15,32 +15,15 @@ public class MemberDAOImpl implements MemberDAO {
 	//회원가입
 	@Override
 	public void memberJoin(MemberDTO dto) {
-	}
+	}//memberJoin() end
 	
 	//아이디 중복확인
 	@Override
 	public int idCheck(String p_id) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	//로그인 체크
-	@Override
-	public boolean loginCheck(MemberDTO dto) {
-		String name = sqlSession.selectOne("member.loginCheck", dto);
-		return (name == null) ? false : true;
-	}//loginCheck() end
-	
-	//로그인 정보
-	@Override
-	public MemberDTO viewMember(MemberDTO dto) {
-		return sqlSession.selectOne("member.viewMember", dto);
-	}//viewMember() end
-	
-	//로그아웃
-	@Override
-	public void logout(HttpSession session) {
-	}//logout() end
+	}//idCheck() end
+
 	
 	
 	

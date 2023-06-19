@@ -63,7 +63,7 @@
 		<!-- 로그인 전 -->
 				<c:if test="${SessionScope.id==null}">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login"  onclick="openLoginModal()">로그인/회원가입</button>
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login"  onclick="location.href='/member/login.do'">로그인/회원가입</button> -->
 
 					<!-- Modal -->
 					<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
@@ -77,9 +77,21 @@
 				</c:if>
 				
 				<!-- 로그인 후 -->
-				<c:if test="${SessionScope.id!=null}">
-						ㅇㅇㅇ님 반갑습니다.
+				<!-- 
+				<c:if test="${msg == 'success'}">
+						<h2>${sessionScope.p_name}(${sessionScope.p_id})님 반갑습니다.</h2>
 				</c:if>
+				 -->
+				<c:choose>
+					<c:when test="${sessionScope.p_id == null}">
+						<a href="/member/login.do">로그인</a>
+						<a href="/member/join.do">회원가입</a>
+					</c:when>
+					<c:otherwise>
+						${sessionScope.p_name}<b>'${sessionScope.p_id}'</b>님이 로그인 중입니다.
+						<a href="">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
 	</div>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
