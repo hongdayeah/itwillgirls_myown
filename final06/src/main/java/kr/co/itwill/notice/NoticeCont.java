@@ -28,7 +28,7 @@ public class NoticeCont {
 	@RequestMapping("/list.do")
 	public ModelAndView list() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("notice/noticeList");
+		mav.setViewName("notice/noticeList"); 
 		
 		mav.addObject("list", dao.list());
 		
