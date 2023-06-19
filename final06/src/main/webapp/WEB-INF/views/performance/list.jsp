@@ -41,7 +41,7 @@
                 <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
             </td>
-            <p>ddd</p>
+            <p>ddddddd</p>
 		</tr> 
 	
 	</c:forEach>
