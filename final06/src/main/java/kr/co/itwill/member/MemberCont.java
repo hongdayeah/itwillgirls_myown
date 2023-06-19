@@ -80,15 +80,19 @@ public class MemberCont {
 		return "member/loginForm";
 	}//loginForm() end
 	
+	//로그인 작동
+	/*
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView loginProc(@ModelAttribute MemberDTO dto, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 		
+		//String p_name = dto.getP_name();
 		String p_id = dto.getP_id();
 		String p_passwd = dto.getP_passwd();
 		
 		ModelAndView mav = new ModelAndView();
 		if(p_id.equals(dto.getP_id()) && p_passwd.equals(dto.getP_passwd())) { //로그인 성공  webmaster말고 dto에 있는 아이디, 패스워드로도 로그인 되는지 확인해보자~
 			mav.setViewName("/intro2"); //홈으로 이동
+			//session.setAttribute("p_name", p_name);
 			session.setAttribute("p_id", p_id);
 			session.setAttribute("p_passwd", p_passwd);
 			req.setAttribute("msg", "success");
@@ -98,6 +102,28 @@ public class MemberCont {
 		}//if end
 		
 		return mav;
+	}//loginProc() end
+	*/
+	
+	//로그인 작동(v2)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String loginProc(HttpServletRequest req, MemberDTO dto, RedirectAttributes rttr) throws Exception {
+		//System.out.println("login 메서드 진입");
+		//System.out.println("전달된 데이터 : " + dto);
+		
+		//변수 선언 및 초기화
+		HttpSession session = req.getSession();
+		MemberDTO dto2 = memberservice.login(dto);
+		
+		if (dto2 == null) { //로그인 실패
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			return "redirect:/member/login.do";
+		}//if end
+		
+		session.setAttribute("dto", dto2); //로그인 성공
+		
+		return "redirect:/home.do";
 	}//loginProc() end
 	
 	//로그아웃
