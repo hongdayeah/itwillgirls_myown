@@ -10,7 +10,7 @@ public class NoticeDTO {
 	private String not_con;
 	private String not_regdt;
 	private String not_filename;
-	private String not_size;
+	private Long not_size;
 	
 	public NoticeDTO() {}
 
@@ -64,11 +64,11 @@ public class NoticeDTO {
 		this.not_filename = not_filename;
 	}
 
-	public String getNot_size() {
+	public Long getNot_size() {
 		return not_size;
 	}
 
-	public void setNot_size(String not_size) {
+	public void setNot_size(Long not_size) {
 		this.not_size = not_size;
 	}
 
@@ -88,6 +88,5 @@ public class NoticeDTO {
 	}
 	
 	
-	
-	
-}//class end
+
+	}//class end
