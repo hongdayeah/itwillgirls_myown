@@ -1,5 +1,7 @@
 package kr.co.itwill.notice;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class NoticeDTO {
 
 	private int not_no;
@@ -8,8 +10,11 @@ public class NoticeDTO {
 	private String not_con;
 	private String not_regdt;
 	private String not_filename;
+	private String not_size;
 	
 	public NoticeDTO() {}
+
+	private MultipartFile not_filenameMF;
 
 	public int getNot_no() {
 		return not_no;
@@ -59,12 +64,30 @@ public class NoticeDTO {
 		this.not_filename = not_filename;
 	}
 
+	public String getNot_size() {
+		return not_size;
+	}
+
+	public void setNot_size(String not_size) {
+		this.not_size = not_size;
+	}
+
+	public MultipartFile getNot_filenameMF() {
+		return not_filenameMF;
+	}
+
+	public void setNot_filenameMF(MultipartFile not_filenameMF) {
+		this.not_filenameMF = not_filenameMF;
+	}
+
 	@Override
 	public String toString() {
 		return "NoticeDTO [not_no=" + not_no + ", not_cate=" + not_cate + ", not_sub=" + not_sub + ", not_con="
-				+ not_con + ", not_regdt=" + not_regdt + ", not_filename=" + not_filename + "]";
+				+ not_con + ", not_regdt=" + not_regdt + ", not_filename=" + not_filename + ", not_size=" + not_size
+				+ ", not_filenameMF=" + not_filenameMF + "]";
 	}
 	
 	
 	
-}//class ends
+	
+}//class end
