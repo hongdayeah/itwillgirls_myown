@@ -1,7 +1,9 @@
 package kr.co.itwill.teacher;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
 public class TeacherDTO {
 	private String t_code;
 	private String t_name;
