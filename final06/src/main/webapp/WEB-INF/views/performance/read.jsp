@@ -17,83 +17,23 @@
 	<input type="button" value="공연목록" onclick="location.href='list.do'">
 
 	<table>
-			<tr><img src="../perstorage/${dto.per_img}" width="400"></td>
-			<tr>${dto.per_name}</tr>
-			<td>${dto.per_exp}</td>
-			<td>${dto.per_date}</td>
-			<td>${dto.per_time}</td>
-			<td>${dto.class_code}</td>
-			<td>${dto.per_fee}</td>
-			<td>
+			<tr><td colspan="2"><img src="../perstorage/${dto.per_img}" width="400"></td></tr>
+			<tr><td>제목</td><td>${dto.per_name}</td></tr>
+			<tr><td>설명</td><td>${dto.per_exp}</td></tr>
+			<tr><td>날짜</td><td>${dto.per_date}</td></tr>
+			<tr><td>시간</td><td>${dto.per_time}</td></tr>
+			<tr><td>장소</td><td>${dto.class_code}</td></tr>
+			<tr><td>공연료</td><td>${dto.per_fee}</td></tr>
+			<tr><td>수량선택</td></tr>
+			<tr><td>
+				<input type="button" value="좌석예매" onclick="#">
+			</td></tr>
+			<tr><td>
                 <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}"'>
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}"'>
-            </td>
+            </td></tr>
 
-		<section style="float: right; width: 307px; margin-right:100px ">
-		    <div id="calendar_popup" class="calendar_popup_02" style="; ;">
-		      <div class="popup_warp">
-		        <div id="datepicker" style="background:#fff; border-radius:10px; min-height:230px;"></div>
-		        <input type="hidden" name="is_calendar" id="is_calendar" value="y">
-		        <form method="post" id="regiform" name="regiform" action="#">
-		          <div class="time_select selectBox">
-		            <p class="selectbox_title">시간선택</p>
-		          </div>
-		          <div class="choice_select">
-		            <p class="title">수량선택</p>
-		            <div class="select_list"></div>
-		          </div>
-		          <div class="total_warp">
-		            <p class="title">총 결제금액</p>
-		            <p class="total_price"></p>
-		          </div>
-		          <div class="submit_btn">
-		            <button href="#" class="disabled">좌석예매</button>
-		          </div>
-		        </form>
-		      </div>
-		    </div>
-		    
-		
-		<script>	
-		   enableAllTheseDays = (date) => {
-			      let m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
-			      m = (m + 1) < 10 ? '0' + (m + 1) : (m + 1);
-			      d = d < 10 ? '0' + d : d;
-			      for (i = 0; i < availableDays.length; i++) {
-			        if ($.inArray(y + '-' + m + '-' + d, availableDays) != -1) {
-			          return [true];
-			        }
-			      }
-			      return [false];
-			    };
-			    
-		//구매할 수 있는 날짜 설정
-		let availableDays=["2023-06-22","2023-06-22","2023-06-23","2023-06-23","2023-06-24"];
-		let yearAndMonth = JSON.stringify(availableDays).split(',')[0];
-		
-		// 달력 셋팅		
-		$(function(){
-			$('#datepicker').datepicker({
-				  dateFormat: "yy-mm-dd",
-			      monthNames: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-			      monthNamesShort: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-			      dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-			      dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-			      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-			      showMonthAfterYear: true,
-			      yearSuffix: '년',
-			      minDate: 0,
-			      onSelect: (date) => {
-			          document.querySelector('.title1_select').setAttribute('style', 'display: none;');
-			          $('#calendar_popup').addClass('choice_day');
-			          getProductTimeList(date, 'getoptions');
-			          $('.time_select').show();
-			        },
-			        beforeShowDay: enableAllTheseDays
-			}); 
-		})
 	
-				
 		</script>
 	</table>
     <!-- 본문 끝 -->
