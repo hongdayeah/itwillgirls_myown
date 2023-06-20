@@ -46,6 +46,14 @@
 					<td>${dto.pro_fee}</td>
 				</tr>
 				<tr>
+					<th>수업 시간</th>
+					<td>여기서는 protime 정보 갖고오기 </td>
+				</tr>
+				<tr>
+					<th>강사</th>
+					<td>teacher 정보 갖고오기</td>
+				</tr>
+				<tr>
 					<th>수강 정원</th>
 					<td>${dto.pro_limit}명</td>
 				</tr>
