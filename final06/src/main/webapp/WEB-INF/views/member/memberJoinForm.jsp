@@ -274,19 +274,12 @@
 				  alert("주소를 입력해 주세요");
 				  return false;
 			  }//if end
-			        
-		      //9)약관 동의 체크했는지?
-		      if(document.getElementById("agreeterms").checked == false){
-					alert("약관 동의 후 회원가입이 가능합니다");
-					return false;
-				}//if end		    
 
 			  return true;
 		}//joinCheck() end
         </script>
         
         <script>
-
 		$(document).ready(function(){
 			//회원가입 버튼(회원가입 기능 작동)
 			$("#button").click(function(){
@@ -294,8 +287,7 @@
 				$("#memfrm").submit();
 			});
 		});
-
-</script>
+		</script>
         
     <!-- 본문 끝 -->
         

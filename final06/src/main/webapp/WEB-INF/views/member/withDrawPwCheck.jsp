@@ -25,11 +25,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
+				<td colspan="2" align="center" style="color: red">
 					<c:if test="${msg == false}">
 						비밀번호가 일치하지 않습니다.
 					</c:if>
-				
+				<td>
+			</tr>
+			<tr>
+				<td>
 					<input type="button" class="pwCheck_button" value="탈퇴하기">
 					<input type="reset" value="취소" onclick="javascript:history.back()">
 				</td>
