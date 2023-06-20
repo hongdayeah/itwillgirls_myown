@@ -96,6 +96,6 @@
 			return false;
 		}
 	}
-  </script>
+</script>
         
 <%@ include file="../footer.jsp" %>

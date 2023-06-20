@@ -35,7 +35,6 @@ public class ProgramCont {
 		return mav;
 	}//list() end
 	
-	//////////////////////////////////////////////확인필요
 	//프로그램 등록
 	@RequestMapping(value="/program/create.do", method=RequestMethod.GET)
 	public ModelAndView createForm() {
