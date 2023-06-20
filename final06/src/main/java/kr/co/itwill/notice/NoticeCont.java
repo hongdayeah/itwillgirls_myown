@@ -88,5 +88,45 @@ public class NoticeCont {
 	}//read() end
 
 
+	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteForm(String not_no) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("notice/deleteForm");
+		mav.addObject("not_no", not_no);
+		return mav;
+	}//deleteForm() end
+	
+	@RequestMapping(value="/delete.do", method=RequestMethod.POST)
+	public ModelAndView deleteProc(String not_no, HttpServletRequest req) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("notice/msgView");
+		
+		//삭제하고자 하는 글 정보 가져오기(/noticeimg 폴더에서 삭제할 파일명 확인하기 위해)
+		NoticeDTO oldDTO=dao.read(not_no);
+		
+		int cnt=dao.delete(not_no);
+		if(cnt==0) {
+			String msg1="<p>공지 삭제실패</p>";
+			String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
+			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?not_no=" + oldDTO.getNot_no() + "\"'>";
+	        mav.addObject("msg1", msg1);
+	        mav.addObject("link1", link1); 
+	        mav.addObject("link2", link2); 
+		} else {
+			 String msg1="<p>공지 삭제완료</p>";
+			 mav.addObject("msg1", msg1);
+			 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?not_no=" + oldDTO.getNot_no() + "\"'>";
+			 mav.addObject("msg1", msg1);
+			 mav.addObject("link2", link1);  
+			 
+			 //첨부했던 파일 삭제
+			 ServletContext application=req.getServletContext();
+			 String basePath=application.getRealPath("noticeimg");
+			 UploadSaveManager.deleteFile(basePath, oldDTO.getNot_img());
+		}
+		return mav;
+	}//deletePROC() end
+	
+	
 }
 

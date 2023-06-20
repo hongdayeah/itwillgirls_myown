@@ -96,4 +96,34 @@ public class NoticeDAO {
 		return dto;
 	}//read() end
 	
+	
+	public int delete (String not_no) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" DELETE FROM notice ");
+			sql.append(" WHERE not_no = ? ");
+
+
+			cnt=jt.update(sql.toString(), not_no);
+		}catch (Exception e) {
+			System.out.println("공지 삭제 실패: " + e);
+		}//end
+		return cnt;
+	}//delete() end
+	
+	public int update(NoticeDTO dto) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" UPDATE notice ");
+			sql.append("SET not_cate, not_sub, not_con, not_img, not_size");
+			sql.append("WHERE not_no=?");
+			
+			cnt=jt.update(sql.toString(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_img(), dto.getNot_size());
+		}catch(Exception e) {
+			System.out.println("수정실패: "+e);
+		}
+		return cnt;
+	}//update() end
 }
