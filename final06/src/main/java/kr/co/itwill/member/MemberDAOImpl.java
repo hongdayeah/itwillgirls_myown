@@ -27,4 +27,10 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.delete("member.memberDelete", dto);
 	}// memberDelete() end
 
+	// 회원정보 수정
+	@Override
+	public void memberUpdate(MemberDTO dto) throws Exception {
+		sqlSession.update("member.memberUpdate", dto);
+	}//memberUpdate() end
+
 }// class end

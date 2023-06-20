@@ -44,4 +44,10 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.memberDelete(dto);
 	}// memberDelete() end
 
+	// 회원정보수정
+	@Override
+	public void memberUpdate(MemberDTO dto) throws Exception {
+		membermapper.memberUpdate(dto);
+	}// memberUpdate() end
+
 }// class end

@@ -9,14 +9,15 @@
 <div class="content">
 	<div class="my_list">
 		<ul>
-			<li class="fa_qna"><a>마이페이지</a></li>
+			<li class=""><a>마이페이지</a></li>
 		</ul>
 		<ul>
-			<li class="info_qna_h"><a href="/home.do">홈</a></li>
-			<li class="info_qna_h"><a href="">예매내역</a></li>
-			<li class="info_qna_d"><a href="">개인정보수정</a></li>
-			<li class="info_qna_d"><a href="../member/memberWithdraw.do">회원탈퇴</a></li>
-			<li class="info_qna_h"><a href="">찜목록</a></li>
+			<li class=""><a href="/home.do">홈</a></li>
+			<li class=""><a href="">예매내역</a></li>
+			<li class=""><a href="">자녀회원등록</a></li>
+			<li class=""><a href="../member/memberModify.do">개인정보수정</a></li>
+			<li class=""><a href="../member/memberWithdraw.do">회원탈퇴</a></li>
+			<li class=""><a href="">찜목록</a></li>
 		</ul>
 	</div>
 </div>
