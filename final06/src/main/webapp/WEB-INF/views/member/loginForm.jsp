@@ -1,23 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  
+<%@ include file="../header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>loginForm.jsp</title>
-	
-<script src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous">
-</script>
-
-</head>
-<body>
-
-	<h3>로그인</h3>
+    <!-- 본문 시작 loginForm.jsp -->
 	
 	<form id="loginfrm" method="post" action="login.do">
 		<table border="1">
@@ -62,5 +48,7 @@ $(".login_button").click(function() {
 	$("#loginfrm").submit();
 });
 </script>
-</body>
-</html>
+
+    <!-- 본문 끝 -->
+        
+<%@ include file="../footer.jsp" %>
