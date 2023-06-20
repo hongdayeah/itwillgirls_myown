@@ -32,7 +32,7 @@
   </tr>
   <tr>
  	<td align="center">첨부파일</td>
- 	<td><input type="file" name="not_imgMF" size="100"></td>
+ 	<td><input type="file" name="not_filenameMF" size="100"></td>
  </tr>
  </table>
  

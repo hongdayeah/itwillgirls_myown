@@ -11,22 +11,23 @@ public class NoticeDTO {
 	private String not_regdt;
 	private String not_filename;
 	private Long not_size;
-	private String not_img; 
 	
 	public NoticeDTO() {}
 
-	private MultipartFile not_imgMF;
+	private MultipartFile not_filenameMF;
+	
+	
+	
+	public MultipartFile getNot_filenameMF() {
+		return not_filenameMF;
+	}
+
+	public void setNot_filenameMF(MultipartFile not_filenameMF) {
+		this.not_filenameMF = not_filenameMF;
+	}
 
 	public int getNot_no() {
 		return not_no;
-	}
-
-	public MultipartFile getNot_imgMF() {
-		return not_imgMF;
-	}
-
-	public void setNot_imgMF(MultipartFile not_imgMF) {
-		this.not_imgMF = not_imgMF;
 	}
 
 	public void setNot_no(int not_no) {
@@ -81,19 +82,11 @@ public class NoticeDTO {
 		this.not_size = not_size;
 	}
 
-	public String getNot_img() {
-		return not_img;
-	}
-
-	public void setNot_img(String not_img) {
-		this.not_img = not_img;
-	}
-
 	@Override
 	public String toString() {
 		return "NoticeDTO [not_no=" + not_no + ", not_cate=" + not_cate + ", not_sub=" + not_sub + ", not_con="
 				+ not_con + ", not_regdt=" + not_regdt + ", not_filename=" + not_filename + ", not_size=" + not_size
-				+ ", not_img=" + not_img + ", not_imgMF=" + not_imgMF + "]";
+				+ ", not_filenameMF=" + not_filenameMF + "]";
 	}
 
 	
