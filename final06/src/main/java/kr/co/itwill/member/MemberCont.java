@@ -5,10 +5,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -84,11 +82,13 @@ public class MemberCont {
 
 		if (dto2 == null) { // 로그인 실패
 			int result = 0;
+			session.setAttribute("member_dto", null); // 로그인 실패 시 session 변수에 null값 저장
+			
 			rttr.addFlashAttribute("result", result);
 			return "redirect:/member/login.do";
-		} // if end
-
-		session.setAttribute("member_dto", dto2); // 로그인 성공
+		} else {
+			session.setAttribute("member_dto", dto2); // 로그인 성공
+		}// if end
 
 		return "redirect:/home.do";
 	}// loginProc() end
@@ -110,53 +110,30 @@ public class MemberCont {
 		return "member/withDrawPwCheck";
 	}// withdraw() end
 
-	// 패스워드 체크 (수정 중)
-	/*
-	@RequestMapping(value = "/pwCheck.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String pwCheck(MemberDTO member_dto) throws Exception {
+	// 회원탈퇴
+	@RequestMapping(value = "/memberDelete.do", method = RequestMethod.POST)
+	public String memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr) throws Exception {
 
-		int result = memberservice.pwCheck(member_dto);
+		// 세션에 있는 값을 가져와서 변수에 넣기
+		MemberDTO member_dto = (MemberDTO) session.getAttribute("member_dto");
 
-		if (result != 0) {
-			return "success"; // 비밀번호 일치 O
-		} else {
-			return "fail"; // 비밀번호 일치 X
+		// 세션에 있는 비밀번호 가져오기
+		String s_passwd = member_dto.getP_passwd();
+
+		// 새롭게 입력될 비밀번호 가져오기
+		String dto_passwd = dto.getP_passwd();
+		
+		//System.out.println(s_passwd);
+		//System.out.println(dto_passwd);
+
+		if (!s_passwd.equals(dto_passwd)) { //비밀번호가 일치하지 않을 때
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/member/memberWithdraw.do";
 		} // if end
-	}// pwCheck() end
-	*/
-	/*	
-	// 회원탈퇴(수정 중)
-	@RequestMapping("/withdrawProc.do")
-	public String withdrawProc(MemberDTO dto, HttpSession session, HttpServletRequest req) throws Exception {
-		memberservice.withdrawProc(dto, session, req);
-
-		// 세션 변수 초기화
-		session = req.getSession();
+		
+		memberservice.memberDelete(dto);
 		session.invalidate();
-
 		return "redirect:/home.do";
-	}// withdrawProc() end
-	*/
-	
-	// 회원탈퇴(수정 중)
-	@RequestMapping("/withdrawProc.do")
-	public String withdrawProc(@RequestParam String p_id, @RequestParam String p_passwd, Model model, HttpServletRequest req) throws Exception {
-		//비밀번호 체크
-		boolean result = memberservice.pwCheck(p_id, p_passwd);
-		if(result) { //비밀번호가 일치하면 탈퇴 후 메인화면으로 이동
-			memberservice.withdrawProc(p_id);
-			
-			// 세션 변수 초기화
-			HttpSession session = req.getSession();
-			session.invalidate();
-			
-			return "redirect:/home.do";
-			
-		} else {	//비밀번호가 일치하지 않으면 다시 비밀번호 입력하기
-			model.addAttribute("msg", "비밀번호 불일치");
-			return "member/withDrawPwCheck";
-		}//if end
-	}// withdrawProc() end
-	
+	}// memberDelete() end
+
 }// class end

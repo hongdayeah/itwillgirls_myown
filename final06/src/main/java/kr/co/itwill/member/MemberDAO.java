@@ -10,10 +10,7 @@ public interface MemberDAO {
 	// 아이디 중복확인
 	public int idCheck(String p_id);
 
-	// 패스워드 체크
-	public boolean pwCheck(String p_id, String p_passwd) throws Exception;
-
-	// 회원탈퇴
-	public void withdrawProc(String p_id) throws Exception;
+	//회원 탈퇴
+	public void memberDelete(MemberDTO dto) throws Exception;
 
 }// interface end

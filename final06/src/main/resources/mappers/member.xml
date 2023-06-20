@@ -43,9 +43,10 @@
 	</select>
 
 	<!-- 회원 탈퇴 -->
-	<delete id="withdrawProc">
+	<delete id="memberDelete">
 		DELETE FROM member_parent
 		WHERE p_id = #{p_id}
+		AND p_passwd = #{p_passwd}
 	</delete>
 
 
