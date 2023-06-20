@@ -98,7 +98,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" onclick="location.href='/program/list.do'">프로그램 소개</a>
 						<a class="dropdown-item" onclick="location.href='/teacher/list.do'">강사 소개</a>
-						<a class="dropdown-item" href="#">성향이란?</a>
+						<a class="dropdown-item" onclick="location.href='/tendency/list.do'">성향이란?</a>
 						<a class="dropdown-item" href="#">성향테스트하기</a>
 					</div>
 				</li>
