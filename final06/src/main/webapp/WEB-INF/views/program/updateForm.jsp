@@ -27,10 +27,10 @@
 		<tr>
 			<th>성향 정보</th> <!-- 선택되어있게 하기 -->
 			<td>
-				<input type="checkbox" name="prochar_no" value="IE">IE
-				<input type="checkbox" name="prochar_no" value="II">II
-				<input type="checkbox" name="prochar_no" value="EE">EE
-				<input type="checkbox" name="prochar_no" value="EI">EI
+				<input type="checkbox" name="prochar_no" value="pro_IE">IE
+				<input type="checkbox" name="prochar_no" value="pro_II">II
+				<input type="checkbox" name="prochar_no" value="pro_EE">EE
+				<input type="checkbox" name="prochar_no" value="pro_EI">EI
 			</td>
 		</tr>
 		<tr>

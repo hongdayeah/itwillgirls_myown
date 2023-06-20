@@ -173,6 +173,28 @@
 	display: none;
 }
 
+.id_input_re_1{
+	color: green;
+	display: none;
+}
+.id_input_re_2{
+	color: red;
+	display: none;
+}
+.pw_input_1{
+	color: red;
+	display: none;
+}
+.pw_input_2{
+	color: green;
+	display: none;
+}
+.dropdown-item{
+	cursor: pointer;
+}
+.nav-link{
+	cursor: pointer;
+}
 /*** Header ***/
 .carousel-caption {
     top: 0;
