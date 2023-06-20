@@ -168,8 +168,11 @@
 		function send() {
 			if (document.getElementById("agree").checked && document.getElementById("agree1").checked == true) {
 				return true;
-			} else {
-				alert("약관에 동의한 후 회원가입이 가능합니다")
+			} else if (document.getElementById("agree").checked == false) {
+				alert("'이용 약관'에 동의 후 회원가입이 가능합니다");
+				return false;
+			}else if (document.getElementById("agree1").checked == false) {
+				alert("'개인정보수집 및 이용에 대한 안내'에 동의 후 회원가입이 가능합니다");
 				return false;
 			}//if end
 		}//send() end
