@@ -12,11 +12,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="java.util.Map">
-		INSERT INTO member_parent
-		(p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2,
-		p_date)
-		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth},
-		#{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
+		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
+		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
 	</insert>
 
 	<!-- 아이디 중복검사 -->
@@ -34,14 +31,6 @@
 		AND p_passwd = #{p_passwd}
 	</select>
 
-	<!-- 패스워드 체크 -->
-	<select id="pwCheck" resultType="int">
-		SELECT COUNT(*)
-		FROM member_parent
-		WHERE p_id = #{p_id}
-		AND p_passwd = #{p_passwd}
-	</select>
-
 	<!-- 회원 탈퇴 -->
 	<delete id="memberDelete">
 		DELETE FROM member_parent
@@ -49,7 +38,16 @@
 		AND p_passwd = #{p_passwd}
 	</delete>
 
-
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE member_parent
+		SET p_passwd = #{p_passwd}
+			, p_name = #{p_name}
+			, p_birth = #{p_birth}
+			, p_gender = #{p_gender}
+			, p_tell = #{p_tell}
+		WHERE p_id = #{p_id}
+	</update>
 
 
 </mapper>

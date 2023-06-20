@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -135,5 +136,18 @@ public class MemberCont {
 		session.invalidate();
 		return "redirect:/home.do";
 	}// memberDelete() end
+	
+	//회원정보 수정 페이지 이동
+	@RequestMapping(value = "/memberModify.do", method = RequestMethod.GET)
+	public String modify() {
+		return "member/memberModifyForm";
+	}//modify() end
+	
+	//회원정보 수정
+	@RequestMapping(value = "/memberModify.do", method = RequestMethod.POST)
+	public String memberUpdate(@ModelAttribute MemberDTO dto) throws Exception {
+		memberservice.memberUpdate(dto);
+		return "redirect:/home.do"; //추후 경로 수정할 예정입니다~
+	}//memberUpdate() end
 
 }// class end
