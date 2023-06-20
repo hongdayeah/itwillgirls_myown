@@ -13,10 +13,7 @@ public interface MemberService {
 	// 로그인
 	public MemberDTO login(MemberDTO dto) throws Exception;
 
-	// 패스워드 체크
-	public boolean pwCheck(String p_id, String p_passwd) throws Exception;
-
 	// 회원탈퇴
-	public void withdrawProc(String p_id) throws Exception;
+	public void memberDelete(MemberDTO dto) throws Exception;
 
 }// interface end

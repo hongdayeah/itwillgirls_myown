@@ -38,16 +38,10 @@ public class MemberServiceImpl implements MemberService {
 		return membermapper.login(dto);
 	}// login() end
 
-	// 패스워드 체크
-	@Override
-	public boolean pwCheck(String p_id, String p_passwd) throws Exception {
-		return membermapper.pwCheck(p_id, p_passwd);
-	}// pwCheck() end
-
 	// 회원탈퇴
 	@Override
-	public void withdrawProc(String p_id) throws Exception {
-		membermapper.withdrawProc(p_id);
-	}// withdrawProc() end
+	public void memberDelete(MemberDTO dto) throws Exception {
+		membermapper.memberDelete(dto);
+	}// memberDelete() end
 
 }// class end
