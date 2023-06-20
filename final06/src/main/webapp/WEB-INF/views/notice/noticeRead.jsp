@@ -13,5 +13,11 @@
 <tr align="center">
 	<td colspan="3"><img src="/noticeimg/${dto.not_img}"width="800"><br>${dto.not_con}</td>
 </tr>
-        </table>
+</table>
+<br><br>
+<div align="center">
+		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.not_no}'">
+		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.not_no}'">
+</div>
+<br><br>
 <%@ include file="../footer.jsp" %>
