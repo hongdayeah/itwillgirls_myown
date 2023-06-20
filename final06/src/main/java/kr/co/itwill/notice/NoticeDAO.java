@@ -54,8 +54,8 @@ public class NoticeDAO {
 		try {
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO notice(not_no, not_cate, not_sub, not_con, not_regdt, not_img, not_size ");
-			sql.append(" VALUE(notice_seq.nextval, ?, ?, ?, now(), ?) ");
+			sql.append(" INSERT INTO notice(not_no, not_cate, not_sub, not_con, not_regdt, not_img, not_size) ");
+			sql.append(" VALUES(null, ?, ?, ?, now(), ?, ?) ");
 			
 			cnt=jt.update(sql.toString(), dto.getNot_cate(), dto.getNot_sub(), dto.getNot_con(), dto.getNot_img(), dto.getNot_size());
 		} catch(Exception e) {
@@ -65,6 +65,35 @@ public class NoticeDAO {
 		}//create end
 		
 	
-	
+	public NoticeDTO read(String not_no) {
+		NoticeDTO dto=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT not_no, not_cate, not_sub, not_con, not_regdt, not_img, not_size ");
+			sql.append(" FROM notice ");
+			sql.append(" WHERE not_no ='" + not_no + "'");
+			
+			RowMapper<NoticeDTO> rowMapper=new RowMapper<NoticeDTO>() {
+				@Override
+				public NoticeDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+					NoticeDTO dto=new NoticeDTO();
+					dto.setNot_no(rs.getInt("not_no"));
+					dto.setNot_cate(rs.getString("not_cate"));
+					dto.setNot_sub(rs.getString("not_sub"));
+					dto.setNot_con(rs.getString("not_con"));
+					dto.setNot_regdt(rs.getString("not_regdt"));
+					dto.setNot_img(rs.getString("not_img"));
+					dto.setNot_size(rs.getLong("not_size"));
+					return dto;
+				}
+			};
+			
+			dto=jt.queryForObject(sql.toString(), rowMapper);
+			
+		} catch(Exception e) {
+			System.out.println("상세보기 실패: " + e);
+		}
+		return dto;
+	}//read() end
 	
 }
