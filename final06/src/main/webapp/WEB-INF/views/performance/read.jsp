@@ -17,9 +17,8 @@
 	<input type="button" value="공연목록" onclick="location.href='list.do'">
 
 	<table>
-		<tr>
-			<td><img src="../perstorage/${dto.per_img}" width="400"></td>
-			<td>${dto.per_name}</td>
+			<tr><img src="../perstorage/${dto.per_img}" width="400"></td>
+			<tr>${dto.per_name}</tr>
 			<td>${dto.per_exp}</td>
 			<td>${dto.per_date}</td>
 			<td>${dto.per_time}</td>
@@ -29,10 +28,8 @@
                 <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}"'>
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}"'>
             </td>
-	
-		</tr>
-			
-		<section style="float: right; width: 307px;">
+
+		<section style="float: right; width: 307px; margin-right:100px ">
 		    <div id="calendar_popup" class="calendar_popup_02" style="; ;">
 		      <div class="popup_warp">
 		        <div id="datepicker" style="background:#fff; border-radius:10px; min-height:230px;"></div>
@@ -50,16 +47,31 @@
 		            <p class="total_price"></p>
 		          </div>
 		          <div class="submit_btn">
-		            <button href="#" class="disabled">결제하기</button>
+		            <button href="#" class="disabled">좌석예매</button>
 		          </div>
 		        </form>
 		      </div>
 		    </div>
-
+		    
 		
 		<script>	
-		// 달력 셋팅
+		   enableAllTheseDays = (date) => {
+			      let m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+			      m = (m + 1) < 10 ? '0' + (m + 1) : (m + 1);
+			      d = d < 10 ? '0' + d : d;
+			      for (i = 0; i < availableDays.length; i++) {
+			        if ($.inArray(y + '-' + m + '-' + d, availableDays) != -1) {
+			          return [true];
+			        }
+			      }
+			      return [false];
+			    };
+			    
+		//구매할 수 있는 날짜 설정
+		let availableDays=["2023-06-22","2023-06-22","2023-06-23","2023-06-23","2023-06-24"];
+		let yearAndMonth = JSON.stringify(availableDays).split(',')[0];
 		
+		// 달력 셋팅		
 		$(function(){
 			$('#datepicker').datepicker({
 				  dateFormat: "yy-mm-dd",
@@ -70,7 +82,14 @@
 			      dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 			      showMonthAfterYear: true,
 			      yearSuffix: '년',
-			      minDate: 0
+			      minDate: 0,
+			      onSelect: (date) => {
+			          document.querySelector('.title1_select').setAttribute('style', 'display: none;');
+			          $('#calendar_popup').addClass('choice_day');
+			          getProductTimeList(date, 'getoptions');
+			          $('.time_select').show();
+			        },
+			        beforeShowDay: enableAllTheseDays
 			}); 
 		})
 	
