@@ -11,7 +11,7 @@
 	<td>${dto.not_regdt}</td>
 </tr>
 <tr align="center">
-	<td colspan="3"><img src="/noticeimg/${dto.not_img}"width="800"><br>${dto.not_con}</td>
+	<td colspan="3"><img src="../noticeimg/${dto.not_filename}"width="800"><br>${dto.not_con}</td>
 </tr>
 </table>
 <br><br>

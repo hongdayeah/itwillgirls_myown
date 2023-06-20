@@ -36,7 +36,7 @@ public class NoticeCont {
 	}//list() end
 	
 	@RequestMapping(value="/create.do", method=RequestMethod.GET)
-	public ModelAndView createForm(String not_no) {
+	public ModelAndView createForm(int not_no) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("notice/createForm");
 		mav.addObject("not_no", not_no);
@@ -53,10 +53,10 @@ public class NoticeCont {
 		ServletContext application=req.getServletContext();
 		String basePath=application.getRealPath("/noticeimg");
 		 
-		MultipartFile not_imgMF=dto.getNot_imgMF();
-		String not_img=UploadSaveManager.saveFileSpring30(not_imgMF, basePath);
-		dto.setNot_img(not_img);
-		dto.setNot_size(not_imgMF.getSize());
+		MultipartFile not_filenameMF=dto.getNot_filenameMF();
+		String not_filename=UploadSaveManager.saveFileSpring30(not_filenameMF, basePath);
+		dto.setNot_filename(not_filename);
+		dto.setNot_size(not_filenameMF.getSize());
 		
 		//////////////////////
 		int cnt=dao.create(dto); 
@@ -78,7 +78,7 @@ public class NoticeCont {
 	
 
 	@RequestMapping("/read.do")
-	public ModelAndView read(String not_no) {
+	public ModelAndView read(int not_no) {
 		ModelAndView mav=new ModelAndView();
 		NoticeDTO dto=dao.read(not_no);
 		mav.setViewName("notice/noticeRead");
@@ -89,7 +89,7 @@ public class NoticeCont {
 
 
 	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
-	public ModelAndView deleteForm(String not_no) {
+	public ModelAndView deleteForm(int not_no) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("notice/deleteForm");
 		mav.addObject("not_no", not_no);
@@ -97,14 +97,14 @@ public class NoticeCont {
 	}//deleteForm() end
 	
 	@RequestMapping(value="/delete.do", method=RequestMethod.POST)
-	public ModelAndView deleteProc(String not_no, HttpServletRequest req) {
+	public ModelAndView deleteProc(int not_no, HttpServletRequest req) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("notice/msgView");
 		
 		//삭제하고자 하는 글 정보 가져오기(/noticeimg 폴더에서 삭제할 파일명 확인하기 위해)
 		NoticeDTO oldDTO=dao.read(not_no);
 		
-		int cnt=dao.delete(not_no);
+		int cnt=dao.delete(not_no); 
 		if(cnt==0) {
 			String msg1="<p>공지 삭제실패</p>";
 			String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
@@ -117,16 +117,63 @@ public class NoticeCont {
 			 mav.addObject("msg1", msg1);
 			 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?not_no=" + oldDTO.getNot_no() + "\"'>";
 			 mav.addObject("msg1", msg1);
-			 mav.addObject("link2", link1);  
+			 mav.addObject("link1", link1);  
 			 
 			 //첨부했던 파일 삭제
 			 ServletContext application=req.getServletContext();
 			 String basePath=application.getRealPath("noticeimg");
-			 UploadSaveManager.deleteFile(basePath, oldDTO.getNot_img());
+			 UploadSaveManager.deleteFile(basePath, oldDTO.getNot_filename());
 		}
 		return mav;
-	}//deletePROC() end
+	}//deleteProc() end
 	
 	
-}
-
+	@RequestMapping(value="/update.do", method=RequestMethod.GET)
+	public ModelAndView updateForm(int not_no) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("notice/updateForm");
+		NoticeDTO dto=dao.read(not_no);
+		mav.addObject("not_no", not_no);
+		mav.addObject("dto", dto);
+		return mav;
+	}//update() end
+	
+	
+	@RequestMapping(value="/update.do", method=RequestMethod.POST)
+	public ModelAndView updateProc(int not_no, @ModelAttribute NoticeDTO dto, HttpServletRequest req) {
+		
+		NoticeDTO oldDTO=dao.read(dto.getNot_no());
+		System.out.println(oldDTO);
+		ServletContext application=req.getServletContext();
+		String basePath=application.getRealPath("/noticeimg");
+		
+		//1)
+		MultipartFile not_filenameMF=dto.getNot_filenameMF();
+		if(not_filenameMF.getSize()>0) {
+			UploadSaveManager.deleteFile(basePath, oldDTO.getNot_filename());
+			String not_filename=UploadSaveManager.saveFileSpring30(not_filenameMF, basePath);
+			dto.setNot_filename(not_filename);
+			dto.setNot_size(not_filenameMF.getSize());
+		}else {
+			dto.setNot_filename(oldDTO.getNot_filename());
+			dto.setNot_size(oldDTO.getNot_size());
+		}//if end
+		
+		ModelAndView mav=new ModelAndView();
+		int cnt=dao.update(dto);
+		if(cnt==0) {
+			mav.setViewName("notice/msgView");
+			String msg1="<p> 수정실패 </p>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+            String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?not_no=" + oldDTO.getNot_no() + "\"'>";
+		
+            mav.addObject("msg1", msg1);
+            mav.addObject("link1", link1); 
+            mav.addObject("link2", link2);
+		}else {
+			mav.setViewName("redirect:/notice/list.do?not_no="+oldDTO.getNot_no());
+		}//if end
+		return mav;
+	}//updateProc() end
+	
+}//class end

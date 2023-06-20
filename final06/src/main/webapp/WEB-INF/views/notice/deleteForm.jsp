@@ -12,7 +12,7 @@
 	</div>
 	
 	<div clas="bottom">
-		<input type="submit" value="삭제진행하겠습니다.">
+		<input type="submit" value="삭제진행">
 	</div>
 </form>
 
