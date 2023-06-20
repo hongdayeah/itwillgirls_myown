@@ -74,9 +74,18 @@ public class NoticeCont {
 			 mav.addObject("link1", link1); 
 			}//if end
 		return mav; 
-		}//create() end
+		}//createProc() end
 	
 
+	@RequestMapping("/read.do")
+	public ModelAndView read(String not_no) {
+		ModelAndView mav=new ModelAndView();
+		NoticeDTO dto=dao.read(not_no);
+		mav.setViewName("notice/noticeRead");
+		
+		mav.addObject("dto", dto);
+		return mav;
+	}//read() end
 
 
 }

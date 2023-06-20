@@ -27,7 +27,7 @@
   	</tr>
   <tr>
   	<td align="center">내용</td>
-  	<td><textarea cols="150" rows="20" class="form-control" name="not_con" id="not_con"></textarea></td>
+  	<td><textarea style="white-space: pre-line;" rows="10" cols="50" name="not_con" id="not_con"></textarea></td>
   	
   </tr>
   <tr>

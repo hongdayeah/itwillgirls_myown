@@ -19,12 +19,13 @@
 	<tr>
 		<td>${dto.not_no}</td>
 		<td>${dto.not_cate}</td>
-		<td><a href="read.do?not_no=${dto.not_no}">${dto.not_sub}"></a></td>
+		<td><a href="read.do?not_no=${dto.not_no}">${dto.not_sub}</a></td>
 		<td>${dto.not_regdt}</td>
 	</tr>
 	</c:forEach>
 </table>
 </form>
+<c:if test="">--> 관리자 등급 넣어서 조건문쓰기 </c:if> 
 <button type="button"><a href="/notice/create.do">관리자 작성</a></button>
 <!-- 본문 끝 -->
         
