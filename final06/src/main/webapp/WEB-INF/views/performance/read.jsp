@@ -71,7 +71,7 @@
 			      showMonthAfterYear: true,
 			      yearSuffix: '년',
 			      minDate: 0
-			});
+			}); 
 		})
 	
 				
