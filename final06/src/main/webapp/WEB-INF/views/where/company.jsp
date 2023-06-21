@@ -9,9 +9,6 @@
 		<li><a href='/where/company.do'">입주기관</a></li>
 	</ul>
 </div>
-<br><br>
-<table>
-
-</table>
+        
 <%@ include file="../footer.jsp" %>
  
