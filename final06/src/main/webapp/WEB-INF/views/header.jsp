@@ -123,7 +123,7 @@
 					</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" onclick="location.href='/notice/list.do'">공지사항</a>
-						<a class="dropdown-item" href="#">공간 소개</a>
+						<a class="dropdown-item" onclick="location.href='/where/facility.do'">공간 소개</a>
 						<a class="dropdown-item" href="#">자주묻는 질문</a>
 						<a class="dropdown-item" href="#">문의하기</a>
 					</div>
