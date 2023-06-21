@@ -1,5 +1,7 @@
 package kr.co.itwill.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import kr.co.itwill.member.MemberDTO;
 
 public interface MemberService {
@@ -21,5 +23,14 @@ public interface MemberService {
 
 	// 아이디 찾기
 	public MemberDTO memberFindID(MemberDTO dto) throws Exception;
+
+	// 비밀번호 찾기(이메일 발송)
+	public void sendEmail(MemberDTO dto, String div) throws Exception;
+
+	// 비밀번호 찾기
+	public void memberFindPW(HttpServletResponse response, MemberDTO dto) throws Exception;
+	
+	// 회원정보 보기
+	public MemberDTO readMember(String p_id);
 
 }// interface end
