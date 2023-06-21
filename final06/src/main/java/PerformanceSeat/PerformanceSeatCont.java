@@ -15,6 +15,10 @@ public class PerformanceSeatCont {
 		System.out.println("-----PerformanceSeatDAO() 객체 생성됨");
 	} //end
 
+		
+	
+	}
+	
 
 	
-}
+
