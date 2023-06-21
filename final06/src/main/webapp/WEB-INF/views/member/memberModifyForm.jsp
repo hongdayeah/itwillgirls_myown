@@ -54,9 +54,16 @@
 					</div>
 				</div>
 
-				<div>
-					<p class="fieldset">
-						<label for="p_addr1">성별
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="p_email">생년월일</label>
+						<input type="text" class="form-control" id="p_email" name="p_email" maxlength="25"
+								placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" value="${member_dto.p_email}" required>
+					</div>
+	
+					<div class="col-md-6 mb-3">
+						<label for="p_addr1">성별</label>
+						<div>
 							&nbsp;
 							<c:if test="${member_dto.p_gender == 1}">
 								<input type="radio" name="p_gender" id="p_gender" value="1" checked>남
@@ -66,24 +73,10 @@
 								<input type="radio" name="p_gender" id="p_gender" value="1">남
 								<input type="radio" name="p_gender" id="p_gender" value="2" checked>여
 							</c:if>
-						</label>
-					</p>
+						</div>
+					</div>
 				</div>
 
-				<div class="mb-3">
-					<label for="p_addr1">주소
-					<span class="text-muted">
-							<button type="button" class="btn" id="check_btn" onclick="DaumPostcode()">찾기</button>
-					</span>
-					</label>
-					<input type="text" class="form-control" id="p_addr1" placeholder="찾기를 눌러 주소를 입력하세요" readonly>
-				</div>
-
-				<div class="mb-3">
-					<label for="p_addr2">나머지 주소 </label> <input type="text"
-						class="form-control" id="p_addr2" placeholder="주소를 입력해 주세요.">
-				</div>
-				<div class="mb-4"></div>
 
 				<button type="submit" class="btn btn-primary btn-lg btn-block"
 					id="modify_button">수정하기</button>

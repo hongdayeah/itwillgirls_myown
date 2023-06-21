@@ -8,6 +8,7 @@ public class MemberDTO {
 	private String p_birth;
 	private int p_gender;
 	private String p_tell;
+	private String p_email;
 	private String p_addr1;
 	private String p_addr2;
 	private String p_grade;
@@ -63,6 +64,14 @@ public class MemberDTO {
 		this.p_tell = p_tell;
 	}
 
+	public String getP_email() {
+		return p_email;
+	}
+
+	public void setP_email(String p_email) {
+		this.p_email = p_email;
+	}
+
 	public String getP_addr1() {
 		return p_addr1;
 	}
@@ -98,8 +107,8 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO [p_id=" + p_id + ", p_passwd=" + p_passwd + ", p_name=" + p_name + ", p_birth=" + p_birth
-				+ ", p_gender=" + p_gender + ", p_tell=" + p_tell + ", p_addr1=" + p_addr1 + ", p_addr2=" + p_addr2
-				+ ", p_grade=" + p_grade + ", p_date=" + p_date + "]";
+				+ ", p_gender=" + p_gender + ", p_tell=" + p_tell + ", p_email=" + p_email + ", p_addr1=" + p_addr1
+				+ ", p_addr2=" + p_addr2 + ", p_grade=" + p_grade + ", p_date=" + p_date + "]";
 	}
 
 }//class end
