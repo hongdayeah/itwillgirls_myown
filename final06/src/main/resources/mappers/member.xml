@@ -12,8 +12,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="java.util.Map">
-		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date)
-		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_addr1}, #{p_addr2}, now())
+		INSERT INTO member_parent (p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_email, p_date)
+		VALUES (#{p_id}, #{p_passwd}, #{p_name}, #{p_birth}, #{p_gender}, #{p_tell}, #{p_email}, now())
 	</insert>
 
 	<!-- 아이디 중복검사 -->
@@ -25,7 +25,7 @@
 
 	<!-- 로그인 -->
 	<select id="login" resultType="kr.co.itwill.member.MemberDTO">
-		SELECT p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_addr1, p_addr2, p_date
+		SELECT p_id, p_passwd, p_name, p_birth, p_gender, p_tell, p_email, p_date
 		FROM member_parent
 		WHERE p_id = #{p_id}
 		AND p_passwd = #{p_passwd}
@@ -46,6 +46,7 @@
 			, p_birth = #{p_birth}
 			, p_gender = #{p_gender}
 			, p_tell = #{p_tell}
+			, p_email = #{p_email}
 		WHERE p_id = #{p_id}
 	</update>
 

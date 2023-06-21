@@ -30,7 +30,7 @@
 <div class="content">
 
 	<!-- 본문시작 agree.jsp-->
-	<form action="join.do" onsubmit="return send()">
+	<form action="join.do" method="post" onsubmit="return send()">
 		<!-- JavaScript는 현재페이지에 작성 -->
 		<div id="font" style="text-align: center; font-size: 30px; padding-top: 50px; padding-bottom: 50px;">
 			<h6>이용 약관</h6>
