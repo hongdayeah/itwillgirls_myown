@@ -35,7 +35,7 @@
 				<td>
 					<label><input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}>ID 저장</label>
 					<!-- ID 저장 선택 후 쿠키값에 ID를 저장했다면 다음 로그인 시에도 체크되어있도록 설정 -->
-					<input type="button" value="아이디 찾기" onclick=""> <!-- 경로 설정 중입니다~ -->
+					<input type="button" value="아이디 찾기" onclick="location.href='/member/findID.do'"> <!-- 경로 설정 중입니다~ -->
 					<input type="button" value="비밀번호 찾기" onclick=""> <!-- 경로 설정 중입니다~ -->
 				</td>
 			</tr>
@@ -54,12 +54,6 @@ $(".login_button").click(function() {
 </script>
 
 <script>
-/*
-$(function() {
-	//쿠키값 읽어오기
-	var c_id = getCookie("c_id");
-})//function() end
-*/
 $(document).ready(function() {
 	//저장된 쿠키값을 가져와서 ID 작성 input에 넣어준다. 쿠키값 없으면 공백 저장
 	var p_id = getCookie("c_id");

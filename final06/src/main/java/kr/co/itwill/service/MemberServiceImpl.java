@@ -50,4 +50,10 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.memberUpdate(dto);
 	}// memberUpdate() end
 
+	// 아이디 찾기
+	@Override
+	public MemberDTO memberFindID(MemberDTO dto) throws Exception {
+		return membermapper.memberFindID(dto);
+	}// memberFindID() end
+
 }// class end
