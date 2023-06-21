@@ -20,5 +20,8 @@ public interface MemberMapper {
 
 	// 회원정보 수정
 	public void memberUpdate(MemberDTO dto) throws Exception;
+	
+	// 아이디 찾기
+	public MemberDTO memberFindID(MemberDTO dto) throws Exception;
 
 }// interface end
