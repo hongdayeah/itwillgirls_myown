@@ -66,9 +66,9 @@ public class MemberServiceImpl implements MemberService {
 	public void sendEmail(MemberDTO dto, String div) throws Exception {
 		// mail server 설정
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; // 네이버 이용 시 smtp.naver.com
+		String hostSMTP = "smtp.google.com"; // 구글 이용 시 "smtp.gmail.com" (보안 문제 때문에 gmail은 안 됨)
 		String hostSMTPid = "qkffpsxkdl29@gmail.com"; // 서버 이메일 주소(보내는 사람 이메일 주소)
-		String hostSMTPpw = "alspsoRm23#";
+		String hostSMTPpw = "ienifcsbgkbjyxfp";
 
 		// 보내는 사람 email, 제목, 내용
 		String fromEmail = "webmaster@itwill.com"; // 보내는 사람 이메일 주소(받는 사람 이메일에 표시됨)
@@ -93,7 +93,7 @@ public class MemberServiceImpl implements MemberService {
 			email.setCharset(charSet);
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
-			email.setSmtpPort(465); // 네이버 이용시 587
+			email.setSmtpPort(465); // 구글 이용시 465, 네이버 이용시 587
 
 			email.setAuthentication(hostSMTPid, hostSMTPpw);
 			email.setTLS(true);
@@ -114,7 +114,13 @@ public class MemberServiceImpl implements MemberService {
 		MemberDTO ck = membermapper.readMember(dto.getP_id());
 		PrintWriter out = response.getWriter();
 
-		// 가입된 아이디가 없으면
+		//System.out.println(ck); 				//MemberDTO [p_id=null, p_passwd=null, p_name=null, p_birth=null, p_gender=0, p_tell=null, p_email=mnonz@naver.com, p_addr1=null, p_addr2=null, p_grade=null, p_date=null]
+		//System.out.println(dto.getP_id()); 		//내가 입력한 ID값
+		//System.out.println(dto.getP_email()); 	//내가 입력한 이메일값
+		//System.out.println(ck.getP_id()); 		//null
+		//System.out.println(ck.getP_email()); 	//서버에 있는 이메일값
+		
+		// 가입된 아이디가 없으면(중복된 아이디 체크, 중복일 경우: 1, 중복 아닐 경우: 0)
 		if (membermapper.idCheck(dto.getP_id()) == 0) {
 			out.print("등록되지 않은 아이디입니다.");
 			out.close();
@@ -142,7 +148,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 회원 정보 보기
 	@Override
-	public MemberDTO readMember(String p_id) {
+	public MemberDTO readMember(String p_id) throws Exception {
 		
 		System.out.println("S : readMember()실행");
 		MemberDTO dto = null;

@@ -6,7 +6,7 @@
 <%@ include file="../header.jsp" %>
 
     <!-- 본문 시작 searchPW.jsp -->
-	<form id="findPWfrm" method="post" action="findpw.do" onsubmit="return findPWCheck()">
+	<form id="findPWfrm" method="post" action="findPW.do" onsubmit="return findPWCheck()">
 		<table border="1">
 			<tr>
 			  <td colspan="2" align="center">* PASSWORD 찾기 *</td>
@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 			  <td>이메일 주소</td>
-			  <td><input type="text" class="form-control" id="p_email" name="p_email" maxlength="25" placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" value="" required>
+			  <td><input type="text" class="form-control" id="p_email" name="p_email" maxlength="25" placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" required>
 			</tr>
 			<tr>
 			  <td colspan=2 align=center>
-			    <input type="submit" class="find_button" value="PW찾기">
+			    <input type="button" class="find_button" id="find_button" value="PW찾기">
 			    <input type="reset"  value="취소" onclick="javascript:history.back()">
 			  </td>
 			</tr>
@@ -61,6 +61,24 @@ function findPWCheck() {
 
  return true;
 }//findPWCheck() end
+</script>
+
+<script>
+$(function(){
+	$("#find_button").click(function(){
+		$.ajax({
+			url : "/member/findPW.do",
+			type : "POST",
+			data : {
+				p_id : $("#p_id").val(),
+				p_email : $("#p_email").val()
+			},
+			success : function(result) {
+				alert(result);
+			},
+		})
+	});
+})
 </script>
     <!-- 본문 끝 -->
         

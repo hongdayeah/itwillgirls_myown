@@ -1,5 +1,7 @@
 package kr.co.itwill.member;
 
+import java.util.List;
+
 public interface MemberDAO {
 
 	String NAMESPACE = "member";

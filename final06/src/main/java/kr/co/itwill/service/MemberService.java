@@ -31,6 +31,6 @@ public interface MemberService {
 	public void memberFindPW(HttpServletResponse response, MemberDTO dto) throws Exception;
 	
 	// 회원정보 보기
-	public MemberDTO readMember(String p_id);
+	public MemberDTO readMember(String p_id) throws Exception;
 
 }// interface end

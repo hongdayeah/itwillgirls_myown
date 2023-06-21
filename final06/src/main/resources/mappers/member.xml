@@ -67,7 +67,7 @@
 	
 	<!-- 회원정보 보기 -->
 	<select id="readMember" resultType="kr.co.itwill.member.MemberDTO">
-		SELECT *
+		SELECT p_email
 		FROM member_parent
 		WHERE p_id = #{p_id}
 	</select>
