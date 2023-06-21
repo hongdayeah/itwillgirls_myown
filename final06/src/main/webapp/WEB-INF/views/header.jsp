@@ -39,6 +39,15 @@
   .person:hover {
     border-color: #f1f1f1;
   }
+  .carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%); /* make all photos black and white */ 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+  }
+  .carousel-caption h3 {
+    color: #fff !important;
+  }
   @media (max-width: 600px) {
     .carousel-caption {
       display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
@@ -155,7 +164,7 @@
     <div class="container-fluid">
         <div>
             <div>
-                <a href="../home.do">
+                <a href="home.do">
                     <h2 class="text-white fw-bold m-0">어린이문화센터</h2>
                 </a>
                 <div>
