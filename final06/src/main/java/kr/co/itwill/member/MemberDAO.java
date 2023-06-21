@@ -16,4 +16,10 @@ public interface MemberDAO {
 	// 회원정보 수정
 	public void memberUpdate(MemberDTO dto) throws Exception;
 
+	// 비밀번호 변경(임시비밀번호로 업데이트)
+	public int updatePW(MemberDTO dto) throws Exception;
+
+	// 회원 정보 보기
+	public MemberDTO readMember(String p_id) throws Exception;
+
 }// interface end

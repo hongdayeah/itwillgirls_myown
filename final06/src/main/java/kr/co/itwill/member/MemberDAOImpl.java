@@ -31,6 +31,19 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void memberUpdate(MemberDTO dto) throws Exception {
 		sqlSession.update("member.memberUpdate", dto);
-	}//memberUpdate() end
+	}// memberUpdate() end
+
+	// 비밀번호 변경(임시비밀번호로 업데이트)
+	@Override
+	public int updatePW(MemberDTO dto) throws Exception {
+		return sqlSession.update("member.updatePW", dto);
+	}// updatePW() end
+
+	// 회원 정보 보기
+	@Override
+	public MemberDTO readMember(String p_id) throws Exception {
+		MemberDTO dto = sqlSession.selectOne("member.readMember", p_id);
+		return dto;
+	}// readMember() end
 
 }// class end

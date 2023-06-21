@@ -181,23 +181,33 @@ public class MemberCont {
 
 	// 아이디 찾기
 	@RequestMapping(value = "/findID.do", method = RequestMethod.POST)
-	public String memberFindID(Model model
-								, @RequestParam(required = true, value = "p_name") String p_name
-								, @RequestParam(required = true, value = "p_tell") String p_tell
-								, MemberDTO dto) {
-		
+	public String memberFindID(Model model, @RequestParam(required = true, value = "p_name") String p_name,
+			@RequestParam(required = true, value = "p_tell") String p_tell, MemberDTO dto) {
+
 		try {
 			dto.setP_name(p_name);
 			dto.setP_tell(p_tell);
 			MemberDTO memberSearch = memberservice.memberFindID(dto);
-			
+
 			model.addAttribute("dto", memberSearch);
 		} catch (Exception e) {
 			System.out.println("아이디 찾기 실패");
 			model.addAttribute("msg", "오류가 발생되었습니다.");
-		}//try~catch end
-		
+		} // try~catch end
+
 		return "member/findIDProc";
 	}// searchID() end
+
+	// 비밀번호 찾기 페이지 이동
+	@RequestMapping(value = "/findPW.do", method = RequestMethod.GET)
+	public String findPW() {
+		return "member/findPW";
+	}// findPW() end
+
+	// 비밀번호 찾기 페이지 이동
+	@RequestMapping(value = "/findPW.do", method = RequestMethod.POST)
+	public void memberfindPW(@ModelAttribute MemberDTO dto, HttpServletResponse response) throws Exception {
+		memberservice.memberFindPW(response, dto);
+	}// findPW() end
 
 }// class end

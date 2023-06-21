@@ -36,7 +36,7 @@
 					<label><input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}>ID 저장</label>
 					<!-- ID 저장 선택 후 쿠키값에 ID를 저장했다면 다음 로그인 시에도 체크되어있도록 설정 -->
 					<input type="button" value="아이디 찾기" onclick="location.href='/member/findID.do'"> <!-- 경로 설정 중입니다~ -->
-					<input type="button" value="비밀번호 찾기" onclick=""> <!-- 경로 설정 중입니다~ -->
+					<input type="button" value="비밀번호 찾기" onclick="location.href='/member/findPW.do'"> <!-- 경로 설정 중입니다~ -->
 				</td>
 			</tr>
 		</table>

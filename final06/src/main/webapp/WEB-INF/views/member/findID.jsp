@@ -6,7 +6,6 @@
 <%@ include file="../header.jsp" %>
 
     <!-- 본문 시작 searchID.jsp -->
-	<!-- 작업 중입니다~ -->
 	<form id="findIDfrm" method="post" action="findID.do" onsubmit="return findIDCheck()">
 		<table border="1">
 			<tr>
@@ -32,7 +31,6 @@
 <script>
 function findIDCheck() {
 //아이디찾기 유효성 검사
-
 //1)이름 2글자 이상인지?
 	  let p_name=document.getElementById("p_name").value;
 	  p_name=p_name.trim();
@@ -52,7 +50,7 @@ function findIDCheck() {
 	  }//if end
 
 	  return true;
-}//joinCheck() end
+}//findIDCheck() end
 </script>
     <!-- 본문 끝 -->
         

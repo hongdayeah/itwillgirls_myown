@@ -57,6 +57,20 @@
 		WHERE p_name = #{p_name}
 		AND p_tell = #{p_tell}
 	</select>
+	
+	<!-- 비밀번호 변경(임시비밀번호로 업데이트) -->
+	<update id="updatePW">
+		UPDATE member_parent
+		SET p_passwd = #{p_passwd}
+		WHERE p_id = #{p_id}
+	</update>
+	
+	<!-- 회원정보 보기 -->
+	<select id="readMember" resultType="kr.co.itwill.member.MemberDTO">
+		SELECT *
+		FROM member_parent
+		WHERE p_id = #{p_id}
+	</select>
 
 
 </mapper>
