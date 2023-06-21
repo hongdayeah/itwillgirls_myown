@@ -25,6 +25,15 @@ public class PerformanceCont {
 		System.out.println("-----Performance() 객체 생성됨");
 	} //end
 	
+
+	@RequestMapping("/performance/seat.do")
+	public ModelAndView seat() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("/performanceSeat/seat");
+		
+		return mav;
+	}
+	
 	@RequestMapping("/performance/list.do")
 	public ModelAndView list() {
 		ModelAndView mav=new ModelAndView();
