@@ -1,6 +1,7 @@
 package kr.co.itwill.program;
 
 
+import java.io.StringBufferInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -32,13 +33,12 @@ public class ProgramDAO {
 		int cnt = 0;
 		
 		try {
-			//readcnt 수정해야함
 			sql = new StringBuilder();
 			sql.append(" INSERT INTO program_info(pro_obj, pro_name, prochar_no, pro_limit, pro_fee, ");
-			sql.append(" prorec_start, prorec_end, proper_start, proper_end, pro_day, pro_age, pro_exp, pro_poster, pro_img, pro_regdate, pro_readcnt) ");
-			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 0 )");
+			sql.append(" prorec_start, prorec_end, proper_start, proper_end, pro_day, pro_age, pro_exp, pro_poster, pro_img, pro_regdate) ");
+			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now()) ");
 			
-			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_regdate(), dto.getPro_readcnt());			
+			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_regdate());			
 		}catch(Exception e) {
 			System.out.println("프로그램 등록 실패 : " + e);
 		}
@@ -147,7 +147,7 @@ public class ProgramDAO {
 			sql.append(" UPDATE program_info ");
 			sql.append(" SET pro_obj = ?, pro_name = ?, prochar_no =?, pro_limit =?, pro_fee =?, ");
 			sql.append(" prorec_start = ?, prorec_end = ?, proper_start = ?, proper_end = ?, pro_day = ?, ");
-			sql.append(" pro_age = ?, pro_exp = ?, pro_poster = ?, pro_img = ?, pro_regdate = now(), pro_readcnt = 0 ");
+			sql.append(" pro_age = ?, pro_exp = ?, pro_poster = ?, pro_img = ?, pro_regdate = now() ");
 			sql.append(" WHERE pro_obj = ? ");
 			
 			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_obj());
@@ -190,4 +190,19 @@ public class ProgramDAO {
 		
 		return list;
 	}//ptlist() end
+	
+	//조회수 증가
+	public void incrementCnt(String pro_obj) {
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE program_info ");
+			sql.append(" SET pro_readcnt = pro_readcnt+1 ");
+			sql.append(" WHERE pro_obj = ? ");
+
+			jt.update(sql.toString(), pro_obj);
+		}catch(Exception e) {
+			System.out.println("조회수 증가 실패 : " + e);
+		}
+	}//incrementCnt() end
 }//class end

@@ -90,6 +90,9 @@ public class ProgramCont {
 		List<ProtimeDTO> ptlist = dao.ptlist(pro_obj);
 		mav.addObject("ptlist", ptlist);
 		
+		//조회수 증가하는 함수
+		dao.incrementCnt(pro_obj);
+		
 		return mav;
 	}//read() end
 	
