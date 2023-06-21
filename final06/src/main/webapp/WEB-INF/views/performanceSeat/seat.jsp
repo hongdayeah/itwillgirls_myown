@@ -6,7 +6,13 @@
 
     <!-- 본문 시작 performanceList.jsp -->
     <h3>*좌석예약  *</h3>
-
+    
+    <script>
+    	
+    	
+    
+    
+    </script>
     <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
