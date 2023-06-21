@@ -36,7 +36,7 @@ public class NoticeCont {
 	}//list() end
 	
 	@RequestMapping(value="/create.do", method=RequestMethod.GET)
-	public ModelAndView createForm(int not_no) {
+	public ModelAndView createForm(Integer not_no) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("notice/createForm");
 		mav.addObject("not_no", not_no);

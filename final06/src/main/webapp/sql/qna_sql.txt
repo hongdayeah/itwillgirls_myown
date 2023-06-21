@@ -1,0 +1,10 @@
+CREATE TABLE qna (
+	q_no	    int          	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	q_sub	    varchar(255) 	NOT NULL,
+	q_con	    varchar(2000) NOT NULL,
+	q_regdt	  date          DEFAULT (CURRENT_DATE),
+	q_grpno	  int           NOT NULL,
+	q_indent 	int         	DEFAULT 0,
+	q_ansnu 	int	          DEFAULT 0,
+	p_id	    varchar(20)  	NOT NULL
+);
