@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.itwill.protime.ProtimeDTO;
 import net.utility.UploadSaveManager;
 
 @Controller
@@ -84,6 +85,10 @@ public class ProgramCont {
 		mav.setViewName("program/read");
 		
 		mav.addObject("dto", dto);
+		
+		//ProramDAO에 선언한 ptread()함수 추가 (program_time에서 pro_obj=?인 행 조회)
+		List<ProtimeDTO> ptlist = dao.ptlist(pro_obj);
+		mav.addObject("ptlist", ptlist);
 		
 		return mav;
 	}//read() end

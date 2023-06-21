@@ -85,7 +85,9 @@ public class TeacherDAO {
 			RowMapper<TeacherDTO> rowMapper = new RowMapper<TeacherDTO>() {
 				@Override
 				public TeacherDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
 					TeacherDTO dto = new TeacherDTO();
+					
 					dto.setT_code(rs.getString("t_code"));
 					dto.setT_name(rs.getString("t_name"));
 					dto.setT_phone(rs.getString("t_phone"));

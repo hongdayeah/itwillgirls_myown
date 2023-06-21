@@ -13,14 +13,14 @@
 <input type="button" value="프로그램 목록" onclick="location.href='list.do'">
 <br>
 
-<table>
+<table border="1">
 	<tr>
 		<td>
 		<div>
 			<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.pro_poster}">
 		</div>
 		<div>
-			<table>
+			<table border="1">
 				<tr>
 					<th>프로그램명</th>
 					<td>${dto.pro_name}</td>
@@ -46,12 +46,12 @@
 					<td>${dto.pro_fee}</td>
 				</tr>
 				<tr>
-					<th>수업 시간</th>
-					<td>여기서는 protime 정보 갖고오기 </td>
-				</tr>
-				<tr>
-					<th>강사</th>
-					<td>teacher 정보 갖고오기</td>
+					<th>수업 시간 | 강사</th>
+					<td>
+					<c:forEach var="i" items="${ptlist}">
+						${i.pro_time} | ${i.t_code} <br>
+					</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<th>수강 정원</th>
