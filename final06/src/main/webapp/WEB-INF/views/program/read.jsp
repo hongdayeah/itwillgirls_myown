@@ -76,7 +76,7 @@
 <input type="button" value="예매하기" onclick="#">
 
 <!-- 찜하기 -->
-<input type="button" value="찜하기" onclick="location.href='likeInsert.do?pro_obj=${dto.pro_obj}'">
+<input type="button" value="찜하기" onclick="../likeprogram/like.do?pro_obj=${dto.pro_obj}">
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

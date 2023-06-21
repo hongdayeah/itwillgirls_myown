@@ -4,7 +4,9 @@
 <%@ include file="../header.jsp" %>
 
 <!-- 본문 시작 program -- likeInsert.jsp -->
-여기에 본문 내용 작성합니다
+찜 추가하시렵니까??
+<br>
+<input type="button" value="네" onclick="#">
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
