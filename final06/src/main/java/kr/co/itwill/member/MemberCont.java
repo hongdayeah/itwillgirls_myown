@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -170,5 +172,32 @@ public class MemberCont {
 		memberservice.memberUpdate(dto);
 		return "redirect:/home.do"; // 추후 경로 수정할 예정입니다~
 	}// memberUpdate() end
+
+	// 아이디 찾기 페이지 이동
+	@RequestMapping(value = "/findID.do", method = RequestMethod.GET)
+	public String findID() {
+		return "member/findID";
+	}// searchID() end
+
+	// 아이디 찾기
+	@RequestMapping(value = "/findID.do", method = RequestMethod.POST)
+	public String memberFindID(Model model
+								, @RequestParam(required = true, value = "p_name") String p_name
+								, @RequestParam(required = true, value = "p_tell") String p_tell
+								, MemberDTO dto) {
+		
+		try {
+			dto.setP_name(p_name);
+			dto.setP_tell(p_tell);
+			MemberDTO memberSearch = memberservice.memberFindID(dto);
+			
+			model.addAttribute("dto", memberSearch);
+		} catch (Exception e) {
+			System.out.println("아이디 찾기 실패");
+			model.addAttribute("msg", "오류가 발생되었습니다.");
+		}//try~catch end
+		
+		return "member/findIDProc";
+	}// searchID() end
 
 }// class end
