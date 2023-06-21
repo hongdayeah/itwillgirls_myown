@@ -13,7 +13,7 @@
 <br>
   
 <form name="protimefrm" id="protimefrm" method="POST" action="create.do">
-<input type="hidden" name="pro_obj" value="${requestScope.pro_obj}">
+
 <!-- 프로그램 제목도 보여주고싶음 ㅠㅠ -->
 <!-- <input type="hidden" name="pro_name" value="${reqeustScope.pro_name}"> -->
  	<table border="1">

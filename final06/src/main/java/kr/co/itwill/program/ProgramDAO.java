@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import kr.co.itwill.protime.ProtimeDTO;
+
 @Repository
 public class ProgramDAO {
 	
@@ -156,4 +158,36 @@ public class ProgramDAO {
 		
 		return cnt;
 	}//update() end
+	
+	//program_time 상세조회 하는 함수
+	@SuppressWarnings("deprecation")
+	public List<ProtimeDTO> ptlist(String pro_obj) {
+		List<ProtimeDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_time, t_code ");
+			sql.append(" FROM program_time ");
+			sql.append(" WHERE pro_obj = ? ");
+			
+			RowMapper<ProtimeDTO> rowMapper = new RowMapper<ProtimeDTO>() {
+				@Override
+				public ProtimeDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					ProtimeDTO dto = new ProtimeDTO();
+					
+					dto.setPro_time(rs.getString("pro_time"));
+					dto.setT_code(rs.getString("t_code"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), new Object[]{pro_obj}, rowMapper);
+		}catch(Exception e) {
+			System.out.println("program에서의 시간표 상세리스트 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//ptlist() end
 }//class end

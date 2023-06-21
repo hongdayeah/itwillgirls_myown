@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.classroom.ClassroomDTO;
+import kr.co.itwill.program.ProgramDAO;
+import kr.co.itwill.program.ProgramDTO;
 import kr.co.itwill.teacher.TeacherDTO;
 
 @Controller
@@ -17,6 +19,9 @@ public class ProtimeCont {
 
 	@Autowired
 	private ProtimeDAO dao;
+	
+	@Autowired
+	private ProgramDAO prodao;
 	
 	public ProtimeCont() {
 		System.out.println("-----ProtimeCont()객체 생성됨");
