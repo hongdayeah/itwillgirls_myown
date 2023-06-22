@@ -43,16 +43,17 @@
     <div class="container">
         <div class="form-wrapper">
         <form class="form-signin wow fadeInUp" id="loginfrm" method="post" action="login.do" onsubmit="return loginCheck()">
-        <h2 class="form-signin-heading">LOGIN</h2>
+        <h2 class="form-signin-heading">로그인</h2>
         <div class="login-wrap">
-            <input type="text" class="form-control" id="p_id" name="p_id" size="20" value="${cookie.id.value}" placeholder="User ID" autofocus required>
-            <input type="password" class="form-control" id="p_passwd" name="p_passwd" size="20" placeholder="Password">
+            <input type="text" class="form-control" id="p_id" name="p_id" size="20" value="${cookie.id.value}" placeholder="아이디" autofocus required>
+            <input type="password" class="form-control" id="p_passwd" name="p_passwd" size="20" placeholder="비밀번호">
             <label class="checkbox">
-                <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> Remember me
+                <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> ID 기억하기 │
                 <span class="pull-right">
                 	<!-- <a data-toggle="modal" href="#myModal" onclick="location.href='/member/findID.do'"> Forgot ID?</a> -->
-                	<a href="/member/findID.do"> Forgot ID?</a>
-                    <a href="/member/findPW.do"> Forgot Password?</a>
+                	<a href="/member/findID.do"> 아이디 찾기 </a>
+                	│
+                    <a href="/member/findPW.do"> 비밀번호 찾기 </a>
                 </span>
             </label>
             <span>
@@ -60,7 +61,7 @@
 					<div class="login_warn" style="color: red; font-size: 12px; text-align: center;">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div> <!-- 위치 조정 필요함 -->
 				</c:if>
 			</span>
-            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit">로그인 하기</button>
             <p>or you can sign in via social network</p>
             <div class="login-social-link">
                 <a href="index.html" class="facebook">
@@ -73,9 +74,9 @@
                 </a>
             </div>
             <div class="registration">
-                Don't have an account yet?
+                아직 회원이 아니신가요?
                 <a class="" href="/member/agree.do">
-                    Create an account
+                    회원가입
                 </a>
             </div>
         </div>
