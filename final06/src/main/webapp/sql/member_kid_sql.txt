@@ -1,0 +1,12 @@
+--member_kid_sql.txt
+
+CREATE TABLE member_kid (
+	k_no	    bigint(12)	 NOT NULL PRIMARY KEY,
+	k_name	  	varchar(20)	 NOT NULL,
+	k_birth	  	varchar(6)	 NOT NULL,
+	k_gender  	int	         NOT NULL,
+	p_id	    varchar(20)  NOT NULL,
+	typename  	varchar(5)	 NULL
+);
+
+commit;
