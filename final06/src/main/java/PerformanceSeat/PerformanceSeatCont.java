@@ -15,7 +15,17 @@ public class PerformanceSeatCont {
 		System.out.println("-----PerformanceSeatDAO() 객체 생성됨");
 	} //end
 
+	@RequestMapping("/performanceSeat/seatList.do")
+	public ModelAndView seatList() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("/performanceSeat/seatList");
 		
+		return mav;
+		
+		
+	}
+	
+	
 	
 	}
 	
