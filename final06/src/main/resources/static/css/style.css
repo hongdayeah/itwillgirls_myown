@@ -2982,3 +2982,11 @@ div.header h3{
 	width: 100%; /* Adjust the width as needed */
 	height: 400px;
 }
+
+.btn-position{
+	float: right;
+  	
+  	margin-right: 20px;
+  	margin-bottom: 20px;
+	
+}

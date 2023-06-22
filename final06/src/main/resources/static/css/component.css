@@ -758,7 +758,7 @@ h1[id] {
 }
 
 .bs-example:after {
-    content: "Example";
+    
     position: absolute;
     top: 15px;
     left: 15px;
@@ -1588,4 +1588,24 @@ h1[id] {
 
 .css .o,.css .o+.nt,.css .nt+.nt {
     color: #999;
+}
+
+/*추가*/
+.bs-programform{
+	position: relative;
+	width: 600px; /* 폼의 가로 크기를 조절해주세요 */
+	margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정합니다 */
+	padding: 45px 15px 15px;
+	background-color: #f8f8f8;
+	border: 1px solid #e5e5e5;
+}
+.bs-programform:after {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }

@@ -29,7 +29,7 @@ public class ProgramCont {
 	@RequestMapping("/program/list.do")
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("program/list2");
+		mav.setViewName("program/list");
 		List<ProgramDTO> list = dao.list();
 		mav.addObject("list", list);
 		
@@ -51,6 +51,7 @@ public class ProgramCont {
 		mav.setViewName("program/msgView");
 		
 		MultipartFile pro_posterMF = dto.getPro_posterMF();
+		System.out.println(pro_posterMF);
 		MultipartFile pro_imgMF = dto.getPro_imgMF();
 		String pro_poster = pro_posterMF.getOriginalFilename();
 		String pro_img = pro_imgMF.getOriginalFilename();
@@ -82,7 +83,7 @@ public class ProgramCont {
 	public ModelAndView read(String pro_obj) {
 		ModelAndView mav = new ModelAndView();
 		ProgramDTO dto = dao.read(pro_obj);
-		mav.setViewName("program/read");
+		mav.setViewName("program/read2");
 		
 		mav.addObject("dto", dto);
 		
