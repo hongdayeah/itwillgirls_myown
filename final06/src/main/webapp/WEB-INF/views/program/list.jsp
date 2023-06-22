@@ -3,56 +3,126 @@
 
 <%@ include file="../header.jsp" %>
 
-
-
-
 <!-- 본문시작 program -- list.jsp -->
-   
-<button type="button" class="btn btn-outline-primary" onclick="location.href='create.do'">프로그램등록</button>
+
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>
+					우리센터 프로그램을 소개합니다
+				</h1>
+			</div>
+			<div class="col-lg-8 col-sm-8">
+				<ol class="breadcrumb pull-right">
+					<li>
+						<a href="../home.do">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="list.do">
+							프로그램
+						</a>
+					</li>
+					<li class="">
+						프로그램 소개
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+
+<div class="btn-position">
+	<button class="btn btn-primary" onclick="location.href='create.do'">프로그램등록</button>
+</div>
 <br>
-프로그램 목록
-<table border="1">
-<thead>
-	<tr>
-		<th>이미지</th>
-		<th>프로그램이름</th>
-		<th>수강일</th>
-		<th>대상</th>
-		<th>수강료</th>
-	</tr>
-</thead>				
+<br>
+<br>
+<!--container start-->
+<div class="container">
+	<!-- 리스트 행 개수만큼 출력 -->
+	<c:forEach var="dto" items="${list}" varStatus="status">
+		<c:if test="${status.count % 2 == 1}">
+			<div class="row">
+		</c:if>
+			<div class="col-md-6">
+			<!-- 왼쪽 -->
+				<div class="blog-left">
+					<div class="blog-img">
+						<img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.pro_poster}" alt="${dto.pro_poster}"/>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="blog-two-info">
+								<p>
+								<!-- 강사님 이름 -->
+									<i class="fa fa-user"></i>
+									<span style="font-weight: bold;">강사</span> 
+									<!-- for문 돌려서 -->
+									<a href="#"> 강사</a> <!-- 해당 pro_obj의 강사 리스트 불러오기 -->
+									|
+									
+									<!-- 등록일 -->
+									<i class="fa fa-calendar"></i>
+									<span style="font-weight: bold;">수강기간</span>
+									<c:set var="proStart" value="${fn:substring(dto.proper_start, 5, 10)}" />
+									<c:set var="proEnd" value="${fn:substring(dto.proper_end, 5, 10)}" />
+									${proStart} ~ ${proEnd}
+									|
+									
+									<!-- 리뷰 개수 -->
+									<i class="fa fa-comment"></i>
+									<span style="font-weight: bold;">후기</span>
+									<a href="#">n개</a> <!-- 해당 pro_obj의 리뷰 개수 불러오기 -->
+									|
+									
+									<!-- 찜 개수? 찜으로 한다면 하트 이미지 쓰기 -->
+									<i class="fa fa-share"></i>
+									<span style="font-weight: bold;">공유</span>
+									<a href="#">n번</a> <!-- pro_obj의 찜 개수 가져오기 -->
+									<br>
+									
+									<!-- 해당 프로그램의 성향 타입 개수만큼 -->
+									<i class="fa fa-tags"></i>
+									성향 :
+									<!-- pro_obj의 성향 for문 돌리기 -->
+									<a href="#">
+									  <span class="label label-info"> IE</span>
+									</a>
+									<a href="#">
+									  <span class="label label-info">II </span>
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				<div class="blog-content">
+				  <!-- 프로그램 사진, 이름, 정원, 접수기간, 수강기간, 금액, 연령 -->
+				 <h3>
+				   ${dto.pro_name}
+				 </h3>
+				 <p>
+				   ${dto.pro_exp }
+				  </p>
+				</div>
+				<button class="btn btn-primary" onclick="location.href='read.do?pro_obj=${dto.pro_obj}'">
+				    더보기
+				  </button>
+				</div>
+			</div>
+			
+			<c:if test="${status.count % 2 == 0}">
+			</div>
+		</c:if>
+	</c:forEach>
+</div>
+<!--container end-->
 
-<c:forEach var="dto" items="${list}">
-	<tr>
-		<td>
-			<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.pro_poster}" width="200">
-		</td>
-		<td>
-			<a href="read.do?pro_obj=${dto.pro_obj}">${dto.pro_name}</a>
-		</td>
-		<td>${dto.proper_start} ~ ${dto.proper_end}</td>
-		<td>${dto.pro_age}</td>
-		<td>${dto.pro_fee}</td>
-		<td>
-			<input type="button" value="수정" onclick="location.href='update.do?pro_obj=${dto.pro_obj}'">
-			<input type="button" value="삭제" onclick="return deleteCheck()"> <!-- 확인필요 -->
-		</td>
-	</tr>
-</c:forEach>
-</table>
-  
-<!-- 본문 끝 -->
-<!-- JavaScript 함수 -->
 <script>
-   //확인필요
-   function deleteCheck(){
-	if(confirm("내용은 복구되지 않습니다.\n삭제하시겠습니까?")){
-		location.href = "delete.do?pro_obj";
-	}else{
-		return false;
-	}
-}//product_delete() end
-
 /*
 function product_delete() {
 	if (confirm("첨부된 파일은 영구히 삭제됩니다.\n진행할까요?")) {
