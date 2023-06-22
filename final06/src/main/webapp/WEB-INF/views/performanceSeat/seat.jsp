@@ -2,7 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-
+<style>
+	.seat-container {
+		display: flex;
+		flex-wrap: wrap;
+		
+		 }
+	.seat {
+	  justify-content : center;
+	  width : 150px;
+	  height : 150px;
+	  background-color : pink;	
+	  margin : 5px;  
+	}
+	.seat:hover {
+    background-color:#0a5021;
+	}
+</style>
 
 
   <!-- 본문 시작 performanceSeatList.jsp -->
@@ -38,6 +54,7 @@
 </div>
 <!--breadcrumbs end-->
   
+ <html>
   
   
   
@@ -70,21 +87,29 @@
 
 		</table>
 
+	<div class="seat"  onclick="click()"></div>
+
 			<strong>좌석 배치도</strong>
 			<br>
 			
-			<c:forEach var="i" begin="1" end="${perSeatdto.class_row}">
-				<c:forEach var="j" begin="1" end="${perSeatdto.class_column}">
-					<input type="checkbox" name="seats" value="[i][j]">
+			<div class="seat-container">
+			<c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
+				<c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
+					<div class="seat" onclick="click()">${i}${j}</div>
 				</c:forEach><br/>
 			</c:forEach>
+			</div>
+
+		<script>
+			function click(){
+				alert("클릭햇심다");
+			}
+		
+		</script>
 
 
-	
 
-
-
-
+</html>
 
 		
 
