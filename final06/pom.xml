@@ -97,8 +97,21 @@
 		    <artifactId>commons-email</artifactId>
 		    <version>1.5</version>
 		</dependency>
-
-
+		
+		<!-- 메일 라이브러리 2 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		    <version>2.7.1</version>
+		</dependency>
+		
+		<!-- 스프링 시큐리티 (임시 비밀번호 랜덤 설정, 권한 관련 필요 라이브러리) -->
+		<!-- 잠시 보류
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		-->
 		<!-- 사용자 추가 라이브러리 끝 -->
 	</dependencies>
 

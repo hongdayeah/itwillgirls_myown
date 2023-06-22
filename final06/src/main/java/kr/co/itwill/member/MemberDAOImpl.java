@@ -46,4 +46,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return dto;
 	}// readMember() end
 
+	// 비밀번호 찾기
+	@Override
+	public MemberDTO memberFindPW(String p_id) throws Exception {
+		MemberDTO dto = sqlSession.selectOne("member.memberFindPW", p_id);
+		return dto;
+	}// memberFindPW() end
+
 }// class end

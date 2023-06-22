@@ -73,6 +73,7 @@ public class MemberCont {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginForm() {
 		return "member/loginForm";
+		//return "member/template_login";
 	}// loginForm() end
 
 	// 아이디 저장 (loginProc()에 이용)
@@ -204,10 +205,61 @@ public class MemberCont {
 		return "member/findPW";
 	}// findPW() end
 
-	// 비밀번호 찾기 페이지 이동
+	// 비밀번호 찾기.v1
+	/*
 	@RequestMapping(value = "/findPW.do", method = RequestMethod.POST)
 	public void memberfindPW(@ModelAttribute MemberDTO dto, HttpServletResponse response) throws Exception {
 		memberservice.memberFindPW(response, dto);
 	}// findPW() end
+	*/
+	
+	// 비밀번호 찾기
+	/*
+	//@RequestMapping(value = "/findPW.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/findPW.do", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@ResponseBody
+	public String memberFindPW(MemberDTO dto) throws Exception {
+			
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String result = null;
 
+		System.out.println("login 확인 : " + dto);
+
+		// 회원정보 불러오기
+		MemberDTO user = memberservice.memberFindPW(dto);
+		System.out.println(user);
+
+		// 가입된 이메일이 존재한다면 이메일 발송
+		if (user != null) {
+
+			// 임시 비밀번호 생성(UUID 이용 - 특수문자는 넣을 수 없음)
+			String tempPW = UUID.randomUUID().toString().replace("-", ""); // '-' 제거
+			tempPW = tempPW.substring(0, 10); // 앞에서부터 10자리까지 자르기
+
+			System.out.println("임시 비밀번호 확인 : " + tempPW);
+
+			// dto 객체에 임시 비밀번호 담기
+			dto.setP_passwd(tempPW);
+
+			// 메일 전송
+			MailUtil mail = new MailUtil();
+			mail.sendMail(dto);
+
+			// 비밀번호 변경
+			memberservice.updatePW(dto);
+			
+			// 회원 비밀번호를 암호화하여 dto객체에 다시 저장
+			String securityPW = encoder.encode(dto.getP_passwd());
+			user.setP_passwd(securityPW);
+
+			result = "Success";
+
+		} else {
+			result = "Fail";
+		} // if end
+		
+		return result;
+	}// memberFindPW() end
+	*/
+	
 }// class end
