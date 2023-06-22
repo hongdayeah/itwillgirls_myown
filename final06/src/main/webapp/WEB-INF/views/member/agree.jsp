@@ -61,6 +61,7 @@
 <div class="content">
 
 	<!-- 본문시작 agree.jsp-->
+	<!--container start-->
 	<form action="join.do" method="post" onsubmit="return send()">
 		<!-- JavaScript는 현재페이지에 작성 -->
 		<div id="font" style="text-align: center; font-size: 30px; padding-top: 50px; padding-bottom: 50px;">
@@ -189,11 +190,11 @@
 		</div>
 
 		<div style="text-align: center">
-			<input class="button" type="submit" value="회원가입 진행">
-			&nbsp;&nbsp; <input class="button" type="button" value="뒤로 가기"
-				onclick="javascript:history.back()">
+			<button class="btn btn-lg btn-login btn-block" type="submit" onclick="/member/join.do">회원가입 진행</button>
+            <button class="btn btn-lg btn-login btn-block" type="button" onclick="javascript:history.back()">뒤로 가기</button>
 		</div>
 	</form>
+
 
 	<script>
 		function send() {
@@ -201,9 +202,11 @@
 				return true;
 			} else if (document.getElementById("agree").checked == false) {
 				alert("'이용 약관'에 동의 후 회원가입이 가능합니다");
+				document.getElementById("agree").focus();
 				return false;
 			}else if (document.getElementById("agree1").checked == false) {
 				alert("'개인정보수집 및 이용에 대한 안내'에 동의 후 회원가입이 가능합니다");
+				document.getElementById("agree1").focus();
 				return false;
 			}//if end
 		}//send() end

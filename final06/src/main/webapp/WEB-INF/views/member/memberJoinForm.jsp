@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <%@ include file="../header.jsp" %>
 
 <!--breadcrumbs start-->
@@ -44,10 +46,9 @@
         <div class="login-wrap">
         	
         	<div>
-        	<label></label>
 	            <input type="text" class="form-control" placeholder="ID" id="p_id" name="p_id" maxlength="20" autofocus required>
-	            <span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
-				<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+	            <span class="id_input_re_1" style="color: green; display: none;">사용 가능한 아이디 입니다.</span>
+				<span class="id_input_re_2" style="color: red; display: none;">아이디가 이미 존재합니다.</span>
             </div>
             
             <input type="text" class="form-control" placeholder="Name" id="p_name" name="p_name" maxlength="20" required>
@@ -77,9 +78,9 @@
        <script>
        //아이디 중복검사
 		$('#p_id').on("propertychange change keyup paste input", function(){
-		
-			let p_id = $('#p_id').val();			// .id_input에 입력되는 값
-			let data = {p_id : p_id}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+			
+			var p_id = $('#p_id').val();			// .id_input에 입력되는 값
+			var data = {p_id : p_id}				// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
 			
 			$.ajax({
 				type : "post",
@@ -87,7 +88,7 @@
 				data : data,
 				success : function(result){
 
-					if(result != "fail"){
+					if(result != 'fail'){
 						$('.id_input_re_1').css("display","inline-block");
 						$('.id_input_re_2').css("display", "none");				
 					} else {

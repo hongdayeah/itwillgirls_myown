@@ -142,7 +142,7 @@
 								<a href="../member/memberModify.do">개인정보 수정</a>
 							</li>
 							<li>
-								<a href="../member/memberWithdraw">회원탈퇴</a>
+								<a href="../member/memberWithdraw.do">회원탈퇴</a>
 							</li>
 							<li>
 								<a href="../#">나의 관심내역</a>
