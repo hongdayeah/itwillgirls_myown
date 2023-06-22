@@ -1,4 +1,4 @@
-package PerformanceSeat;
+package kr.co.iwill.performanceSeat;
 
 import java.util.ArrayList;
 import java.util.List;

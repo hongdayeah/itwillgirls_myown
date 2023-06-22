@@ -1,7 +1,9 @@
 package kr.co.itwill.performance;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
 public class PerformanceDTO {
  
 	private String per_code;

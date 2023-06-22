@@ -2,12 +2,21 @@ package kr.co.itwill.performance;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import kr.co.itwill.classroom.ClassroomDTO;
+import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
+
+
+
+
 
 @Repository
 public class PerformanceDAO {
@@ -16,7 +25,7 @@ public class PerformanceDAO {
 	//@Autowired 스프링컨테이너가 생성해 준 객체를 연결
 	@Autowired
 	private JdbcTemplate jt;
-	
+
 	StringBuilder sql=null;
 	
 	public PerformanceDAO() {
@@ -144,5 +153,43 @@ public class PerformanceDAO {
 		}//end
 		return cnt;
 	} //update end
+	
+	
+	
+	
+	public ClassroomDTO seatInfo() {
+		ClassroomDTO seatInfo=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT class_row, class_column ");
+			sql.append(" FROM room_class ");
+			sql.append(" WHERE class_code = '" + "theater" + "'");
+			
+			RowMapper<ClassroomDTO> rowMapper = new RowMapper<ClassroomDTO>() {
+				
+				@Override
+				public ClassroomDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+
+				ClassroomDTO dto=new ClassroomDTO();
+				
+				dto.setClass_row(rs.getInt("class_row"));
+				dto.setClass_column(rs.getInt("class_column")); 
+				
+				System.out.println(dto);
+				
+				return dto;
+			} //mapRow() end
+		}; //rowMapper end
+		
+			
+			seatInfo = jt.queryForObject(sql.toString(), rowMapper);
+			
+		} catch(Exception e) {
+			System.out.println("상세보기 실패"+e);
+		} //end
+		
+		return seatInfo;
+	}  //SeatInfo() end
+	
 	
 } //class end

@@ -1,10 +1,13 @@
-package PerformanceSeat;
+package kr.co.iwill.performanceSeat;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PerformanceSeatDTO {	
 	
 		private int row;
 		private int col;
-		private boolean isReserved;
+		private int isReserved;
 		
 		public PerformanceSeatDTO() {}
 
@@ -24,11 +27,11 @@ public class PerformanceSeatDTO {
 			this.col = col;
 		}
 
-		public boolean isReserved() {
+		public int getIsReserved() {
 			return isReserved;
 		}
 
-		public void setReserved(boolean isReserved) {
+		public void setIsReserved(int isReserved) {
 			this.isReserved = isReserved;
 		}
 
