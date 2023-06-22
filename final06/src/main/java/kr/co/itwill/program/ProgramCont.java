@@ -29,7 +29,7 @@ public class ProgramCont {
 	@RequestMapping("/program/list.do")
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("program/list");
+		mav.setViewName("program/list2");
 		List<ProgramDTO> list = dao.list();
 		mav.addObject("list", list);
 		

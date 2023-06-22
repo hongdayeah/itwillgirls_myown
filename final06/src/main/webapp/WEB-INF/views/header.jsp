@@ -15,7 +15,7 @@
 	<link rel="shortcut icon" href="img/favicon.png">
 	
 	<title>
-		header.jsp
+		kid-center
 	</title>
 	
 	<!-- Bootstrap core CSS -->
