@@ -18,11 +18,10 @@ public class PerformanceSeatCont {
 	@RequestMapping("/performanceSeat/seatList.do")
 	public ModelAndView seatList() {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("/performanceSeat/seatList");
+		mav.setViewName("performanceSeat/seatList");
 		
 		return mav;
-		
-		
+			
 	}
 	
 	
