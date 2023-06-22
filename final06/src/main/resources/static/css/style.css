@@ -1053,6 +1053,10 @@ section.contact-infos {
     border-bottom: 1px dashed #ddd;
 }
 /*blog-2-col*/
+.blog-new {
+	border: 1px solid #eee;
+	margin-bottom: 30px;
+}
 .blog-left {
     border: 1px solid #eee;
     margin-bottom: 30px;
@@ -2970,4 +2974,11 @@ div.header h3{
     position: absolute;
     left:50%;
     top:-4px;
+}
+
+/*추가*/
+
+.grid-image{
+	width: 100%; /* Adjust the width as needed */
+	height: 400px;
 }
