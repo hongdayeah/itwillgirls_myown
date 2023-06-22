@@ -42,7 +42,11 @@
 			</td></tr>
 			<tr><td>
 				<input type="button" value="좌석예매" onclick="location.href='seat.do'">
+				
+				
 			</td></tr>
+			
+	
 
 	</div>
 		
