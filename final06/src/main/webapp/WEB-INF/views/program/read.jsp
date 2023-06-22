@@ -76,7 +76,25 @@
 <input type="button" value="예매하기" onclick="#">
 
 <!-- 찜하기 -->
-<input type="button" value="찜하기" onclick="../likeprogram/like.do?pro_obj=${dto.pro_obj}">
+<input type="button" value="찜하기" onclick="addLike('${dto.pro_obj}')">
 <!-- 본문 끝 -->
+<!-- JavaScript 함수 -->
+<script>
+	function addLike(pro_obj){
+		if(confirm("관심프로그램으로 등록하시겠습니까?")){
+			// Ajax를 사용하여 찜 테이블에 INSERT 요청 보내기
+		    var xhr = new XMLHttpRequest();
+		    xhr.open("POST", "/likeprogram/like.do", true);
+		    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === 4 && xhr.status === 200) {
+		            // 요청 완료 후의 로직 수행
+		            alert("찜이 완료되었습니다.");
+		        }
+		    };
+		    xhr.send("pro_obj=" + pro_obj);
+		}
+	}//addLike() end
+</script>
         
 <%@ include file="../footer.jsp" %>
