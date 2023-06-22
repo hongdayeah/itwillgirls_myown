@@ -37,47 +37,35 @@
 
 <div class="content">
 
-	<!-- 본문시작 withDrawPwCheck.jsp-->
-	<form id="pwCheckfrm" method="post" action="/member/memberDelete.do">
-		<table border="1">
-			<tr>
-				<td colspan="2" align="center">* 비밀번호 확인 *</td>
-			</tr>
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="p_id" value="${member_dto.p_id}" readonly>
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" id="p_passwd" name="p_passwd" size="20">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center" style="color: red">
-					<c:if test="${msg == false}">
-						비밀번호가 일치하지 않습니다.
-					</c:if>
-				<td>
-			</tr>
-			<tr>
-				<td>
-					<input type="button" class="pwCheck_button" value="탈퇴하기">
-					<input type="reset" value="취소" onclick="javascript:history.back()">
-				</td>
-			</tr>
-		</table>
-	</form>
-	<!-- 본문 끝 -->
+<!-- 본문시작 withDrawPwCheck.jsp-->
+<!--container start-->
+<div class="login-bg">
+    <div class="container">
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" id="pwCheckfrm" method="post" action="/member/memberDelete.do">
+        <h2 class="form-signin-heading">회원 탈퇴</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" placeholder="User ID" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
+            <input type="text" class="form-control" type="password" placeholder="Password" id="p_passwd" name="p_passwd" size="20">
+            <div>
+            	<c:if test="${msg == false}">
+					비밀번호가 일치하지 않습니다.
+				</c:if>
+            </div>
+            <div style="text-align: center; padding: 5px;">탈퇴를 진행하려면 비밀번호를 입력해 주세요.</div>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="pwCheck_button">탈퇴하기</button>
+        </div>
+      </form>
+      </div>
+    </div>
 </div>
+<!-- 본문 끝 -->
 
 <script>
 $(document).ready(function(){
 
 	// 탈퇴
-	$(".pwCheck_button").on("click", function(){
+	$("#pwCheck_button").on("click", function(){
 		
 		if($("#p_passwd").val()==""){
 			alert("비밀번호를 입력해주세요.");

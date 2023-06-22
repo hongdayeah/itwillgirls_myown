@@ -36,89 +36,41 @@
 <!--breadcrumbs end-->
 
 <!-- 본문 시작 memberModifyForm.jsp -->
-<div class="container">
-	<div class="input-form-backgroud row">
-		<div class="input-form col-md-12 mx-auto">
+<!--container start-->
+<div class="login-bg">
+    <div class="container">
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" name="modifyfrm" id="modifyfrm" method="post" onsubmit="return modifyCheck()">
+        <h2 class="form-signin-heading">회원 정보 수정</h2>
+        <div class="login-wrap">
+        	
+        	<input type="text" class="form-control" placeholder="ID" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
+            <input type="text" class="form-control" placeholder="Name" id="p_name" name="p_name" maxlength="20" value="${member_dto.p_name}" required>
+            <input type="password" class="form-control" placeholder="Password" id="p_passwd" name="p_passwd" maxlength="20" value="${member_dto.p_passwd}" required>
+           	<input type="password" class="form-control" placeholder="Password Check" id="re_p_passwd" name="re_p_passwd" value="${member_dto.p_passwd}" maxlength="20" required>
+            <input type="text" class="form-control" placeholder="Birth ex) 910912" id="p_birth" name="p_birth" maxlength="6" value="${member_dto.p_birth}" required>
+            <input type="text" class="form-control" placeholder="Phone Number ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" value="${member_dto.p_tell}" required>
+            <input type="text" class="form-control" placeholder="E-mail ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" value="${member_dto.p_email}" required>
+            <div>
+				&nbsp;
+				<c:if test="${member_dto.p_gender == 1}">
+					<input type="radio" name="p_gender" id="p_gender" value="1" checked>남
+					<input type="radio" name="p_gender" id="p_gender" value="2">여
+				</c:if>
+					<c:if test="${member_dto.p_gender == 2}">
+					<input type="radio" name="p_gender" id="p_gender" value="1">남
+					<input type="radio" name="p_gender" id="p_gender" value="2" checked>여
+				</c:if>
+			</div>
 
-			<h4 class="mb-3">회원 정보 수정</h4>
-			<br>
+            <button class="btn btn-lg btn-login btn-block" type="submit">수정하기</button>
+        </div>
 
-			<form name="modifyfrm" id="modifyfrm" method="post" onsubmit="return modifyCheck()">
-
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="p_id">아이디</label>
-						<input type="text" class="form-control" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="p_name">이름</label>
-						<input type="text" class="form-control" id="p_name" name="p_name" maxlength="20"
-								placeholder="이름을 입력해 주세요" value="${member_dto.p_name}" required>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="p_passwd">비밀번호</label>
-						<input type="password" class="form-control" id="p_passwd" name="p_passwd" maxlength="20" 
-								placeholder="비밀번호를 입력해 주세요" value="${member_dto.p_passwd}" required>
-					</div>
-
-					<div class="col-md-6 mb-3">
-						<label for="re_p_passwd">비밀번호 확인</label>
-						<input type="password" class="form-control" id="re_p_passwd" name="re_p_passwd" maxlength="20"
-								placeholder="비밀번호를 다시 한 번 입력해 주세요" value="${member_dto.p_passwd}" required>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="p_birth">생년월일</label>
-						<input type="text" class="form-control" id="p_birth" name="p_birth" maxlength="6"
-								placeholder="생년월일을 입력해 주세요 ex) 910912" value="${member_dto.p_birth}" required>
-					</div>
-
-					<div class="col-md-6 mb-3">
-						<label for="p_tell">핸드폰 번호</label>
-						<input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11"
-								placeholder="핸드폰 번호를 입력해 주세요 ex) 01012345678" value="${member_dto.p_tell}" required>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="p_email">생년월일</label>
-						<input type="text" class="form-control" id="p_email" name="p_email" maxlength="25"
-								placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" value="${member_dto.p_email}" required>
-					</div>
-	
-					<div class="col-md-6 mb-3">
-						<label for="p_addr1">성별</label>
-						<div>
-							&nbsp;
-							<c:if test="${member_dto.p_gender == 1}">
-								<input type="radio" name="p_gender" id="p_gender" value="1" checked>남
-								<input type="radio" name="p_gender" id="p_gender" value="2">여
-							</c:if>
-								<c:if test="${member_dto.p_gender == 2}">
-								<input type="radio" name="p_gender" id="p_gender" value="1">남
-								<input type="radio" name="p_gender" id="p_gender" value="2" checked>여
-							</c:if>
-						</div>
-					</div>
-				</div>
-
-
-				<button type="submit" class="btn btn-primary btn-lg btn-block"
-					id="modify_button">수정하기</button>
-			</form>
-			<br>
-			<button class="btn btn-primary btn-lg btn-block"
-				onclick="history.back()">뒤로가기</button>
-
-		</div>
-	</div>
+      </form>
+      </div>
+    </div>
 </div>
+<!--container end-->
 
 
 <script>
