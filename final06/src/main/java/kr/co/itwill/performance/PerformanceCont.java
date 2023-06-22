@@ -27,9 +27,13 @@ public class PerformanceCont {
 	
 
 	@RequestMapping("/performance/seat.do")
-	public ModelAndView seat() {
+	public ModelAndView seat(String per_code) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("/performanceSeat/seat");
+		
+		PerformanceDTO dto=dao.read(per_code);
+		mav.addObject("dto",dto);
+		
 		
 		return mav;
 	}

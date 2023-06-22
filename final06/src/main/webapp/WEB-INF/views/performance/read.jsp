@@ -29,26 +29,11 @@
                 <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}"'>
                 <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}"'>
             </td></tr>
-
-	<div class="container">
-			<tr><td>수량선택</td><td>
-				<select name="pernum">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-			</td></tr>
 			<tr><td>
-				<input type="button" value="좌석예매" onclick="location.href='seat.do'">
-				
-				
+				<input type="button" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
 			</td></tr>
 			
-	
 
-	</div>
 		
 		</script>
 	</table>
