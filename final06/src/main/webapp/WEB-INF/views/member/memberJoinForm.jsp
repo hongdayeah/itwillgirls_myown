@@ -1,82 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
+
 <%@ include file="../header.jsp" %>
 
-    <!-- 본문 시작 memberJoinForm.jsp -->
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               우리센터 프로그램을 소개합니다
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+                  <a href="list.do">
+                     프로그램
+                  </a>
+               </li>
+               <li class="">
+                  프로그램 소개
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
+</div>
+<!--breadcrumbs end-->
+
+<!-- 본문 시작 memberJoinForm.jsp -->
+<!--container start-->
+<div class="login-bg">
     <div class="container">
-		<div class="input-form-backgroud row">
-			<div class="input-form col-md-12 mx-auto">
-				
-				<h4 class="mb-3">회원가입</h4>
-				<br>
-				
-				<form name="memfrm" id="memfrm" method="post" onsubmit="return joinCheck()">
-					
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="p_id">아이디</label>
-							<input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요" autofocus required>
-							<span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
-							<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
-						</div>
-						<div class="col-md-6 mb-3">
-							<label for="p_name">이름</label>
-							<input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="이름을 입력해 주세요" value="" required>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="p_passwd">비밀번호</label>
-							<input type="password" class="form-control" id="p_passwd" name="p_passwd" maxlength="20" placeholder="비밀번호를 입력해 주세요" value="" required>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="re_p_passwd">비밀번호 확인</label>
-							<input type="password" class="form-control" id="re_p_passwd" name="re_p_passwd" maxlength="20" placeholder="비밀번호를 다시 한 번 입력해 주세요" value="" required>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="p_birth">생년월일</label>
-							<input type="text" class="form-control" id="p_birth" name="p_birth" maxlength="6" placeholder="생년월일을 입력해 주세요 ex) 910912" value="" required>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="p_tell">핸드폰 번호</label>
-							<input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="핸드폰 번호를 입력해 주세요 ex) 01012345678" value="" required>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-md-6 mb-3">
-							<label for="p_email">이메일 주소</label>
-							<input type="text" class="form-control" id="p_email" name="p_email" maxlength="25" placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" value="" required>
-						</div>
-
-						<div class="col-md-6 mb-3">
-							<label for="p_gender">성별</label>
-							<div>
-							&nbsp;
-				            <input type="radio" name="p_gender" id="p_gender" value="1">남
-				            &nbsp;
-				            <input type="radio" name="p_gender" id="p_gender" value="2">여
-							</div>
-						</div>
-					</div>
-					
-					<button type="submit" class="btn btn-primary btn-lg btn-block" id="button">가입하기</button>
-				</form>
-				<br>
-				<button class="btn btn-primary btn-lg btn-block" onclick="history.back()">뒤로가기</button>
-
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" name="memfrm" id="memfrm" method="post" onsubmit="return joinCheck()">
+        <h2 class="form-signin-heading">Account Member Now</h2>
+        <div class="login-wrap">
+        	
+        	<div>
+        	<label></label>
+	            <input type="text" class="form-control" placeholder="ID" id="p_id" name="p_id" maxlength="20" autofocus required>
+	            <span class="id_input_re_1">사용 가능한 아이디 입니다.</span>
+				<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+            </div>
+            
+            <input type="text" class="form-control" placeholder="Name" id="p_name" name="p_name" maxlength="20" required>
+            <input type="password" class="form-control" placeholder="Password" id="p_passwd" name="p_passwd" maxlength="20" required>
+           	<input type="password" class="form-control" placeholder="Password Check" id="re_p_passwd" name="re_p_passwd" maxlength="20" required>
+            <input type="text" class="form-control" placeholder="Birth ex) 910912" id="p_birth" name="p_birth" maxlength="6" required>
+            <input type="text" class="form-control" placeholder="Phone Number ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" required>
+            <input type="text" class="form-control" placeholder="E-mail ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" required>
+            <div>
+				<div>
+				&nbsp;
+	            <input type="radio" name="p_gender" id="p_gender" value="1">Man
+	            &nbsp;
+	            <input type="radio" name="p_gender" id="p_gender" value="2">Woman
+				</div>
 			</div>
-		</div>
-		</div>
+            
+            <button class="btn btn-lg btn-login btn-block" type="submit">Join in</button>
+        </div>
 
-       
+      </form>
+      </div>
+    </div>
+</div>
+<!--container end-->
+      
        <script>
        //아이디 중복검사
 		$('#p_id').on("propertychange change keyup paste input", function(){
@@ -90,7 +87,7 @@
 				data : data,
 				success : function(result){
 
-					if(result != 'fail'){
+					if(result != "fail"){
 						$('.id_input_re_1').css("display","inline-block");
 						$('.id_input_re_2').css("display", "none");				
 					} else {

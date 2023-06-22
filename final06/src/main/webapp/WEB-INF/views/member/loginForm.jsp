@@ -1,56 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
 
 <%@ include file="../header.jsp" %>
 
-    <!-- 본문 시작 loginForm.jsp -->
-	
-	<form id="loginfrm" method="post" action="login.do">
-		<table border="1">
-			<tr>
-			  <td colspan="2" align="center">* 로그인 *</td>
-			</tr>
-			<tr>
-			  <td>아이디</td>
-			  <td><input type="text" name="p_id" size="20" value=${cookie.id.value}></td>
-			</tr>
-			<tr>
-			  <td>비밀번호</td>
-			  <td><input type="password" name="p_passwd" size="20"></td>
-			</tr>
-			<tr>
-			  <td colspan=2 align=center>
-			  <span>
-					<c:if test="${result == 0}">
-						<div class="login_warn" style="color: red">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div> <!-- 위치 조정 필요함 -->
-					</c:if>
-				</span>
-			    <input type="submit" class="login_button" value="로그인">
-			    <input type="reset"  value="취소" onclick="javascript:history.back()">
-			  </td>
-			</tr>
-			<tr>
-				<td>
-					<label><input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}>ID 저장</label>
-					<!-- ID 저장 선택 후 쿠키값에 ID를 저장했다면 다음 로그인 시에도 체크되어있도록 설정 -->
-					<input type="button" value="아이디 찾기" onclick="location.href='/member/findID.do'"> <!-- 경로 설정 중입니다~ -->
-					<input type="button" value="비밀번호 찾기" onclick="location.href='/member/findPW.do'"> <!-- 경로 설정 중입니다~ -->
-				</td>
-			</tr>
-		</table>
-	</form>
-	
-	
+
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               우리센터 프로그램을 소개합니다
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+                  <a href="list.do">
+                     프로그램
+                  </a>
+               </li>
+               <li class="">
+                  프로그램 소개
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
+</div>
+<!--breadcrumbs end-->
+
+<!-- 본문 시작 loginForm.jsp -->
+<!--container start-->
+<div class="login-bg">
+    <div class="container">
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" id="loginfrm" method="post" action="login.do" onsubmit="return loginCheck()">
+        <h2 class="form-signin-heading">LOGIN</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" id="p_id" name="p_id" size="20" value="${cookie.id.value}" placeholder="User ID" autofocus required>
+            <input type="password" class="form-control" id="p_passwd" name="p_passwd" size="20" placeholder="Password">
+            <label class="checkbox">
+                <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> Remember me
+                <span class="pull-right">
+                	<!-- <a data-toggle="modal" href="#myModal" onclick="location.href='/member/findID.do'"> Forgot ID?</a> -->
+                	<a href="/member/findID.do"> Forgot ID?</a>
+                    <a href="/member/findPW.do"> Forgot Password?</a>
+                </span>
+            </label>
+            <span>
+				<c:if test="${result == 0}">
+					<div class="login_warn" style="color: red; font-size: 12px; text-align: center;">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div> <!-- 위치 조정 필요함 -->
+				</c:if>
+			</span>
+            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+            <p>or you can sign in via social network</p>
+            <div class="login-social-link">
+                <a href="index.html" class="facebook">
+                    <i class="fa fa-facebook"></i>
+                    Facebook
+                </a>
+                <a href="index.html" class="twitter">
+                    <i class="fa fa-twitter"></i>
+                    Twitter
+                </a>
+            </div>
+            <div class="registration">
+                Don't have an account yet?
+                <a class="" href="/member/join.do">
+                    Create an account
+                </a>
+            </div>
+
+        </div>
+
+          <!-- Modal -->
+          <div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Forgot Password ?</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p>Enter your ID and Phone Number below to reset your password.</p>
+                          <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                      </div>
+                      <div class="modal-footer">
+                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                          <button class="btn btn-success" type="button">Submit</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- modal -->
+
+      </form>
+      </div>
+    </div>
+</div>
+<!--container end-->
+<!-- 본문 끝 -->
+
+
 <script>
-$(".login_button").click(function() {
-	//alert("로그인 버튼 작동");
-	
-	//로그인 메서드 서버 요청
-	$("#loginfrm").attr("action", "/member/login.do");
-	$("#loginfrm").submit();
-});//function() end
+function loginCheck() {
+	//로그인 유효성 검사
+      
+      //1)아이디 5~10글자 인지?
+      let p_id=document.getElementById("p_id").value;
+      p_id=p_id.trim();
+      if(p_id.length<5 || p_id.length>10) {
+          alert("아이디를 5글자~10글자 사이로 입력해 주세요");
+          document.getElementById("p_id").focus();
+          return false; //전송하지 않음
+      }//if end
+      
+    //2)비밀번호 5~10글자 인지?
+      let p_passwd=document.getElementById("p_passwd").value;
+      p_passwd=p_passwd.trim();
+      if(p_passwd.length<5 || p_passwd.length>10) {
+          alert("비밀번호를 5글자~10글자 사이로 입력해 주세요");
+          document.getElementById("p_passwd").focus();
+          return false;
+      }//if end
+      
+      return true;
+}//loginCheck() end
 </script>
 
 <script>

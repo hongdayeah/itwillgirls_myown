@@ -1,32 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
 <%@ include file="../header.jsp" %>
 
-    <!-- 본문 시작 searchID.jsp -->
-	<form id="findIDfrm" method="post" action="findID.do" onsubmit="return findIDCheck()">
-		<table border="1">
-			<tr>
-			  <td colspan="2" align="center">* ID찾기 *</td>
-			</tr>
-			<tr>
-			  <td>이름</td>
-			  <td><input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="이름을 입력해 주세요 ex) 홍길동" required></td>
-			</tr>
-			<tr>
-			  <td>핸드폰 번호</td>
-			  <td><input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="핸드폰 번호를 입력해 주세요 ex) 01012345678" required></td>
-			</tr>
-			<tr>
-			  <td colspan=2 align=center>
-			    <input type="submit" class="find_button" value="ID찾기">
-			    <input type="reset"  value="취소" onclick="javascript:history.back()">
-			  </td>
-			</tr>
-		</table>
-	</form>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               우리센터 프로그램을 소개합니다
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+                  <a href="list.do">
+                     프로그램
+                  </a>
+               </li>
+               <li class="">
+                  프로그램 소개
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!--breadcrumbs end-->
+<!--container start-->
+<div class="login-bg">
+    <div class="container">
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" id="findIDfrm" method="post" action="findID.do" onsubmit="return findIDCheck()">
+        <h2 class="form-signin-heading">Find ID</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="User Name" autofocus required>
+            <input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="User Phone Number" required>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="find_button">Submit</button>
+        </div>
+      </form>
+      </div>
+    </div>
+</div>
 
 <script>
 function findIDCheck() {

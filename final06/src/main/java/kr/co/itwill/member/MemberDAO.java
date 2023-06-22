@@ -1,7 +1,5 @@
 package kr.co.itwill.member;
 
-import java.util.List;
-
 public interface MemberDAO {
 
 	String NAMESPACE = "member";
@@ -23,5 +21,8 @@ public interface MemberDAO {
 
 	// 회원 정보 보기
 	public MemberDTO readMember(String p_id) throws Exception;
+
+	// 비밀번호 찾기
+	public MemberDTO memberFindPW(String p_id) throws Exception;
 
 }// interface end

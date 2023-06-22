@@ -58,11 +58,20 @@
 		AND p_tell = #{p_tell}
 	</select>
 	
+	<!-- 비밀 찾기 *resultType 중요함! -->
+	<select id="memberFindPW" resultType="kr.co.itwill.member.MemberDTO">
+		SELECT p_passwd
+		FROM member_parent
+		WHERE p_id = #{p_id}
+		AND p_email = #{p_email}
+	</select>
+	
 	<!-- 비밀번호 변경(임시비밀번호로 업데이트) -->
-	<update id="updatePW">
+	<update id="updatePW" parameterType="kr.co.itwill.member.MemberDTO">
 		UPDATE member_parent
 		SET p_passwd = #{p_passwd}
 		WHERE p_id = #{p_id}
+		AND p_email = #{p_email}
 	</update>
 	
 	<!-- 회원정보 보기 -->

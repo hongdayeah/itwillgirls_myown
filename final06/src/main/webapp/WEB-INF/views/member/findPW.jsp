@@ -1,32 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
 <%@ include file="../header.jsp" %>
 
-    <!-- 본문 시작 searchPW.jsp -->
-	<form id="findPWfrm" method="post" action="findPW.do" onsubmit="return findPWCheck()">
-		<table border="1">
-			<tr>
-			  <td colspan="2" align="center">* PASSWORD 찾기 *</td>
-			</tr>
-			<tr>
-			  <td>아이디</td>
-			  <td><input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="아이디를 입력해 주세요 ex) 홍길동" autofocus required>
-			</tr>
-			<tr>
-			  <td>이메일 주소</td>
-			  <td><input type="text" class="form-control" id="p_email" name="p_email" maxlength="25" placeholder="이메일을 입력해 주세요 ex) itwill@itwill.com" required>
-			</tr>
-			<tr>
-			  <td colspan=2 align=center>
-			    <input type="button" class="find_button" id="find_button" value="PW찾기">
-			    <input type="reset"  value="취소" onclick="javascript:history.back()">
-			  </td>
-			</tr>
-		</table>
-	</form>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               우리센터 프로그램을 소개합니다
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+                  <a href="list.do">
+                     프로그램
+                  </a>
+               </li>
+               <li class="">
+                  프로그램 소개
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
+</div>
+<!--breadcrumbs end-->
+	
+<!-- 본문 시작 findPW.jsp -->	
+<!--container start-->
+<div class="login-bg">
+    <div class="container">
+        <div class="form-wrapper">
+        <form class="form-signin wow fadeInUp" id="findPWfrm" method="post" action="findPW.do" onsubmit="return findPWCheck()">
+        <h2 class="form-signin-heading">Find PW</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" id="p_id" name="p_id" maxlength="20" placeholder="User ID" autofocus required>
+            <input type="text" class="form-control" id="p_email" name="p_email" maxlength="25" placeholder="E-mail" required>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="find_button">Temporary Password</button>    
+        </div>
+      </form>
+      </div>
+    </div>
+</div>
 
 <script>
 function findPWCheck() {
@@ -45,7 +68,7 @@ function findPWCheck() {
   p_email=p_email.trim();
   
   if(p_email.length<12) {
-     alert("이메일 12글자 이상 입력해 주세요~");
+     alert("이메일을 12글자 이상 입력해 주세요");
      document.getElementById("p_email").focus();
      return false;
    }//if end
@@ -66,19 +89,26 @@ function findPWCheck() {
 <script>
 $(function(){
 	$("#find_button").click(function(){
+		
+		let p_id = $("input[name='p_id']").val();
+		let p_email = $("input[name='p_email']").val();
+		
 		$.ajax({
 			url : "/member/findPW.do",
-			type : "POST",
-			data : {
-				p_id : $("#p_id").val(),
-				p_email : $("#p_email").val()
-			},
-			success : function(result) {
-				alert(result);
-			},
-		})
-	});
-})
+			dataType : 'json',
+			data : {"p_id":p_id, "p_email":p_email},
+			success : function(data) {
+				if(data == true) {
+					alert("임시 비밀번호가 발급되었습니다. 메일함을 확인해 주세요.");
+					console.log(data);
+				} else {
+					alert("아이디 또는 이메일을 정확하게 입력해 주세요.");
+					console.log(data);
+				}//if end
+			}//function(data) end
+		});//ajax() end
+	});//click() end
+});//$(function) end
 </script>
     <!-- 본문 끝 -->
         
