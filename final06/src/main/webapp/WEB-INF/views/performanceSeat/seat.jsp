@@ -30,6 +30,12 @@
 				<option value="5">5</option>
 			</select>
 		</td></tr>
+
+		<td>${perSeatdto.class_row}<td>
+		<td>${perSeatdto.class_column}<td>
+		
+		
+	
 	</table>
 	
 

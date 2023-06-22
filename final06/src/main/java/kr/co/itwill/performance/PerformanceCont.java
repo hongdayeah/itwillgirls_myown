@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.itwill.classroom.ClassroomDTO;
+import kr.co.iwill.performanceSeat.PerformanceSeatDAO;
+import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
 import net.utility.UploadSaveManager;
 
 @Controller
@@ -20,6 +23,8 @@ public class PerformanceCont {
 	
 	@Autowired
 	private PerformanceDAO dao;
+	
+
 	
 	public PerformanceCont() {
 		System.out.println("-----Performance() 객체 생성됨");
@@ -34,6 +39,11 @@ public class PerformanceCont {
 		PerformanceDTO dto=dao.read(per_code);
 		mav.addObject("dto",dto);
 		
+
+		//performance DAO에 선언한 seatInfo() 함수 추가
+		ClassroomDTO seatInfo = dao.seatInfo();
+		mav.addObject("perSeatdto", seatInfo);
+
 		
 		return mav;
 	}
