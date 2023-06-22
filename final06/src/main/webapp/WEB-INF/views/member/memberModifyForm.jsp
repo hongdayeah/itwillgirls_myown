@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <%@ include file="../header.jsp"%>
 
 <!--breadcrumbs start-->
@@ -40,30 +42,30 @@
 <div class="login-bg">
     <div class="container">
         <div class="form-wrapper">
-        <form class="form-signin wow fadeInUp" name="modifyfrm" id="modifyfrm" method="post" onsubmit="return modifyCheck()">
+        <form class="form-signin wow fadeInUp" name="modifyfrm" id="modifyfrm" method="post">
         <h2 class="form-signin-heading">회원 정보 수정</h2>
         <div class="login-wrap">
         	
-        	<input type="text" class="form-control" placeholder="ID" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
-            <input type="text" class="form-control" placeholder="Name" id="p_name" name="p_name" maxlength="20" value="${member_dto.p_name}" required>
-            <input type="password" class="form-control" placeholder="Password" id="p_passwd" name="p_passwd" maxlength="20" value="${member_dto.p_passwd}" required>
-           	<input type="password" class="form-control" placeholder="Password Check" id="re_p_passwd" name="re_p_passwd" value="${member_dto.p_passwd}" maxlength="20" required>
-            <input type="text" class="form-control" placeholder="Birth ex) 910912" id="p_birth" name="p_birth" maxlength="6" value="${member_dto.p_birth}" required>
-            <input type="text" class="form-control" placeholder="Phone Number ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" value="${member_dto.p_tell}" required>
-            <input type="text" class="form-control" placeholder="E-mail ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" value="${member_dto.p_email}" required>
-            <div>
+        	<input type="text" class="form-control" placeholder="아이디" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
+            <input type="text" class="form-control" placeholder="이름" id="p_name" name="p_name" maxlength="20" value="${member_dto.p_name}" required>
+            <input type="password" class="form-control" placeholder="비밀번호" id="p_passwd" name="p_passwd" maxlength="20" value="${member_dto.p_passwd}" required>
+           	<input type="password" class="form-control" placeholder="비밀번호 재입력" id="re_p_passwd" name="re_p_passwd" value="${member_dto.p_passwd}" maxlength="20" required>
+            <input type="text" class="form-control" placeholder="생년월일 6자리 ex) 910912" id="p_birth" name="p_birth" maxlength="6" value="${member_dto.p_birth}" required>
+            <input type="text" class="form-control" placeholder="핸드폰 번호 ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" value="${member_dto.p_tell}" required>
+            <input type="text" class="form-control" placeholder="이메일 주소 ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" value="${member_dto.p_email}" required>
+            <div style="padding: 5px;">
 				&nbsp;
 				<c:if test="${member_dto.p_gender == 1}">
-					<input type="radio" name="p_gender" id="p_gender" value="1" checked>남
-					<input type="radio" name="p_gender" id="p_gender" value="2">여
+					<input type="radio" name="p_gender" id="p_gender" value="1" checked> 남성
+					<input type="radio" name="p_gender" id="p_gender" value="2"> 여성
 				</c:if>
 					<c:if test="${member_dto.p_gender == 2}">
-					<input type="radio" name="p_gender" id="p_gender" value="1">남
-					<input type="radio" name="p_gender" id="p_gender" value="2" checked>여
+					<input type="radio" name="p_gender" id="p_gender" value="1"> 남성
+					<input type="radio" name="p_gender" id="p_gender" value="2" checked> 여성
 				</c:if>
 			</div>
 
-            <button class="btn btn-lg btn-login btn-block" type="submit">수정하기</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="modify_button" onclick="return modifyCheck()">수정하기</button>
         </div>
 
       </form>
@@ -76,26 +78,17 @@
 <script>
 	function modifyCheck() {
 		//회원정보 수정 유효성 검사
-
-		//1)비밀번호 5~10글자 인지?
-		let p_passwd = document.getElementById("p_passwd").value;
-		p_passwd = p_passwd.trim();
-		if (p_passwd.length<5 || p_passwd.length>10) {
-			alert("비밀번호를 5글자~10글자 사이로 입력해 주세요");
-			document.getElementById("p_passwd").focus();
+		
+		//1)아이디가 입력되어 있는지?
+		let p_id = document.getElementById("p_id").value;
+		p_id = p_id.trim();
+		if (p_id.length < 2) {
+			alert("아이디는 필수 입력값 입니다.");
+			document.getElementById("p_id").focus();
 			return false;
-		}//if end
-
-		//2)비밀번호와 비밀번호확인이 서로 일치하는지?
-		let re_p_passwd = document.getElementById("re_p_passwd").value;
-		re_p_passwd = re_p_passwd.trim();
-		if (p_passwd != re_p_passwd) {
-			alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
-			document.getElementById("re_p_passwd").focus();
-			return false;
-		}//if end
-
-		//3)이름 2글자 이상인지?
+		}//if end		
+		
+		//2)이름 2글자 이상인지?
 		let p_name = document.getElementById("p_name").value;
 		p_name = p_name.trim();
 		if (p_name.length < 2) {
@@ -104,7 +97,25 @@
 			return false;
 		}//if end
 
-		//4)생년월일이 6자리의 숫자인지?
+		//3)비밀번호 5~10글자 인지?
+		let p_passwd = document.getElementById("p_passwd").value;
+		p_passwd = p_passwd.trim();
+		if (p_passwd.length<5 || p_passwd.length>10) {
+			alert("비밀번호를 5글자~10글자 사이로 입력해 주세요");
+			document.getElementById("p_passwd").focus();
+			return false;
+		}//if end
+
+		//4)비밀번호와 비밀번호확인이 서로 일치하는지?
+		let re_p_passwd = document.getElementById("re_p_passwd").value;
+		re_p_passwd = re_p_passwd.trim();
+		if (p_passwd != re_p_passwd) {
+			alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
+			document.getElementById("re_p_passwd").focus();
+			return false;
+		}//if end
+
+		//5)생년월일이 6자리의 숫자인지?
 		let p_birth = document.getElementById("p_birth").value;
 		p_birth = p_birth.trim();
 		if (p_birth.length != 6 || isNaN(p_birth)) {
@@ -113,7 +124,7 @@
 			return false;
 		}//if end
 
-		//5)전화번호가 10~11자리의 숫자인지?
+		//6)전화번호가 10~11자리의 숫자인지?
 		let p_tell = document.getElementById("p_tell").value;
 		p_tell = p_tell.trim();
 		if (p_tell.length<10 || p_tell.length>11 || isNaN(p_tell)) {
@@ -122,7 +133,7 @@
 			return false;
 		}//if end
 
-		//6)성별을 선택했는지?
+		//7)성별을 선택했는지?
 		let flag = false;
 		for (i = 0; i < memfrm.p_gender.length; i++) {
 			if (memfrm.p_gender[i].checked == true) {
@@ -136,19 +147,6 @@
 			return false;
 		}//if end
 
-		//7)주소 입력했는지?
-		let p_addr1 = document.getElementById("p_addr1").value;
-		if (p_addr1 == "") {
-			alert("주소를 입력해 주세요");
-			return false;
-		}//if end
-
-		//8)약관 동의 체크했는지?
-		if (document.getElementById("agreeterms").checked == false) {
-			alert("약관 동의 후 회원가입이 가능합니다");
-			return false;
-		}//if end		    
-
 		return true;
 	}//joinCheck() end
 </script>
@@ -157,6 +155,13 @@
 	$(document).ready(function(){
 		//회원정보 수정하기 버튼
 		$("#modify_button").click(function(){
+			
+			if($("#p_id").val()==""){
+				alert("로그인 후 다시 시도해 주세요.");
+				$("#modifyfrm").attr("action", "/member/login.do");
+				$("#modifyfrm").submit();
+				return true;
+			}//if end
 			
 			var deleteYN = confirm("회원정보를 수정하시겠습니까?");
 			

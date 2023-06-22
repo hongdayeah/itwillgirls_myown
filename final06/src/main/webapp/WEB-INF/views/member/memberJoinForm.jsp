@@ -42,31 +42,31 @@
     <div class="container">
         <div class="form-wrapper">
         <form class="form-signin wow fadeInUp" name="memfrm" id="memfrm" method="post" onsubmit="return joinCheck()">
-        <h2 class="form-signin-heading">Account Member Now</h2>
+        <h2 class="form-signin-heading">회원가입</h2>
         <div class="login-wrap">
         	
         	<div>
-	            <input type="text" class="form-control" placeholder="ID" id="p_id" name="p_id" maxlength="20" autofocus required>
+	            <input type="text" class="form-control" placeholder="아이디" id="p_id" name="p_id" maxlength="20" autofocus required>
 	            <span class="id_input_re_1" style="color: green; display: none;">사용 가능한 아이디 입니다.</span>
 				<span class="id_input_re_2" style="color: red; display: none;">아이디가 이미 존재합니다.</span>
             </div>
             
-            <input type="text" class="form-control" placeholder="Name" id="p_name" name="p_name" maxlength="20" required>
-            <input type="password" class="form-control" placeholder="Password" id="p_passwd" name="p_passwd" maxlength="20" required>
-           	<input type="password" class="form-control" placeholder="Password Check" id="re_p_passwd" name="re_p_passwd" maxlength="20" required>
-            <input type="text" class="form-control" placeholder="Birth ex) 910912" id="p_birth" name="p_birth" maxlength="6" required>
-            <input type="text" class="form-control" placeholder="Phone Number ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" required>
-            <input type="text" class="form-control" placeholder="E-mail ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" required>
-            <div>
+            <input type="text" class="form-control" placeholder="이름" id="p_name" name="p_name" maxlength="20" required>
+            <input type="password" class="form-control" placeholder="비밀번호" id="p_passwd" name="p_passwd" maxlength="20" required>
+           	<input type="password" class="form-control" placeholder="비밀번호 재입력" id="re_p_passwd" name="re_p_passwd" maxlength="20" required>
+            <input type="text" class="form-control" placeholder="생년월일 6자리 ex) 910912" id="p_birth" name="p_birth" maxlength="6" required>
+            <input type="text" class="form-control" placeholder="핸드폰 번호 ex) 01012345678" id="p_tell" name="p_tell" maxlength="11" required>
+            <input type="text" class="form-control" placeholder="이메일 주소 ex) itwill@itwill.com" id="p_email" name="p_email" maxlength="25" required>
+            <div style="padding: 5px;">
 				<div>
 				&nbsp;
-	            <input type="radio" name="p_gender" id="p_gender" value="1">Man
+	            <input type="radio" name="p_gender" id="p_gender" value="1"> 남성
 	            &nbsp;
-	            <input type="radio" name="p_gender" id="p_gender" value="2">Woman
+	            <input type="radio" name="p_gender" id="p_gender" value="2"> 여성
 				</div>
 			</div>
             
-            <button class="btn btn-lg btn-login btn-block" type="submit">Join in</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="button">가입하기</button>
         </div>
 
       </form>
@@ -201,8 +201,12 @@
 		$(document).ready(function(){
 			//회원가입 버튼(회원가입 기능 작동)
 			$("#button").click(function(){
-				$("#memfrm").attr("action", "/member/memberJoinForm");
-				$("#memfrm").submit();
+
+				var deleteYN = confirm("반갑습니다. 회원가입이 완료 되었습니다.");
+				if(deleteYN == true){
+					$("#memfrm").attr("action", "/member/memberJoinForm");
+					$("#memfrm").submit();
+				}//if end
 			});
 		});
 		</script>

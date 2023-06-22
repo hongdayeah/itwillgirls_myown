@@ -51,12 +51,12 @@
             <input type="text" class="form-control" placeholder="자녀 이름" id="k_name" name="k_name" maxlength="20" required>
             <input type="text" class="form-control" placeholder="자녀 생년월일 ex) 210310" id="k_birth" name="k_birth" maxlength="6" required>
             
-            <div>
+            <div style="padding: 5px;">
 				<div>
 				&nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="1">Man
+	            <input type="radio" name="k_gender" id="k_gender" value="1">남성
 	            &nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="2">Woman
+	            <input type="radio" name="k_gender" id="k_gender" value="2">여성
 				</div>
 			</div>
             
