@@ -1,4 +1,4 @@
---member_sql.txt
+--member_parent_sql.txt
 
 CREATE TABLE member_parent (
 	p_id		varchar2(20)	NOT NULL,
