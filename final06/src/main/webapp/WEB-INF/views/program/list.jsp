@@ -3,6 +3,9 @@
 
 <%@ include file="../header.jsp" %>
 
+
+
+
 <!-- 본문시작 program -- list.jsp -->
    
 <button type="button" class="btn btn-outline-primary" onclick="location.href='create.do'">프로그램등록</button>
