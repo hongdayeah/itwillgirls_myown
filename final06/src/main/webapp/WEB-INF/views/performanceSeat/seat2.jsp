@@ -50,6 +50,7 @@
  <html>
   
   
+  
     <h3>좌석 예매</h3>
     <h4>예매 할 좌석을 선택 해 주세요</h4>
 		
@@ -68,8 +69,7 @@
 		
 		
 		<tr><td>수량선택</td><td>
-			<select name="pernum" id="pernum">
-				<option value="0">수량을 선택하세요</option>
+			<select name="pernum">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -77,46 +77,36 @@
 				<option value="5">5</option>
 			</select>
 		</td></tr>
-		
 
 		</table>
 
 			<strong>좌석 배치도</strong>
 			<br>
+			
+			<div class="seatcontainer">
+			<c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
+				<c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
+					<div class='seat' id="seat${i}${j}" onclick="changeColor('seat${i}${j}')">${i}${j}</div>
+				</c:forEach><br/>
+			</c:forEach>
+			</div>
 
 			<div class="seatcontainer">
 			  <c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
 			    <c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
-			      <button class='seat' id="seat${i}${j}" >${i}${j}</button>
+			      <button class='seat' id="seat${i}${j}" onclick="changeColor('seat${i}${j}')">${i}${j}</button>
 			    </c:forEach><br/>
 			  </c:forEach>
 			</div>
 			
 			<script>
-			//수량 변수 설정
-			var seatNum=document.getElementById('pernum');
-			var selectNum;
-			//수량 변경시 이벤트 리스너
-			seatNum.addEventListener('change', function(){
-				var selectNum=seatNum.value;
-				alert('선택수량:'+ selectNum);
-			})
-			
-		
-			//좌석을 담을 배열 생성
-			var arrSeat=[];
-			// 각 버튼에 대해 이벤트 리스너를 추가
-			var buttons = document.getElementsByClassName('seat');
-			for (var i = 0; i < buttons.length; i++) {
-					  buttons[i].addEventListener('click', function() {
-					  this.style.backgroundColor = 'green';			  
-					  arrSeat.push(this.id); //선택 좌석 배열에 추가			
-			    });
+			  function changeColor(buttonId) {
+			    var button = document.getElementById(buttonId);
+			    button.style.backgroundColor = "green";
+			    alert(button);
 			  }
-			
-			
-			
 			</script>
+			
 			</html>
 
 
