@@ -36,6 +36,7 @@
 <!--breadcrumbs end-->
 
 <div class="btn-position">
+	<button class="btn btn-primary" onclick="location.href='../programtime/create.do?pro_obj=${dto.pro_obj}'">시간표 등록</button>
 	<button class="btn btn-warning" onclick="location.href='update.do?pro_obj=${dto.pro_obj}'">프로그램수정</button>
 	<button class="btn btn-danger" onclick="return deleteCheck()">프로그램삭제</button>
 </div>
@@ -156,62 +157,44 @@
 										<h4 class="media-heading">
 											작성자 아이디 들어가는 곳 <!-- dto.p_id -->
 											<span> | </span>
-										<span>댓글 단 날짜 <!-- dto.regdate --></span>
+											<span>댓글 단 날짜 <!-- dto.regdate --></span>
 										</h4>
-									<p>
-									  리뷰 내용 <!-- dto.review -->
-									  </p>
-									  <hr>
+										<p>리뷰 내용 <!-- dto.review --></p>
+									  	<hr>
 									</div>
 								</c:forEach>
 							</div>
 					</div>
 				
-				<div class="post-comment">
-				  <h3 class="skills">
-				    후기 남기기
-				  </h3>
-				  <form class="form-horizontal" role="form">
-				    <div class="form-group">
-				      <div class="col-lg-6">
-				      <!-- 현재 로그인한 값의 아이디 readonly로 넣어두기 -->
-				          <input type="text" placeholder="아이디" class="col-lg-12 form-control">
-				        </div>
-				
-				        <div class="col-lg-6">
-				          <input type="text" placeholder="비밀번호" class="col-lg-12 form-control">
-				        </div>
-				
-				        
-				      </div>
-				      <div class="form-group">
-				        <div class="col-lg-12">
-				          <textarea placeholder="후기를 남겨주세요!" rows="8" class=" form-control">
-				          </textarea>
-				        </div>
-				      </div>
-				      <p>
-				        <button type="submit" class="btn btn-info pull-right">
-				          등록하기
-				        </button>
-				      </p>
-				    </form>
-				  </div>
-				
+					<div class="post-comment">
+						<h3 class="skills">후기 남기기</h3>
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<div class="col-lg-6">
+								<!-- 현재 로그인한 값의 아이디 readonly로 넣어두기 -->
+									<input type="text" placeholder="아이디" class="col-lg-12 form-control">
+								</div>
+								<div class="col-lg-6">
+									<input type="text" placeholder="비밀번호" class="col-lg-12 form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-12">
+									<textarea placeholder="후기를 남겨주세요!" rows="8" class=" form-control">
+									</textarea>
+								</div>
+							</div>
+							<p>
+								<button type="submit" class="btn btn-info pull-right">등록하기</button>
+							</p>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	
 	</div>
-
-  
-
-
 </div>
-
-
 <!--container end-->
-
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
