@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					우리센터 프로그램을 소개합니다
+					우리센터 강사님을 소개합니다
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
