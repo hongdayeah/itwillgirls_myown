@@ -42,17 +42,17 @@
 
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
-		<h1 id="forms" class="page-header">프로그램 등록하기</h1>
+		<h1 id="forms" class="page-header" style="text-align: center;">프로그램 등록하기</h1>
 		<div class="bs-programform">
 			<form role="form" name="programfrm" id="programfrm"  method="POST" action="create.do" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>프로그램코드<br>
 					(A:미술  S:체육  E:교육  M:음악)</label>
-					<input type="text" class="form-control" name="pro_obj" id="pro_obj">
+					<input type="text" class="form-control short" name="pro_obj" id="pro_obj">
 				</div>
 				<div class="form-group">
 					<label>프로그램 이름</label><br>
-					<input type="text" class="form-control" name="pro_name" id="pro_name">
+					<input type="text" class="form-control short" name="pro_name" id="pro_name">
 				</div>
 				<div class="form-group">
 					<label>프로그램 성향</label><br>
@@ -63,21 +63,21 @@
 				</div>
 				<div class="form-group">
 					<label>프로그램 정원</label><br>
-					<input type="number" class="form-control" name="pro_limit" id="pro_limit">
+					<input type="number" class="form-control short" name="pro_limit" id="pro_limit">
 				</div>
 				<div class="form-group">
 					<label>수강료</label><br>
-					<input type="text" class="form-control" name="pro_fee" id="pro_fee">
+					<input type="text" class="form-control short" name="pro_fee" id="pro_fee">
 				</div>
 				<div class="form-group">
 					<label>접수기간</label><br>
-					<input type="date" class="form-control" name="prorec_start" id="prorec_start"> ~ 
-					<input type="date" class="form-control" name="prorec_end" id="prorec_end">
+					<input type="date" class="form-control date" name="prorec_start" id="prorec_start"> &nbsp;~&nbsp;
+					<input type="date" class="form-control date" name="prorec_end" id="prorec_end">
 				</div>
 				<div class="form-group">
 					<label>수강기간</label><br>
-					<input type="date" class="form-control" name="proper_start" id="proper_start"> ~ 
-					<input type="date" class="form-control" name="proper_end" id="proper_end">
+					<input type="date" class="form-control date" name="proper_start" id="proper_start"> &nbsp;~&nbsp;
+					<input type="date" class="form-control date" name="proper_end" id="proper_end">
 				</div>
 				<div class="form-group">
 					<label>수강요일</label><br>
@@ -90,7 +90,7 @@
 				</div>
 				<div class="form-group">
 					<label>수강 적정 연령</label><br>
-					<input type="text" class="form-control" name="pro_age" id="pro_age" placeholder="만 3~4세">
+					<input type="text" class="form-control short" name="pro_age" id="pro_age" placeholder="만 3~4세">
 				</div>
 				<div class="form-group">
 					<label>프로그램 설명</label><br>

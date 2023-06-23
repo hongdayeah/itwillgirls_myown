@@ -119,6 +119,7 @@
 			</div>
 		</c:if>
 	</c:forEach>
+	</div>
 </div>
 <!--container end-->
 

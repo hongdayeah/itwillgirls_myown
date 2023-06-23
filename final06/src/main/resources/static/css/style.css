@@ -1788,6 +1788,13 @@ ul#filters > .active > span {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
 }
+.form-control.short{
+    width: 50%;
+}
+.form-control.date{
+	width: 30%;
+	display: inline-block;
+}
 .form-control:focus {
     border: none;
     border: 1px solid #d9d9d9;
@@ -2990,3 +2997,19 @@ div.header h3{
   	margin-bottom: 20px;
 	
 }
+
+.form-control-program{
+	
+    border-radius: 2px;
+    width: 50px;
+    
+    border: 1px solid #d9d9d9;
+    
+}
+
+.row.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 페이지 전체 높이에 맞춤 */
+  }
