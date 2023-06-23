@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- member_kid.xml -->
+<!-- 실행할 SQL문을 정의해놓은 파일 (DAO클래스 역할) -->
+<!-- 주의사항 : 종결문자 ; 생략해야 함 -->
+<!-- ★ namespace는 대체적으로 테이블명과 동일하게 지정함 -->
+
+<!-- <mapper namespace="member_kid"> -->
+<mapper namespace="kr.co.itwill.mapper.MemberMapper">
+
+	<!-- 자녀 회원 등록 -->
+	<!-- 기존에 등록된 부모와 1명 이상의 자녀가 있어야 하며, 이전에 등록된 자녀의 생년월일을 가져오는 쿼리임 -->
+	<!-- 
+	<insert id="memberJoin" parameterType="java.util.Map">
+		INSERT INTO member_kid (k_no, k_name, k_birth, k_gender, p_id)
+		SELECT CONCAT(SUBSTRING(p.p_id, 1, 3), DATE_FORMAT(k.k_birth, '%Y%m%d')) AS k_no, #{k_name}, #{k_birth}, #{k_gender}, #{p_id}
+		FROM member_kid k
+		JOIN member_parent p
+		ON k.p_id = p.p_id
+		WHERE p.p_id = 'kim123'
+	</insert>
+	 -->
+	 
+	<insert id="addKid" parameterType="java.util.Map">
+		INSERT INTO member_kid (k_name, k_birth, k_gender, p_id)
+		VALUES (#{k_name}, #{k_birth}, #{k_gender}, #{p_id})
+	</insert>
+	
+	<select id="kidList" resultType="kr.co.itwill.member.kid.MemberKidDTO">
+		SELECT k_no, k_name, k_birth, k_gender, p_id, typename
+		FROM member_kid
+		ORDER BY k_no
+	</select>
+
+</mapper>

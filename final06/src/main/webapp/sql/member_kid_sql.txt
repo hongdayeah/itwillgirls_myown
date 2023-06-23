@@ -9,4 +9,17 @@ CREATE TABLE member_kid (
 	typename  	varchar(5)	 NULL
 );
 
-commit;
+<!-- 자녀 회원 등록 -->
+<!-- 기존에 등록된 부모와 1명 이상의 자녀가 있어야 하며, 이전에 등록된 자녀의 생년월일을 가져오는 쿼리임 -->
+INSERT INTO member_kid (k_no, k_name, k_birth, k_gender, p_id)
+SELECT
+  CONCAT(SUBSTRING(p.p_id, 1, 3), DATE_FORMAT(k.k_birth, '%Y%m%d')) AS k_no,
+  '김제니',
+  '20200101',
+  1,
+  'kim123'
+FROM member_kid k
+JOIN member_parent p
+ON k.p_id = p.p_id
+WHERE p.p_id = 'kim123';
+

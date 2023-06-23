@@ -63,6 +63,7 @@
 			</span>
             <button class="btn btn-lg btn-login btn-block" type="submit">로그인 하기</button>
             <p>or you can sign in via social network</p>
+            <p>이 부분에는 카카오톡 1초 회원가입 api를 넣어볼까 합니다~!</p>
             <div class="login-social-link">
                 <a href="index.html" class="facebook">
                     <i class="fa fa-facebook"></i>

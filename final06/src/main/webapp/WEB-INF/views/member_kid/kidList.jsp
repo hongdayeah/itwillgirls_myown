@@ -41,30 +41,28 @@
 <div class="login-bg">
     <div class="container">
         <div class="form-wrapper">
-        <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post" action="" onsubmit="return addCheck()"><!-- 리스트 만들어서 보여줄까~ -->
-        <h2 class="form-signin-heading">자녀 회원 추가</h2>
+        <form class="form-signin wow fadeInUp" name="addKidfrm" id="addKidfrm" method="post" onsubmit="return addCheck()">
+        <h2 class="form-signin-heading">자녀 회원 목록</h2>
         <div class="login-wrap">
         	
-        	<!-- 부모 코드(로그인한 세션 아이디 가져오기 완료), typename 참조 해야 함 / type 테이블 만들어서 참조해야 하나?! -->
-        	<input type="text" class="form-control" placeholder="부모 아이디" value="${member_dto.p_id}" id="p_id" name="p_id" maxlength="20" readonly>
-            <!-- 자녀 회원번호는 시퀀스 사용으로 주석 처리함
-            <input type="text" class="form-control" placeholder="자녀 회원번호" id="k_no" name="k_no" maxlength="9"> -->
-            <input type="text" class="form-control" placeholder="자녀 이름" id="k_name" name="k_name" maxlength="20">
-            <input type="text" class="form-control" placeholder="자녀 생년월일 ex) 210310" id="k_birth" name="k_birth" maxlength="6">
+        	<input type="hidden" class="form-control" placeholder="부모 아이디" value="${member_dto.p_id}" id="p_id" name="p_id" maxlength="20" readonly>
+            <table>
+	            <tr>
+	            	<th>자녀 이름</th>
+	            	<th>자녀 생년월일</th>
+	            	<th>자녀 성별</th>
+	            	<th>자녀 성향</th>
+	            </tr>
+	            <c:forEach items="${kidList}" var="row">
+		            <tr>
+		            	<th>${row.k_name}</th>
+		            	<th>${row.k_birth}</th>
+		            	<th>${row.k_gender}</th>
+		            	<th>${row.typename}</th>           
+		            </tr>
+	            </c:forEach>
+            </table>
             
-            <div style="padding: 5px;">
-				<div>
-				&nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="1">남성
-	            &nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="2">여성
-				</div>
-			</div>
-            
-            <!-- 테스트 하면 typename에 결과값이 자동 입력될 수 있게 하기, 입력되지 않았을 때는 테스트하기 링크 연결할까? -->
-            <input type="text" class="form-control" placeholder="자녀 성향 ex) 테스트를 진행해 주세요" id="typename" name="typename" maxlength="5">
-            
-            <button class="btn btn-lg btn-login btn-block" type="submit" id="add_button">등록</button>
         </div>
 
       </form>
@@ -107,7 +105,6 @@
 			//자녀회원추가 유효성 검사
 		      
 		      //1)자녀회원번호 글자수 체크 (9글자 고정으로 할까?)
-		      /*
 		      let k_no=document.getElementById("k_no").value;
 		      k_no=k_no.trim();
 		      if(k_no.length<5 || k_no.length>10) {
@@ -115,8 +112,7 @@
 		          document.getElementById("k_no").focus();
 		          return false; //전송하지 않음
 		      }//if end
-			  */
-			  
+
 			  //2)이름 2글자 이상인지?
 			  let k_name=document.getElementById("k_name").value;
 			  k_name=k_name.trim();
@@ -161,20 +157,18 @@
         		
         		if($("#p_id").val()==""){
         			alert("로그인 후 다시 시도해 주세요.");
-        			$("#kidfrm").attr("action", "/member/login.do");
-        			$("#kidfrm").submit();
+        			$("#addKidfrm").attr("action", "/member/login.do");
+        			$("#addKidfrm").submit();
         			return true;
         		}//if end
         		
         		//아래의 if문들(유효성검사)에 글자수 제한이나 숫자만 입력 같은 조건을 넣는 방법 알아보자~
         		//자녀회원번호를 생년월일 + 시퀀스 스타일로 넣을 수 있는 방법 없을까?
-        		/*
         		if($("#k_no").val()==""){
         			alert("자녀 회원번호를 입력해 주세요.");
         			$("#k_no").focus();
         			return false;
         		}//if end
-        		*/
         		
         		if($("#k_name").val()==""){
         			alert("자녀 이름을 입력해 주세요.");
@@ -200,10 +194,10 @@
         			return false;
         		}//if end
         		
-        		var deleteYN = confirm("확인을 누르면 자녀회원이 등록되며, 등록한 자녀는 마이페이지에서 확인할 수 있습니다. 등록하시겠습니까?");
+        		var deleteYN = confirm("등록하시겠습니까?");
         		if(deleteYN == true){
-        			$("#kidfrm").attr("action", "/member_kid/addKid.do"); //경로 설정 중요함, 꼭! 내가 매핑한 곳으로 연결해주기!
-        			$("#kidfrm").submit();
+        			$("#addKidfrm").attr("action", "/home.do"); //경로 수정 중입니다~
+        			$("#addKidfrm").submit();
         		}//if end
         	});
         });
