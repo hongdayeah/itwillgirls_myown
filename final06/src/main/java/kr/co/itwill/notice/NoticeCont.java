@@ -107,7 +107,7 @@ public class NoticeCont {
 		int cnt=dao.delete(not_no); 
 		if(cnt==0) {
 			String msg1="<p>공지 삭제실패</p>";
-			String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
 			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?not_no=" + oldDTO.getNot_no() + "\"'>";
 	        mav.addObject("msg1", msg1);
 	        mav.addObject("link1", link1); 

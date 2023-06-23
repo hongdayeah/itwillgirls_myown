@@ -8,12 +8,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  
+  <!--breadcrumbs start-->
+<div class="breadcrumbs">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               우리센터 프로그램을 소개합니다
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+                  <a href="list.do">
+                     예약
+                  </a>
+               </li>
+               <li class="create.do">
+                  대관신청
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
+</div>
+<!--breadcrumbs end-->
 </head>
 <body>
 <div class=tab>
-	<ul class="category">
-	<li><a href="/rent/info.do">대관안내</a></li>
+	<ul class="category" align="center">
+	<li style="color: #f1f1f1; font-size: 25px; font-weight: bold; line-height: -1.0em; vertical-align:middle;"><a href="/rent/info.do"><img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/free-icon-rent-1647685.png" width="40">&nbsp;대관안내</a></li>
 	<li><a href="/rent/create.do">대관신청</a></li> 
 	<li><a href="/rent/list.do">대관신청내역</a></li>
 	</ul>
