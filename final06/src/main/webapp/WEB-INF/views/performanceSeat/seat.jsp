@@ -3,20 +3,13 @@
 <%@ include file="../header.jsp" %>
 
 <style>
-	.seat-container {
-		display: flex;
-		flex-wrap: wrap;
-		
-		 }
 	.seat {
+	  display: inline;
 	  justify-content : center;
-	  width : 150px;
-	  height : 150px;
+	  width : 50px;
+	  height : 50px;
 	  background-color : pink;	
 	  margin : 5px;  
-	}
-	.seat:hover {
-    background-color:#0a5021;
 	}
 </style>
 
@@ -87,31 +80,27 @@
 
 		</table>
 
-	<div class="seat"  onclick="click()"></div>
-
 			<strong>좌석 배치도</strong>
 			<br>
-			
-			<div class="seat-container">
-			<c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
-				<c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
-					<div class="seat" onclick="click()">${i}${j}</div>
-				</c:forEach><br/>
-			</c:forEach>
+
+			<div class="seatcontainer">
+			  <c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
+			    <c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
+			      <button class='seat' id="seat${i}${j}" onclick="changeColor('seat${i}${j}')">${i}${j}</button>
+			    </c:forEach><br/>
+			  </c:forEach>
 			</div>
+			
+			<script>
+			  function changeColor(buttonId) {
+			    var button = document.getElementById(buttonId);
+			    button.style.backgroundColor = "green";
+			    alert(button);
+			  }
+			</script>
+			
+			</html>
 
-		<script>
-			function click(){
-				alert("클릭햇심다");
-			}
-		
-		</script>
-
-
-
-</html>
-
-		
 
 
 	
