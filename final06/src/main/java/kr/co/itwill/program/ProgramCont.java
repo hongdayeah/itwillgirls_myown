@@ -83,7 +83,7 @@ public class ProgramCont {
 	public ModelAndView read(String pro_obj) {
 		ModelAndView mav = new ModelAndView();
 		ProgramDTO dto = dao.read(pro_obj);
-		mav.setViewName("program/read2");
+		mav.setViewName("program/read");
 		
 		mav.addObject("dto", dto);
 		
