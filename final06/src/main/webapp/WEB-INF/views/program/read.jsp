@@ -132,7 +132,7 @@
 									</tbody>
 								</table>
 							</div>
-							<a class="btn btn-app">
+							<a class="btn btn-app" onclick="likeCheck('${dto.pro_obj}', '${member_dto.p_id}')">
 								<span class="badge bg-red">찜한 개수</span>
 								<i class="fa fa-heart-o"></i> Likes
 							</a>
@@ -196,5 +196,29 @@
 </div>
 <!--container end-->
 <!-- 본문 끝 -->
+<!-- JavaScript 함수 -->
+<script>
+	function likeCheck(prodto, memdto){
+		if(confirm("관심프로그램으로 등록하시겠습니까?")){
+			$.ajax({
+			    url: "likeInsert.do", // 컨트롤러에 대한 URL 매핑
+			    type: "POST", // 요청 메소드 설정 (POST 또는 GET)
+			    data: { pro_obj: prodto.pro_obj, p_id: memdto.p_id }, // 전송할 데이터 설정
+			    success: function(response) {
+			      // 요청이 성공적으로 처리된 후 실행될 콜백 함수
+			      // 처리 결과에 따른 후속 작업 수행
+			      alert("관심프로그램으로 등록되었습니다.\n마이페이지에서 확인 가능합니다.");
+			    },
+			    error: function(xhr, status, error) {
+			      // 요청이 실패한 경우 실행될 콜백 함수
+			      // 에러 처리 로직 구현
+			      alert("관심프로그램으로 등록하기 실패");
+			    }
+			  });
+		}else{
+			return false;
+		}
+	}
+</script>
         
 <%@ include file="../footer.jsp" %>
