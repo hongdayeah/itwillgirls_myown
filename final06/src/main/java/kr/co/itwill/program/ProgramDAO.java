@@ -108,7 +108,9 @@ public class ProgramDAO {
 			RowMapper<ProgramDTO> rowMapper = new RowMapper<ProgramDTO>() {
 				@Override
 				public ProgramDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
 					ProgramDTO dto = new ProgramDTO();
+					
 					dto.setPro_obj(rs.getString("pro_obj"));
 					dto.setPro_name(rs.getString("pro_name"));
 					dto.setProchar_no(rs.getString("prochar_no"));
