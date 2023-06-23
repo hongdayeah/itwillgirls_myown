@@ -1,9 +1,13 @@
 package kr.co.itwill.service;
 
+import java.util.List;
+
 import kr.co.itwill.member.MemberDTO;
+import kr.co.itwill.member.kid.MemberKidDTO;
 
 public interface MemberService {
 
+	// ★ 부모 ★
 	// 회원가입
 	public void memberJoin(MemberDTO dto) throws Exception;
 
@@ -38,5 +42,15 @@ public interface MemberService {
 	/*
 	public MemberDTO memberFindPW(MemberDTO dto) throws Exception;
 	*/
+	
+	////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// ★ 자녀 ★
+	// 자녀 회원 등록
+	public void addKid(MemberKidDTO kid_dto) throws Exception;
+	
+	// 자녀 회원 목록
+	public List<MemberKidDTO> kidList() throws Exception;
+
 	
 }// interface end

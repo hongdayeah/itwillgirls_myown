@@ -1,11 +1,15 @@
 package kr.co.itwill.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import kr.co.itwill.member.MemberDTO;
+import kr.co.itwill.member.kid.MemberKidDTO;
 
 @Mapper
 public interface MemberMapper {
 
+	// ★ 부모 ★
 	// 회원가입
 	public void memberJoin(MemberDTO dto);
 
@@ -29,8 +33,17 @@ public interface MemberMapper {
 
 	// 회원 정보 보기
 	public MemberDTO readMember(String p_id) throws Exception;
-	
+
 	// 아이디 찾기
 	public MemberDTO memberFindPW(MemberDTO dto) throws Exception;
+
+	////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// ★ 자녀 ★
+	// 자녀 회원 등록
+	public void addKid(MemberKidDTO kid_dto) throws Exception;
+	
+	// 자녀 회원 목록
+	public List<MemberKidDTO> kidList() throws Exception;
 
 }// interface end
