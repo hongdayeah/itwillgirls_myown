@@ -6,77 +6,91 @@
 <%@ include file="../header.jsp" %>
 
 <!-- 본문시작 programtime -- createForm.jsp -->
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>
+					우리센터 프로그램을 소개합니다
+				</h1>
+			</div>
+			<div class="col-lg-8 col-sm-8">
+				<ol class="breadcrumb pull-right">
+					<li>
+						<a href="../home.do">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="list.do">
+							프로그램
+						</a>
+					</li>
+					<li class="">
+						프로그램 타임 추가
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
 
-<button type="button" class="btn btn-outline-secondary" onclick="javascript:history.back()">뒤로가기</button>
-<br>    
-
+<div class="btn-position">
+	<button class="btn btn-default" onclick="javascript:history.back()">뒤로가기</button>
+</div>
+<br>
+<br>
 <br>
   
-<form name="protimefrm" id="protimefrm" method="POST" action="create.do">
-
-<!-- 프로그램 제목도 보여주고싶음 ㅠㅠ -->
-<!-- <input type="hidden" name="pro_name" value="${reqeustScope.pro_name}"> -->
- 	<table border="1">
-		<tr>
-			<th>프로그램코드</th>
-			<td>
-				<input type="text" id="pro_obj" name="pro_obj" value="${requestScope.pro_obj}" readonly>
-			</td>
-		</tr>
-		<!-- 
-		<tr>
-			<th>프로그램 이름</th>
-			<td>
-				<input type="text" id="pro_name" value="${requestScope.pro_name}" readonly>
-			</td>
-		</tr>
-		-->
-		<tr>
-			<th>프로그램 시간코드</th>
-			<td>
-				<input type="text" id="pro_code" name="pro_code">
-			</td>
-		</tr>
-		<tr>
-			<th>시간대</th>
-			<!-- createCheck()에서 두 타임 모두 추가할 때 중복 insert 안되도록 유효성검사 추가 -->
-			<td>
-				<input type="radio" id="pro_time" name="pro_time" value="10:00">10:00
-				<input type="radio" id="pro_time" name="pro_time" value="14:00">14:00
-			</td>
-		</tr>
-		<tr>
-			<th>장소</th>
-			<td>
-			<!-- room_class테이블에서 행 개수만큼 갖고오기 -->
-			<c:forEach var="i" items="${cdto}">
-				<input type="radio" id="class_code" name="class_code" value="${i.class_code}">${i.class_name}
-			</c:forEach>
-			</td>
-		</tr>
-		<tr>
-			<th>담당강사</th>
-			<td>
-			<!-- teacher테이블에서 행 개수만큼 갖고오고싶어요  -->
-			<select id="t_code" name="t_code">
-				<option selected>--강사님--</option>
-				<c:forEach var="i" items="${tdto}">
-					<option value="${i.t_code}">${i.t_name}</option>
-				</c:forEach>
-			</select>
-			</td>
-		</tr>
-	</table>
-	<div>
-		<input type="submit" value="올리기">
-		<input type="reset" value="초기화">
+<div class="container privacy-terms">
+	<div class="bs-docs-section mar-b-30">
+		<h1 id="forms" class="page-header" style="text-align: center;">프로그램 등록하기</h1>
+		<div class="bs-programform">
+			<form role="form" name="protimefrm" id="protimefrm"  method="POST" action="create.do" onsubmit="return createCheck()"enctype="multipart/form-data">
+				<div class="form-group">
+					<label>프로그램코드<br>
+					<input type="text" class="form-control short" name="pro_obj" id="pro_obj" value="${requestScope.pro_obj}" readonly>
+				</div>
+				<div class="form-group">
+					<label>프로그램 시간표 코드</label><br>
+					<input type="text" class="form-control short" name="pro_code" id="pro_code">
+				</div>
+				<div class="form-group">
+					<label>장소</label><br>
+					<input type="radio" id="pro_time" name="pro_time" value="10:00">&nbsp;10:00&nbsp;&nbsp;&nbsp;
+					<input type="radio" id="pro_time" name="pro_time" value="14:00">&nbsp;14:00&nbsp;&nbsp;&nbsp;
+				</div>
+				<div class="form-group">
+					<label>장소</label><br>
+					<!-- room_class테이블에서 행 개수만큼 갖고오기 -->
+					<c:forEach var="i" items="${cdto}">
+						<input type="radio" id="class_code" name="class_code" value="${i.class_code}">&nbsp;${i.class_name}&nbsp;&nbsp;&nbsp;
+					</c:forEach>
+				</div>
+				<div class="form-group">
+					<label>담당강사</label><br>
+					<!-- teacher테이블에서 행 개수만큼 갖고오고싶어요  -->
+					<select id="t_code" name="t_code">
+						<option selected>--강사님--</option>
+						<c:forEach var="i" items="${tdto}">
+							<option value="${i.t_code}">${i.t_name}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-success">등록</button>
+				<button type="reset" class="btn btn-warning">초기화</button>
+			</form>
+		</div>
 	</div>
-</form>
+</div>
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
 <script>
 	function createCheck(){
 		if(confirm("등록하시겠습니까?")){
+			alert("등록되었습니다.");
 			return true;
 		}else{
 			return false;
