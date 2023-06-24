@@ -42,7 +42,7 @@
     <div class="container">
         <div class="form-wrapper">
         <input type="button" onclick="location.href='/member_kid/kidList.do'" value="자녀 회원 목록">
-        <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post" action="/member_kid/addKid.do" onsubmit="return addCheck()"><!-- 리스트 만들어서 보여줄까~ -->
+        <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post" onsubmit="return addCheck()"><!-- 리스트 만들어서 보여줄까~ -->
         <h2 class="form-signin-heading">자녀 회원 추가</h2>
         <div class="login-wrap">
         	
@@ -157,7 +157,7 @@
         <script>
         $(document).ready(function(){
 
-        	// 탈퇴
+        	// 자녀 회원 추가
         	$("#add_button").on("click", function(){
         		
         		if($("#p_id").val()==""){
