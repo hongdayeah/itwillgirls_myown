@@ -23,11 +23,11 @@
 	               </li>
 	               <li>
 	                  <a href="list.do">
-	                     프로그램
+	                     공연
 	                  </a>
 	               </li>
 	               <li class="">
-	                  프로그램 소개
+	                  공연 소개
 	               </li>
 	            </ol>
 	         </div>
@@ -35,53 +35,68 @@
 	   </div>
 	</div>
 	<!--breadcrumbs end-->
-    
-    
-    
-    
-    
-    
-    <h3>*공연폼*</h3>
 
 
-	<input type="button" value="공연등록" onclick="location.href='create.do'">
-
+	<div class="btn-position">
+	<input class="btn btn-primary" type="button" value="공연등록" onclick="location.href='create.do'">
+	</div>
 	
-	<table>
-		<thead>
-			<tr>
-				<th>이미지</th>
-				<th>공연제목</th>
-				<th>공연설명</th>
-				<th>날짜</th>
-				<th>시간</th>
-				<th>장소</th>
-				<th>공연료</th>
-			</tr>
-		</thead>				
+	<br>
+	<br>
+	<br>
 	
+	<!--container start-->
+	<div class="container">
+	<!-- 리스트 행 개수만큼 출력 -->
+	<c:forEach var="dto" items="${list}" varStatus="status">
+		<c:if test="${status.count % 2 == 1}">
+			<div class="row">
+		</c:if>
+	<div class="col-md-6">
+		<!-- 왼쪽 -->
+		<div class="blog-left">
+			<div class="blog-img">
+				<img class="grid-image" src="../perstorage/${dto.per_img}" />
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="blog-two-info">
+						<p>							
+						<!-- 공연날짜 -->
+						<i class="fa fa-calendar"></i>
+						<span style="font-weight: bold;">공연날짜</span>
+						<var="per_date" value="${dto.per_date}"/>
+						|
+						<!-- 공연시간 -->
+						<i class="fa fa-calendar"></i>
+						<span style="font-weight: bold;">공연시간</span>
+						<var="per_time" value="${dto.per_time}"/>							
+						</p>
+					</div>
+				</div>
+			</div>
+					
+				
+			<div class="blog-content">					
+				<h3>
+					<a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a>
+				</h3>
+				<p>
+				  ${dto.per_exp}
+				</p>
+				<td>
+	               <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
+	               <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
+	          	</td>
+			</div>
 	
-	<c:forEach var="dto" items="${list}">
-		<tr>
-
-			<td><img src="../perstorage/${dto.per_img}" width="200"></td>
-			<td><a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a></td>
-			<td>${dto.per_exp}</td>
-			<td>${dto.per_date}</td>
-			<td>${dto.per_time}</td>
-			<td>${dto.class_code}</td> 
-			<td>${dto.per_fee}</td>
-			<td>${dto.per_limit}</td>
-
-			<td>
-                <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
-                <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
-            </td>
-		</tr>  
-	 
+			<c:if test="${status.count % 2 == 0}">
+		</div>
+		</c:if>
 	</c:forEach>
+	</div>
+<!--container end-->	
 
-	</table>
     <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
