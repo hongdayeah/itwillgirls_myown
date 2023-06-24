@@ -69,12 +69,12 @@
 		
 		<tr><td>수량선택</td><td>
 			<select name="pernum" id="pernum">
-				<option value="0">수량을 선택하세요</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
+				<option value=0>수량을 선택하세요</option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
 			</select>
 		</td></tr>
 		
@@ -87,7 +87,7 @@
 			<div class="seatcontainer">
 			  <c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
 			    <c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
-			      <button class='seat' id="seat${i}${j}" >${i}${j}</button>
+			      <button class='seat' id="${i}${j}" onclick="buttons(this.id)" >${i}${j}</button>
 			    </c:forEach><br/>
 			  </c:forEach>
 			</div>
@@ -95,26 +95,36 @@
 			<script>
 			//수량 변수 설정
 			var seatNum=document.getElementById('pernum');
-			var selectNum;
+			var selectNum=0;
+			
+			//좌석을 담을 배열 생성
+			var arrSeat=[]; 
+			
+			
 			//수량 변경시 이벤트 리스너
 			seatNum.addEventListener('change', function(){
-				var selectNum=seatNum.value;
+				selectNum=seatNum.value;
 				alert('선택수량:'+ selectNum);
 			})
 			
 		
-			//좌석을 담을 배열 생성
-			var arrSeat=[];
-			// 각 버튼에 대해 이벤트 리스너를 추가
-			var buttons = document.getElementsByClassName('seat');
-			for (var i = 0; i < buttons.length; i++) {
-					  buttons[i].addEventListener('click', function() {
-					  this.style.backgroundColor = 'green';			  
-					  arrSeat.push(this.id); //선택 좌석 배열에 추가			
-			    });
-			  }
+			// button 클릭시 실행하는 함수
+			function buttons(id){
+				if(selectNum==0){
+					alert("예매 할 수량을 선택 해 주세요");
+				} else {					
+						if(arrSeat.length < selectNum){
+						var button = document.getElementById(id);
+						button.style.backgroundColor = 'green';
+						arrSeat.push(id);
+						//alert("좌석"+arrSeat+"선택수량"+selectNum);
+					} else {
+						alert("좌석은 최대"+ selectNum + "석 까지만 선택가능합니다.");						
+					}
+				}
+			}
 			
-			
+		
 			
 			</script>
 			</html>

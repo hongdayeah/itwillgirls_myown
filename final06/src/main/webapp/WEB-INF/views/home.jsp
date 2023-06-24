@@ -3,353 +3,496 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>home.jsp</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Developed By M Abdur Rokib Promy">
+	<meta name="author" content="cosmic">
+	<meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
+	<link rel="shortcut icon" href="img/favicon.png">
+	
+	<title>
+		home_v4.jsp
+	</title>
+	
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+	<link href="css/bootstrap-reset.css" rel="stylesheet">
+	<!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+	
+	<!--external css-->
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/flexslider.css"/>
+	<link href="assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="assets/owlcarousel/owl.carousel.css">
+	<link rel="stylesheet" href="assets/owlcarousel/owl.theme.css">
+	
+	<link href="css/superfish.css" rel="stylesheet" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+	
+	
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" type="text/css" href="css/component.css">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/style-responsive.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" type="text/css" href="css/parallax-slider/parallax-slider.css" />
+	<script type="text/javascript" src="js/parallax-slider/modernizr.custom.28468.js">
+	</script>
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- 구글 웹 폰트 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@500;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    
-    <!-- Login 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	-->
-  	<!-- jQuery -->
-  	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  	
 </head>
 
-<body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- 최상단바 시작 -->
-    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
-        <div class="container py-3">
-            <div class="d-flex align-items-center">
-                <a href="home.do">
-                    <h2 class="text-white fw-bold m-0">어린이문화센터</h2>
-                </a>
-                <div class="ms-auto d-flex align-items-center">
-                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>서울시 송송구 어린이로 123번길</small>
-                    <small class="ms-4"><i class="fa fa-envelope me-3"></i>itwill@itwill.com</small>
-                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>02 1578 1234</small>
-                    <div class="ms-3 d-flex">
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 최상단바 끝 -->
-
-
-    <!-- Navbar 시작 -->
-    <div class="container-fluid bg-white sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
-                <a href="home.do" class="navbar-brand d-lg-none">
-                    <h1 class="fw-bold m-0">어린이문화센터</h1>
-                </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="home.do" class="nav-item nav-link active">Home</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">프로그램</a>
-                            <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                                <a class="dropdown-item" onclick="location.href='/program/list.do'">프로그램 소개</a>
-                                <a class="dropdown-item" onclick="location.href='/teacher/list.do'">강사 소개</a>
-                                <a class="dropdown-item" onclick="location.href='/tendency/list.do'">어린이 성향이란?</a>
-                                <a class="dropdown-item" onclick="location.href='#'">성향테스트하기</a>
-                            </div>
-                        </div>
-                        <a class="nav-item nav-link" onclick="location.href='/performance/list.do'">공연</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">예약</a>
-                            <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                                <a class="dropdown-item" onclick="location.href='#'">프로그램 예약</a>
-                                <a class="dropdown-item" onclick="location.href='#'">공연 예매</a>
-                                <a class="dropdown-item" onclick="location.href='/rent/create.do'">대관 신청</a>
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">소식</a>
-                            <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
-                                <a class="dropdown-item" onclick="location.href='/notice/list.do'">공지사항</a>
-                                <a class="dropdown-item" onclick="location.href='#'">공간 소개</a>
-                                <a class="dropdown-item" onclick="location.href='#'">자주묻는 질문</a>
-                                <a class="dropdown-item" href="/qna/create.do">문의하기</a>
-                            </div>
-                        </div>
-                        <a class="nav-item nav-link" onclick="location.href='/mypage/myList.do'">마이페이지</a>
-                    </div>
-                    <div class="ms-auto d-none d-lg-block">
-                    	<c:choose>
-             
-                    		<c:when test="${member_dto == null}">
-                        		<a class="btn btn-primary rounded-pill py-2 px-3" onclick="location.href='/member/login.do'">로그인</a>
-                        		<a class="btn btn-primary rounded-pill py-2 px-3" onclick="location.href='/member/agree.do'">회원가입</a>
+	<body>
+	<!--header start-->
+	<header class="head-section">
+		<div class="navbar navbar-default navbar-static-top container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../home.do" style="text-align:center;">어린이<br>문화센터</span></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<c:choose>
+					<c:when test="${member_dto != null}">
+						<div style="text-align:right;">
+							<b>'${member_dto.p_name} (${member_dto.p_id})' 님이 로그인 중입니다.</b>
+						</div>
+					</c:when>
+				<c:otherwise><div></div></c:otherwise>
+				</c:choose>
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+						"dropdown" data-toggle="dropdown" href="/">프로그램 <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="../program/list.do">프로그램 소개</a>
+							</li>
+							<li>
+								<a href="../teacher/list.do">강사 소개</a>
+							</li>
+							<li>
+								<a href="../tendency/list.do">어린이 성향이란?</a>
+							</li>
+							<li>
+								<a href="../#">성향테스트하기</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="../performance/list.do">공연  </a>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+						"dropdown" data-toggle="dropdown" href="#">예약 <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="../#">프로그램 예약</a>
+							</li>
+							<li>
+								<a href="../#">공연 예매</a>
+							</li>
+							<li>
+								<a href="../rent/create.do">대관 신청</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+						"dropdown" data-toggle="dropdown" href="#">소식 <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="../notice/list.do">공지사항</a>
+							</li>
+							<li>
+								<a href="../#">공간 소개</a> <!-- where/about.do -->
+							</li>
+							<li>
+								<a href="../faq/list.do">자주 묻는 질문</a>
+							</li>
+							<li>
+								<a href="../#">문의하기</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+					<!-- 마이페이지의 경우 글자에 링크거는것보다 마이페이지 아이콘 이미지에 링크거는것도 좋을것 같음 -->
+						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+						"dropdown" data-toggle="dropdown" href="#">마이페이지 <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="../#">예매내역</a>
+							</li>
+							<li>
+								<a href="../member_kid/addKid.do">자녀회원 등록</a>
+							</li>
+							<li>
+								<a href="../member/memberModify.do">개인정보 수정</a>
+							</li>
+							<li>
+								<a href="../member/memberWithdraw.do">회원탈퇴</a>
+							</li>
+							<li>
+								<a href="../#">나의 관심내역</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<c:choose>
+							<c:when test="${member_dto == null}">
+								<a href="../member/login.do">로그인</a>
 							</c:when>
 							<c:otherwise>
-								<div class="login_success_area">
-									<span><b>'${member_dto.p_name} (${member_dto.p_id})' 님이 로그인 중입니다.</b></span>
-									<a class="nav-item nav-link" onclick="location.href='/member/logout.do'">로그아웃</a>
-								</div>
+								<a href="../member/logout.do">로그아웃</a>
 							</c:otherwise>
 						</c:choose>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar 끝 -->
+					</li>
+					<li><input class="form-control search" placeholder=" Search" type="text" style="cursor:pointer;"></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!--header end-->
 
 
-    <!-- Carousel 시작(움직이는 사진) -->
-    <div class="container-fluid px-0 mb-5">
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/main1.jpg" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-lg-7 text-start">
-                                    <p class="fs-4 text-white animated slideInRight">Welcome to
-                                        <strong>WOORI CENTER</strong>
-                                    </p>
-                                    <h1 class="display-1 text-white mb-4 animated slideInRight">우리아이 성향은?</h1>
-                                    <a class="btn btn-primary rounded-pill py-3 px-5 animated slideInRight" onclick="location.href='#'">테스트하기</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/main2.jpg" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-end">
-                                <div class="col-lg-7 text-end">
-                                    <p class="fs-4 text-white animated slideInLeft">여기엔 <strong>무슨 내용 넣을까요?</strong>
-                                    </p>
-                                    <h1 class="display-1 text-white mb-5 animated slideInLeft">추천해주세요</h1>
-                                    <a class="btn btn-primary rounded-pill py-3 px-5 animated slideInLeft" onclick="location.href='#'">더보기버튼</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Sequence Modern Slider -->
+    <div id="da-slider" class="da-slider">
+
+            <div class="da-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+              <h2>
+                <i>우리아이의 성향은?</i>
+              </h2>
+              <p>
+                <i>지금 테스트 해보세요!</i>
+              </p>
+              <a href="#" class="btn btn-info btn-lg da-link">
+                테스트하기
+              </a>
+              <div class="da-img">
+                <img src="img/parallax-slider/images/2.png" alt="image01" />
+              </div>
             </div>
-            <!-- 옆으로 가기 버튼 -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            <!-- 옆으로 가기 버튼 끝 -->
+          </div>
         </div>
-    </div>
-    <!-- Carousel 끝(움직이는 사진) -->
+      </div>
 
-    <!-- 프로그램 보이기 시작 for문으로 하고싶어!! -->
-    <div class="container-xxl pt-5">
-        <div class="container">
-            <div class="text-center text-md-start pb-5 pb-md-0 wow fadeInUp" data-wow-delay="0.1s"
-                style="max-width: 500px;">
-                <p class="fs-5 fw-medium text-primary">프로그램</p>
-                <h1 class="display-5 mb-5">진행중인 프로그램</h1>
-            </div>
-            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="project-item mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/p1.jpg" alt="">
-                        <div class="project-overlay">
-                            바로가기
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" onclick="location.href='/program/list.do'">지구교실</a>
-                        <span>지구교실 어쩌구 저쩌구에 놀러오세요</span>
-                    </div>
-                </div>
-                <div class="project-item mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/p2.jpg" alt="">
-                        <div class="project-overlay">
-                            바로가기
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">코딩교육</a>
-                        <span>어린이가 벌써부터 코딩교육을 배워도 되나요?</span>
-                    </div>
-                </div>
-                <div class="project-item mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/p3.jpg" alt="">
-                        <div class="project-overlay">
-                            바로가기
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">체험교육</a>
-                        <span>체험해봐용</span>
-                    </div>
-                </div>
-                <div class="project-item mb-5">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/p4.jpg" alt="">
-                        <div class="project-overlay">
-                            바로가기
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">체험교육</a>
-                        <span>체험해봐용</span>
-                    </div>
-                </div>
-            </div>
+
+            <div class="da-slide">
+            <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+        <h2>
+          <i>RESPONSIVE VIDEO</i>
+            <br />
+          <i>SUPPORT AND</i>
+            <br />
+          <i>MANY MORE</i>
+        </h2>
+        <p>
+          <i>Lorem ipsum dolor amet</i>
+            <br />
+          <i>tempor incididunt ut</i>
+        </p>
+        <a href="#" class="btn btn-info btn-lg da-link">
+          Read more
+        </a>
+        <div class="da-img">
+          <img src="img/parallax-slider/images/3.png" alt="image01" />
         </div>
-    </div>
-    <!-- 프로그램 보이기 끝 for문으로 하고싶어!! -->
-
-    <!-- Footer 시작 -->
-    <div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">우리 센터</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>12345 서울시 송송구 어린이로 어린이길 123</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>02 1578 1234</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>itwill@itwill.com</p>
-                    <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-light rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">센터 정보</h4>
-                    <a class="btn btn-link" href="">센터 소개</a>
-                    <a class="btn btn-link" href="">오시는 길</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">영업 시간</h4>
-                    <p class="mb-1">화요일 - 일요일</p>
-                    <h6 class="text-light">09:00 am - 06:00 pm</h6>
-                    <p class="mb-1">매주 월요일 및 공휴일</p>
-                    <h6 class="text-light">휴관</h6>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">소식 받기</h4>
-                    <p>매 달 1일, 우리 센터의 소식을 받아보세요!</p>
-                    <div class="position-relative w-100">
-                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                            placeholder="이메일주소">
-                        <button type="button"
-                            class="btn btn-light py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
+      </div>
+          </div>
         </div>
-    </div>
-    <!-- Footer 끝 -->
+      </div>
 
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="fw-medium text-light" href="#">Your Site Name</a>, All Right Reserved.
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="fw-medium text-light" href="https://htmlcodex.com">HTML Codex</a>
-                    Distributed By <a class="fw-medium text-light" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
+      <div class="da-slide">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+        <h2>
+          <i>USING BEST WEB</i>
+            </br>
+          <i>SOLUTIONS WITH</i>
+            </br>
+          <i>HTML5/CSS3</i>
+        </h2>
+        <p>
+          <i>Lorem ipsum dolor amet</i>
+          <br />
+          <i>tempor incididunt ut</i>
+          <br />
+          <i>veniam omnis </i>
+        </p>
+        <a href="#" class="btn btn-info btn-lg da-link">
+          Read more
+        </a>
+        <div class="da-img">
+          <img src="img/parallax-slider/images/1.png" alt="image01" />
         </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <nav class="da-arrows">
+        <span class="da-arrows-prev">
+        </span>
+        <span class="da-arrows-next">
+        </span>
+      </nav>
     </div>
-    <!-- Copyright End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-            class="bi bi-arrow-up"></i></a>
+
+      <!--recent work start-->
+    <div class="bg-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 recent">
+            <h3 class="recent-work">
+              Recent Work
+            </h3>
+            <p>Some of our work we have done earlier</p>
+            <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
+
+              <div class="item view view-tenth">
+                <img src="img/works/img8.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img9.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img10.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img11.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img12.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img13.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--recent work end-->
+    </div>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    
-    <!-- JavaScript Function -->
-    <script>
-		//로그인 모달창 호출 함수
-		function openLoginModal(){
-			$('.modal-content').load("/member/memberLoginForm");
-		}//openLoginModal() end
+	<!--footer start-->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						센터 정보
+					</h1>
+					<address>
+						<p><i class="fa fa-home pr-10"></i>주소: 서울시 송송구 어린이길 어린이로 123번길 </p>
+						<p><i class="fa fa-mobile pr-10"></i>전화 : 02-1578-1234 </p>
+						<p><i class="fa fa-phone pr-10"></i>팩스 : 02-1578-1235 </p>
+						<p><i class="fa fa-envelope pr-10"></i>이메일 :   <a href="javascript:;">support@kidcenter.com</a></p>
+					</address>
+				</div>
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						영업 시간
+					</h1>
+					<address>
+						<p><i></i>영업 : <br>매 주 화 ~ 일요일 09:00 am - 06:00 pm </p>
+						<p><i></i>휴관 : <br>매 주 월요일 및 공휴일 </p>
+					</address>
+				</div>
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						소식 받기
+					</h1>
+					<address>
+						<p><i></i>매 달 1일 소식 받기 </p>
+						<div>
+							<input type="text" placeholder="이메일주소">
+							<button type="button">SignUp</button>
+						</div>
+					</address>
+				</div>
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						기타 내용
+					</h1>
+					<address>
+						<p><i></i>어쩌구 저쩌구</p>
+						<p><i></i>어쩌구 저쩌구</p>
+					</address>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- footer end -->
+	
+	<!--small footer start -->
+	<footer class="footer-small">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-sm-6 pull-right">
+					<ul class="social-link-footer list-unstyled">
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i class="fa fa-facebook"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i class="fa fa-twitter"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="#"><i class="fa fa-skype"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="#"><i class="fa fa-github"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s"><a href="#"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<div class="copyright">
+						<p>Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--small footer end-->
+
+    <!-- js placed at the end of the document so the pages load faster
+	<script src="js/jquery.js">
+	</script>
+	-->
+	<script src="js/jquery-1.8.3.min.js">
+	</script>
+	<script src="js/bootstrap.min.js">
+	</script>
+	<script type="text/javascript" src="js/hover-dropdown.js">
+	</script>
+	<script defer src="js/jquery.flexslider.js">
+	</script>
+	<script type="text/javascript" src="assets/bxslider/jquery.bxslider.js">
+	</script>
+	
+	<script type="text/javascript" src="js/jquery.parallax-1.1.3.js">
+	</script>
+	<script src="js/wow.min.js">
+	</script>
+	<script src="assets/owlcarousel/owl.carousel.js">
+	</script>
+	
+	<script src="js/jquery.easing.min.js">
+	</script>
+	<script src="js/link-hover.js">
+	</script>
+	<script src="js/superfish.js">
+	</script>
+	<script type="text/javascript" src="js/parallax-slider/jquery.cslider.js">
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('#da-slider').cslider({
+				autoplay    : true,
+				bgincrement : 100
+			});
+		});
+	</script>
+	
+	<!--common script for all pages-->
+	<script src="js/common-scripts.js">
+	</script>
+	
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			$('.bxslider1').bxSlider({
+				minSlides: 5,
+				maxSlides: 6,
+				slideWidth: 360,
+				slideMargin: 2,
+				moveSlides: 1,
+				responsive: true,
+				nextSelector: '#slider-next',
+				prevSelector: '#slider-prev',
+				nextText: 'Onward →',
+				prevText: '← Go back'
+			});
+		});
+	</script>
+	
+	
+	<script>
+		$('a.info').tooltip();
+		
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				start: function(slider) {
+					$('body').removeClass('loading');
+				}
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#owl-demo").owlCarousel({
+				items : 4
+			});
+		});
+		
+		jQuery(document).ready(function(){
+			jQuery('ul.superfish').superfish();
+		});
+		
+		new WOW().init();
 	</script>
 </body>
-
 </html>

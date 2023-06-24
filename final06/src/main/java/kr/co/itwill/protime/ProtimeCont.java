@@ -21,7 +21,7 @@ public class ProtimeCont {
 	private ProtimeDAO dao;
 	
 	@Autowired
-	private ProgramDAO prodao;
+	private ProgramDAO prodao; //사용 안함
 	
 	public ProtimeCont() {
 		System.out.println("-----ProtimeCont()객체 생성됨");

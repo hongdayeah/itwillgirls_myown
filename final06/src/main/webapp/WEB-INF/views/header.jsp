@@ -120,7 +120,7 @@
 							<a href="../#">공간 소개</a> <!-- where/about.do -->
 						</li>
 						<li>
-							<a href="../#">자주 묻는 질문</a>
+							<a href="../faq/list.do">자주 묻는 질문</a>
 						</li>
 						<li>
 							<a href="../#">문의하기</a>

@@ -20,13 +20,13 @@ public class ProtimeDAO {
 	private JdbcTemplate jt;
 	
 	@Autowired
-	private ProgramDTO prodto;
+	private ProgramDTO prodto; //안씀
 	
 	@Autowired
-	private ClassroomDTO classdto;
+	private ClassroomDTO classdto; //안씀
 	
 	@Autowired
-	private TeacherDTO tdto;
+	private TeacherDTO tdto; //안씀
 	
 	StringBuilder sql = null;
 	
