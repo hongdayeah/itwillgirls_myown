@@ -203,7 +203,7 @@
         		
         		var deleteYN = confirm("확인을 누르면 자녀회원이 등록되며, 등록한 자녀는 마이페이지에서 확인할 수 있습니다. 등록하시겠습니까?");
         		if(deleteYN == true){
-        			//$("#kidfrm").attr("action", "/member_kid/addKid.do"); //경로 설정 중요함, 꼭! 내가 매핑한 곳으로 연결해주기!
+        			$("#kidfrm").attr("action", "/member_kid/addKid.do"); //경로 설정 중요함, 꼭! 내가 매핑한 곳으로 연결해주기!
         			$("#kidfrm").submit();
         		}//if end
         	});

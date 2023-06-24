@@ -27,14 +27,14 @@ public class MemberKidCont {
 	@Autowired
 	private KidDAO dao;
 
+	/* 작업 중 0624 12:54
 	// 자녀 회원 등록 페이지 이동
-	/*
 	@RequestMapping("/addKid.do")
 	public String addKid() {
 		return "member_kid/kidAddForm";
 	}// addKid() end
-	*/
-	/*
+	
+	
 	// 자녀 회원 등록
 	@RequestMapping(value = "/addKid.do", method = RequestMethod.POST)
 	public String addKid(MemberKidDTO kid_dto) throws Exception {
@@ -43,10 +43,20 @@ public class MemberKidCont {
 		memberservice.addKid(kid_dto);
 		
 		return "redirect:/home.do";
+		//return "member_kid/kidList";
 	}// joinPOST() end
-	*/
+	
+	
+	// 자녀 회원 등록 페이지 이동
+		@RequestMapping(value = "/kidList.do", method = RequestMethod.GET)
+		public String kidList() {
+			return "member_kid/kidList";
+		}// addKid() end
+		*/
+	
 	// 자녀 회원 목록 보여주기	
-	@RequestMapping("/kidList.do")
+	//@RequestMapping(value = "/kidList.do", method = RequestMethod.POST)
+	@RequestMapping("/kidList.do")	
 	public ModelAndView kidList(HttpSession session) {
 	//	public ModelAndView kidList(String p_id) {
 		
@@ -80,7 +90,7 @@ public class MemberKidCont {
 			
 			String msg1="<p>자녀 회원 등록 실패</p>";
 			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?p_id=" + kid_dto.getP_id() + "\"'>";
+			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do" + "\"'>";
 			
 			mav.addObject("msg1", msg1);
 			mav.addObject("link1", link1);
@@ -88,7 +98,7 @@ public class MemberKidCont {
 			
 		}else { //행추가 성공하면 목록페이지로 이동
 			String msg1="<p>자녀 회원 등록 성공</p>";
-			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?p_id=" + kid_dto.getP_id() + "\"'>"; // 버튼 안 뜸
+			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do" + "\"'>"; // 버튼 안 뜸
 			
 			mav.addObject("msg1", msg1);
 			mav.addObject("link2", link2);
@@ -96,5 +106,5 @@ public class MemberKidCont {
 
 		return mav;
 	}//createProc() end	
-
+	
 }// class end
