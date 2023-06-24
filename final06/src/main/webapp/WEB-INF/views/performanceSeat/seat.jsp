@@ -87,7 +87,7 @@
 			<div class="seatcontainer">
 			  <c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
 			    <c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
-			      <button class='seat' id="seat${i}${j}" onclick="buttons(this.id)" >${i}${j}</button>
+			      <button class='seat' id="${i}${j}" onclick="buttons(this.id)" >${i}${j}</button>
 			    </c:forEach><br/>
 			  </c:forEach>
 			</div>
@@ -112,21 +112,19 @@
 			function buttons(id){
 				if(selectNum==0){
 					alert("예매 할 수량을 선택 해 주세요");
-				} else {
-					
-					if(arrSeat.length < selectNum){
-					var button = document.getElementById(id);
-					button.style.backgroundColor = 'green';
-					arrSeat.push(id);
-					//alert("좌석"+arrSeat+"선택수량"+selectNum);
+				} else {					
+						if(arrSeat.length < selectNum){
+						var button = document.getElementById(id);
+						button.style.backgroundColor = 'green';
+						arrSeat.push(id);
+						//alert("좌석"+arrSeat+"선택수량"+selectNum);
 					} else {
-						alert("좌석은 최대"+ selectNum + "석 까지만 선택가능합니다.");
-						
+						alert("좌석은 최대"+ selectNum + "석 까지만 선택가능합니다.");						
 					}
 				}
 			}
 			
-			
+		
 			
 			</script>
 			</html>

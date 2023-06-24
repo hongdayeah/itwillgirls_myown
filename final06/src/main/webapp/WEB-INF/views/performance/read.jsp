@@ -44,35 +44,72 @@
 	</div>
 	<!--breadcrumbs end-->
     
-    
-    
-    
-    
-    <h3>*공연상세페이지*</h3>
+	<div class="btn-position">
+		<button class="btn btn-success" onclick="location.href='list.do'">프로그램 목록</button>
+		<button class="btn btn-warning" onclick="location.href='update.do?per_code=${dto.per_code}'">공연 수정</button>
+		<button class="btn btn-danger" onclick="location.href='delete.do?per_code=${dto.per_code}'">프로그램 삭제</button>
+	</div>
 
-	<input type="button" value="공연목록" onclick="location.href='list.do'">
+	<!--container start-->
+	<div class="container">
+		<div class="row">
+		<!--blog start-->
+			<div class="col-lg-9">
+				<div class="blog-item">
+					<div class="row">
+					
+					<div class="col-lg-10 col-sm-10">
+						<div class="blog-img gs">
+							<img src="../perstorage/${dto.per_img}" width="400">
+						</div>
+					</div>
+				</div>	
 
-	<table>
-			<tr><td colspan="2"><img src="../perstorage/${dto.per_img}" width="400"></td></tr>
-			<tr><td>제목</td><td>${dto.per_name}</td></tr>
-			<tr><td>설명</td><td>${dto.per_exp}</td></tr>
-			<tr><td>날짜</td><td>${dto.per_date}</td></tr>
-			<tr><td>시간</td><td>${dto.per_time}</td></tr>
-			<tr><td>장소</td><td>${dto.class_code}</td></tr>
-			<tr><td>공연료</td><td>${dto.per_fee}</td></tr>
+				<div class="row">
+				<div class="col-lg-12 col-sm-12">
+					<h1 style="font-weight:bold;">${dto.per_name}</h1>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								
+								<colgroup>
+								  <col class="col-xs-1">
+								  <col class="col-xs-7">
+								</colgroup>
+
+									<tbody>
+								<tr>
+									<td>공연 설명</td>
+									<td>${dto.per_exp}</td>
+								</tr>
+								<tr>
+									<td>공연 날짜</td>
+									<td>${dto.per_date}</td>
+								</tr>
+								<tr>
+									<td>공연 시간</td>
+									<td>${dto.per_time}</td>
+								</tr>
+								<tr>
+									<td>공연료</td>
+									<td>${dto.per_fee}</td>
+								</tr>
+								
+								</table>
+							</div>
+					</div>
+					</div>
+					
+
+			<td>
+				<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
+			</td>
 		
-			<tr><td>
-                <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
-                <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
-            </td></tr>
-			<tr><td>
-				<input type="button" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
-			</td></tr>
+			</div>
+		</div>
+	</div>
+	</div>
 			
 
-		
-		</script>
-	</table>
     <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

@@ -1,65 +1,99 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ include file="../header.jsp" %>
-
-
-    <!-- 본문 시작 performanceList.jsp -->
-    <h3>*공연등록폼*</h3>
-
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	    pageEncoding="UTF-8"%>
+	    
+	<%@ include file="../header.jsp" %>
 	
-	<form name="per" method="POST" action="create.do" enctype="multipart/form-data">
-	    
-	    <table>
-	        <tr>
-	          <th>공연코드</th>
-	          <td><input type="text" name="per_code" size="20"></td>
-	        </tr>
-	        <tr>
-	          <th>공연이름</th>
-	          <td><input type="text" name="per_name" size="50"></td>
-	        </tr>
-	        <tr>
-	          <th>공연설명</th>
-	          <td><textarea rows="5" cols="50" name='per_exp'></textarea></td>
-	        </tr>
-	        <tr>
-	          <th>상영날짜</th>
-	          <td><input type="date" name="per_date" min="2020-01-01" max="2029-12-31"></td>
-	        </tr>
-	        <tr>
-	          <th>상영시간</th>
-	          <td><input type="time" name="per_time" ></td>
-	        </tr>
-	        <tr>
-	          <th>공연료</th>
-	          <td><input type="text" name="per_fee" size="20"></td>
-	        </tr>
-	        <tr>
-	          <th>정원</th>
-	          <td><input type="text" name="per_limit" size="20"></td>
-	        </tr>
-	        <tr>
-	          <th>장소</th>
-	          <td>
-	          <input type="radio" name="class_code" value="theater" checked="checked">극장
-	          <input type="radio" name="class_code" value="outdoor">야외  
-	          </td>
-	        </tr>
-	        <tr>
-	          <th>포스터</th>
-	          <td><input type="file" name="per_imgMF" size="50"></td>    
-	        </tr>
-        </table>	    
-	    
-	    <div class='bottom'>
-	      <input type='submit' value='공연등록'>
-	      <input type='button' value='공연목록' onclick="location.href='list.do'">
-	      <input type="button" value="HOME"  onclick="location.href='/home.do'"> <!-- 절대경로 -->
-	    </div>
-	    
+	<!--breadcrumbs start-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-sm-4">
+					<h1>
+						우리센터 프로그램을 소개합니다
+					</h1>
+				</div>
+				<div class="col-lg-8 col-sm-8">
+					<ol class="breadcrumb pull-right">
+						<li>
+							<a href="../home.do">
+								Home
+							</a>
+						</li>
+						<li>
+							<a href="list.do">
+								공연
+							</a>
+						</li>
+						<li class="">
+							공연 등록
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--breadcrumbs end-->
+	
+	<div class="btn-position">
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='list.do'">공연 목록가기</button>
+	</div>
+	
+	<div class="container privacy-terms">
+		<div class="bs-docs-section mar-b-30">
+	    <h1 id="forms" class="page-header" style="text-align: center;">공연 등록하기</h1>
+		<div class="bs-programform">
+		
+			<form name="per" method="POST" action="create.do" enctype="multipart/form-data">
+		    
+		        <div class="per-group">
+		          <label>공연코드</label>
+		          <input type="text" class="form-control short" name="per_code" size="20">
+		        </div>
+		        <div class="per-group">
+		          <label><br>공연이름</label>
+		          <input type="text" class="form-control short" name="per_name" size="50">
+		        </div>
+		        <div class="per-group">
+		          <label><br>공연설명</label><br>
+		          <textarea class="form-control short" rows="5" cols="50" name='per_exp'></textarea>
+		        </div>
+		        <div class="per-group">
+		          <label><br>상영날짜</label>
+		          <input type="date" class="form-control short" name="per_date" min="2020-01-01" max="2029-12-31">
+		        </div>
+		        <div class="per-group">
+		          <label><br>상영시간</label>
+		          <input type="time" class="form-control short" name="per_time" >
+		        </div>
+		        <div class="per-group">
+		          <label><br>공연료</label>
+		          <input type="text" class="form-control short" name="per_fee" size="20">
+		        </div>
+		        <div class="per-group">
+		          <label><br>정원</label>
+		          <input type="text" class="form-control short" name="per_limit" size="20">
+		        </div>
+		        <div class="per-group">
+		          <label><br>장소</label>
+		          <div class="class">
+			          <input type="radio" name="class_code" value="theater" checked="checked">극장
+			          <input type="radio" name="class_code" value="outdoor">야외  
+		          </div>
+		        </div>
+		        <div class="per-group">
+				  <label><br>포스터</label>
+		          <input type="file" name="per_imgMF" size="50">  
+		        </div>	    
+		    
+			    <div class='bottom'><br>
+			      <input type='submit' class="btn btn-success" value='등록'>
+			      <button type="reset" class="btn btn-warning">초기화</button>
+			    </div>
+		    </div>
+		</div>    
+	</div>	    
 	</form>
-	
-    <!-- 본문 끝 -->
-        
-<%@ include file="../footer.jsp" %>
+		
+	    <!-- 본문 끝 -->
+	        
+	<%@ include file="../footer.jsp" %>
