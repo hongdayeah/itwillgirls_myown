@@ -28,9 +28,10 @@
 		VALUES (#{k_name}, #{k_birth}, #{k_gender}, #{p_id})
 	</insert>
 	
-	<select id="kidList" resultType="kr.co.itwill.member.kid.MemberKidDTO">
+	<select id="kidList" parameterType="String" resultType="kr.co.itwill.member.kid.MemberKidDTO">
 		SELECT k_no, k_name, k_birth, k_gender, p_id, typename
 		FROM member_kid
+		WHERE p_id = #{p_id}
 		ORDER BY k_no
 	</select>
 

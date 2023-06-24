@@ -137,7 +137,7 @@
 							<a href="../#">예매내역</a>
 						</li>
 						<li>
-							<a href="../member_kid/addKid.do">자녀회원 등록</a>
+							<a href="../member_kid/kidList.do">자녀회원 등록/목록</a> <!-- 로그인한 사람한테만 보여주고 싶은데..? -->
 						</li>
 						<li>
 							<a href="../member/memberModify.do">개인정보 수정</a>

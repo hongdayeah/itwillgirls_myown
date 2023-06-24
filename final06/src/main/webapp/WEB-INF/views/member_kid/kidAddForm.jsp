@@ -41,7 +41,8 @@
 <div class="login-bg">
     <div class="container">
         <div class="form-wrapper">
-        <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post" action="" onsubmit="return addCheck()"><!-- 리스트 만들어서 보여줄까~ -->
+        <input type="button" onclick="location.href='/member_kid/kidList.do'" value="자녀 회원 목록">
+        <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post" action="/member_kid/addKid.do" onsubmit="return addCheck()"><!-- 리스트 만들어서 보여줄까~ -->
         <h2 class="form-signin-heading">자녀 회원 추가</h2>
         <div class="login-wrap">
         	
@@ -202,7 +203,7 @@
         		
         		var deleteYN = confirm("확인을 누르면 자녀회원이 등록되며, 등록한 자녀는 마이페이지에서 확인할 수 있습니다. 등록하시겠습니까?");
         		if(deleteYN == true){
-        			$("#kidfrm").attr("action", "/member_kid/addKid.do"); //경로 설정 중요함, 꼭! 내가 매핑한 곳으로 연결해주기!
+        			//$("#kidfrm").attr("action", "/member_kid/addKid.do"); //경로 설정 중요함, 꼭! 내가 매핑한 곳으로 연결해주기!
         			$("#kidfrm").submit();
         		}//if end
         	});
