@@ -101,4 +101,34 @@ public class LikeDAO {
 		
 		return cnt;
 	}//create() end
+	
+	public LikeDTO read(String pro_obj, String p_id) {
+		LikeDTO dto = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_obj, p_id ");
+			sql.append(" FROM like_program ");
+			sql.append(" WHERE pro_obj = '" + pro_obj + "' and p_id = '" + p_id + "' ");
+			
+			RowMapper<LikeDTO> rowMapper = new RowMapper<LikeDTO>() {
+				@Override
+				public LikeDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					LikeDTO dto = new LikeDTO();
+					
+					dto.setPro_obj(rs.getString("pro_obj"));
+					dto.setP_id(rs.getString("p_id"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("찜 상세보기 실패 : " + e);
+		}
+		
+		return dto;
+	}//read() end
 }//class end
