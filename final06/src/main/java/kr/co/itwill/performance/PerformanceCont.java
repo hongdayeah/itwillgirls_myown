@@ -33,6 +33,7 @@ public class PerformanceCont {
 
 	@RequestMapping("/performance/seat.do")
 	public ModelAndView seat(String per_code) {
+	
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("/performanceSeat/seat");
 		
@@ -42,11 +43,12 @@ public class PerformanceCont {
 
 		//performance DAO에 선언한 seatInfo() 함수 추가
 		ClassroomDTO seatInfo = dao.seatInfo();
-		mav.addObject("perSeatdto", seatInfo);
+		mav.addObject("perSeatdto", seatInfo); 
 
-		
 		return mav;
+		
 	}
+	
 
 	
 	@RequestMapping("/performance/list.do")
@@ -97,14 +99,14 @@ public class PerformanceCont {
 	if(cnt==0) {
 		 String msg1="<p>공연 등록 실패</p>";
 		 String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-         String link2="<input type='button' value='목록으로' onclick='#'>";
+         String link2="<input type='button' value='목록으로' onclick='location.href='list.do'>";
          mav.addObject("msg1", msg1);
          mav.addObject("link1", link1); 
          mav.addObject("link2", link2); 
 	} else {
 		 String msg1="<p>공연 등록 성공</p>";
 		 mav.addObject("msg1", msg1);
-		 String link1="<input type='button' value='목록으로' onclick='#'>";
+		 String link1="<input type='button' value='목록으로' onclick='location.href='list.do'>";
 		 mav.addObject("link1", link1); 
 		}//if end
 	
