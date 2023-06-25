@@ -1,5 +1,7 @@
 package kr.co.itwill.like;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,10 +30,12 @@ public class LikeCont {
 	@RequestMapping("program/likeInsert.do")
 	@ResponseBody //성공하면 본문의 ajax -> success로 이동 ??
 	public String likeInsert(@RequestParam("pro_obj") String pro_obj, @RequestParam("p_id") String p_id, @ModelAttribute LikeDTO likedto) {
-		System.out.println("1111");
-		System.out.println(pro_obj);
-		System.out.println(p_id);
-		System.out.println(likedto);
+		//ajax에서 success하면 alert()로 반환하기로 했으니까 리턴 값은 string이 되어야한다.
+		//modelandview 방식의 함수는 새로운 페이지로 변환하도록 하는것이기 때문에 modelandview 함수가 아니어도 됨.
+		
+		//System.out.println(pro_obj);
+		//System.out.println(p_id);
+		//System.out.println(likedto);
 		
 		//ajax에서 pro_obj로 받은 것을 여기서 String pro_obj, p_id로 받은 것을 여기서 String p_id로 쓰겠다
 		
@@ -48,13 +52,12 @@ public class LikeCont {
 		int cnt = dao.create(likedto);
 		
 		if(cnt==0) {
-			return "실패!!";
+			return "관심프로그램 등록 실패!!";
 		}else {
-			return "성공!!";
-		}//if end
-		
-		
-		
+			return "관심프로그램으로 등록되었습니다.\n마이페이지에서 확인 가능합니다.";
+		}//if end		
 	}//likeInsert() end
+	
+	
 	
 }//class end

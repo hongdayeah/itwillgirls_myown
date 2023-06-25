@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.protime.ProtimeDTO;
 
 @Repository
@@ -207,4 +208,35 @@ public class ProgramDAO {
 			System.out.println("조회수 증가 실패 : " + e);
 		}
 	}//incrementCnt() end
+	
+	//like_program 상세조회하는 함수
+	public LikeDTO likeread(String pro_obj, String p_id) {
+		LikeDTO dto = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_obj, p_id ");
+			sql.append(" FROM like_program ");
+			sql.append(" WHERE pro_obj = '" + pro_obj +"' AND p_id = '" + p_id + "' ");
+			
+			RowMapper<LikeDTO> rowMapper = new RowMapper<LikeDTO>() {
+				@Override
+				public LikeDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					LikeDTO dto = new LikeDTO();
+					
+					dto.setPro_obj(rs.getString("pro_obj"));
+					dto.setP_id(rs.getString("p_id"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("program에서의 찜 상세보기 조회 실패 : " + e);
+		}
+		
+		return dto;
+	}//likeread() end
 }//class end
