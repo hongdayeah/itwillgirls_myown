@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+
 	<style>
 		.seat {
 		  display: inline;
@@ -100,7 +101,6 @@
 			//좌석을 담을 배열 생성
 			var arrSeat=[]; 
 			
-			
 			//수량 변경시 이벤트 리스너
 			seatNum.addEventListener('change', function(){
 				selectNum=seatNum.value;
@@ -123,9 +123,32 @@
 					}
 				}
 			}
+				
+			</script>
 			
-		
+			<button class="btn btn-warning" onclick="reserveSeats()">예매하기</button>
 			
+	
+  
+			<script>
+			 function reserveSeats() {
+				 if(selectNum==0){
+					 alert("수량을 선택 해 주세요");
+				 } else {
+				    if (arrSeat.length == selectNum) {
+				      // 서버로 예매 정보와 좌석 정보를 전달하는 로직을 구현하세요.
+				      alert("예매 정보\n" +
+				            "공연 : " + "${dto.per_name}" + "\n" +
+				            "공연 날짜: " + "${dto.per_date}" + "\n" +
+				            "공연 시간: " + "${dto.per_time}" + "\n" +
+				            "선택된 좌석: " + arrSeat + "\n" +
+				            "선택된 수량: " + selectNum);
+				       		location.href="/perlist.do";
+				    } else {	
+				      alert("좌석을 모두 선택해 주세요.");
+				    	}
+					}
+				  }				
 			</script>
 			</html>
 
