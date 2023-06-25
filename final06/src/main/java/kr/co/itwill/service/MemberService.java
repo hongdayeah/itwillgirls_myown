@@ -51,6 +51,5 @@ public interface MemberService {
 	
 	// 자녀 회원 목록
 	public List<MemberKidDTO> kidList() throws Exception;
-
 	
 }// interface end

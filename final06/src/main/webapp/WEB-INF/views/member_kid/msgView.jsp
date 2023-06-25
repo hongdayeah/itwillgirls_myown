@@ -44,7 +44,8 @@
 		<dd>${msg1 != null ? img : ""} ${msg1}</dd>
 	</dl>
 	<p>
-	 	${link1} <!-- ${link2} -->
+	 	${link1}
+	 	${link2}
 	</p>
 </div>
 

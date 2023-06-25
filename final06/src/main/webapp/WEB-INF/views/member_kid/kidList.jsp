@@ -43,27 +43,43 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+							<!-- 
+								<th>부모 아이디</th>
+								<th>로그인한 아이디</th>
+							-->
 								<th>자녀 이름</th>
 								<th>자녀 생년월일</th>
 								<th>자녀 성별</th>
 								<th>자녀 성향</th>
+								<!-- <th>자녀 회원번호</th> -->
 								<th>수정</th>
 								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="kid_dto" items="${list}">
-								<tr>
+							<tr>
+								<c:if test="${kid_dto.p_id == member_dto.p_id}">
+								<!-- 
+									<td>${kid_dto.p_id}</td> 자녀회원을 추가한 부모 아이디
+									<td>${member_dto.p_id}</td> 현재 로그인한 아이디
+								 -->
 									<td>${kid_dto.k_name}</td>
-									<td>${kid_dto.k_birth}</td>
-									<td><c:if test="${kid_dto.k_gender == 1}">
-									남성
-								</c:if> <c:if test="${kid_dto.k_gender == 2}">
-									여성
-								</c:if></td>
+									<!-- <td>${kid_dto.k_birth}</td> -->
+									<td>${fn:substring(kid_dto.k_birth,0,2)}년 ${fn:substring(kid_dto.k_birth,2,4)}월 ${fn:substring(kid_dto.k_birth,4,6)}일</td>
+									<td>
+										<c:if test="${kid_dto.k_gender == 1}">
+											남성
+										</c:if>
+										<c:if test="${kid_dto.k_gender == 2}">
+											여성
+										</c:if>
+									</td>
 									<td>${kid_dto.typename}</td>
-									<td><input type="button" value="수정" onclick="location.href='update.do'"> <!-- 임시 경로 --></td>
-									<td><input type="button" value="삭제" onclick="location.href='delete.do'"> <!-- 임시 경로 --></td>
+									<!-- <td>${kid_dto.k_no}</td> -->
+									<td><input type="button" value="수정" onclick="location.href='kidModify.do?k_no=${kid_dto.k_no}'"></td>
+									<td><input type="button" value="삭제" onclick="location.href='kidDelete.do?k_no=${kid_dto.k_no}'"></td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -75,6 +91,7 @@
 		</form>
 	</div>
 </div>
+
 <!--container end-->
 <!-- 본문 끝 -->
 

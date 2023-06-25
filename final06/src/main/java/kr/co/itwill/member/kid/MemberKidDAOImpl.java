@@ -22,5 +22,5 @@ public class MemberKidDAOImpl implements MemberKidDAO {
 	public List<MemberKidDTO> kidList() throws Exception {
 		return sqlSession.selectList("member.kidList");
 	}// kidList() end
-
+	
 }// class end

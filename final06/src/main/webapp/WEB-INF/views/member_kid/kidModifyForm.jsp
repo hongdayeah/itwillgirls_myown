@@ -43,29 +43,30 @@
         <div class="form-wrapper">
         <input type="button" onclick="location.href='/member_kid/kidList.do'" value="자녀 회원 목록">
         <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post">
-        <h2 class="form-signin-heading">자녀 회원 추가</h2>
+        <h2 class="form-signin-heading">자녀 회원 정보 수정</h2>
         <div class="login-wrap">
+        	<input type="hidden" class="form-control" value="${dto.k_no}" id="k_no" name="k_no">
         	
-        	<!-- 부모 코드(로그인한 세션 아이디 가져오기 완료), typename 참조 해야 함 / type 테이블 만들어서 참조해야 하나?! -->
         	<input type="text" class="form-control" placeholder="부모 아이디" value="${member_dto.p_id}" id="p_id" name="p_id" maxlength="20" readonly>
-            <!-- 자녀 회원번호는 시퀀스 사용으로 주석 처리함
-            <input type="text" class="form-control" placeholder="자녀 회원번호" id="k_no" name="k_no" maxlength="9"> -->
-            <input type="text" class="form-control" placeholder="자녀 이름" id="k_name" name="k_name" maxlength="20">
-            <input type="text" class="form-control" placeholder="자녀 생년월일 ex) 210310" id="k_birth" name="k_birth" maxlength="6">
+            <input type="text" class="form-control" placeholder="자녀 이름" value="${dto.k_name}" id="k_name" name="k_name" maxlength="20">
+            <input type="text" class="form-control" placeholder="자녀 생년월일 ex) 210310" value="${dto.k_birth}" id="k_birth" name="k_birth" maxlength="6">
             
-            <div style="padding: 5px;">
-				<div>
+			<div style="padding: 5px;">
 				&nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="1">남성
-	            &nbsp;
-	            <input type="radio" name="k_gender" id="k_gender" value="2">여성
-				</div>
+				<c:if test="${dto.k_gender == 1}">
+					<input type="radio" name="k_gender" id="k_gender" value="1" checked> 남성
+					<input type="radio" name="k_gender" id="k_gender" value="2"> 여성
+				</c:if>
+					<c:if test="${dto.k_gender == 2}">
+					<input type="radio" name="k_gender" id="k_gender" value="1"> 남성
+					<input type="radio" name="k_gender" id="k_gender" value="2" checked> 여성
+				</c:if>
 			</div>
             
             <!-- 테스트 하면 typename에 결과값이 자동 입력될 수 있게 하기, 입력되지 않았을 때는 테스트하기 링크 연결할까? -->
-            <input type="text" class="form-control" placeholder="자녀 성향 ex) 테스트를 진행해 주세요" id="typename" name="typename" maxlength="5">
+            <input type="text" class="form-control" placeholder="자녀 성향 ex) 테스트를 진행해 주세요" value="${dto.typename}" id="typename" name="typename" maxlength="5">
             
-            <button class="btn btn-lg btn-login btn-block" type="submit" id="add_button">등록</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="modify_button">수정</button>
         </div>
 
       </form>
@@ -78,7 +79,7 @@
 $(document).ready(function(){
 
 	// 자녀 회원 정보 수정
-	$("#add_button").on("click", function(){
+	$("#modify_button").on("click", function(){
 		
 		//1) 이름을 입력했는지?
 		if($("#k_name").val()==""){
@@ -126,9 +127,9 @@ $(document).ready(function(){
             return false;
         }//if end
 		
-		var deleteYN = confirm("확인을 누르면 자녀회원이 등록되며, 등록한 자녀는 마이페이지에서 확인할 수 있습니다. 등록하시겠습니까?");
+		var deleteYN = confirm("확인을 누르면 자녀회원이 수정됩니다. 수정하시겠습니까?");
 		if(deleteYN == true){
-			$("#kidfrm").attr("action", "/member_kid/addKid.do");
+			$("#kidfrm").attr("action", "/member_kid/kidModify.do");
 			$("#kidfrm").submit();
 		} else {
 			$("#kidfrm").attr("action", "javascript:history.back()");

@@ -2,7 +2,7 @@ package kr.co.itwill.member.kid;
 
 public class MemberKidDTO {
 
-	private long kno;
+	private int k_no;
 	private String k_name;
 	private String k_birth;
 	private int k_gender;
@@ -13,12 +13,12 @@ public class MemberKidDTO {
 	public MemberKidDTO() {}
 	
 	
-	public long getKno() {
-		return kno;
+	public int getK_no() {
+		return k_no;
 	}
 	
-	public void setKno(long kno) {
-		this.kno = kno;
+	public void setK_no(int kno) {
+		this.k_no = kno;
 	}
 	public String getK_name() {
 		return k_name;
@@ -53,7 +53,7 @@ public class MemberKidDTO {
 
 	@Override
 	public String toString() {
-		return "MemberKidDTO [kno=" + kno + ", k_name=" + k_name + ", k_birth=" + k_birth + ", k_gender=" + k_gender
+		return "MemberKidDTO [kno=" + k_no + ", k_name=" + k_name + ", k_birth=" + k_birth + ", k_gender=" + k_gender
 				+ ", p_id=" + p_id + ", typename=" + typename + "]";
 	}
 	
