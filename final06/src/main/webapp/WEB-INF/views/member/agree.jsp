@@ -190,8 +190,8 @@
 		</div>
 
 		<div style="text-align: center">
-			<button class="btn btn-lg btn-login btn-block" type="submit" onclick="/member/join.do">회원가입 진행</button>
-            <button class="btn btn-lg btn-login btn-block" type="button" onclick="javascript:history.back()">뒤로 가기</button>
+			<button class="btn btn-lg btn-login btn-success" type="submit" onclick="/member/join.do">회원가입 진행</button>
+            <button class="btn btn-lg btn-login btn-warning" type="button" onclick="javascript:history.back()">뒤로 가기</button>
 		</div>
 	</form>
 
