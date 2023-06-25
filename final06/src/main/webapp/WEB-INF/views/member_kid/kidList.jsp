@@ -31,12 +31,13 @@
 	<div class="container">
 		<form class="" name="kidfListfrm" id="kidfListfrm" method="post">
 			<div class="bs-docs-section">
+				<div class="btn-position">
+					<input type="button" class="btn btn-primary" onclick="location.href='/member_kid/addKid.do'" value="자녀 회원 등록">
+				</div>
+				
 				<h1 id="tables" class="page-header">자녀 회원 목록</h1>
-
 				<h2 id="tables-hover-rows"></h2>
-				<p>
-					<input type="button" onclick="location.href='/member_kid/addKid.do'" value="자녀 회원 등록">
-				</p>
+				
 				<div class="bs-example">
 					<input type="hidden" name="p_id" value="${member_dto.p_id}">
 					<!-- 부모 아이디 -->
@@ -77,8 +78,8 @@
 									</td>
 									<td>${kid_dto.typename}</td>
 									<!-- <td>${kid_dto.k_no}</td> -->
-									<td><input type="button" value="수정" onclick="location.href='kidModify.do?k_no=${kid_dto.k_no}'"></td>
-									<td><input type="button" value="삭제" onclick="location.href='kidDelete.do?k_no=${kid_dto.k_no}'"></td>
+									<td><input type="button" class="btn btn-warning" value="수정" onclick="location.href='kidModify.do?k_no=${kid_dto.k_no}'"></td>
+									<td><input type="button" class="btn btn-danger" value="삭제" onclick="location.href='kidDelete.do?k_no=${kid_dto.k_no}'"></td>
 									</c:if>
 								</tr>
 							</c:forEach>

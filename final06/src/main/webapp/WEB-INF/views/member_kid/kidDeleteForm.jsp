@@ -25,8 +25,12 @@
 <!-- 본문 시작 kidDeleteForm.jsp -->
 <div class="login-bg">
     <div class="container">
+		<br>
+	    <div class="btn-position">
+			<input type="button" class="btn btn-primary" onclick="location.href='/member_kid/kidList.do'" value="자녀 회원 목록">
+		</div>    
+    
         <div class="form-wrapper">
-        <input type="button" onclick="location.href='/member_kid/kidList.do'" value="자녀 회원 목록">
         <form class="form-signin wow fadeInUp" name="deletefrm" id="deletefrm" method="post" action="/member_kid/kidDelete.do" onsubmit="return deleteCheck()">
         <h2 class="form-signin-heading">자녀 회원 삭제</h2>
         <div class="login-wrap">

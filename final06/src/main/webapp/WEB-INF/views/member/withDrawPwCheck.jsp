@@ -49,7 +49,7 @@
         <div class="login-wrap">
             <input type="text" class="form-control" placeholder="아이디" id="p_id" name="p_id" value="${member_dto.p_id}" readonly>
             <input type="text" class="form-control" type="password" placeholder="비밀번호" id="p_passwd" name="p_passwd" size="20">
-            <div>
+            <div style="color: red;">
             	<c:if test="${msg == false}">
 					비밀번호가 일치하지 않습니다.
 				</c:if>
