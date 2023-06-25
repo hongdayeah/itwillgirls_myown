@@ -205,7 +205,7 @@
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
 <script>
-
+	// 찜 버튼 눌렀을때 실행
 	document.getElementById("myAnchor").addEventListener("click", function(event){
 		event.preventDefault();
 	
@@ -240,6 +240,19 @@
 		}//if end
 	});//ajax end
 	
+	//member_dto.p_id 값 controller로 넘기기
+	$(document).ready(function() {
+		let p_id   =$("#p_id").val(); 
+		alert(p_id);
+		$.ajax({
+			url: "/program/read.do",
+			type: "POST",
+			data: { "p_id": p_id }
+		});
+	});
+	
+	
+	/*
 	function likeCheck(pro_obj, p_id){
 		
 		alert(pro_obj);
@@ -265,6 +278,7 @@
 			return false;
 		}
 	}//likeCheck() end
+	*/
 </script>
         
 <%@ include file="../footer.jsp" %>

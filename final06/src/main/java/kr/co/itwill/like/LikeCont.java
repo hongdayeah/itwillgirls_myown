@@ -58,6 +58,4 @@ public class LikeCont {
 		}//if end		
 	}//likeInsert() end
 	
-	
-	
 }//class end

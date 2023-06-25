@@ -85,7 +85,8 @@ public class ProgramCont {
 	
 	//상세보기
 	@RequestMapping("/program/read.do")
-	public ModelAndView read(String pro_obj) {
+	public ModelAndView read(String pro_obj, @RequestParam(value = "p_id", required = false) String p_id, HttpSession session) {
+		//@RequestParam(value = "p_id", required = false) String p_id : p_id 값이 null이어도 상관 없음
 		ModelAndView mav = new ModelAndView();
 		ProgramDTO dto = dao.read(pro_obj);
 		mav.setViewName("program/read");
@@ -98,6 +99,13 @@ public class ProgramCont {
 		
 		//조회수 증가하는 함수
 		dao.incrementCnt(pro_obj);
+		
+		System.out.println(p_id);
+		//ProgramDAO에 선언한 likeread()함수 추가(like_program에서 pro_obj=? and p_id=?인 행 조회)
+		
+	
+		//mav.addObject("likedto", likedto);
+		
 		
 		return mav;
 	}//read() end
