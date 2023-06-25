@@ -34,5 +34,14 @@
 		WHERE p_id = #{p_id}
 		ORDER BY k_no
 	</select>
+	
+	<update id="kidUpdate">
+		UPDATE member_kid
+		SET k_name = #{k_name}
+			, k_birth = #{k_birth}
+			, k_gender = #{k_gender}
+			, typename = #{typename}
+		WHERE p_id = #{p_id}
+	</update>
 
 </mapper>
