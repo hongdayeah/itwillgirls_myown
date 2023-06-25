@@ -66,7 +66,7 @@
 						<i class="fa fa-calendar"></i>
 						<span style="font-weight: bold;">공연날짜</span>
 						<var="per_date" value="${dto.per_date}"/>
-						|
+					|
 						<!-- 공연시간 -->
 						<i class="fa fa-calendar"></i>
 						<span style="font-weight: bold;">공연시간</span>
@@ -89,12 +89,16 @@
 	               <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
 	          	</td>
 			</div>
+			</div>
 	
 			<c:if test="${status.count % 2 == 0}">
-		</div>
+				</div>
 		</c:if>
 	</c:forEach>
 	</div>
+	</div>
+		
+
 <!--container end-->	
 
     <!-- 본문 끝 -->
