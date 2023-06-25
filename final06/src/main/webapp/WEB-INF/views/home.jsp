@@ -126,28 +126,35 @@
 							</li>
 						</ul>
 					</li>
+
 					<li class="dropdown">
 					<!-- 마이페이지의 경우 글자에 링크거는것보다 마이페이지 아이콘 이미지에 링크거는것도 좋을것 같음 -->
-						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-						"dropdown" data-toggle="dropdown" href="#">마이페이지 <i class="fa fa-angle-down"></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="../#">예매내역</a>
-							</li>
-							<li>
-								<a href="../member_kid/kidList.do">자녀회원 등록/목록</a>
-							</li>
-							<li>
-								<a href="../member/memberModify.do">개인정보 수정</a>
-							</li>
-							<li>
-								<a href="../member/memberWithdraw.do">회원탈퇴</a>
-							</li>
-							<li>
-								<a href="../#">나의 관심내역</a>
-							</li>
-						</ul>
+					<c:choose>
+						<c:when test="${member_dto != null}">
+							<div>
+								<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+								"dropdown" data-toggle="dropdown" href="#">마이페이지 <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="../#">예매내역</a>
+									</li>
+									<li>
+										<a href="../member_kid/addKid.do">자녀회원 등록/목록</a>
+									</li>
+									<li>
+										<a href="../member/memberModify.do">개인정보 수정</a>
+									</li>
+									<li>
+										<a href="../member/memberWithdraw.do">회원탈퇴</a>
+									</li>
+									<li>
+										<a href="../#">나의 관심내역</a>
+									</li>
+								</ul>
+							</div>
+						</c:when>
+					</c:choose>
 					</li>
 					<li>
 						<c:choose>

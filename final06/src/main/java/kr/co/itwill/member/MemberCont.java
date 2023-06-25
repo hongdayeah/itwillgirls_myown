@@ -90,6 +90,7 @@ public class MemberCont {
 
 		// 변수 선언 및 초기화
 		HttpSession session = req.getSession();
+		session.setMaxInactiveInterval(3600);
 		MemberDTO dto2 = memberservice.login(member_dto); // header에서 다른 카테고리 dto와 혼선이 생겨 이번 메소드에서만 구분함
 
 		if (dto2 == null) { // 로그인 실패
