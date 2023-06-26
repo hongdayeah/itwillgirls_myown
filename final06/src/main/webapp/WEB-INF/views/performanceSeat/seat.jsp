@@ -111,21 +111,30 @@
 			
 		
 			// button 클릭시 실행하는 함수
-			function buttons(id){
-				if(selectNum==0){
-					alert("예매 할 수량을 선택 해 주세요");
-				} else {					
-						if(arrSeat.length < selectNum){
-						var button = document.getElementById(id);
-						button.style.backgroundColor = 'green';
-						arrSeat.push(id);
-						//alert("좌석"+arrSeat+"선택수량"+selectNum);
-					} else {
-						alert("좌석은 최대"+ selectNum + "석 까지만 선택가능합니다.");						
-					}
+			function buttons(id) {
+				  if (selectNum == 0) {
+				    alert("예매할 수량을 선택해주세요.");
+				  } else {
+				    var button = document.getElementById(id);
+				    //arrSeat 배열에서 id값 찾아서 인덱스 확인
+				    //indexof()사용해서 배열에서 ID 값을 찾을 수 없는경우 -1을 리턴함
+				    var index = arrSeat.indexOf(id);
+				    if (index > -1) {
+				      // 이미 선택된 버튼인 경우 선택 취소
+				      button.style.backgroundColor = 'pink';
+				      arrSeat.splice(index, 1);
+				    } else {
+				      // 선택되지 않은 버튼인 경우 선택 추가
+				      if (arrSeat.length < selectNum) {
+				        button.style.backgroundColor = 'green';
+				        arrSeat.push(id);
+				      } else {
+				        alert("좌석은 최대 " + selectNum + "석까지만 선택 가능합니다.");
+				      }
+				    }
+				  }
 				}
-			}
-				
+			
 			 function reserveSeats() {
 				 if(selectNum==0){
 					 alert("수량을 선택 해 주세요");
