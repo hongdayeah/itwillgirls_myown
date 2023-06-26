@@ -22,8 +22,11 @@ public class TendencyCont {
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tendency/list");
+		
+		//목록 불러오기
 		List<TendencyDTO> list = dao.list();
 		mav.addObject("list", list);
+
 		
 		return mav;
 	}//list() end
