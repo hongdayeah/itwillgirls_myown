@@ -54,7 +54,7 @@
     <h3>좌석 예매</h3>
     <h4>예매 할 좌석을 선택 해 주세요</h4>
 		
-	<form name="perSeats" id="perSeats" method="post" enctype="multipart/form-data">
+
 		
 	<table>
 		<thead>
@@ -126,14 +126,6 @@
 				}
 			}
 				
-			</script>
-			
-			<input type="hidden" name="per_code" value="${dto.per_code}">
-			<button class="btn btn-warning" onclick="reserveSeats()">예매하기</button>
-			
-	
-  
-			<script>
 			 function reserveSeats() {
 				 if(selectNum==0){
 					 alert("수량을 선택 해 주세요");
@@ -146,15 +138,16 @@
 				            "공연 시간: " + "${dto.per_time}" + "\n" +
 				            "선택된 좌석: " + arrSeat + "\n" +
 				            "선택된 수량: " + selectNum);
-						  	document.productfrm.action="perInsert.do";
-							document.productfrm.submit();
+				       		location.href="/performance/perInsert.do";
 				    } else {	
 				      alert("좌석을 모두 선택해 주세요.");
 				    	}
 					}
-				  }				
+				  }	
 			</script>
-			</form>
+			
+			<button class="btn btn-warning" onclick="reserveSeats()">예매하기</button>
+
 			</html>
 
 
