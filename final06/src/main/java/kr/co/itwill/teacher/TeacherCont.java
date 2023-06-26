@@ -46,7 +46,7 @@ public class TeacherCont {
 		return mav;
 	}//createForm() end
 	
-	@RequestMapping(value="/teacher/create.do", method = RequestMethod.POST)
+	@RequestMapping(value="/teacher/create.do", method=RequestMethod.POST)
 	public ModelAndView createProc(@ModelAttribute TeacherDTO dto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("teacher/msgView");

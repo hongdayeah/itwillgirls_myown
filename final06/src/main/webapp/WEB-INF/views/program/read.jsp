@@ -132,21 +132,34 @@
 									</tbody>
 								</table>
 							</div>							
-
+							
+							<!-- ---------- 찜하기 시작 ---------- -->
 							<input type="hidden" id="pro_obj" value="${dto.pro_obj}">
 							<input type="hidden" id="p_id"     value="${member_dto.p_id}">
 							
-							<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png" id="myAnchor" style="cursor:pointer;" width="30px">
+							<c:if test="${likedto eq 1}">
+								<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/likeheart.png" id="myAnchor" style="cursor:pointer;" width="30px">
+							</c:if>
+							<c:if test="${likedto eq 0}">
+								<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png" id="myAnchor" style="cursor:pointer;" width="30px">
+							</c:if>
+							
 							<!-- 
 							<a class="btn btn-app" id="myAnchor">
 								<span class="badge bg-red">찜한 개수</span>
 								<i class="fa fa-heart-o"></i> Likes
 							</a>
 							 -->
+							 <!-- ---------- 찜하기 끝 ---------- -->
+							
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- 예매하기 -->
+							
+							<!-- ---------- 예매하기 시작 ---------- -->
 							<button class="btn btn-success" onclick="location.href='update.do?pro_obj=${dto.pro_obj}'">예매하기</button>
+							<!-- ---------- 예매하기 끝 ----------- -->
 					
+					
+							<!-- ---------- 후기 list 시작 ---------- -->
 							<h3 style="font-weight:bold;">프로그램 후기</h3>
 							<hr>
 							<div class="media-body">
@@ -172,16 +185,16 @@
 								</c:forEach>
 							</div>
 					</div>
-				
+					<!-- ---------- 후기 작성 시작 ---------- -->
 					<div class="post-comment">
 						<h3 class="skills">후기 남기기</h3>
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" name="reviewfrm" id="reviewfrm" action="reviewcreate.do?pro_obj=${dto.pro_obj}">
 							<div class="form-group">
 								<div class="col-lg-6">
 								<!-- 현재 로그인한 값의 아이디 readonly로 넣어두기 -->
-									<input type="text" placeholder="아이디" class="col-lg-12 form-control">
+									<input type="text" name="" placeholder="${member_dto.p_id}" class="col-lg-12 form-control" readonly>
 								</div>
-								<div class="col-lg-6">
+								<div class="col-lg-6"> <!-- p_id의 비밀번호 입력 -->
 									<input type="text" placeholder="비밀번호" class="col-lg-12 form-control">
 								</div>
 							</div>
@@ -196,6 +209,7 @@
 							</p>
 						</form>
 					</div>
+					<!-- ---------- 후기 작성 끝 ---------- -->
 				</div>
 			</div>
 		</div>
@@ -240,17 +254,7 @@
 		}//if end
 	});//ajax end
 	
-	//member_dto.p_id 값 controller로 넘기기
-	$(document).ready(function() {
-		let p_id   =$("#p_id").val(); 
-		alert(p_id);
-		$.ajax({
-			url: "/program/read.do",
-			type: "POST",
-			data: { "p_id": p_id }
-		});
-	});
-	
+
 	
 	/*
 	function likeCheck(pro_obj, p_id){

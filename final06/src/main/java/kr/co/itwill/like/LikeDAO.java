@@ -94,7 +94,7 @@ public class LikeDAO {
 			sql.append(" INSERT INTO like_program(pro_obj, p_id) ");
 			sql.append(" VALUES (?, ?) ");
 			
-			cnt = jt.update(sql.toString(), dto.getP_id(), dto.getPro_obj());
+			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getP_id());
 		}catch(Exception e) {
 			System.out.println("찜 추가 실패 : " + e);
 		}
