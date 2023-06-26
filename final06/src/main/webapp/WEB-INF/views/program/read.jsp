@@ -56,7 +56,7 @@
 										${dto.pro_readcnt} 명 조회함
 									</li>
 									<li>
-										n 명이 관심있어함 (찜개수)
+										${likecnt} 명이 관심있어함 (찜개수)
 									</li>
 									<li>
 										n 개의 리뷰개수

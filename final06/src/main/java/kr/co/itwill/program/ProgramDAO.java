@@ -210,10 +210,10 @@ public class ProgramDAO {
 		}
 	}//incrementCnt() end
 	
-	//like_program 상세조회하는 함수
+	//like_program 상세조회하여 pro_obj=? and p_id=?이면 1, 없으면 0을 반환
 	public int likeread(String pro_obj, String p_id) {
-		
 		int cnt = 0;
+		
 		try {
 			sql = new StringBuilder();
 			sql.append(" SELECT COUNT(*) ");
@@ -230,4 +230,25 @@ public class ProgramDAO {
 				
 		return cnt;
 	}//likeread() end
+	
+	//like_program에서 pro_obj=?인 개수 반환
+	public int likecnt(String pro_obj) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT COUNT(*) ");
+			sql.append(" FROM like_program ");
+			sql.append(" WHERE pro_obj = ? ");
+			
+			cnt = jt.queryForObject(sql.toString(), Integer.class, pro_obj);
+			
+		}catch(EmptyResultDataAccessException e) {
+			cnt = 0;
+		}catch(Exception e) {
+			System.out.println("program에서의 찜 개수 조회 실패 : " + e);
+		}
+		
+		return cnt;
+	}//likecnt() end
 }//class end

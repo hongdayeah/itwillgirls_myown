@@ -93,20 +93,20 @@ public class ProgramCont {
 		
 		mav.addObject("dto", dto);
 		
-		//ProramDAO에 선언한 ptread()함수 추가 (program_time에서 pro_obj=?인 행 조회)
+		//////////////ProramDAO에 선언한 ptread()함수 추가 (program_time에서 pro_obj=?인 행 조회)
 		List<ProtimeDTO> ptlist = dao.ptlist(pro_obj);
 		mav.addObject("ptlist", ptlist);
 		
-		//조회수 증가하는 함수
+		//////////////조회수 증가하는 함수
 		dao.incrementCnt(pro_obj);
 		
-		//로그인 한 p_id 가져오기 
+		//////////////로그인 한 p_id 가져오기 
 		Object obj = session.getAttribute("member_dto");
 		MemberDTO memdto = (MemberDTO)obj;
 		//System.out.println(p_id);
 		//System.out.println(memdto);
 		
-		//p_id가 null값(로그아웃)이어도 read페이지 볼 수 있게하기 
+		//////////////p_id가 null값(로그아웃)이어도 read페이지 볼 수 있게하기 
 		if (memdto != null) {
 	        p_id = memdto.getP_id();
 	    } else {
@@ -114,11 +114,15 @@ public class ProgramCont {
 	        p_id = "guest";
 	    }
 		//System.out.println(p_id);
-		//ProgramDAO에 선언한 likeread()함수 추가(like_program에서 pro_obj=? and p_id=?인 행 조회해서 개수 반환)
+		//////////////ProgramDAO에 선언한 likeread()함수 추가(like_program에서 pro_obj=? and p_id=?인 행 조회해서 개수 반환)
 		int likedto = dao.likeread(pro_obj, p_id);
 		mav.addObject("likedto", likedto);
 		//System.out.println(likedto);
 		
+		
+		//ProgramDAO에 선언한 pro_obj=?의 likecnt()함수 추가 (해당 pro_obj의 찜 개수)
+		int likecnt = dao.likecnt(pro_obj);
+		mav.addObject("likecnt", likecnt);
 		return mav;
 	}//read() end
 	
