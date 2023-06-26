@@ -85,7 +85,7 @@
 							<a href="../tendency/list.do">어린이 성향이란?</a>
 						</li>
 						<li>
-							<a href="../#">성향테스트하기</a>
+							<a href="../test/main.do">성향테스트하기</a>
 						</li>
 					</ul>
 				</li>

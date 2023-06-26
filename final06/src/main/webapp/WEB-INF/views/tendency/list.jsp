@@ -90,7 +90,8 @@
 				<div class="content">
 					<h3 class="title wow flipInX">늑대[II]</h3> <!-- 리스트에서 갖고오기 -->
 					<p>
-						Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+						처음 본 낯선 사람에게 쉽게 다가가지는 못하지만 한번 사귄 친구와 깊게 친해지는 편입니다. 표현을 많이 하지 않고 내면을 탐구하는 것을 좋아합니다.<br>
+						다양한 환경에서 새로운 자극을 받는 것 보다 혼자 고민하고 탐구할 시간을 갖는 경험이 도움이 됩니다.
 					</p>
 				</div>
 			</div>
@@ -101,7 +102,8 @@
 				<div class="content">
 					<h3 class="title wow flipInX">사자[EE]</h3>
 					<p>
-						Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+						다른 사람의 주목과 관심을 받는 것을 좋아합니다. 타인에게서의 인정 욕구가 강한 편이고 경쟁하는 것을 좋아합니다.<br>
+						반장이나 선생님을 도와주는 주도자의 역할이 어울리고 다양한 경험에서 오는 자극을 좋아하는 편입니다.
 					</p>
 				</div>
 			</div>
@@ -112,7 +114,8 @@
 				<div class="content">
 					<h3 class="title wow flipInX">기린[IE]</h3>
 					<p>
-						Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+						내성적이어서 관심이 쏠리면 부끄러워하지만 싫어하지 않습니다. 친구들과 함께 하는 활동을 좋아하는 편이지만 선생님이나 부모님의 개입이 필요할 수 있습니다.<br>
+						주변의 개입이 있다면 친구들과의 관계가 더욱 원만해질 수 있는 편이므로 주변 어른들의 관심을 필요로 합니다. 단체활동을 하는 경험이 도움이 됩니다.
 					</p>
 				</div>
 			</div>
@@ -123,7 +126,8 @@
 				<div class="content">
 					<h3 class="title wow flipInX">양[EI]</h3>
 					<p>
-						Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+						친구들과 어울리는 것을 좋아하지만 혼자만의 시간도 필요한 타입입니다. 무리에서의 대표가 되는 것을 부담스러워 하지만 기회가 주어졌을 때 주변 친구들을 잘 어우를 수 있습니다.<br>
+						어른들이 억지로 타인과의 관계를 형성해주는 것보다 스스로 나설 때 더 좋은 결과가 있습니다.
 					</p>
 				</div>
 			</div>
