@@ -35,7 +35,28 @@
 </div>
 <!--breadcrumbs end-->
 
-여기에 본문 내용 작성합니다
+	 <h3>장바구니 목록</h3>
+		
+	    <table border="1">
+	    <tr>
+	  		<th>번호</th>
+	    	<th>아이디</th>	    	
+	    	<th>프로그램코드</th>
+	    	<th>공연코드</th>
+	    	<th>좌석번호</th>
+	    	<th>자녀회원번호</th>
+	    </tr>
+	    </table>
+	    
+
+
+
+
 <!-- 본문 끝 -->
+
+
+
+
+
         
 <%@ include file="../footer.jsp" %>

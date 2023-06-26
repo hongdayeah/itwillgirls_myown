@@ -53,6 +53,7 @@
 			<div class="row">
 		</c:if>
 	<div class="col-md-6">
+	
 		<!-- 왼쪽 -->
 		<div class="blog-left">
 			<div class="blog-img">
@@ -74,9 +75,7 @@
 						</p>
 					</div>
 				</div>
-			</div>
-					
-				
+			</div>					
 			<div class="blog-content">					
 				<h3>
 					<a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a>
@@ -84,13 +83,10 @@
 				<p>
 				  ${dto.per_exp}
 				</p>
-				<td>
-	               <input type="button" value="수정" onclick="location.href='update.do?per_code=${dto.per_code}'">
-	               <input type="button" value="삭제" onclick="location.href='delete.do?per_code=${dto.per_code}'">
-	          	</td>
 			</div>
+			
 			</div>
-	
+
 			<c:if test="${status.count % 2 == 0}">
 				</div>
 		</c:if>

@@ -5,14 +5,14 @@
 
 
     <!-- 본문 시작 performanceList.jsp -->
-    <h3>*공연삭제폼*</h3>
 
-	<div class="title"> 삭제 </div>
+
+	<div class="title"></div>
 
 	<form name='per' method="post" action="delete.do">
 		<input type="hidden" name="per_code" value="${requestScope.per_code}">
 		<div class="content">
-			<p>레알 삭제하실?</p>
+			<p>정말 삭제하시겠습니까?</p>
 		</div>
 		
 		<div class='bottom'>

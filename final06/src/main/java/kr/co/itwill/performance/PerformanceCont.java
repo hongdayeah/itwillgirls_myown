@@ -95,22 +95,22 @@ public class PerformanceCont {
 			
 		///////////////////////////////////////////////////////////		
 				
-	int cnt=dao.create(dto);
-	if(cnt==0) {
-		 String msg1="<p>공연 등록 실패</p>";
-		 String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-         String link2="<input type='button' value='목록으로' onclick='location.href='list.do'>";
-         mav.addObject("msg1", msg1);
-         mav.addObject("link1", link1); 
-         mav.addObject("link2", link2); 
-	} else {
-		 String msg1="<p>공연 등록 성공</p>";
-		 mav.addObject("msg1", msg1);
-		 String link1="<input type='button' value='목록으로' onclick='location.href='list.do'>";
-		 mav.addObject("link1", link1); 
-		}//if end
-	
-	return mav;
+		int cnt=dao.create(dto);
+		if(cnt==0) {
+			 String msg1="<p>공연 등록 실패</p>";
+			 String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+	         String link2="<input type='button' value='목록으로' onclick='location.href='list.do'>";
+	         mav.addObject("msg1", msg1);
+	         mav.addObject("link1", link1); 
+	         mav.addObject("link2", link2); 
+		} else {
+			 String msg1="<p>공연 등록 성공</p>";
+			 mav.addObject("msg1", msg1);
+			 String link1="<input type='button' value='목록으로' onclick='location.href='list.do'>";
+			 mav.addObject("link1", link1); 
+			}//if end
+		
+		return mav;
 	
 	}//createProc() end
 	
