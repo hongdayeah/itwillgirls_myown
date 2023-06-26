@@ -90,6 +90,10 @@
 									<td>${dto.per_time}</td>
 								</tr>
 								<tr>
+									<td>공연 장소</td>
+									<td>${dto.class_code}</td>
+								</tr>
+								<tr>
 									<td>공연료</td>
 									<td>${dto.per_fee}</td>
 								</tr>
@@ -99,10 +103,11 @@
 					</div>
 					</div>
 					
+				<td>
+					<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
+				</td>
 
-			<td>
-				<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
-			</td>
+		
 		
 			</div>
 		</div>

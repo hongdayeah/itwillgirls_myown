@@ -135,27 +135,46 @@
 				  }
 				}
 			
-			 function reserveSeats() {
-				 if(selectNum==0){
-					 alert("수량을 선택 해 주세요");
-				 } else {
-				    if (arrSeat.length == selectNum) {
-				      // 서버로 예매 정보와 좌석 정보를 전달하는 로직을 구현하세요.
-				      alert("예매 정보\n" +
-				            "공연 : " + "${dto.per_name}" + "\n" +
-				            "공연 날짜: " + "${dto.per_date}" + "\n" +
-				            "공연 시간: " + "${dto.per_time}" + "\n" +
-				            "선택된 좌석: " + arrSeat + "\n" +
-				            "선택된 수량: " + selectNum);
-				       		location.href="/performance/perInsert.do";
-				    } else {	
-				      alert("좌석을 모두 선택해 주세요.");
-				    	}
-					}
-				  }	
+			
+			function reserveSeats() {
+			  if (selectNum == 0) {
+			    alert("수량을 선택 해 주세요");
+			    return false; // 폼 제출 취소
+			  }
+
+			  if (arrSeat.length != selectNum) {
+			    alert("좌석을 모두 선택해 주세요.");
+			    return false; // 폼 제출 취소
+			  }
+
+			  var returnValue = confirm(
+			    "예매 정보\n" +
+			    "공연 : " + "${dto.per_name}" + "\n" +
+			    "공연 날짜: " + "${dto.per_date}" + "\n" +
+			    "공연 시간: " + "${dto.per_time}" + "\n" +
+			    "선택된 좌석: " + arrSeat + "\n" +
+			    "선택된 수량: " + selectNum
+			  );
+
+			  if (returnValue) {
+			    alert("장바구니로 이동합니다");
+			    return true; // 폼 제출
+			  } else {
+			    return false; // 폼 제출 취소
+			  }
+			}
 			</script>
 			
-			<button class="btn btn-warning" onclick="reserveSeats()">예매하기</button>
+			<!--<button class="btn btn-warning" onclick="reserveSeats()"> 예매하기</button>  -->
+				
+			<form id="rsvseats" action="/performance/perInsert.do" method="POST">
+			  <input type="hidden" name="per_name" value="${dto.per_name}">
+			  <input type="hidden" name="per_date" value="${dto.per_date}">
+			  <input type="hidden" name="per_time" value="${dto.per_time}">
+			  <input type="hidden" name="arrSeat" value="${arrSeat}">
+			  <input type="hidden" name="selectNum" value="${selectNum}">
+			  <input type="submit" class="btn btn-warning" value="예매하기" onclick="return reserveSeats()">
+			</form>
 
 			</html>
 
