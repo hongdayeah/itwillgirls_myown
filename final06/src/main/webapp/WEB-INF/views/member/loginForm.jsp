@@ -62,19 +62,14 @@
 				</c:if>
 			</span>
             <button class="btn btn-lg btn-login btn-block" type="submit">로그인 하기</button>
-            <p>or you can sign in via social network</p>
-            <p>이 부분에는 카카오톡 1초 회원가입 api를 넣어볼까 합니다~!</p>
-            <div class="login-social-link">
-                <a href="index.html" class="facebook">
-                    <i class="fa fa-facebook"></i>
-                    Facebook
-                </a>
-                <a href="index.html" class="twitter">
-                    <i class="fa fa-twitter"></i>
-                    Twitter
+            
+            <div>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=94054c25c9582d1022fd7d35f17d794e&redirect_uri=http://localhost:9095/member/kakao&response_type=code">
+                	<img height="43.5px" src="/img/kakao_login_button.png">
                 </a>
             </div>
             <div class="registration">
+            <br>
                 아직 회원이 아니신가요?
                 <a class="" href="/member/agree.do">
                     회원가입

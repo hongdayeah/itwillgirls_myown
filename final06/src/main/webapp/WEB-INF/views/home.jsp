@@ -60,6 +60,8 @@
 				<a class="navbar-brand" href="../home.do" style="text-align:center;">어린이<br>문화센터</span></a>
 			</div>
 			<div class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav">
 				<c:choose>
 					<c:when test="${member_dto != null}">
 						<div style="text-align:right;">
@@ -68,7 +70,6 @@
 					</c:when>
 				<c:otherwise><div></div></c:otherwise>
 				</c:choose>
-				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
 						"dropdown" data-toggle="dropdown" href="/">프로그램 <i class="fa fa-angle-down"></i>
