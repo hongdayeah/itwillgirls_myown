@@ -1,6 +1,5 @@
 package kr.co.itwill.notice;
 
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 

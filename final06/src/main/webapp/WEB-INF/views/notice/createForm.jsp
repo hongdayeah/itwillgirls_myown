@@ -53,9 +53,9 @@
 					<input type="text" class="form-control short" name="not_sub" id="not_sub" required>
 				</div>
 				<div class="form-group">
-    <label for="not_con">내용</label><br>
-    <textarea class="form-control" name="not_con" id="not_con" rows="15"></textarea>
-</div>
+				    <label for="not_con">내용</label><br>
+				    <textarea class="form-control" name="not_con" id="not_con" rows="15"></textarea>
+				</div>
 <script>
 function convertNewlinesToBreaks() {
     const textarea = document.getElementById('not_con');

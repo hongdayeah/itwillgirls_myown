@@ -6,44 +6,35 @@
 <!-- 본문 시작 template.jsp -->
 <!--container start-->
 
-<section id="faq">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 mar-b-30">
-                <div id="heading">
-                    <h1 class="wow flipInX">F.A.Q.</h1>
-                    <p class="lead wow fadeIn">You have a question? Someone else might have had the exact same one. Let's find out!</p>
-                </div>
-                <div class="panel-group wow fadeInUp" id="accordion" data-wow-duration="2s">
-                    <c:forEach var="dto" items="${list}" varStatus="status">
-                        <!-- PANEL -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading panel-heading-faq">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-${status.index}">
-                                        ${dto.f_question}
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapse-${status.index}" class="panel-collapse collapse">
-                                <div class="panel-body panel-faq">
-                                    <p>${dto.f_answer}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div><!-- /panel-group -->
-            </div><!-- /col-md-10 -->
-        </div>
-    </div>
-    <div align="center">
-		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.not_no}'">
-		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.not_no}'">
-		<input type="button" value="관리자 리스트" onclick="location.href='/faq/list2.do'">
+    <section id="faq">
+
+<table border="1" align="center" style="width: 900px; height: 1200px; text-align:center;">
+
+<tr align="center" style="height: 50px;">
+	<td>일련번호</td>
+	<td>${dto.f_no}</td>
+</tr>
+<tr>
+	<td>카테고리</td>
+	<td>${dto.f_cate}</td>
+</tr>
+<tr>
+	<td>질문</td>
+	<td>${dto.f_question}</td>
+</tr>
+<tr>
+	<td>답변</td>
+	<td>${dto.f_answer}</td>
+</tr>
+</table>
+<br><br>
+<div align="center">
+		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.f_no}'">
+		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.f_no}'">
 </div>
 <br><br>
+
 </section>
-<br><br>
 
 <section id="faq-other">
     <div class="container">
