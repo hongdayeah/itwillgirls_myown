@@ -29,8 +29,8 @@
 </table>
 <br><br>
 <div align="center">
-		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.f_no}'">
-		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.f_no}'">
+		<input type="button" value="수정" onclick="location.href='update.do?f_no=${dto.f_no}'">
+		<input type="button" value="삭제" onclick="location.href='delete.do?f_no=${dto.f_no}'">
 </div>
 <br><br>
 

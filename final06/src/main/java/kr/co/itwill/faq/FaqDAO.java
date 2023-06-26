@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import kr.co.itwill.notice.NoticeDTO;
+
 @Repository
 public class FaqDAO {
 
@@ -133,4 +135,22 @@ public class FaqDAO {
 		}//end
 		return cnt;
 	}//delete() end
+	
+	
+	public int update(FaqDTO dto) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" UPDATE notice ");
+			sql.append(" SET f_cate=?, f_question=?, f_answer=? ");
+			sql.append(" WHERE f_no=? ");
+			
+			cnt=jt.update(sql.toString(), dto.getF_cate(), dto.getF_question(), dto.getF_answer(), dto.getF_no());
+			System.out.println(cnt);
+			System.out.println(dto);
+		}catch(Exception e) {
+			System.out.println("수정실패: "+e);
+		}
+		return cnt;
+	}//update() end
 }//class() end

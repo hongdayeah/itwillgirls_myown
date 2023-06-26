@@ -12,7 +12,7 @@
             <div class="col-md-10 col-md-offset-1 mar-b-30">
                 <div id="heading">
                     <h1 class="wow flipInX">F.A.Q.</h1>
-                    <p class="lead wow fadeIn">You have a question? Someone else might have had the exact same one. Let's find out!</p>
+                    <p class="lead wow fadeIn">자주묻는 질문을 한번에 모았습니다! 자세한 문의는 문의게시판을 이용해주세요.</p>
                 </div>
                 <div class="panel-group wow fadeInUp" id="accordion" data-wow-duration="2s">
                     <c:forEach var="dto" items="${list}" varStatus="status">
@@ -37,8 +37,6 @@
         </div>
     </div>
     <div align="center">
-		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.not_no}'">
-		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.not_no}'">
 		<input type="button" value="관리자 리스트" onclick="location.href='/faq/list2.do'">
 </div>
 <br><br>

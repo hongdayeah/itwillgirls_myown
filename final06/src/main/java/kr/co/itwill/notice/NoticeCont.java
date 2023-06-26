@@ -62,14 +62,14 @@ public class NoticeCont {
 		if(cnt==0) {
 			String msg1="<p>공지 등록실패</p>";
 			String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
-			String link2="<input type='button' value='목록으로' onclick='#'>";
+			String link2="<input type='button' value='목록으로' onclick='location.href='/notice/list.do'>";
 	        mav.addObject("msg1", msg1);
 	        mav.addObject("link1", link1); 
 	        mav.addObject("link2", link2); 
 		} else {
 			 String msg1="<p>공지 등록완료</p>";
 			 mav.addObject("msg1", msg1);
-			 String link1="<input type='button' value='목록으로' onclick='#'>";
+			 String link1="<input type='button' value='목록으로' onclick='location.href='/notice/list.do'>";
 			 mav.addObject("link1", link1); 
 			}//if end
 		return mav; 

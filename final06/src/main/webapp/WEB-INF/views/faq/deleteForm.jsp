@@ -5,7 +5,7 @@
 
 <h3>FAQ삭제</h3>
 <div class="title"> FAQ삭제 </div>
-<form name="FAQ" method="post" action="delete.do">
+<form name="not" method="post" action="delete.do">
 	<input type="hidden" name="f_no" value="${requestScope.f_no}">
 	<div class="f_con">
 		<p>정말로 삭제하시겠습니까?</p>
