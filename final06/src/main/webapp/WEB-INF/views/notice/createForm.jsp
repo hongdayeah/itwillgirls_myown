@@ -43,7 +43,7 @@
 			<form role="form" name="noticefrm" id="noticefrm"  method="POST" action="create.do"  enctype="multipart/form-data" onsubmit="return noticeCheck()">
 				<div class="form-group">
 				<label>카테고리</label><br>
-				<select id="not_cate" name="not_cate" required>
+				<select id="not_cate" name="not_cate" class="form-control short" required>
 					<option value="N">전체공지</option>
 					<option value="E">이벤트</option>
 				</select>
@@ -53,14 +53,18 @@
 					<input type="text" class="form-control short" name="not_sub" id="not_sub" required>
 				</div>
 				<div class="form-group">
-				    <label for="not_con">내용</label><br>
-				    <textarea class="form-control" name="not_con" id="not_con" rows="15"></textarea>
-				</div>
-				<script>
-				const textarea = document.getElementById('not_con');
-				const text = textarea.value;
-				console.log(text);
-				</script>
+    <label for="not_con">내용</label><br>
+    <textarea class="form-control" name="not_con" id="not_con" rows="15"></textarea>
+</div>
+<script>
+function convertNewlinesToBreaks() {
+    const textarea = document.getElementById('not_con');
+    const text = textarea.value.replace(/\r?\n/g, '<br>');
+    console.log(text);
+}
+
+document.getElementById('not_con').addEventListener('input', convertNewlinesToBreaks);
+</script>
 				<div class="form-group">
 				<label>첨부파일</label>	
 					<input type="file" name="not_filenameMF">
