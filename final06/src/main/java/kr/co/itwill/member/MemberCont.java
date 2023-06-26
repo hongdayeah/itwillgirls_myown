@@ -118,7 +118,7 @@ public class MemberCont {
 
 		return "redirect:/home.do";
 	}// loginProc() end
-
+	
 	// 로그아웃
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest req) throws Exception {
