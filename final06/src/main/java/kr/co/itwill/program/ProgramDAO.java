@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -210,33 +211,23 @@ public class ProgramDAO {
 	}//incrementCnt() end
 	
 	//like_program 상세조회하는 함수
-	public LikeDTO likeread(String pro_obj, String p_id) {
-		LikeDTO dto = null;
+	public int likeread(String pro_obj, String p_id) {
 		
+		int cnt = 0;
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT pro_obj, p_id ");
+			sql.append(" SELECT COUNT(*) ");
 			sql.append(" FROM like_program ");
-			sql.append(" WHERE pro_obj = '" + pro_obj +"' AND p_id = '" + p_id + "' ");
+			sql.append(" WHERE pro_obj = ? AND p_id = ? ");
 			
-			RowMapper<LikeDTO> rowMapper = new RowMapper<LikeDTO>() {
-				@Override
-				public LikeDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-					
-					LikeDTO dto = new LikeDTO();
-					
-					dto.setPro_obj(rs.getString("pro_obj"));
-					dto.setP_id(rs.getString("p_id"));
-					
-					return dto;
-				}//mapRow() end
-			};//rowMapper end
+			cnt = jt.queryForObject(sql.toString(), Integer.class, pro_obj, p_id);
 			
-			dto = jt.queryForObject(sql.toString(), rowMapper);
+		}catch(EmptyResultDataAccessException e) {
+			cnt = 0;
 		}catch(Exception e) {
 			System.out.println("program에서의 찜 상세보기 조회 실패 : " + e);
 		}
-		
-		return dto;
+				
+		return cnt;
 	}//likeread() end
 }//class end

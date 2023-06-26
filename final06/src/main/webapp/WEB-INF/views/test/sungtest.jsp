@@ -3,7 +3,7 @@
 
 <%@ include file="../header.jsp" %>
 
-<!-- 본문 시작 test -- main.jsp -->
+<!-- 본문 시작 test -- sungtest.jsp -->
 <!--breadcrumbs start-->
 <div class="breadcrumbs">
 	<div class="container">
@@ -37,16 +37,10 @@
 
 <div>
     <section id="main">
-      <h1>MBTi 테스트하기</h1>
-      <div>
-        <img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/testmain.jpg" alt="mainImage">
-      </div>
-      <p>
-        우리 아이의 MBTi는 뭘까? <br>
-        자녀의 이름을 입력하고 아래의 시작하기 버튼을 눌러 시작해 주세요.
-      </p>
-      <form name="testfrm" id="testfrm" method="POST" action="create.do">
-	      <input type="text" class="form-control short" name="k_name" id="k_name" placeholder="자녀정보에 입력했던 자녀의 이름으로 입력해주세요. (ex. 김자녀 or 자녀)">
+      <h1>MBTi 테스트하기 [1부]</h1>
+      
+      <form name="stestfrm" id="stestfrm" method="POST" action="supdate.do?">
+	      <input type="text" class="form-control short" name="k_name" id="k_name" placeholder="자녀정보에 입력했던 자녀의 이름으로 입력해주세요.">
 	      <button type="submit" class="btn btn-success">시작하기</button>
       </form>
     </section>
