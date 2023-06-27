@@ -34,21 +34,23 @@
 	</div>
 </div>
 <!--breadcrumbs end-->
-<div class="btn-positiontest">
-	<div class="btn-group">
-		<button type="button" class="btn btn-info">관리자</button>
-		<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-			<span class="caret"></span>
-			<span class="sr-only">Toggle Dropdown</span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-			<li><a href="slist.do">테스트[1부] 질문리스트</a></li>
-			<li class="divider"></li>
-			<li><a href="hlist.do">테스트[2부] 질문리스트</a></li>
-		</ul>
-	</div>
-</div>                                        
-                                        
+
+<c:if test="${member_dto.p_id == 'webmaster'}">
+	<div class="btn-positiontest">
+		<div class="btn-group">
+			<button type="button" class="btn btn-info">관리자</button>
+			<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+				<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="slist.do">테스트[1부] 질문리스트</a></li>
+				<li class="divider"></li>
+				<li><a href="hlist.do">테스트[2부] 질문리스트</a></li>
+			</ul>
+		</div>
+	</div>                                        
+</c:if>                                      
                                         
                                    
 <div>
