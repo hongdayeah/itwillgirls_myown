@@ -12,7 +12,7 @@
       <div class="row">
          <div class="col-lg-4 col-sm-4">
             <h1>
-               우리센터 프로그램을 소개합니다
+               마이페이지
             </h1>
          </div>
          <div class="col-lg-8 col-sm-8">
@@ -23,12 +23,10 @@
                   </a>
                </li>
                <li>
-                  <a href="list.do">
-                     프로그램
-                  </a>
+               		마이페이지
                </li>
                <li class="">
-                  프로그램 소개
+                  개인정보 수정
                </li>
             </ol>
          </div>
