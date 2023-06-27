@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					우리센터 프로그램을 소개합니다
+					장바구니 목록
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
@@ -34,9 +34,16 @@
 	</div>
 </div>
 <!--breadcrumbs end-->
+<head>
+	<script>
+		function order(){
+			if(confirm("주문하시겠습니까?")){
+				locarion.href="";
+			} //if end
+		} //order() end
+	</script>
+</head>
 
-	 <h3>장바구니 목록</h3>
-		
 	    <table border="1">
 	    <tr>
 	  		<th>번호</th>
@@ -46,7 +53,21 @@
 	    	<th>좌석번호</th>
 	    	<th>자녀회원번호</th>
 	    </tr>
+	    
+	    <c:forEach items="${list}" var="dto">
+	    	<tr>
+			<td>${dto.cart_no}</td>
+			<td>${dto.p_id}</td>
+			<td>${dto.pro_code}</td>
+			<td>${dto.per_code}</td>
+			<td>${dto.seat_no}</td>
+			<td>${dto.k_no}</td>
+		</tr>
+		</c:forEach>
 	    </table>
+	    
+	    <br>
+	    <input type="button" value="주문하기" onclick()="order()">
 	    
 
 

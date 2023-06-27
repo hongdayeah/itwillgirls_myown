@@ -1,8 +1,13 @@
 package kr.co.itwill.cart;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -33,5 +38,40 @@ public class CartDAO {
 		}		
 		return cnt;		
 	} //perInsert() end
+	
+	public List<CartDTO> cartList(String p_id){
+		List<CartDTO> list=null;
+		
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no ");
+			sql.append(" FROM cart ");
+			sql.append(" WHERE p_id = ? ");
+			
+			RowMapper<CartDTO> rowMapper=new RowMapper<CartDTO>() {
+				@Override
+				public CartDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					CartDTO dto=new CartDTO();
+					
+					dto.setCart_no(rs.getInt("cart_no"));
+					dto.setP_id(rs.getString("p_id"));
+					dto.setPro_code(rs.getString("pro_code"));
+					dto.setPer_code(rs.getString("per_code"));
+					dto.setSeat_no(rs.getString("seat_no"));
+					dto.setK_no(rs.getInt("k_no"));
+					
+					return dto;				
+				} //mapRow() end
+			}; //rowMapper end
+			
+			list=jt.query(sql.toString(),new Object[]{p_id}, rowMapper);
+			
+		} catch(Exception e) {
+			System.out.println("조회 실패" + e);
+		}
+		
+		return list;
+	}// cartList() end
 
 }
