@@ -2,6 +2,8 @@ package kr.co.itwill.like;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -146,5 +148,37 @@ public class LikeDAO {
 		}
 		
 		return cnt;
-	}//delete() end
+	}//delete() end	
+	
+	// 여기서 부터 추가했습니다~
+	// 내가 찜한 목록 보기
+	public List<LikeDTO> list(String p_id) {
+
+		List<LikeDTO> list = null;
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT like_no, pro_obj, p_id ");
+			sql.append(" FROM like_program ");
+			sql.append(" ORDER BY like_no ");
+
+			RowMapper<LikeDTO> rowMapper = new RowMapper<LikeDTO>() {
+				@Override
+				public LikeDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					LikeDTO dto = new LikeDTO();
+					dto.setLike_no(rs.getInt("like_no"));
+					dto.setPro_obj(rs.getString("pro_obj"));
+					dto.setP_id(rs.getString("p_id"));
+					return dto;
+				}// mapRow() end
+			};// rowMapper end
+
+			list = jt.query(sql.toString(), rowMapper);
+			// System.out.println(list);
+
+		} catch (Exception e) {
+			System.out.println("찜 목록조회 실패:" + e);
+		} // end
+		return list;
+	}// list() end
+		
 }//class end

@@ -148,7 +148,7 @@
 									<a href="../member/memberWithdraw.do">회원탈퇴</a>
 								</li>
 								<li>
-									<a href="../#">나의 관심내역</a>
+									<a href="../program/myLikeList.do">나의 관심내역</a>
 								</li>
 							</ul>
 						</c:when>

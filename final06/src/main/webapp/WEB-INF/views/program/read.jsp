@@ -132,7 +132,7 @@
 									</tbody>
 								</table>
 							</div>							
-							
+							<input type="hidden" class="form-control" placeholder="부모 아이디" value="${member_dto.p_id}" id="p_id" name="p_id" maxlength="20" readonly>
 							<!-- ---------- 찜하기 시작 ---------- -->
 							<input type="hidden" id="pro_obj" value="${dto.pro_obj}">
 							<input type="hidden" id="p_id"     value="${member_dto.p_id}">
