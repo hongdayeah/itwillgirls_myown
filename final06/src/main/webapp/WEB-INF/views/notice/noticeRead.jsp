@@ -15,9 +15,11 @@
 </tr>
 </table>
 <br><br>
+<c:if test="${member_dto.p_id == 'webmaster'}">
 <div align="center">
 		<input type="button" value="수정" onclick="location.href='update.do?not_no=${dto.not_no}'">
 		<input type="button" value="삭제" onclick="location.href='delete.do?not_no=${dto.not_no}'">
 </div>
+</c:if>
 <br><br>
 <%@ include file="../footer.jsp" %>

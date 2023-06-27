@@ -142,7 +142,7 @@ public class MemberCont {
 
 		// 세션에 있는 값을 가져와서 변수에 넣기
 		MemberDTO member_dto = (MemberDTO) session.getAttribute("member_dto");
-
+		
 		// 세션에 있는 비밀번호 가져오기
 		String s_passwd = member_dto.getP_passwd();
 

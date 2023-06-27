@@ -25,8 +25,9 @@
 	</c:forEach>
 </table>
 </form>
-<c:if test="">--> 관리자 등급 넣어서 조건문쓰기 </c:if> 
+<c:if test="${member_dto.p_id == 'webmaster'}">
 <button type="button"><a href="/notice/create.do">관리자 작성</a></button>
+</c:if>
 <!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

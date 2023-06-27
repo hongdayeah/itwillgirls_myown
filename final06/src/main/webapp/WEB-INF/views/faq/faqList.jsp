@@ -36,9 +36,11 @@
             </div><!-- /col-md-10 -->
         </div>
     </div>
+    <c:if test="${member_dto.p_id == 'webmaster'}">
     <div align="center">
 		<input type="button" value="관리자 리스트" onclick="location.href='/faq/list2.do'">
-</div>
+	</div>
+	</c:if>
 <br><br>
 </section>
 <br><br>
