@@ -37,7 +37,7 @@
 <!--container start-->
 <div class="component-bg">
 	<div class="container">
-		<form class="" name="slistfrm" id="slistfrm" method="get">
+		<form class="" name="slistfrm" id="slistfrm" method="GET">
 			<div class="bs-docs-section">
 				<div class="btn-position">
 					<input type="button" class="btn btn-primary" onclick="location.href='screate.do'" value="질문 추가">

@@ -30,6 +30,7 @@ public class SungtestCont {
 		mav.setViewName("test/slist");
 		List<SungtestDTO> list = dao.list();
 		mav.addObject("slist", list);
+		
 		return mav;
 	}//slist() end
 	

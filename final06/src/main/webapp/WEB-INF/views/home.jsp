@@ -136,7 +136,13 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="../#">예매내역</a>
+									<a href="../program/myLikeList.do">나의 관심내역</a>
+								</li>
+								<li>
+									<a href="../#">나의 장바구니</a>
+								</li>
+								<li>
+									<a href="../#">나의 예매내역</a>
 								</li>
 								<li>
 									<a href="../member_kid/kidList.do">자녀회원 등록/목록</a>
@@ -146,9 +152,6 @@
 								</li>
 								<li>
 									<a href="../member/memberWithdraw.do">회원탈퇴</a>
-								</li>
-								<li>
-									<a href="../program/myLikeList.do">나의 관심내역</a>
 								</li>
 							</ul>
 						</c:when>
