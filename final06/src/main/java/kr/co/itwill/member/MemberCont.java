@@ -108,12 +108,12 @@ public class MemberCont {
 			Cookie cookie = new Cookie("id", dto2.getP_id()); // 쿠키 변수에 세션 아이디 저장
 			cookie.setMaxAge(60 * 60 * 24 * 30); // 1달 저장
 			response.addCookie(cookie);
-			System.out.println(cookie); // 쿠키 저장 됐니?
+			//System.out.println(cookie); // 쿠키 저장 됐니?
 		} else {
 			Cookie cookie = new Cookie("id", dto2.getP_id());
 			cookie.setMaxAge(0);
 			response.addCookie(cookie);
-			System.out.println(cookie); // 쿠키 저장 안 됐니?
+			//System.out.println(cookie); // 쿠키 저장 안 됐니?
 		} // if end
 
 		return "redirect:/home.do";
