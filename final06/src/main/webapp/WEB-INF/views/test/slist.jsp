@@ -52,35 +52,17 @@
 							<tr>
 								<th>질문 번호</th>
 								<th>질문 내용</th>
-								<th style="text-align: center;">수정</th>
-								<th style="text-align: center;">삭제</th>
+								<th style="text-align: center;">수정 | 삭제</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="kid_dto" items="${list}">
+							<c:forEach var="i" items="${slist}">
 							<tr>
-								<c:if test="${kid_dto.p_id == member_dto.p_id}">
-								<!-- 
-									<td>${kid_dto.p_id}</td> 자녀회원을 추가한 부모 아이디
-									<td>${member_dto.p_id}</td> 현재 로그인한 아이디
-								 -->
-									<td>${kid_dto.k_name}</td>
-									<!-- <td>${kid_dto.k_birth}</td> -->
-									<td>${fn:substring(kid_dto.k_birth,0,2)}년 ${fn:substring(kid_dto.k_birth,2,4)}월 ${fn:substring(kid_dto.k_birth,4,6)}일</td>
-									<td>
-										<c:if test="${kid_dto.k_gender == 1}">
-											남성
-										</c:if>
-										<c:if test="${kid_dto.k_gender == 2}">
-											여성
-										</c:if>
-									</td>
-									<td>${kid_dto.typename}</td>
-									<!-- <td>${kid_dto.k_no}</td> -->
-									<td><input type="button" class="btn btn-warning" value="수정" onclick="location.href='kidModify.do?k_no=${kid_dto.k_no}'"></td>
-									<td><input type="button" class="btn btn-danger" value="삭제" onclick="location.href='kidDelete.do?k_no=${kid_dto.k_no}'"></td>
-									</c:if>
-								</tr>
+								<td>${i.stest_no}</td>
+								<td>${i.stest_name}</td>
+								<td style="text-align: center;"><input type="button" class="btn btn-warning" value="수정" onclick="location.href='supdate.do?stest_no=${i.stest_no}'">
+								<input type="button" class="btn btn-danger" value="삭제" onclick="return deleteCheck(${i.stest_no})"></td>
+							</tr>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -91,8 +73,20 @@
 		</form>
 	</div>
 </div>
-
+<br><br><br>
 <!--container end-->
 <!-- 본문 끝 -->
+<!-- JavaScript 함수 -->
+<script>
+function deleteCheck(stest_no){
+	
+	//alert(stest_no);
+	if(confirm("삭제하면 복구되지 않습니다.\n삭제하시겠습니까?")){
+		window.location.href = "/test/sdelete.do?stest_no=" + stest_no;
+	}else{
+		return false;
+	}
+}
+</script>
         
 <%@ include file="../footer.jsp" %>
