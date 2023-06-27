@@ -137,6 +137,7 @@
 			
 			
 			function reserveSeats() {
+				
 			  if (selectNum == 0) {
 			    alert("수량을 선택 해 주세요");
 			    return false; // 폼 제출 취소
@@ -146,7 +147,10 @@
 			    alert("좌석을 모두 선택해 주세요.");
 			    return false; // 폼 제출 취소
 			  }
-
+			  
+			  // arrSeat 배열 값을 쉼표로 구분해서 문자열로 변환하여 arrSeat 입력란의 value 속성에 할당함
+			  document.getElementById('arrSeat').value = arrSeat.join(',');
+			  
 			  var returnValue = confirm(
 			    "예매 정보\n" +
 			    "공연 : " + "${dto.per_name}" + "\n" +
@@ -165,14 +169,9 @@
 			}
 			</script>
 			
-			<!--<button class="btn btn-warning" onclick="reserveSeats()"> 예매하기</button>  -->
-				
-			<form id="rsvseats" action="/performance/perInsert.do" method="POST">
-			  <input type="hidden" name="per_name" value="${dto.per_name}">
-			  <input type="hidden" name="per_date" value="${dto.per_date}">
-			  <input type="hidden" name="per_time" value="${dto.per_time}">
-			  <input type="hidden" name="arrSeat" value="${arrSeat}">
-			  <input type="hidden" name="selectNum" value="${selectNum}">
+			<form name="rsvseats" id="rsvseats" method="POST" action="/performance/perInsert.do" enctype="multipart/form-data">
+			  <input type="hidden" name="per_code" id="per_code" value="${dto.per_code}">
+			  <input type="hidden" name="arrSeat"  id="arrSeat" value="${arrSeat}">
 			  <input type="submit" class="btn btn-warning" value="예매하기" onclick="return reserveSeats()">
 			</form>
 
