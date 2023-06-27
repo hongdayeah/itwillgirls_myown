@@ -29,7 +29,7 @@ public class CartCont {
      	
       	
       	if(mDto==null) {
-      		return "/member/loginForm";    		
+      		return "redirect:/member/login.do";  		
       	}else { 		
       		dao.perInsert(dto);
       		//pid 값 안넘어옴! 이거부터 하기
