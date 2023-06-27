@@ -185,7 +185,7 @@
               <p>
                 <i>지금 테스트 해보세요!</i>
               </p>
-              <a href="#" class="btn btn-info btn-lg da-link">
+              <a href="../test/main.do" class="btn btn-info btn-lg da-link">
                 테스트하기
               </a>
               <div class="da-img">
