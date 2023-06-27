@@ -9,7 +9,7 @@
       <div class="row">
          <div class="col-lg-4 col-sm-4">
             <h1>
-               우리센터 프로그램을 소개합니다
+               아이디 찾기
             </h1>
          </div>
          <div class="col-lg-8 col-sm-8">
@@ -19,13 +19,8 @@
                      Home
                   </a>
                </li>
-               <li>
-                  <a href="list.do">
-                     프로그램
-                  </a>
-               </li>
                <li class="">
-                  프로그램 소개
+                  아이디 찾기
                </li>
             </ol>
          </div>
@@ -39,11 +34,11 @@
     <div class="container">
         <div class="form-wrapper">
         <form class="form-signin wow fadeInUp" id="findIDfrm" method="post" action="findID.do" onsubmit="return findIDCheck()">
-        <h2 class="form-signin-heading">Find ID</h2>
+        <h2 class="form-signin-heading">아이디 찾기</h2>
         <div class="login-wrap">
-            <input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="User Name" autofocus required>
-            <input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="User Phone Number" required>
-            <button class="btn btn-lg btn-login btn-block" type="submit" id="find_button">Submit</button>
+            <input type="text" class="form-control" id="p_name" name="p_name" maxlength="20" placeholder="이름을 입력해 주세요." autofocus required>
+            <input type="text" class="form-control" id="p_tell" name="p_tell" maxlength="11" placeholder="핸드폰 번호를 입력해 주세요." required>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="find_button">찾기</button>
         </div>
       </form>
       </div>

@@ -11,7 +11,7 @@
       <div class="row">
          <div class="col-lg-4 col-sm-4">
             <h1>
-               우리센터 프로그램을 소개합니다
+               마이페이지
             </h1>
          </div>
          <div class="col-lg-8 col-sm-8">
@@ -22,12 +22,10 @@
                   </a>
                </li>
                <li>
-                  <a href="list.do">
-                     프로그램
-                  </a>
+               		마이페이지
                </li>
                <li class="">
-                  프로그램 소개
+                  자녀 회원 정보 수정
                </li>
             </ol>
          </div>
@@ -131,7 +129,7 @@ $(document).ready(function(){
             return false;
         }//if end
 		
-		var deleteYN = confirm("확인을 누르면 자녀회원이 수정됩니다. 수정하시겠습니까?");
+		var deleteYN = confirm("확인을 누르면 자녀 회원 정보가 수정됩니다. 수정하시겠습니까?");
 		if(deleteYN == true){
 			$("#kidfrm").attr("action", "/member_kid/kidModify.do");
 			$("#kidfrm").submit();

@@ -11,7 +11,7 @@
       <div class="row">
          <div class="col-lg-4 col-sm-4">
             <h1>
-               우리센터 프로그램을 소개합니다
+               아이디 찾기
             </h1>
          </div>
          <div class="col-lg-8 col-sm-8">
@@ -21,13 +21,8 @@
                      Home
                   </a>
                </li>
-               <li>
-                  <a href="list.do">
-                     프로그램
-                  </a>
-               </li>
                <li class="">
-                  프로그램 소개
+                  아이디 찾기
                </li>
             </ol>
          </div>
@@ -42,7 +37,7 @@
     <div class="container">
         <div class="form-wrapper">
         <form class="form-signin wow fadeInUp" id="searchIDProc" method="post" action="login.do">
-        <h2 class="form-signin-heading">Find Your ID</h2>
+        <h2 class="form-signin-heading">아이디 찾기 결과</h2>
         <div class="login-wrap">
 	        <div>
 	        	<c:choose>
@@ -54,7 +49,7 @@
 				  		</c:otherwise>
 				  	</c:choose>
 	        </div>
-            <button class="btn btn-lg btn-login btn-block" type="button" class="login_button" onclick="location.href='/member/login.do'">GO Login</button>
+            <button class="btn btn-lg btn-login btn-block" type="button" class="login_button" onclick="location.href='/member/login.do'">로그인 하러 가기</button>
         </div>
       </form>
       </div>

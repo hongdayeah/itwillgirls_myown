@@ -11,7 +11,7 @@
       <div class="row">
          <div class="col-lg-4 col-sm-4">
             <h1>
-               우리센터 프로그램을 소개합니다
+               마이페이지
             </h1>
          </div>
          <div class="col-lg-8 col-sm-8">
@@ -22,12 +22,10 @@
                   </a>
                </li>
                <li>
-                  <a href="list.do">
-                     프로그램
-                  </a>
+               		마이페이지
                </li>
                <li class="">
-                  프로그램 소개
+                  자녀 회원 등록
                </li>
             </ol>
          </div>
@@ -46,7 +44,7 @@
 		</div>
         <div class="form-wrapper">
         <form class="form-signin wow fadeInUp" name="kidfrm" id="kidfrm" method="post">
-        <h2 class="form-signin-heading">자녀 회원 추가</h2>
+        <h2 class="form-signin-heading">자녀 회원 등록</h2>
         <div class="login-wrap">
         	
         	<!-- 부모 코드(로그인한 세션 아이디 가져오기 완료), typename 참조 해야 함 / type 테이블 만들어서 참조해야 하나?! -->
