@@ -48,12 +48,10 @@
             <input type="text" class="form-control" id="p_id" name="p_id" size="20" value="${cookie.id.value}" placeholder="아이디" autofocus required>
             <input type="password" class="form-control" id="p_passwd" name="p_passwd" size="20" placeholder="비밀번호">
             <label class="checkbox">
-                <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> ID 기억하기 │
+                <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> ID 기억하기
                 <span class="pull-right">
                 	<!-- <a data-toggle="modal" href="#myModal" onclick="location.href='/member/findID.do'"> Forgot ID?</a> -->
                 	<a href="/member/findID.do"> 아이디 찾기 </a>
-                	│
-                    <a href="/member/findPW.do"> 비밀번호 찾기 </a>
                 </span>
             </label>
             <span>
@@ -62,12 +60,7 @@
 				</c:if>
 			</span>
             <button class="btn btn-lg btn-login btn-block" type="submit">로그인 하기</button>
-            
-            <div>
-                <a href="https://kauth.kakao.com/oauth/authorize?client_id=94054c25c9582d1022fd7d35f17d794e&redirect_uri=http://localhost:9095/member/kakao&response_type=code">
-                	<img height="43.5px" src="/img/kakao_login_button.png">
-                </a>
-            </div>
+           
             <div class="registration">
             <br>
                 아직 회원이 아니신가요?
