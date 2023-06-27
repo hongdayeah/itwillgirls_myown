@@ -18,5 +18,10 @@
 		<td colspan="4" class="tableTBox">${dto.q_con}</td>
 	</tr>
 </table>
-        
+   <br><br>
+<div align="center">
+		<input type="button" value="수정" onclick="location.href='update.do?q_no=${dto.q_no}'">
+		<input type="button" value="삭제" onclick="location.href='delete.do?q_no=${dto.q_no}'">
+</div>
+<br><br>     
 <%@ include file="../footer.jsp" %>

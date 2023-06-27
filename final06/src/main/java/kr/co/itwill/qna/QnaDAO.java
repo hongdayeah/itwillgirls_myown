@@ -92,4 +92,35 @@ public class QnaDAO {
 		System.out.println(dto);
 		return dto;
 	}//read() end
+	
+	public int delete(int q_no) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" DELETE FROM qna ");
+			sql.append(" WHERE q_no = ? ");
+			
+			cnt=jt.update(sql.toString(), q_no);
+		}catch(Exception e) {
+			System.out.println("QNA 삭제실패 : " + e);
+		}
+		return cnt;
+	}//delete() end
+	
+	
+	public int update(QnaDTO dto) {
+		int cnt=0;
+		try {
+			sql=new StringBuilder();
+			sql.append(" UPDATE qna ");
+			sql.append(" SET q_sub=?, q_con=? ");
+			sql.append(" WHERE q_no=? ");
+			
+			cnt=jt.update(sql.toString(), dto.getQ_sub(), dto.getQ_con(), dto.getQ_no());
+			
+		}catch(Exception e) {
+			System.out.println("수정실패: " + e);
+		}
+		return cnt;
+	}//update() end
 }//class() end
