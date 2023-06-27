@@ -64,7 +64,7 @@
 			<c:choose>
 				<c:when test="${member_dto != null}">
 					<div style="text-align:right;">
-						<b>'${member_dto.p_name} (${member_dto.p_id})' 님이 로그인 중입니다.</b>
+						<b>반갑습니다, '${member_dto.p_name} (${member_dto.p_id})' 님</b>
 					</div>
 				</c:when>
 			<c:otherwise><div></div></c:otherwise>

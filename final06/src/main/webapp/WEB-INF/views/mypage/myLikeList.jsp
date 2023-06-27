@@ -7,20 +7,30 @@
 
 <!--breadcrumbs start-->
 <div class="breadcrumbs">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 col-sm-4">
-				<h1>우리센터 프로그램을 소개합니다</h1>
-			</div>
-			<div class="col-lg-8 col-sm-8">
-				<ol class="breadcrumb pull-right">
-					<li><a href="../home.do"> Home </a></li>
-					<li><a href="list.do"> 프로그램 </a></li>
-					<li class="">프로그램 소개</li>
-				</ol>
-			</div>
-		</div>
-	</div>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-4 col-sm-4">
+            <h1>
+               마이페이지
+            </h1>
+         </div>
+         <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+               <li>
+                  <a href="../home.do">
+                     Home
+                  </a>
+               </li>
+               <li>
+               		마이페이지
+               </li>
+               <li class="">
+                  나의 관심내역
+               </li>
+            </ol>
+         </div>
+      </div>
+   </div>
 </div>
 <!--breadcrumbs end-->
 
@@ -42,7 +52,6 @@
 						<thead>
 							<tr>
 								<th>프로그램 이름</th>
-								<th>삭제 넣을 건가요~</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -69,11 +78,7 @@
 												</c:if>
 												</a>										
 											</td>
-
 											<!-- 찜 취소는 그 프로그램 페이지로 가서 하도록 할 건가용? -->
-											<td><input type="button" class="btn btn-danger"
-												value="삭제"
-												onclick="location.href='/program/likeDelete.do?like_no=${like_dto.like_no}'"></td>
 										</tr>
 								</c:if>
 							</c:forEach>
