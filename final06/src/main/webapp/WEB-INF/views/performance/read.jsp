@@ -19,7 +19,7 @@
 	      <div class="row">
 	         <div class="col-lg-4 col-sm-4">
 	            <h1>
-	               우리센터 프로그램을 소개합니다
+	               우리센터 공연을 소개합니다
 	            </h1>
 	         </div>
 	         <div class="col-lg-8 col-sm-8">
@@ -98,15 +98,22 @@
 									<td>${dto.per_fee}</td>
 								</tr>
 								
+								
 								</table>
 							</div>
 					</div>
 					</div>
-					
-				<td>
-					<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href='seat.do?per_code=${dto.per_code}'">
-				</td>
-
+				
+				
+				
+		      <script>
+              //공연장소가 극장일 때에만 좌석예매 버튼이 생성되도록 함 
+              if ("${dto.class_code}" === "theater") {
+                document.write('<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href=\'seat.do?per_code=${dto.per_code}\'">');
+              } else {
+            	  document.write("야외공연은 현장에서 선착순으로 접수가능합니다. ");
+              }
+            </script>
 		
 		
 			</div>
