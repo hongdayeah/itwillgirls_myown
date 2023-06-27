@@ -51,7 +51,7 @@
 		</c:if>
 			<div class="col-md-6">
 			<!-- 왼쪽 -->
-				<div class="blog-left">
+				<div class="blog-left" onclick="location.href='read.do?pro_obj=${dto.pro_obj}'" style="cursor: pointer;">
 					<div class="blog-img">
 						<img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.pro_poster}" alt="${dto.pro_poster}"/>
 					</div>
@@ -109,9 +109,6 @@
 				   ${dto.pro_exp }
 				  </p>
 				</div>
-				<button class="btn btn-primary" onclick="location.href='read.do?pro_obj=${dto.pro_obj}'">
-				    더보기
-				  </button>
 				</div>
 			</div>
 			

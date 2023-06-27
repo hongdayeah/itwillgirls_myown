@@ -45,17 +45,8 @@
 				<div>
 					<span style="font-weight: bold;">우리아이는 어쩌구다.</span>
 				</div>
-				<input type="text" class="form-control" placeholder="Full Name" autofocus>
-				<input type="text" class="form-control" placeholder="Address" autofocus>
-				<input type="text" class="form-control" placeholder="Email" autofocus>
-				<input type="text" class="form-control" placeholder="City/Town" autofocus>
-				<div class="radios">
-					<label class="label_radio col-lg-6 col-sm-6" for="radio">
-						<input name="male-radio" id="radio-01" value="1" type="radio" checked=""> Male
-					</label>
-					<label class="label_radio col-lg-6 col-sm-6" for="radio">
-						<input name="female-radio" id="radio-02" value="1" type="radio"> Female
-					</label>
+
+					
 				</div>
 				
 				<p> Enter account details below</p>
