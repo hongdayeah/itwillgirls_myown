@@ -18,6 +18,25 @@ public class SungtestCont {
 	@Autowired 
 	private SungtestDAO dao;
 	
+	////////////////관리자
+	//관리자가 slist 볼 수 있는 목록
+	@RequestMapping("/test/slist.do")
+	public ModelAndView slist() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("test/slist");
+		
+		return mav;
+	}//slist() end
 	
+	
+	
+	//사용자가 테스트1부 하는 페이지
+	@RequestMapping("/test/sungtest.do")
+	public ModelAndView sungtest() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("test/sungtest");
+		
+		return mav;
+	}//sungtest() end
 	
 }//class end
