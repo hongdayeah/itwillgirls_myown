@@ -31,7 +31,7 @@
 		<form class="" name="myLikefrm" id="myLikefrm" method="post">
 			<div class="bs-docs-section">
 
-				<h1 id="tables" class="page-header">관심 프로그램 목록</h1>
+				<h1 id="tables" class="page-header">나의 관심 프로그램 목록</h1>
 				<h2 id="tables-hover-rows"></h2>
 
 				<div class="bs-example">
@@ -41,8 +41,7 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>프로그램 번호</th>
-								<th>프로그램 사진 넣을 건가요~</th>
+								<th>프로그램 이름</th>
 								<th>삭제 넣을 건가요~</th>
 							</tr>
 						</thead>
@@ -51,9 +50,26 @@
 								<c:if test="${member_dto.p_id == like_dto.p_id}">
 									<input type="hidden" name="p_id" value="${like_dto.p_id}">
 										<tr>
-											<td>${like_dto.pro_obj}</td>
-											<td>블라블라~ 수정해야 함 (코드에 맞는 프로그램명 대입?)</td>
-											
+											<td>
+												<a href="/program/read.do?pro_obj=${like_dto.pro_obj}">
+												<c:if test="${like_dto.pro_obj == 'A01'}">
+													알록달록아트전시회
+												</c:if>
+												<c:if test="${like_dto.pro_obj == 'A02'}">
+													캐릭터디자인스쿨
+												</c:if>
+												<c:if test="${like_dto.pro_obj == 'A03'}">
+													미술미술수업
+												</c:if>
+												<c:if test="${like_dto.pro_obj == 'E01'}">
+													영어수업
+												</c:if>
+												<c:if test="${like_dto.pro_obj == 'S01'}">
+													체육수업
+												</c:if>
+												</a>										
+											</td>
+
 											<!-- 찜 취소는 그 프로그램 페이지로 가서 하도록 할 건가용? -->
 											<td><input type="button" class="btn btn-danger"
 												value="삭제"
