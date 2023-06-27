@@ -58,4 +58,21 @@ public class LikeCont {
 		}//if end		
 	}//likeInsert() end
 	
+	//관심프로그램 취소(찜 delete)
+	@RequestMapping("program/likeDelete.do")
+	@ResponseBody
+	public String likeDelete(@RequestParam("pro_obj") String pro_obj, @RequestParam("p_id") String p_id, @ModelAttribute LikeDTO likedto) {
+		
+		System.out.println(pro_obj);
+		System.out.println(p_id);
+		//찜 삭제
+		int cnt = dao.delete(pro_obj, p_id);
+		
+		if(cnt==0) {
+			return "관심프로그램 취소 실패!!";
+		}else {
+			return "취소되었습니다.";
+		}
+	}//likeDelete() end
+	
 }//class end

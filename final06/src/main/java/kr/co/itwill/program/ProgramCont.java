@@ -120,9 +120,10 @@ public class ProgramCont {
 		//System.out.println(likedto);
 		
 		
-		//ProgramDAO에 선언한 pro_obj=?의 likecnt()함수 추가 (해당 pro_obj의 찜 개수)
+		//////////////ProgramDAO에 선언한 pro_obj=?의 likecnt()함수 추가 (해당 pro_obj의 찜 개수)
 		int likecnt = dao.likecnt(pro_obj);
 		mav.addObject("likecnt", likecnt);
+		
 		return mav;
 	}//read() end
 	
