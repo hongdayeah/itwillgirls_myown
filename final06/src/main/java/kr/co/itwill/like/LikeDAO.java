@@ -131,4 +131,20 @@ public class LikeDAO {
 		
 		return dto;
 	}//read() end
+	
+	public int delete(String pro_obj, String p_id) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" DELETE FROM like_program ");
+			sql.append(" WHERE pro_obj = ? AND p_id = ? ");
+			
+			cnt = jt.update(sql.toString(), pro_obj, p_id);
+		}catch(Exception e) {
+			System.out.println("찜 삭제 실패 : " + e);
+		}
+		
+		return cnt;
+	}//delete() end
 }//class end
