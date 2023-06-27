@@ -3,6 +3,7 @@ package kr.co.itwill.qna;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,8 +27,8 @@ public class QnaDAO {
 		try {
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO qna(q_no, q_sub, q_con, q_regdt, q_grpno, p_id) ");
-			sql.append(" VALUES(null, ?, ?, now(), ((select ifnull(max(q_no),0)+1 from qna ALIAS_FOR_SUBQUERY)), ?) ");
+			sql.append(" INSERT INTO qna(q_sub, q_con, q_regdt, q_grpno, p_id) ");
+			sql.append(" VALUES(?, ?, now(), ((select ifnull(max(q_no),0)+1 from qna ALIAS_FOR_SUBQUERY)), ?) ");
 			
 			cnt=jt.update(sql.toString(), dto.getQ_sub(), dto.getQ_con(), dto.getP_id());
 		}catch(Exception e) {
@@ -44,6 +45,7 @@ public class QnaDAO {
 			sql=new StringBuilder();
 			sql.append(" SELECT q_no, q_sub, q_regdt, p_id ");
 			sql.append(" FROM qna ");
+			sql.append(" order by q_grpno DESC, q_ansnu ASC ");
 			
 			RowMapper<QnaDTO> rowMapper=new RowMapper<QnaDTO>() {
 				@Override
@@ -124,7 +126,7 @@ public class QnaDAO {
 		return cnt;
 	}//update() end
 	
-	
+	/*
 	public int reply(QnaDTO dto) {
 	    int cnt = 0;
 	    StringBuilder sql = new StringBuilder();
@@ -135,7 +137,8 @@ public class QnaDAO {
 	    sql.append("SELECT q_grpno, q_indent, q_ansnu ");
 	    sql.append("FROM qna ");
 	    sql.append("WHERE q_no = ? ");
-
+	    jt.update(sql.toString(), dto.getQ_no());
+	    System.out.println(cnt);
 	    try {
 	        q_grpno = jt.queryForObject(sql.toString(), Integer.class, dto.getQ_no());
 	        q_indent = q_grpno + 1;
@@ -157,5 +160,46 @@ public class QnaDAO {
 	    }
 	    return cnt;
 	}//reply() end
-			
+	*/
+	
+	public int reply(QnaDTO dto) {
+		int cnt = 0;
+		StringBuilder sql = new StringBuilder();
+
+		int q_grpno = 0;
+		int q_indent = 0;
+		int q_ansnu = 0;
+
+		try {
+		    // q_grpno, q_indent, q_ansnu 값을 조회
+		    sql.setLength(0);
+		    sql.append("SELECT q_grpno, q_indent, q_ansnu ");
+		    sql.append("FROM qna ");
+		    sql.append("WHERE q_no = ? ");
+
+		    Map<String, Object> resultMap = jt.queryForMap(sql.toString(), dto.getQ_no());
+		    q_grpno = (int) resultMap.get("q_grpno");
+		    q_indent = (int) resultMap.get("q_indent");
+		    q_ansnu = (int) resultMap.get("q_ansnu");
+
+		    // q_ansnu 값 업데이트
+		    sql.setLength(0);
+		    sql.append("UPDATE qna ");
+		    sql.append("SET q_ansnu = q_ansnu + 1 ");
+		    sql.append("WHERE q_grpno = ? AND q_ansnu >= ? ");
+		    jt.update(sql.toString(), q_grpno, q_ansnu);
+
+		    // 답변 추가
+		    sql.setLength(0);
+		    sql.append("INSERT INTO qna (q_no, q_sub, q_con, q_regdt, p_id, q_grpno, q_indent, q_ansnu) ");
+		    sql.append("VALUES (null, ?, ?, now(), ?, ?, ?, ?) ");
+
+		    cnt = jt.update(sql.toString(), dto.getQ_sub(), dto.getQ_con(), dto.getP_id(), q_grpno, q_indent + 1, q_ansnu + 1);
+		} catch (Exception e) {
+		    System.out.println("답변쓰기 실패: " + e);
+		}
+
+		return cnt;
+	}//reply() end
+	
 }//class() end

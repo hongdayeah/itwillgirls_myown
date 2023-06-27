@@ -10,24 +10,23 @@
 </head>
 
 <body>
-<h3>답변쓰기</h3>
+<h3>글쓰기</h3>
 <p><a href='/qna/list.do'>[문의게시판]</a></p>
 
-<form name="qnaForm" id="qnaForm" method="post" action="reply.do" onsubmit="return qnaCheck()">
-<input type="hidden" id="q_no" name="q_no" value="${q_no}">
-
+ <form name="qnafrm" id="qnafrm" method="post" action="update.do"  enctype="multipart/form-data" onsubmit="return updateCheck()">
+ <input type="hidden" name="q_no" id="q_no" value=${requestScope.q_no}>
 <table class="table" align="center" width="98%" height="350px">
-<tr>	
+<tr>
 	<th class="success">작성자</th>
-	<td><input type="text" name="p_id" id="p_id" class="form-control" maxlength="20" required></td>
+	<td><input type="text" name="p_id" id="p_id" value="${dto.p_id}" class="form-control" maxlength="20" readonly></td>
 </tr>
 <tr>
 	<th class="success">제목</th>
-	<td><input type="text" name="q_sub" id="q_sub" class="form-control" maxlength="100" required></td>
+	<td><input type="text" name="q_sub" id="q_sub" value="${dto.q_sub}" class="form-control" maxlength="100" required></td>
 </tr>
 <tr>
 	<th class="success">내용</th>
-	<td><textarea row="5" class="form-control" name="q_con" id="q_con"></textarea></td>
+	<td><textarea rows="5" class="form-control" name="q_con" id="q_con">${dto.q_con}</textarea></td>
 </tr>
 <tr>
 	<td colspan="2" align="center">
