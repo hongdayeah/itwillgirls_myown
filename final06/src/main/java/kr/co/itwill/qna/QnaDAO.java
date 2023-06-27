@@ -123,4 +123,39 @@ public class QnaDAO {
 		}
 		return cnt;
 	}//update() end
+	
+	
+	public int reply(QnaDTO dto) {
+	    int cnt = 0;
+	    StringBuilder sql = new StringBuilder();
+
+	    int q_grpno = 0;
+	    int q_indent = 0;
+	    int q_ansnu = 0;
+	    sql.append("SELECT q_grpno, q_indent, q_ansnu ");
+	    sql.append("FROM qna ");
+	    sql.append("WHERE q_no = ? ");
+
+	    try {
+	        q_grpno = jt.queryForObject(sql.toString(), Integer.class, dto.getQ_no());
+	        q_indent = q_grpno + 1;
+	        q_ansnu = q_grpno + 1;
+
+	        sql.setLength(0);
+	        sql.append("UPDATE qna ");
+	        sql.append("SET q_ansnu = q_ansnu + 1 ");
+	        sql.append("WHERE q_grpno = ? AND q_ansnu >= ? ");
+	        jt.update(sql.toString(), q_grpno, q_ansnu);
+
+	        sql.setLength(0);
+	        sql.append("INSERT INTO qna (q_no, q_sub, q_con, q_regdt, p_id, q_grpno, q_indent, q_ansnu) ");
+	        sql.append("VALUES (null, ?, ?, now(), ?, ?, ?, ?) ");
+
+	        cnt = jt.update(sql.toString(), dto.getQ_sub(), dto.getQ_con(), dto.getP_id(), q_grpno, q_indent, q_ansnu);
+	    } catch (Exception e) {
+	        System.out.println("답변쓰기 실패: " + e);
+	    }
+	    return cnt;
+	}//reply() end
+			
 }//class() end
