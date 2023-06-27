@@ -75,4 +75,70 @@ public class QnaCont {
 	}//read() end
 	
 	
+	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteForm(int q_no) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("qna/deleteForm");
+		mav.addObject("q_no", q_no);
+		return mav;
+	}//deleteForm() end
+	
+	@RequestMapping(value="/delete.do", method=RequestMethod.POST)
+	public ModelAndView deleteProc(int q_no, HttpServletRequest req) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("qna/msgView");
+		
+		QnaDTO oldDTO=dao.read(q_no);
+		
+		int cnt=dao.delete(q_no);
+		if(cnt==0) {
+			String msg1="<p>문의 등록실패</p>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+			
+	        mav.addObject("msg1", msg1);
+	        mav.addObject("link1", link1); 
+	        mav.addObject("link2", link2); 
+		} else {
+			 String msg1="<p>문의 등록완료</p>";
+			 mav.addObject("msg1", msg1);
+			 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+			 mav.addObject("link1", link1); 
+			}//if end
+		return mav;
+	}//deleteProc() end
+	
+	
+	@RequestMapping(value="/update.do", method=RequestMethod.GET)
+	public ModelAndView updateForm(int q_no) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("qna/updateForm");
+		QnaDTO dto=dao.read(q_no);
+		mav.addObject("q_no", q_no);
+		return mav;
+	}//update() end
+	
+	@RequestMapping(value="/update.do", method=RequestMethod.POST)
+	public ModelAndView updateProc(@ModelAttribute QnaDTO dto, HttpServletRequest req) {
+
+			QnaDTO oldDTO=dao.read(dto.getQ_no());
+			System.out.println(oldDTO);
+			
+			ModelAndView mav=new ModelAndView();
+			int cnt=dao.create(dto); 
+			if(cnt==0) {
+				String msg1="<p>문의 수정실패</p>";
+				String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
+				String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+		        mav.addObject("msg1", msg1);
+		        mav.addObject("link1", link1); 
+		        mav.addObject("link2", link2); 
+			} else {
+				 String msg1="<p>수정 등록완료</p>";
+				 mav.addObject("msg1", msg1);
+				 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+				 mav.addObject("link1", link1); 
+				}//if end
+			return mav; 
+		}
 }
