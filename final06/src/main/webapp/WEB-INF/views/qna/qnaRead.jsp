@@ -5,8 +5,6 @@
 
 <table border="1" align="center" style="text-align:center; width:700px; height:500px;">
 	<tr align="center">
-		<th>제목</th>
-		<td colspan="3">${dto.q_con}</td>
 	</tr>	
 	<tr>
 		<th>작성자</th>
@@ -14,8 +12,11 @@
 		<th>작성일</th>
 		<td>${dto.q_regdt}</td>
 	</tr>
+		<th>제목</th>
+		<td colspan="3">${dto.q_sub}</td>
 	<tr>
-		<td colspan="4" class="tableTBox">${dto.q_con}</td>
+		<td class="tableTBox">내용</td>
+		<td colspan="3" class="tableTBox">${dto.q_con}</td>
 	</tr>
 </table>
    <br><br>
