@@ -51,7 +51,7 @@
 		</c:if>
 			<div class="col-md-6">
 			<!-- 왼쪽 -->
-				<div class="blog-left">
+				<div class="blog-left" onclick="location.href='read.do?per_code=${dto.per_code}'" style="cursor: pointer;">
 					<div class="blog-img">
 						<img class="grid-image" src="../perstorage/${dto.per_img}" />
 					</div>
@@ -76,15 +76,12 @@
 				<div class="blog-content">
 				  <!-- 프로그램 사진, 이름, 정원, 접수기간, 수강기간, 금액, 연령 -->
 				 <h3>
-					<a href="read.do?per_code=${dto.per_code}">${dto.per_name}</a>
+					${dto.per_name}
 				</h3>
 				<p>
 				  ${dto.per_exp}
 				</p>
 				</div>
-				<button class="btn btn-primary" onclick="location.href='read.do?per_code=${dto.per_code}'">
-				    더보기
-				  </button>
 				</div>
 			</div>
 			
