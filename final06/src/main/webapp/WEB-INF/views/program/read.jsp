@@ -50,16 +50,16 @@
 				<div class="row">
 					<div class="col-lg-2 col-sm-2">
 						<div class="col-lg-12 col-sm-12 text-right">
-							<div class="st-view">
+							<div class="st-view" style="border: 1px">
 								<ul class="list-unstyled">
 									<li>
-										${dto.pro_readcnt} 명 조회함
+										<span style="font-weight: bold;">조회&nbsp;&nbsp;${dto.pro_readcnt} 번</span>
 									</li>
 									<li>
-										${likecnt} 명이 관심있어함 (찜개수)
+										<span style="font-weight: bold;">찜&nbsp;&nbsp;${likecnt} 명</span>
 									</li>
 									<li>
-										n 개의 리뷰개수
+										<span style="font-weight: bold;">후기&nbsp;&nbsp;n 개</span>
 									</li>
 								</ul>
 							</div>

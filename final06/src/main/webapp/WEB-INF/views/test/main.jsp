@@ -36,38 +36,38 @@
 <!--breadcrumbs end-->
 
 <div>
-    <section id="main">
-      <h1>MBTi 테스트하기</h1>
-      <div>
-        <img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/testmain.jpg" alt="mainImage">
-      </div>
-      <p>
-        우리 아이의 MBTi는 뭘까? <br>
-        자녀의 이름을 입력하고 아래의 시작하기 버튼을 눌러 시작해 주세요.
-      </p>
-      <form name="testfrm" id="testfrm" method="POST" action="create.do">
-	      <input type="text" class="form-control short" name="k_name" id="k_name" placeholder="자녀정보에 입력했던 자녀의 이름으로 입력해주세요. (ex. 김자녀 or 자녀)">
-	      <button type="submit" class="btn btn-success">시작하기</button>
-      </form>
-    </section>
-    <section id="qna">
-      <div class="status mx-auto mt-5">
-        <div class="statusBar">
-        </div>
-      </div>
-      <div class="qBox my-5 py-3 mx-auto">
-
-      </div>
-      <div class="answerBox">
-
-      </div>
-    </section>
-    <section id="result">
-      
-    </section>
-    <script src="./js/data.js" charset="utf-8"></script>
-    <script src="./js/start.js" charset="utf-8"></script>
-  </div>
+	<section id="main">
+		<h1>MBTi 테스트하기</h1>
+		<div>
+			<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/testmain.jpg" alt="mainImage">
+		</div>
+		<p>
+			우리 아이의 MBTi는 뭘까? <br>
+			자녀의 이름을 입력하고 아래의 시작하기 버튼을 눌러 시작해 주세요.
+		</p>
+		<form name="testfrm" id="testfrm" method="POST" action="create.do" onsubmit="return loginCheck()">
+			<select id="k_no" name="k_no">
+				<option value="0" selected>--나의 자녀목록--</option> <!-- 이거 선택하면 form 안넘어가게 하기 -->
+				<c:forEach var="i" items="${klist}">
+					<option value="${i.k_no}">${i.k_name}</option>
+				</c:forEach>
+			</select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		<button type="submit" class="btn btn-success">시작하기</button>
+		</form>
+	</section>
+</div>
 <!-- 본문 끝 -->
+<!-- JavaScript 함수 -->
+<script>
+	function loginCheck(){
+		let p_id = "${member_dto.p_id}";
+		if(p_id===null || p_id===""){
+			alert("로그인 후 이용하실 수 있습니다.");
+			return false;
+		}
+		return true;
+	}
+</script>
         
 <%@ include file="../footer.jsp" %>
