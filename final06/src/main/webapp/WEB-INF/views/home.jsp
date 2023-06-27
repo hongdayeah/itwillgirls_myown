@@ -139,7 +139,7 @@
 									<a href="../program/myLikeList.do">나의 관심내역</a>
 								</li>
 								<li>
-									<a href="../#">나의 장바구니</a>
+									<a href="../cart/list">나의 장바구니</a>
 								</li>
 								<li>
 									<a href="../#">나의 예매내역</a>
