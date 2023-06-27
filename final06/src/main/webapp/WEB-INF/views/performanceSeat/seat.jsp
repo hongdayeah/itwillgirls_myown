@@ -149,6 +149,7 @@
 			  }
 			  
 			  // arrSeat 배열 값을 쉼표로 구분해서 문자열로 변환하여 arrSeat 입력란의 value 속성에 할당함
+			  // join() 메서드는 배열의 모든 요소를 연결해 하나의 문자열로 만든다.
 			  document.getElementById('arrSeat').value = arrSeat.join(',');
 			  
 			  var returnValue = confirm(

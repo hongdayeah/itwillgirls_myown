@@ -49,10 +49,29 @@ public class CartCont {
       		dto.setSeat_no(seat_no);	// dto에 seat_no 설정
       			
       		dao.perInsert(dto);
-      		return "/cart/list";	
-      	}
+      		return "redirect:/cart/list";	
+      		
+      	}//cartInsert() end
+	}//perInsert end	
+      	
+    @RequestMapping("/cart/list")
+    public ModelAndView list(HttpSession session) {
+    
+		Object obj = session.getAttribute("member_dto");
+	    MemberDTO mDto = (MemberDTO) obj;
+	    
+	    String p_id = mDto.getP_id();
+	    
+	    ModelAndView mav=new ModelAndView();
+	    mav.setViewName("cart/list");
+	    mav.addObject("list", dao.cartList(p_id));
+	    
+	    return mav;
+	} //list() end
+    
+      	
 	
-	}//perInsert end
+	
 
 
 	
