@@ -92,7 +92,7 @@ public class QnaCont {
 		
 		int cnt=dao.delete(q_no);
 		if(cnt==0) {
-			String msg1="<p>문의 등록실패</p>";
+			String msg1="<p>문의 삭제실패</p>";
 			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
 			String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
 			
@@ -100,7 +100,7 @@ public class QnaCont {
 	        mav.addObject("link1", link1); 
 	        mav.addObject("link2", link2); 
 		} else {
-			 String msg1="<p>문의 등록완료</p>";
+			 String msg1="<p>문의 삭제완료</p>";
 			 mav.addObject("msg1", msg1);
 			 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
 			 mav.addObject("link1", link1); 
@@ -127,18 +127,52 @@ public class QnaCont {
 			ModelAndView mav=new ModelAndView();
 			int cnt=dao.create(dto); 
 			if(cnt==0) {
-				String msg1="<p>문의 수정실패</p>";
+				String msg1="<p>문의 삭제실패</p>";
 				String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
 				String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
 		        mav.addObject("msg1", msg1);
 		        mav.addObject("link1", link1); 
 		        mav.addObject("link2", link2); 
 			} else {
-				 String msg1="<p>수정 등록완료</p>";
+				 String msg1="<p>문의 삭제완료</p>";
 				 mav.addObject("msg1", msg1);
 				 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
 				 mav.addObject("link1", link1); 
 				}//if end
 			return mav; 
-		}
+		}//updateProc() end
+	
+	
+	
+	@RequestMapping(value="/reply.do", method=RequestMethod.GET)
+	public ModelAndView replyForm(int q_no) {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("qna/replyForm");
+		mav.addObject("q_no", q_no);
+		return mav;
+	}//reply() end
+	
+	@RequestMapping(value="/reply.do", method=RequestMethod.POST)
+	public ModelAndView replyProc(@ModelAttribute QnaDTO dto, HttpServletRequest req) {
+
+			QnaDTO oldDTO=dao.read(dto.getQ_no());
+			System.out.println(oldDTO);
+			
+			ModelAndView mav=new ModelAndView();
+			int cnt=dao.create(dto); 
+			if(cnt==0) {
+				String msg1="<p>문의답글 등록실패</p>";
+				String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
+				String link2="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+		        mav.addObject("msg1", msg1);
+		        mav.addObject("link1", link1); 
+		        mav.addObject("link2", link2); 
+			} else {
+				 String msg1="<p>문의답글 등록완료</p>";
+				 mav.addObject("msg1", msg1);
+				 String link1="<input type='button' value='목록으로' onclick='location.href=\"list.do?q_no=" + oldDTO.getQ_no() + "\"'>";
+				 mav.addObject("link1", link1); 
+				}//if end
+			return mav; 
+		}//replyProc() end
 }
