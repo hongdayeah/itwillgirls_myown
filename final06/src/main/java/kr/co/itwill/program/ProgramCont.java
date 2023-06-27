@@ -56,7 +56,7 @@ public class ProgramCont {
 		mav.setViewName("program/msgView");
 		
 		MultipartFile pro_posterMF = dto.getPro_posterMF();
-		System.out.println(pro_posterMF);
+		//System.out.println(pro_posterMF);
 		MultipartFile pro_imgMF = dto.getPro_imgMF();
 		String pro_poster = pro_posterMF.getOriginalFilename();
 		String pro_img = pro_imgMF.getOriginalFilename();
