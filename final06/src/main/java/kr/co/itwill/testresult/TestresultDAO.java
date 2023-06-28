@@ -91,4 +91,22 @@ public class TestresultDAO {
 		
 		return k_name;
 	}//kread() end
+	
+	//stest의 결과 값 저장하기 (기존 행에 값 새로 추가)
+	public int sresupdate(int k_no, String sresult) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE testresult ");
+			sql.append(" SET sresult = ? ");
+			sql.append(" WHERE k_no = ? ");
+			
+			cnt = jt.update(sql.toString(), sresult, k_no);
+		}catch(Exception e) {
+			System.out.println("Testresult에서 sung테스트 결과 값 저장 실패 : " + e);
+		}
+		
+		return cnt;
+	}//sresupdate() end
 }//class end

@@ -92,4 +92,39 @@ public class TestresultCont {
 		
 		return "redirect:/test/sungtest.do?k_no="+k_no;
 	}//createProc() end
+	
+	//테스트 1부의 값 저장(table update)
+	@RequestMapping(value="/test/sresupdate.do", method=RequestMethod.POST)
+	public String updateProc(@RequestParam("k_no") int k_no, @RequestParam("sresult-0") int sresult0,
+															 @RequestParam("sresult-1") int sresult1,
+															 @RequestParam("sresult-2") int sresult2,
+															 @RequestParam("sresult-3") int sresult3,
+															 @RequestParam("sresult-4") int sresult4,
+															 @RequestParam("sresult-5") int sresult5,
+															 @RequestParam("sresult-6") int sresult6,
+															 @RequestParam("sresult-7") int sresult7,
+															 @RequestParam("sresult-8") int sresult8,
+															 @RequestParam("sresult-9") int sresult9) {
+		
+		//System.out.println(k_no);
+		//System.out.println(sresult0);
+		
+		int sum = 0; // radio버튼으로 선택한 value의 총 합을 저장할 변수
+		String sresult = null; //sum의 값(숫자)에 따라 I | E 를 담을 변수
+		
+		sum = sresult0 + sresult1 + sresult2 + sresult3 + sresult4 + sresult5 + sresult6 + sresult7 + sresult8 + sresult9; 
+	    //System.out.println(sum);
+		
+		if(sum>5) {
+			sresult = "I"; //내성
+		}else{
+			sresult = "E"; //외성
+		}
+		int cnt = dao.sresupdate(k_no, sresult);
+		
+		if(cnt==0) {
+			System.out.println("testresult 테이블에 sresult값 추가 실패");
+		}
+		return "redirect:/test/hyangtest.do?k_no="+k_no;
+	}//updateProc() end
 }//class end
