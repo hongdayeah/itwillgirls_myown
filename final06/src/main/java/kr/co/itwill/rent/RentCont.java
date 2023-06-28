@@ -1,6 +1,5 @@
 package kr.co.itwill.rent;
  
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,7 +40,7 @@ public class RentCont {
 	 
 	 
 	@RequestMapping(value="/create.do", method=RequestMethod.GET)
-	public ModelAndView rentForm(String rent_code) {
+	public ModelAndView rentForm(Integer rent_code) {
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("rent/rentForm");
 		mav.addObject("rent_code", rent_code);
@@ -69,15 +68,15 @@ public class RentCont {
 	int cnt=dao.create(dto); 
 	if(cnt==0) {
 		String msg1="<p>신청서 제출실패</p>";
-		String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
-		String link2="<input type='button' value='목록으로' onclick='#'>";
+		String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+		String link2="<input type='button' value='목록으로' onclick='location.href='/rent/list.do'>";
         mav.addObject("msg1", msg1);
         mav.addObject("link1", link1); 
         mav.addObject("link2", link2); 
 	} else {
 		 String msg1="<p>신청서 제출완료</p>";
 		 mav.addObject("msg1", msg1);
-		 String link1="<input type='button' value='목록으로' onclick='#'>";
+		 String link1="<input type='button' value='목록으로' onclick='location.href='/rent/list.do'>";
 		 mav.addObject("link1", link1); 
 		}//if end
 	return mav;
@@ -91,7 +90,7 @@ public class RentCont {
 	
 	 
 	 @RequestMapping("/read.do")
-	 public ModelAndView read(String rent_code) {
+	 public ModelAndView read(int rent_code) {
 		 ModelAndView mav=new ModelAndView();
 		 RentDTO dto=dao.read(rent_code);
 		 mav.setViewName("rent/rentRead");
