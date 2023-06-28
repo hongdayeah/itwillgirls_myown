@@ -26,7 +26,7 @@
 						</a>
 					</li>
 					<li class="create">
-						대관안내
+						신청내역
 					</li>
 				</ol>
 			</div>
@@ -62,31 +62,45 @@
   </div>
   <br>
  <hr>
-<h3>대관신청서</h3>
-<form>
-<table border="1" align="center" width="98%" height="70px" style="margin:auto; text-align:center;">
 
- 	<thead>
- 		<tr align="center">
- 			<td><strong>신청날짜<strong></td>
- 			<td>단체명</td>
- 			<td>담당자</td>
- 			<td>대관일자</td>
- 			<td>대관목적</td>
- 			<td>장소</td>
- 		</tr>
- 	</thead>
- 	
- 	<c:forEach var="dto" items="${list}">
- 	<tr>
- 		<td>${dto.rent_app}</td>
- 		<td><a href="read.do?rent_code=${dto.rent_code}">${dto.rent_group}</a></td> 
- 		<td>${dto.rent_name}</td>
- 		<td>${dto.rent_date}</td>
- 		<td>${dto.rent_per}</td>
- 		<td>${dto.class_code}</td>
- 	</tr>
- </c:forEach>
- </table>
- </form>
+<!--container start-->
+<div class="container">
+	<div class="row">
+	<!--blog start-->
+				<div class="row">
+						<h1 style="font-weight:bold;">${dto.pro_name}</h1>
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  
+									<tbody>
+									<tr>
+  <th style="text-align: center;">신청날짜</th>
+  <th style="text-align: center;">단체명</th>
+  <th style="text-align: center;">담당자</th>
+  <th style="text-align: center;">대관일자</th>
+  <th style="text-align: center;">대관목적</th>
+  <th style="text-align: center;">장소</th>
+</tr>
+									<c:forEach var="dto" items="${list}">
+									 	<tr align="center">
+									 		<td>${dto.rent_app}</td>
+									 		<td><a href="read.do?rent_code=${dto.rent_code}">${dto.rent_group}</a></td> 
+									 		<td>${dto.rent_name}</td>
+									 		<td>${dto.rent_date}</td>
+									 		<td>${dto.rent_per}</td>
+									 		<td>${dto.class_code}</td>
+									 	</tr>
+								 </c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+			</div>
+		</div>
+<!--container end-->
+<!-- 본문 끝 -->
+
+
+
+        
 <%@ include file="../footer.jsp" %>
