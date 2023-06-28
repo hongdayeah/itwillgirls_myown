@@ -43,7 +43,7 @@ public class QnaDAO {
 		List<QnaDTO> list=null;
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT q_no, q_sub, q_regdt, p_id ");
+			sql.append(" SELECT q_no, q_sub, q_regdt, p_id, q_grpno, q_indent ");
 			sql.append(" FROM qna ");
 			sql.append(" order by q_grpno DESC, q_ansnu ASC ");
 			
@@ -55,6 +55,8 @@ public class QnaDAO {
 				dto.setQ_sub(rs.getNString("q_sub"));
 				dto.setQ_regdt(rs.getString("q_regdt"));
 				dto.setP_id(rs.getString("p_id"));
+				dto.setQ_grpno(rs.getInt("q_grpno"));
+				dto.setQ_indent(rs.getInt("q_indent"));
 				return dto;
 				}
 			};
