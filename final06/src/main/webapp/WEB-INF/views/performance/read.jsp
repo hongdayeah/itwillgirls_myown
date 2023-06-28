@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.perdetail{
+	align: center;
+	}
+</style>
 </head>
 
 
@@ -60,7 +65,7 @@
 					
 					<div class="col-lg-10 col-sm-10">
 						<div class="blog-img gs">
-							<img src="../perstorage/${dto.per_img}" width="400">
+							<img src="../perstorage/${dto.per_img}" width="200">
 						</div>
 					</div>
 				</div>	
@@ -87,17 +92,18 @@
 								</tr>
 								<tr>
 									<td>공연 시간</td>
-									<td>${dto.per_time}</td>
-								</tr>
+									<td>${dto.per_time} <br>
+									${dto.per_timedetail}</td>
+								</tr>								
 								<tr>
 									<td>공연 장소</td>
 									<td>${dto.class_code}</td>
 								</tr>
 								<tr>
 									<td>공연료</td>
-									<td>${dto.per_fee}</td>
+									<td>${dto.per_fee}원</td>
 								</tr>
-								
+							
 								
 								</table>
 							</div>
@@ -106,7 +112,7 @@
 				
 				
 				
-		      <script>
+		     <script>
               //공연장소가 극장일 때에만 좌석예매 버튼이 생성되도록 함 
               if ("${dto.class_code}" === "theater") {
                 document.write('<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href=\'seat.do?per_code=${dto.per_code}\'">');
@@ -115,8 +121,21 @@
               }
             </script>
 		
-		
+			<div class="perdetail">
+				<div class="blog-img gs">
+			    <br>
+			    	<img src="../perstorage/${dto.per_img2}" width="400">
+    
+				    <script>
+				      // 공연장소가 극장일 때에만 추가 이미지를 보여줍니다.
+				      if ("${dto.class_code}" === "theater") {
+				        document.write('<img src="../img/performance/티켓수령상세.png" width="400">');
+				      }
+				    </script>
+			  	</div>
 			</div>
+			<br>
+			<br>
 		</div>
 	</div>
 	</div>

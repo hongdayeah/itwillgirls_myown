@@ -37,7 +37,7 @@ public class PerformanceDAO {
 		List<PerformanceDTO> list=null;
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code, per_limit ");
+			sql.append(" SELECT per_img, per_img2, per_code, per_name, per_date, per_time, per_timedetail, per_fee, per_exp, per_size, per_size2, class_code, per_limit ");
 			sql.append(" FROM performance ");
 			
 			RowMapper<PerformanceDTO> rowMapper=new RowMapper<PerformanceDTO>() {
@@ -45,13 +45,16 @@ public class PerformanceDAO {
 				public PerformanceDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 					PerformanceDTO dto=new PerformanceDTO();
 					dto.setPer_img(rs.getString("per_img"));
+					dto.setPer_img2(rs.getString("per_img2"));
 					dto.setPer_code(rs.getString("per_code"));
 					dto.setPer_name(rs.getString("per_name"));
 					dto.setPer_date(rs.getString("per_date"));
 					dto.setPer_time(rs.getString("per_time"));
+					dto.setPer_timedetail(rs.getString("per_timedetail"));
 					dto.setPer_fee(rs.getInt("per_fee"));
 					dto.setPer_exp(rs.getString("per_exp"));
 					dto.setPer_size(rs.getLong("per_size"));
+					dto.setPer_size2(rs.getLong("per_size2"));
 					dto.setClass_code(rs.getString("class_code"));
 					dto.setPer_limit(rs.getInt("per_limit"));
 					return dto;	
@@ -74,12 +77,12 @@ public class PerformanceDAO {
 		try {
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO performance(per_code, per_name, per_exp, per_date, per_time, per_fee, per_limit, class_code, per_img, per_size) ");
-			sql.append(" VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+			sql.append(" INSERT INTO performance(per_code, per_name, per_exp, per_date, per_time, per_timedetail, per_fee, per_limit, class_code, per_img, per_size, per_img2, per_size2) ");
+			sql.append(" VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 			
 			
 			//SQL문(insert, update, delete)	실행	
-			cnt=jt.update(sql.toString(), dto.getPer_code(), dto.getPer_name(), dto.getPer_exp(), dto.getPer_date(), dto.getPer_time(), dto.getPer_fee(), dto.getPer_limit(), dto.getClass_code(), dto.getPer_img(), dto.getPer_size() );
+			cnt=jt.update(sql.toString(), dto.getPer_code(), dto.getPer_name(), dto.getPer_exp(), dto.getPer_date(), dto.getPer_time(), dto.getPer_timedetail(), dto.getPer_fee(), dto.getPer_limit(), dto.getClass_code(), dto.getPer_img(), dto.getPer_size(),dto.getPer_img2(), dto.getPer_size2() );
 		
 		} catch (Exception e){
 			System.out.println("등록 실패" + e );
@@ -93,7 +96,7 @@ public class PerformanceDAO {
 		PerformanceDTO dto = null;
 		try { 
 			sql = new StringBuilder();
-			sql.append(" SELECT per_img, per_code, per_name, per_date, per_time, per_fee, per_exp, per_size, class_code, per_limit  ");
+			sql.append(" SELECT per_img, per_img2, per_code, per_name, per_date, per_time, per_timedetail, per_fee, per_exp, per_size, per_size2, class_code, per_limit  ");
 			sql.append(" FROM performance ");
 			sql.append(" WHERE per_code = '" + per_code + "'");
 			
@@ -102,13 +105,16 @@ public class PerformanceDAO {
 				public PerformanceDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 					PerformanceDTO dto=new PerformanceDTO();
 					dto.setPer_img(rs.getString("per_img"));
+					dto.setPer_img2(rs.getString("per_img2"));
 					dto.setPer_code(rs.getString("per_code"));
 					dto.setPer_name(rs.getString("per_name"));
 					dto.setPer_date(rs.getString("per_date"));
 					dto.setPer_time(rs.getString("per_time"));
+					dto.setPer_timedetail(rs.getString("per_timedetail"));
 					dto.setPer_fee(rs.getInt("per_fee"));
 					dto.setPer_exp(rs.getString("per_exp"));
 					dto.setPer_size(rs.getLong("per_size"));
+					dto.setPer_size2(rs.getLong("per_size2"));
 					dto.setClass_code(rs.getString("class_code"));
 					dto.setPer_limit(rs.getInt("per_limit"));
 					return dto;	
@@ -143,10 +149,10 @@ public class PerformanceDAO {
 		try {
 			sql=new StringBuilder();
 			sql.append(" UPDATE performance ");
-			sql.append(" SET per_name=?, per_exp=?, per_date=?, per_time=?, per_fee=?, per_limit=?, class_code=?, per_img=?, per_size=?");
+			sql.append(" SET per_name=?, per_exp=?, per_date=?, per_time=?, per_timedetail=?, per_fee=?, per_limit=?, class_code=?, per_img=?, per_size=?, per_img2=?, per_size2=?");
 			sql.append(" WHERE per_code=? ");
 			
-			cnt=jt.update(sql.toString(), dto.getPer_name(), dto.getPer_exp(), dto.getPer_date(), dto.getPer_time(), dto.getPer_fee(), dto.getPer_limit(), dto.getClass_code(), dto.getPer_img(), dto.getPer_size(), dto.getPer_code());
+			cnt=jt.update(sql.toString(), dto.getPer_name(), dto.getPer_exp(), dto.getPer_date(), dto.getPer_time(),dto.getPer_timedetail(), dto.getPer_fee(), dto.getPer_limit(), dto.getClass_code(), dto.getPer_img(), dto.getPer_size(), dto.getPer_img2(), dto.getPer_size2(), dto.getPer_code());
 			
 		}catch(Exception e) {
 			System.out.println("수정실패"+e);

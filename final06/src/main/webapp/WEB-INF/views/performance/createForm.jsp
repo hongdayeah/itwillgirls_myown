@@ -62,8 +62,12 @@
 		          <input type="date" class="form-control short" name="per_date" min="2020-01-01" max="2029-12-31">
 		        </div>
 		        <div class="per-group">
-		          <label><br>상영시간</label>
+		          <label><br>공연시간</label>
 		          <input type="time" class="form-control short" name="per_time" >
+		        </div>
+		        <div class="per-group">
+		          <label><br>상영시간</label>
+		          <input type="text" class="form-control short" name="per_timedetail" size="50">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연료</label>
@@ -83,7 +87,11 @@
 		        <div class="per-group">
 				  <label><br>포스터</label>
 		          <input type="file" name="per_imgMF" size="50">  
-		        </div>	    
+		        </div>
+		          <div class="per-group">
+				  <label><br>포스터상세</label>
+		          <input type="file" name="per_imgMFD" size="50">  
+		        </div>	   
 		    
 			    <div class='bottom'><br>
 			      <input type='submit' class="btn btn-success" value='등록'>
