@@ -89,7 +89,7 @@
 		<tr>	
 			<th>시간</th>
 			<td>${dto.per_time}<td>
-		</tr> 
+		</tr>
 		
 		<tr>
 			<th>수량선택</th>

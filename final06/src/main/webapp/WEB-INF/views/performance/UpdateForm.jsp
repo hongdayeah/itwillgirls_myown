@@ -47,7 +47,7 @@
 		    
 		        <div class="per-group">
 		          <label>공연코드</label>
-		           <input type="text" class="form-control short" name="per_code" value="${dto.per_code}" size="20">
+		           <input type="text" class="form-control short" name="per_code" value="${dto.per_code}" size="20" readonly>
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연이름</label>

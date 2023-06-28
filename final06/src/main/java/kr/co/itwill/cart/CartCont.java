@@ -34,39 +34,35 @@ public class CartCont {
 	       MemberDTO mDto = (MemberDTO) obj;
 	       //System.out.println(mDto);
 	         
-	         if(mDto==null) {
-	            return "redirect:/member/login.do";        
-	         }else { 
-	            String p_id = mDto.getP_id(); // mDto에서 p_id값 가져옴    
-	            
-	            String per_code=request.getParameter("per_code");   //HttpServletRequest 통해서 per_code 받아옴
-	            String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
-	            String[] seatArray=seat_no.split(","); 				//seat_no값을 쉼표로 구분하여 배열에 저장한다
-	            
-	            int row=0;
-	            int col=0;
-	            
-	            //seat변수는 seatArray 배열의 각요소를 순회하며 해당 요소를 나타내는 변수임
-	            for(String seat : seatArray) {
-	            	row=Integer.parseInt(seat.substring(0,1)); 	//좌석 번호의 첫번째 문자 (행)
-	            	col=Integer.parseInt(seat.substring(1)); 	//좌석 번호의 두번째 문자 (열)
-	            	
-	            	perseatdto.setPer_code(per_code);
-	 	            perseatdto.setRow(row);
-	 	            perseatdto.setCol(col);
-	 	            
-	 	            dao.seatInsert(perseatdto);
-	            }	            
-	            
-	            dto.setP_id(p_id);          // dto에 p_id 설정
-	            dto.setPer_code(per_code);   // dto에 per_code 설정
-	            dto.setSeat_no(seat_no);   // dto에 seat_no 설정
-	            
-	           
-	     
-	            
-	            dao.perInsert(dto);
-	            return "redirect:/cart/list";   
+         if(mDto==null) {
+            return "redirect:/member/login.do";        
+         }else { 
+            String p_id = mDto.getP_id(); 						// mDto에서 p_id값 가져옴    
+            
+            String per_code=request.getParameter("per_code");   //HttpServletRequest 통해서 per_code 받아옴
+            String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
+            
+            //seat_no값을 장바구니에 보이려고 하나의 문자열로 받아왔기 때문에 쉼표로 구분하여 배열에 저장한다
+            String[] seatArray=seat_no.split(","); 				
+            
+            //seat변수는 seatArray 배열의 각요소를 순회하며 해당 요소를 나타내는 변수임
+            for(String seat : seatArray) {
+            	int row=Integer.parseInt(seat.substring(0,1)); 	//좌석 번호의 첫번째 문자 (행)
+            	int col=Integer.parseInt(seat.substring(1)); 	//좌석 번호의 두번째 문자 (열)
+            	
+            	perseatdto.setPer_code(per_code);
+ 	            perseatdto.setRow(row);
+ 	            perseatdto.setCol(col);
+ 	            
+ 	            dao.seatInsert(perseatdto);
+           }	            
+            
+	       dto.setP_id(p_id);          // dto에 p_id 설정
+	       dto.setPer_code(per_code);   // dto에 per_code 설정
+	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
+            
+	       dao.perInsert(dto);
+           return "redirect:/cart/list";   
 	            
 	         }//cartInsert() end
 	   }//perInsert end   	
