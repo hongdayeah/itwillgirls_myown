@@ -145,7 +145,7 @@ public class SungtestDAO {
 	}//delete() end
 	
 	//자녀 이름 조회
-	public String knameread(int k_no) {
+	public String sknameread(int k_no) {
 		String k_name = null;
 		
 		try {
@@ -161,12 +161,11 @@ public class SungtestDAO {
 		}
 		
 		return k_name;
-	}//knameread() end
+	}//sknameread() end
 	
 	
 	//질문 10개 목록 랜덤 추출 조회
-	
-	public List<String> randlist(int num){
+	public List<String> srandlist(int num){
 		List<String> list = new ArrayList<>();
 		
 		try {
@@ -179,5 +178,5 @@ public class SungtestDAO {
 		}
 		
 		return list;
-	}//randlist() end
+	}//srandlist() end
 }//class end

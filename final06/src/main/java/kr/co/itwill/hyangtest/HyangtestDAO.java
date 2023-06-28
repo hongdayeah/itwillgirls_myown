@@ -1,7 +1,9 @@
 package kr.co.itwill.hyangtest;
 
+import java.io.StringBufferInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,4 +140,39 @@ public class HyangtestDAO {
 		
 		return cnt;
 	}//delete() end
+	
+	//자녀 이름 조회
+	public String hknameread(int k_no) {
+		String k_name = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT k_name ");
+			sql.append(" FROM testresult ");
+			sql.append(" WHERE k_no = " + k_no);
+			
+			k_name = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
+			
+		}catch(Exception e) {
+			System.out.println("HYANG test에서 k_name 조회 실패 : " + e);
+		}
+		
+		return k_name;
+	}//hknameread() end
+	
+	//질문 10개 목록 랜덤 추출 조회
+	public List<String> hrandlist(int num){
+		List<String> list = new ArrayList<>();
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT htest_name FROM hyang_test ORDER BY RAND() LIMIT ? ");
+			
+			list = jt.queryForList(sql.toString(), new Object[]{num}, String.class);
+		}catch(Exception e) {
+			System.out.println("HYANG test에서 랜덤 추출 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//hrandlist() end
 }//class end

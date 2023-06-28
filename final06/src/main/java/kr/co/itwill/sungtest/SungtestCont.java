@@ -115,15 +115,15 @@ public class SungtestCont {
 		
 		//System.out.println(k_no);
 		
-		//SungtestDAO에 선언한 kidread(k_no) 호출 (k_name 찾기)
-		String k_name = dao.knameread(k_no);
+		//SungtestDAO에 선언한 sknameread(k_no) 호출 (k_name 찾기)
+		String k_name = dao.sknameread(k_no);
 		//System.out.println(k_name);
 		mav.addObject("k_no", k_no);
 		mav.addObject("k_name", k_name);
 		
 		//사용자에게 랜덤한 sungtest 내의 10개의 질문 보여주기
 		//처음엔 List<SungtestDTO> 타입으로 불렀더니 행 전체를 불러왔다. 난 stest_name만 필요해서 <String>으로 선언
-		List<String> srandlist = dao.randlist(10);
+		List<String> srandlist = dao.srandlist(10);
 		//System.out.println(srandlist);
 		
 		mav.addObject("srandlist", srandlist);
