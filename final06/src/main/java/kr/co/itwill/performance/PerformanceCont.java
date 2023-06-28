@@ -197,7 +197,7 @@ public class PerformanceCont {
 		if(per_imgMF.getSize()>0) {
 			UploadSaveManager.deleteFile(basePath, oldDTO.getPer_img());
 			String per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
-			dto.setPer_img(per_img);
+			dto.setPer_img(per_img); 
 			dto.setPer_size(per_imgMF.getSize());
 		} else {
 			dto.setPer_img(oldDTO.getPer_img());

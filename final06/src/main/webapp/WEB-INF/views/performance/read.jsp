@@ -1,53 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ include file="../header.jsp" %>
 
-<head>
-	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-	.perdetail{
-	align: center;
-	}
-</style>
-</head>
+<!-- 본문시작 program -- list.jsp -->
 
-
-    <!-- 본문 시작 performanceList.jsp -->
-	    
-	<!--breadcrumbs start-->
-	<div class="breadcrumbs">
-	   <div class="container">
-	      <div class="row">
-	         <div class="col-lg-4 col-sm-4">
-	            <h1>
-	               우리센터 공연을 소개합니다
-	            </h1>
-	         </div>
-	         <div class="col-lg-8 col-sm-8">
-	            <ol class="breadcrumb pull-right">
-	               <li>
-	                  <a href="../home.do">
-	                     Home
-	                  </a>
-	               </li>
-	               <li>
-	                  <a href="list.do">
-	                     공연
-	                  </a>
-	               </li>
-	               <li class="">
-	                   공연상세
-	               </li>
-	            </ol>
-	         </div>
-	      </div>
-	   </div>
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>
+					우리센터 공연을 소개합니다
+				</h1>
+			</div>
+			<div class="col-lg-8 col-sm-8">
+				<ol class="breadcrumb pull-right">
+					<li>
+						<a href="../home.do">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="list.do">
+							공연
+						</a>
+					</li>
+					<li class="">
+						공연 상세
+					</li>
+				</ol>
+			</div>
+		</div>
 	</div>
-	<!--breadcrumbs end-->
+</div>
+<!--breadcrumbs end-->
     
 	<div class="btn-position">
 		<button class="btn btn-success" onclick="location.href='list.do'">프로그램 목록</button>
@@ -69,7 +56,7 @@
 						</div>
 					</div>
 				</div>	
-
+ 
 				<div class="row">
 				<div class="col-lg-12 col-sm-12">
 					<h1 style="font-weight:bold;">${dto.per_name}</h1>
@@ -97,7 +84,15 @@
 								</tr>								
 								<tr>
 									<td>공연 장소</td>
-									<td>${dto.class_code}</td>
+									<td>
+										<script>
+											if("${dto.class_code}" === "theater"){
+												document.write("극장");
+											} else {
+												document.write("야외");
+											}
+										</script>
+									</td>
 								</tr>
 								<tr>
 									<td>공연료</td>
@@ -137,6 +132,7 @@
 			<br>
 			<br>
 		</div>
+	</div>
 	</div>
 	</div>
 			

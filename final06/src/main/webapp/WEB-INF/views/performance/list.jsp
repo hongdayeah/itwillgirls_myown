@@ -56,7 +56,7 @@
 						<img class="grid-image" src="../perstorage/${dto.per_img}" />
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12"> 
 							<div class="blog-two-info">
 								<p>
 									<!-- 공연날짜 -->

@@ -94,7 +94,7 @@
 		          <img src="../perstorage/${dto.per_img2}" width="100" }"><br>
 			      <td><br><input type="file" name="per_imgMFD" size="50"></td>   
 		        </div>	  
-		    
+		     
 			    <div class='bottom'><br>
 			      <input type="submit"  class="btn btn-success" value="수정">
 			      <button type="reset" class="btn btn-warning">초기화</button>

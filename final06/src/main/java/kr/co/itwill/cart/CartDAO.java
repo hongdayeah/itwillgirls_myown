@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
+
 @Repository
 public class CartDAO {
 	
@@ -21,6 +23,25 @@ public class CartDAO {
 	private JdbcTemplate jt;
 	
 	StringBuilder sql=null;
+	
+	public int seatInsert (PerformanceSeatDTO perseatdto) {
+		int cnt=0;
+		
+		try {
+			sql=new StringBuilder();
+			
+			sql.append(" INSERT INTO perSeat(row, col, isReserved, per_code)" );
+			sql.append(" VALUES (?,?,1,?)");
+			
+			cnt=jt.update(sql.toString(), perseatdto.getRow(), perseatdto.getCol(), perseatdto.getPer_code());
+			
+		} catch(Exception e){
+			System.out.println("등록 실패"+e);	
+		}
+		return cnt;
+	} //perInsert() end
+
+	
 	
 	public int perInsert(CartDTO dto) {
 		int cnt=0;
@@ -74,4 +95,4 @@ public class CartDAO {
 		return list;
 	}// cartList() end
 
-}
+} //CartDAO() end
