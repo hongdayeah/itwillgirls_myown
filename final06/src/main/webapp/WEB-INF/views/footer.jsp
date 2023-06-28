@@ -17,65 +17,63 @@
 				</address>
 			</div>
 			<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
-				<h1>
-					영업 시간
-				</h1>
-				<address>
-					<p><i></i>영업 : <br>매 주 화 ~ 일요일 09:00 am - 06:00 pm </p>
-					<p><i></i>휴관 : <br>매 주 월요일 및 공휴일 </p>
-				</address>
-			</div>
-			<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
-				<h1>
-					소식 받기
-				</h1>
-				<address>
-					<p><i></i>매 달 1일 소식 받기 </p>
-					<div>
-						<input type="text" placeholder="이메일주소">
-						<button type="button">SignUp</button>
-					</div>
-				</address>
-			</div>
-			<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
-				<h1>
-					기타 내용
-				</h1>
-				<address>
-					<p><i></i>어쩌구 저쩌구</p>
-					<p><i></i>어쩌구 저쩌구</p>
-				</address>
-			</div>
-		</div>
-	</div>
-</footer>
-<!-- footer end -->
-
-<!--small footer start -->
-<footer class="footer-small">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-sm-6 pull-right">
-				<ul class="social-link-footer list-unstyled">
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i class="fa fa-facebook"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i class="fa fa-twitter"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="#"><i class="fa fa-skype"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="#"><i class="fa fa-github"></i></a></li>
-				    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s"><a href="#"><i class="fa fa-youtube"></i></a></li>
-				</ul>
-			</div>
-			<div class="col-md-4">
-				<div class="copyright">
-					<p>Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+					<h1>
+						영업 시간
+					</h1>
+					<address>
+						<p><i></i>영업 : <br>매 주 화 ~ 일요일 09:00 am - 06:00 pm </p>
+						<p><i></i>휴관 : <br>매 주 월요일 및 공휴일 </p>
+					</address>
+				</div>
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						센터 소식
+					</h1>
+					<address>
+						<p><a href="../faq/list.do">자주 묻는 질문</a></p>
+					</address>
+				</div>
+				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+					<h1>
+						기타 내용
+					</h1>
+					<address>
+						<p><a href="../agree_1">이용 약관</a></p>
+						<p><a href="../agree_2">개인정보처리방침</a></p>
+					</address>
 				</div>
 			</div>
 		</div>
-	</div>
-</footer>
-<!--small footer end-->
+	</footer>
+	<!-- footer end -->
+	
+	<!--small footer start -->
+	<!-- 
+	<footer class="footer-small">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-sm-6 pull-right">
+					<ul class="social-link-footer list-unstyled">
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="#"><i class="fa fa-facebook"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".3s"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i class="fa fa-twitter"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="#"><i class="fa fa-skype"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".7s"><a href="#"><i class="fa fa-github"></i></a></li>
+					    <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".8s"><a href="#"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<div class="copyright">
+						<p>Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	-->
+	<!--small footer end-->
 
 <!-- js placed at the end of the document so the pages load faster
 <script src="../js/jquery.js">
