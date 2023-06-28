@@ -92,6 +92,12 @@ public class PerformanceCont {
 				String per_img=UploadSaveManager.saveFileSpring30(per_imgMF, basePath);
 				dto.setPer_img(per_img); //리네임된 파일명을 dto 객체 담기
 				dto.setPer_size(per_imgMF.getSize());
+				
+		//2)<input tyle='file' name='per_imgMFD'>
+				MultipartFile per_imgMFD=dto.getPer_imgMFD();
+				String per_img2=UploadSaveManager.saveFileSpring30(per_imgMFD, basePath);
+				dto.setPer_img2(per_img2);
+				dto.setPer_size2(per_imgMF.getSize());
 			
 		///////////////////////////////////////////////////////////		
 				
@@ -196,6 +202,18 @@ public class PerformanceCont {
 		} else {
 			dto.setPer_img(oldDTO.getPer_img());
 			dto.setPer_size(oldDTO.getPer_size());
+		} //if end
+		
+		//2)
+		MultipartFile per_imgMFD=dto.getPer_imgMFD();
+		if(per_imgMFD.getSize()>0) {
+			UploadSaveManager.deleteFile(basePath, oldDTO.getPer_img2());
+			String per_img2=UploadSaveManager.saveFileSpring30(per_imgMFD, basePath);
+			dto.setPer_img2(per_img2);
+			dto.setPer_size2(per_imgMFD.getSize());
+		} else {
+			dto.setPer_img2(oldDTO.getPer_img2());
+			dto.setPer_size2(oldDTO.getPer_size2());
 		} //if end
 		
 		ModelAndView mav=new ModelAndView();

@@ -62,8 +62,12 @@
 		           <input class="form-control short" type="date" name="per_date"  value="${dto.per_date}"min="2020-01-01" max="2029-12-31">
 		        </div>
 		        <div class="per-group">
-		          <label><br>상영시간</label>
+		          <label><br>공연시간</label>
 		          <input class="form-control short" type="time" name="per_time" value="${dto.per_time}" size="20">
+		        </div>
+		        <div class="per-group">
+		          <label><br>상영시간</label>
+		          <input class="form-control short" type="text" name="per_timedetail" value="${dto.per_timedetail}" size="20">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연료</label>
@@ -84,7 +88,12 @@
 				  <label><br><br>포스터<br></label>
 		          <img src="../perstorage/${dto.per_img}" width="100" }"><br>
 			      <td><br><input type="file" name="per_imgMF" size="50"></td>   
-		        </div>	    
+		        </div>	  
+		        <div class="per-group">
+				  <label><br><br>포스터상세<br></label>
+		          <img src="../perstorage/${dto.per_img2}" width="100" }"><br>
+			      <td><br><input type="file" name="per_imgMFD" size="50"></td>   
+		        </div>	  
 		    
 			    <div class='bottom'><br>
 			      <input type="submit"  class="btn btn-success" value="수정">

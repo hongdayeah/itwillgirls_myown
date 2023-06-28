@@ -14,9 +14,12 @@ public class PerformanceDTO {
 	private String per_exp;
 	private String per_img;
 	private long   per_size;
-	private String  per_filename;
+	private String per_filename;
 	private String class_code;
 	private int per_limit;
+	private String per_img2;
+	private long   per_size2;
+	private String per_timedetail;
 	
 	public PerformanceDTO() {}
 	
@@ -26,6 +29,7 @@ public class PerformanceDTO {
 	//1)스프링 파일 객체 멤버변수 선언
     //<input type='file' name='per_imgMF'>
     private MultipartFile per_imgMF;
+    private MultipartFile per_imgMFD;
 
     //2)getter와 setter함수 작성
 
@@ -37,6 +41,14 @@ public class PerformanceDTO {
 		this.per_imgMF = per_imgMF;
 	}
 	
+	public MultipartFile getPer_imgMFD() {
+		return per_imgMFD;
+	}
+
+	public void setPer_imgMFD(MultipartFile per_imgMFD) {
+		this.per_imgMFD = per_imgMFD;
+	}
+
 
 	
 	///////////////////////////////////////////////////////////// 
@@ -107,13 +119,41 @@ public class PerformanceDTO {
 	public void setPer_limit(int per_limit) {
 		this.per_limit = per_limit;
 	}
+
+	public String getPer_img2() {
+		return per_img2;
+	}
+
+	public void setPer_img2(String per_img2) {
+		this.per_img2 = per_img2;
+	}
+
+	public long getPer_size2() {
+		return per_size2;
+	}
+
+	public void setPer_size2(long per_size2) {
+		this.per_size2 = per_size2;
+	}
+
+	public String getPer_timedetail() {
+		return per_timedetail;
+	}
+
+	public void setPer_timedetail(String per_timedetail) {
+		this.per_timedetail = per_timedetail;
+	}
+
 	@Override
 	public String toString() {
 		return "PerformanceDTO [per_code=" + per_code + ", per_name=" + per_name + ", per_date=" + per_date
 				+ ", per_time=" + per_time + ", per_fee=" + per_fee + ", per_exp=" + per_exp + ", per_img=" + per_img
 				+ ", per_size=" + per_size + ", per_filename=" + per_filename + ", class_code=" + class_code
-				+ ", per_limit=" + per_limit + ", per_imgMF=" + per_imgMF + "]";
+				+ ", per_limit=" + per_limit + ", per_img2=" + per_img2 + ", per_size2=" + per_size2
+				+ ", per_timedetail=" + per_timedetail + ", per_imgMF=" + per_imgMF + ", per_imgMFD=" + per_imgMFD
+				+ "]";
 	}
+
 
 	
 	
