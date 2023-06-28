@@ -385,14 +385,10 @@
 				</div>
 				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
 					<h1>
-						소식 받기
+						센터 소식
 					</h1>
 					<address>
-						<p><i></i>매 달 1일 소식 받기 </p>
-						<div>
-							<input type="text" placeholder="이메일주소">
-							<button type="button">SignUp</button>
-						</div>
+						<p><a href="../faq/list.do">자주 묻는 질문</a></p>
 					</address>
 				</div>
 				<div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
@@ -400,8 +396,8 @@
 						기타 내용
 					</h1>
 					<address>
-						<p><i></i>어쩌구 저쩌구</p>
-						<p><i></i>어쩌구 저쩌구</p>
+						<p><a href="../agree_1">이용 약관</a></p>
+						<p><a href="../agree_2">개인정보처리방침</a></p>
 					</address>
 				</div>
 			</div>
@@ -410,6 +406,7 @@
 	<!-- footer end -->
 	
 	<!--small footer start -->
+	<!-- 
 	<footer class="footer-small">
 		<div class="container">
 			<div class="row">
@@ -433,6 +430,7 @@
 			</div>
 		</div>
 	</footer>
+	-->
 	<!--small footer end-->
 
     <!-- js placed at the end of the document so the pages load faster
