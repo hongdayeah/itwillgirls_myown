@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.sungtest.SungtestDTO;
@@ -105,6 +106,28 @@ public class HyangtestCont {
 		return mav;
 	}//deleteProc() end
 	
-	
+	////////////////////////////////////////////////사용자
+	//사용자가 테스트[2부] 하는 페이지
+	@RequestMapping("/test/hyangtest.do")
+	public ModelAndView hyangtest(@RequestParam("k_no") int k_no) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("test/hyangtest");
+		
+		//System.out.println(k_no);
+		
+		//HyangtestDAO에 선언한 hknameread(k_no) 호출 (k_name 찾기)
+		String k_name = dao.hknameread(k_no);
+		//System.out.println(k_name);
+		mav.addObject("k_no", k_no);
+		mav.addObject("k_name", k_name);
+		
+		//사용자에게 랜덤한 hyangtest 내의 10개의 질문 보여주기
+		List<String> hrandlist = dao.hrandlist(10);
+		//System.out.println(hrandlist);
+		
+		mav.addObject("hrandlist", hrandlist);
+		
+		return mav;
+	}//hyangtest() end
 	
 }//class end

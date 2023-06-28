@@ -95,16 +95,16 @@ public class TestresultCont {
 	
 	//테스트 1부의 값 저장(table update)
 	@RequestMapping(value="/test/sresupdate.do", method=RequestMethod.POST)
-	public String updateProc(@RequestParam("k_no") int k_no, @RequestParam("sresult-0") int sresult0,
-															 @RequestParam("sresult-1") int sresult1,
-															 @RequestParam("sresult-2") int sresult2,
-															 @RequestParam("sresult-3") int sresult3,
-															 @RequestParam("sresult-4") int sresult4,
-															 @RequestParam("sresult-5") int sresult5,
-															 @RequestParam("sresult-6") int sresult6,
-															 @RequestParam("sresult-7") int sresult7,
-															 @RequestParam("sresult-8") int sresult8,
-															 @RequestParam("sresult-9") int sresult9) {
+	public String supdateProc(@RequestParam("k_no") int k_no, @RequestParam("sresult-0") int sresult0,
+															  @RequestParam("sresult-1") int sresult1,
+															  @RequestParam("sresult-2") int sresult2,
+															  @RequestParam("sresult-3") int sresult3,
+															  @RequestParam("sresult-4") int sresult4,
+															  @RequestParam("sresult-5") int sresult5,
+															  @RequestParam("sresult-6") int sresult6,
+															  @RequestParam("sresult-7") int sresult7,
+															  @RequestParam("sresult-8") int sresult8,
+															  @RequestParam("sresult-9") int sresult9) {
 		
 		//System.out.println(k_no);
 		//System.out.println(sresult0);
@@ -126,5 +126,60 @@ public class TestresultCont {
 			System.out.println("testresult 테이블에 sresult값 추가 실패");
 		}
 		return "redirect:/test/hyangtest.do?k_no="+k_no;
+	}//supdateProc() end
+	
+	//테스트 2부의 값 저장(table update, 자녀테이블에 typename도 update)
+	@RequestMapping(value="/test/hresupdate.do", method=RequestMethod.POST)
+	public String hupdateProc(@RequestParam("k_no") int k_no, @RequestParam("hresult-0") int hresult0,
+															  @RequestParam("hresult-1") int hresult1,
+															  @RequestParam("hresult-2") int hresult2,
+															  @RequestParam("hresult-3") int hresult3,
+															  @RequestParam("hresult-4") int hresult4,
+															  @RequestParam("hresult-5") int hresult5,
+															  @RequestParam("hresult-6") int hresult6,
+															  @RequestParam("hresult-7") int hresult7,
+															  @RequestParam("hresult-8") int hresult8,
+															  @RequestParam("hresult-9") int hresult9) {
+		
+		//System.out.println(k_no);
+		//System.out.println(hresult0);
+		
+		int sum = 0; // radio버튼으로 선택한 value의 총 합을 저장할 변수
+		String hresult = null; //sum의 값(숫자)에 따라 I | E 를 담을 변수
+		
+		sum = hresult0 + hresult1 + hresult2 + hresult3 + hresult4 + hresult5 + hresult6 + hresult7 + hresult8 + hresult9; 
+	    //System.out.println(sum);
+		
+		if(sum>5) {
+			hresult = "E"; //외향
+		}else{
+			hresult = "I"; //내향
+		}
+		int cnt = dao.hresupdate(k_no, hresult);
+		
+		if(cnt==0) {
+			System.out.println("testresult 테이블에 hresult 값 추가 실패");
+		}
+		//System.out.println("h : " + hresult);
+		
+		//여기에 sresult 값 불러오기
+		String sresult = dao.sread(k_no);
+		//System.out.println("s : " + sresult);
+		
+		//sresult + hresult concat하여 typename에 update
+		int rescnt = dao.shupdate(k_no, sresult, hresult);
+		if(rescnt==0) {
+			System.out.println("testresult 테이블에 sresult + hresult 값 추가 실패");
+		}
+		
+		//해당 결과를 읽어와서 String typename에 저장하고 자녀정보 테이블의 typename에 업데이트
+		String typename = dao.tread(k_no);
+		
+		int typecnt = dao.kidtypeupdate(k_no);
+		if(typecnt==0) {
+			System.out.println("member_kid에 typename 수정 실패 ");
+		}
+		
+		return "redirect:/test/testresult.do?k_no="+k_no; //결과 보여주는 페이지 
 	}//updateProc() end
 }//class end

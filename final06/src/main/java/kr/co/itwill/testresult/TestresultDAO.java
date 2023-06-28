@@ -109,4 +109,94 @@ public class TestresultDAO {
 		
 		return cnt;
 	}//sresupdate() end
+	
+	//htest의 결과 값 저장하기 (기존 행에 값 새로 추가)
+	public int hresupdate(int k_no, String hresult) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE testresult ");
+			sql.append(" SET hresult = ? ");
+			sql.append(" WHERE k_no = ? ");
+			
+			cnt = jt.update(sql.toString(), hresult, k_no);
+		}catch(Exception e) {
+			System.out.println("Testresult에서 hyang테스트 결과 값 저장 실패 : " + e);
+		}
+		
+		return cnt;
+	}//hresupdate() end
+	
+	//hupdateProc에 sresult 값 반환
+	public String sread(int k_no) {
+		String sresult = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT sresult ");
+			sql.append(" FROM testresult ");
+			sql.append(" WHERE k_no = " + k_no);
+			
+			sresult = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
+		}catch(Exception e) {
+			System.out.println("hresupdateProc에서 sresult값 반환 실패 : " + e);
+		}
+		
+		return sresult;
+	}//sread() end
+	
+	public int shupdate(int k_no, String sresult, String hresult) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE testresult ");
+			sql.append(" SET typename = (SELECT GROUP_CONCAT(?, ?) AS type ");
+			sql.append(" FROM testresult ");
+			sql.append(" WHERE k_no = ?) ");
+			sql.append(" WHERE k_no = ? ");
+			
+			cnt = jt.update(sql.toString(), sresult, hresult, k_no, k_no);
+		}catch(Exception e) {
+			System.out.println("hresupdateProc에서 sresult+hresult 실패 : " + e);
+		}
+		
+		return cnt;
+	}//shupdate() end
+	
+	public String tread(int k_no) {
+		String typename = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT typename ");
+			sql.append(" FROM testresult ");
+			sql.append(" WHERE k_no = " + k_no);
+			
+			typename = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
+		}catch(Exception e) {
+			System.out.println("hresupdateProc에서 sresult값 반환 실패 : " + e);
+		}
+		
+		return typename;
+	}//sread() end
+	
+	//member_kid 의 typename 컬럼 update
+	public int kidtypeupdate(int k_no) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE member_kid ");
+			sql.append(" SET typename = (SELECT typename FROM testresult WHERE k_no = ? ) ");
+			sql.append(" WHERE k_no = ? ");
+			
+			cnt = jt.update(sql.toString(), k_no, k_no);
+		}catch(Exception e) {
+			System.out.println("hresupdateProc에서 member_kid로 typename update 실패 : " + e);
+		}
+		
+		return cnt;
+	}//kidtypeupdate() end
 }//class end
