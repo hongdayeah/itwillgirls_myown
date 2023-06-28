@@ -3,7 +3,7 @@
 
 <%@ include file="../header.jsp" %>
 
-<!-- 본문 시작 template.jsp -->
+<!-- 본문 시작 test -- slist.jsp -->
 <!--breadcrumbs start-->
 <div class="breadcrumbs">
 	<div class="container">

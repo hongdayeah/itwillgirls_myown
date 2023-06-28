@@ -140,6 +140,9 @@
 								<li>
 									<a href="../member/memberList.do">회원목록</a>
 								</li>
+								<li>
+									<a href="../tendency/adminlist.do">MBTi타입 목록</a>
+								</li>
 							</ul>
 							</c:if>
 							
