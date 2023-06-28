@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class RentDTO {
 
-	private String rent_code;
+	private int rent_code;
 	private String rent_date;
 	private String rent_per;
 	private String rent_group;
@@ -13,7 +13,6 @@ public class RentDTO {
 	private String rent_email;
 	private String class_code;
 	private long   rent_size;
-	private String rent_filename;
 	private String rent_app;
 	private String rent_form;
 	
@@ -33,13 +32,13 @@ public class RentDTO {
 		this.rent_formMF = rent_formMF;
 	}
 
+
 	////////////////////////////////////////////////////////////
-	
-	public String getRent_code() {
+	public int getRent_code() {
 		return rent_code;
 	}
 
-	public void setRent_code(String rent_code) {
+	public void setRent_code(int rent_code) {
 		this.rent_code = rent_code;
 	}
 
@@ -107,14 +106,6 @@ public class RentDTO {
 		this.rent_size = rent_size;
 	}
 
-	public String getRent_filename() {
-		return rent_filename;
-	}
-
-	public void setRent_filename(String rent_filename) {
-		this.rent_filename = rent_filename;
-	}
-
 	public String getRent_app() {
 		return rent_app;
 	}
@@ -136,11 +127,11 @@ public class RentDTO {
 		return "RentDTO [rent_code=" + rent_code + ", rent_date=" + rent_date + ", rent_per=" + rent_per
 				+ ", rent_group=" + rent_group + ", rent_name=" + rent_name + ", rent_phone=" + rent_phone
 				+ ", rent_email=" + rent_email + ", class_code=" + class_code + ", rent_size=" + rent_size
-				+ ", rent_filename=" + rent_filename + ", rent_app=" + rent_app + ", rent_form=" + rent_form
-				+ ", rent_formMF=" + rent_formMF + "]";
+				+ ", rent_app=" + rent_app + ", rent_form=" + rent_form + ", rent_formMF=" + rent_formMF + "]";
 	}
-
 	
+	
+
 	
 	
 	

@@ -78,26 +78,9 @@
 		<div class="bs-programform">
 			<form role="form" name="programfrm" id="programfrm"  method="POST" action="create.do" enctype="multipart/form-data" onsubmit="return rentCheck()">
 				<div class="form-group">
-  <label>대관코드<br></label>
-  <input type="text" class="form-control short" name="rent_code" id="rent_code" placeholder="대관코드가 될 아이디를 입력해주세요." required>
-  <button onclick="checkDuplicateCode()">중복확인</button>
-</div>
-
-<script>
-  function checkDuplicateCode() {
-    const codeInput = document.getElementById('rent_code');
-    const codeValue = codeInput.value;
-
-    // 서버로 대관코드 중복확인 요청 전송 및 응답 처리
-    // 실제로는 백엔드 API를 호출하고 응답을 처리해야 합니다.
-    // 예시로 응답을 직접 처리하는 부분을 작성합니다.
-    if (codeValue === 'duplicate') {
-      alert('중복된 대관코드입니다.');
-    } else {
-      alert('사용할 수 있는 대관코드입니다.');
-    }
-  }
-</script>
+				  <label>아이디</label><br>
+				  <input type="text" class="form-control short" name="p_id" id="p_id" placeholder="${member_dto.p_id}" readonly>
+				</div>
 				<div class="form-group">
 					<label>대관일자</label><br>
 					<input type="date" class="form-control date" name="rent_date" id="rent_date" required>
@@ -209,6 +192,14 @@
 
 <script>
 function rentCheck() {
+	//1) 로그인
+	let p_id=document.getElementById("p_id").value;
+	if(rent_date==""){
+		alert("로그인 먼저 해주세요.");
+		document.getElementById("p_id");
+		return false;
+	}
+	
 	//1) 대관일자선택
 	let rent_date=document.getElementById("rent_date").value;
 	if(rent_date==""){

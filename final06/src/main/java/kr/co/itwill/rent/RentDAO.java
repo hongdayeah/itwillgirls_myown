@@ -35,7 +35,7 @@ public class RentDAO {
 				public RentDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 					RentDTO dto=new RentDTO();
 					dto.setRent_app(rs.getString("rent_app"));
-					dto.setRent_code(rs.getString("rent_code"));
+					dto.setRent_code(rs.getInt("rent_code"));
 					dto.setRent_date(rs.getString("rent_date"));
 					dto.setRent_per(rs.getString("rent_per"));
 					dto.setRent_group(rs.getString("rent_group"));
@@ -61,10 +61,10 @@ public class RentDAO {
 		try {
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO rent(rent_code, rent_date, rent_group, rent_per, rent_name, rent_phone, rent_email, class_code, rent_app, rent_form, rent_size) ");
-			sql.append(" VALUES(?, ?, ?, ?, ?, ?, ? ,? ,now(), ?, ?) ");
+			sql.append(" INSERT INTO rent(rent_date, rent_group, rent_per, rent_name, rent_phone, rent_email, class_code, rent_app, rent_form, rent_size) ");
+			sql.append(" VALUES(?, ?, ?, ?, ?, ? ,? ,now(), ?, ?) ");
 			
-			cnt=jt.update(sql.toString(), dto.getRent_code(), dto.getRent_date(), dto.getRent_group(), dto.getRent_per(), dto.getRent_name(), dto.getRent_phone(), dto.getRent_email(), dto.getClass_code(), dto.getRent_form(), dto.getRent_size());
+			cnt=jt.update(sql.toString(), dto.getRent_date(), dto.getRent_group(), dto.getRent_per(), dto.getRent_name(), dto.getRent_phone(), dto.getRent_email(), dto.getClass_code(), dto.getRent_form(), dto.getRent_size());
 		} catch(Exception e) {
 			System.out.println("제출 실패: "+e);
 		}
@@ -72,7 +72,7 @@ public class RentDAO {
 	}//create end
 	
 	
-	public RentDTO read(String rent_code) {
+	public RentDTO read(int rent_code) {
 		RentDTO dto=null;
 		try {
 			sql=new StringBuilder();
@@ -85,7 +85,7 @@ public class RentDAO {
 				public RentDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
 					RentDTO dto=new RentDTO();
 					dto.setRent_app(rs.getString("rent_app"));
-					dto.setRent_code(rs.getString("rent_code"));
+					dto.setRent_code(rs.getInt("rent_code"));
 					dto.setRent_date(rs.getString("rent_date"));
 					dto.setRent_per(rs.getString("rent_per"));
 					dto.setRent_group(rs.getString("rent_group"));

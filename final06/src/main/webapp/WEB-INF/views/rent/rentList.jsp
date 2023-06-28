@@ -68,21 +68,24 @@
 	<div class="row">
 	<!--blog start-->
 				<div class="row">
-						<h1 style="font-weight:bold;">${dto.pro_name}</h1>
+						<h1 style="font-weight:bold; text-align:center;'">대관신청서</h1>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
-								  
 									<tbody>
 									<tr>
-  <th style="text-align: center;">신청날짜</th>
-  <th style="text-align: center;">단체명</th>
-  <th style="text-align: center;">담당자</th>
-  <th style="text-align: center;">대관일자</th>
-  <th style="text-align: center;">대관목적</th>
-  <th style="text-align: center;">장소</th>
-</tr>
+									  <th style="text-align: center;">번호</th>
+									  <th style="text-align: center;">아이디</th>
+									  <th style="text-align: center;">신청날짜</th>
+									  <th style="text-align: center;">단체명</th>
+									  <th style="text-align: center;">담당자</th>
+									  <th style="text-align: center;">대관일자</th>
+									  <th style="text-align: center;">대관목적</th>
+									  <th style="text-align: center;">장소</th>
+									</tr>
 									<c:forEach var="dto" items="${list}">
 									 	<tr align="center">
+									 		<td>${dto.rent_code}</td> 
+									 		<td>${member_dto.p_id}</td>
 									 		<td>${dto.rent_app}</td>
 									 		<td><a href="read.do?rent_code=${dto.rent_code}">${dto.rent_group}</a></td> 
 									 		<td>${dto.rent_name}</td>
