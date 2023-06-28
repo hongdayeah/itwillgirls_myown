@@ -103,6 +103,8 @@ public class HyangtestCont {
 		mav.setViewName("redirect:/test/hlist.do");
 		
 		return mav;
-		
 	}//deleteProc() end
+	
+	
+	
 }//class end

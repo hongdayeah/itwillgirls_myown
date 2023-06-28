@@ -38,12 +38,13 @@
 <!--container start-->
 <div class="registration-bgtest">
 	<div class="container">
-		<form class="form-signintest wow fadeInUp" method="POST" action="supdate.do">
+		<form class="form-signintest wow fadeInUp" method="POST" action="sresupdate.do">
 			<h2 class="form-signin-headingtest">테스트[1부]</h2>
 			<input type="hidden" name="k_no" id="k_no" value="${k_no}">
 			<div class="login-wraptest">
 				<p style="font-weight: bold; color: #3A3A3A;">자녀 이름 : ${k_name}</p><br><br>
-				<!-- forEach문으로 제어하려고 했는데 그렇게 하면 Controller로 넘길 때 내가 힘들어서.. 바꿈 -->
+				<!-- forEach문으로 제어하려고 했는데 그렇게 하면 Controller로 넘길 때 내가 힘들어서.. 바꿈
+					 name="sresult-숫자" 인 이유는 처음엔 sresult로 통일 시켰더니 라디오버튼이 전체 질문에서 단 하나만 눌러짐 -->
 				<c:set var="name" value="${fn:substring(k_name, 1, 4)}"></c:set>
 				<p style="color: #4F4F4F;">${name}는(은) ${srandlist[0]}</p>
 				<p style="font-weight: bold; color: #545454;">
