@@ -72,6 +72,7 @@ public class TestresultDAO {
 		return list;
 	}//klist() end
 	
+	
 	//k_no=?인 행의 자녀 이름 조회해서 문자열 반환
 	public String kread(int k_no) {
 		String k_name = null;

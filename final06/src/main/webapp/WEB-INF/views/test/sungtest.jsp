@@ -38,29 +38,19 @@
 <!--container start-->
 <div class="registration-bgtest">
 	<div class="container">
-		<form class="form-signintest wow fadeInUp" action="">
-			<h2 class="form-signin-headingtest">MBTi 테스트 [1부]</h2>
+		<form class="form-signintest wow fadeInUp" method="POST" action="supdate.do">
+			<h2 class="form-signin-headingtest">테스트[1부]</h2>
+			<input type="hidden" name="k_no" id="k_no" value="${k_no}">
 			<div class="login-wraptest">
-				<p>해당되는 곳에 체크해주세요.</p>
-				<div>
-					<span style="font-weight: bold;">우리아이는 어쩌구다.</span>
-				</div>
-
-					
-				</div>
-				
-				<p> Enter account details below</p>
-				<input type="text" class="form-control" placeholder="User Name" autofocus>
-				<input type="password" class="form-control" placeholder="Password">
-				<input type="password" class="form-control" placeholder="Re-type Password">
-				<label class="checkbox">
-					<input type="checkbox" value="agree this condition"> I agree to the Terms of Service and Privacy Policy
-				</label>
-				<button class="btn btn-lg btn-login btn-block" type="submit">Submit</button>
+				<span>우리 아이는${k_no}</span>
+				어쩌구다
+				<button class="btn btn-lg btn-login btn-block" type="submit">추가하기</button>
 			</div>
 		</form>
 	</div>
 </div>
+
+
 <!--container end-->
 
 <!-- 본문 끝 -->

@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.itwill.testresult.TestresultDTO;
+
 @Repository
 public class SungtestDAO {
 	
@@ -139,4 +141,24 @@ public class SungtestDAO {
 		
 		return cnt;
 	}//delete() end
+	
+	//자녀 이름 조회
+	public String knameread(int k_no) {
+		String k_name = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT k_name ");
+			sql.append(" FROM testresult ");
+			sql.append(" WHERE k_no = " + k_no);
+			
+			k_name = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
+			
+		}catch(Exception e) {
+			System.out.println("SUNG test에서 k_name 조회 실패 : " + e);
+		}
+		
+		return k_name;
+	}//knameread() end
+	
 }//class end
