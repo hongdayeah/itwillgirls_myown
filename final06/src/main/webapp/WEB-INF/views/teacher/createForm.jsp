@@ -38,8 +38,8 @@
 	 	<tr>
 	 		<th>성별</th>
 	 		<td>
-	 			<input type="radio" name="t_gender" value=1>남자
-	 			<input type="radio" name="t_gender" value=2>여자
+	 			<input type="radio" name="t_gender" value="1">남자
+	 			<input type="radio" name="t_gender" value="2">여자
 	 		</td>
 	 	</tr>
 	 	<tr>
