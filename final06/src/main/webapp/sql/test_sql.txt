@@ -1,0 +1,24 @@
+
+--테스트 질문지에서 랜덤하게 10개의 행 추출
+SELECT * FROM sung_test ORDER BY RAND() LIMIT 10;
+SELECT stest_name FROM sung_test ORDER BY RAND() LIMIT 10;
+
+--testresult 테이블에서 k_no=17인 행의 sresult와 hresult 를 합친 값 추출
+SELECT GROUP_CONCAT(sresult, hresult) AS type
+FROM testresult
+WHERE k_no=17;
+
+--위에서 추출한 값을 testresult 테이블의 typename에 update
+UPDATE testresult
+SET typename = (SELECT GROUP_CONCAT(sresult, hresult) AS type
+FROM testresult
+WHERE k_no=17)
+WHERE k_no=17;
+
+
+SELECT typename FROM testresult WHERE k_no=17;
+
+--testresult 테이블에서 k_no=17인 행의 typename값을 member_kid테이블의 k_no=17인 행의 typename에 update
+UPDATE member_kid
+SET typename = (SELECT typename FROM testresult WHERE k_no=17)
+WHERE k_no=17;
