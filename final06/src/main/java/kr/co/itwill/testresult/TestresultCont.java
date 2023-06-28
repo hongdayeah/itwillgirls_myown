@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,12 +52,12 @@ public class TestresultCont {
 		//TestresultDAO에 선언한 klist()함수 추가 (p_id=?인 행에 대해서만 조회)
 		List<MemberKidDTO> klist = dao.klist(p_id);
 		mav.addObject("klist", klist);
-		
+		//System.out.println(klist);
 		return mav;
 	}//main() end
 	
 	@RequestMapping(value="/test/create.do", method=RequestMethod.POST)
-	public String createProc(@RequestParam("k_no") int k_no, @RequestParam(value = "p_id", required = false) String p_id, HttpSession session) {
+	public String createProc(@RequestParam("k_no") int k_no, @RequestParam(value = "p_id", required = false) String p_id, HttpSession session, Model model) {
 		
 		//로그인 한 p_id 가져오기
 		Object obj = session.getAttribute("member_dto");
@@ -76,6 +77,9 @@ public class TestresultCont {
 		//p_id와 k_name값 입력
 		int cnt = dao.create(p_id, k_name, k_no);
 		
+		//k_no값 뷰단으로 넘기기
+		model.addAttribute("k_no", k_no);
+		//System.out.println(k_no);
 		
 		if(cnt==0) {
 			System.out.println("testreuslt 행 삽입 실패");
@@ -86,6 +90,6 @@ public class TestresultCont {
 		//String enk_name = URLEncoder.encode(k_name, StandardCharsets.UTF_8);
 		//String redirectUrl = "redirect:/test/sungtest.do?k_name=" + k_name;
 		
-		return "redirect:/test/sungtest.do?k_no=" + k_no;
+		return "redirect:/test/sungtest.do?k_no="+k_no;
 	}//createProc() end
 }//class end

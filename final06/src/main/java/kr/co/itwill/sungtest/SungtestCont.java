@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -106,11 +107,17 @@ public class SungtestCont {
 	
 	
 	////////////////////////////////////////////////사용자
-	//사용자가 테스트1부 하는 페이지
+	//사용자가 테스트[1부] 하는 페이지
 	@RequestMapping("/test/sungtest.do")
-	public ModelAndView sungtest() {
+	public ModelAndView sungtest(@RequestParam("k_no") int k_no) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("test/sungtest");
+		
+		//System.out.println(k_no);
+		//SungtestDAO에 선언한 kidread(k_no) 호출 (k_name 찾기)
+		String k_name = dao.knameread(k_no);
+		//System.out.println(k_name);
+		
 		
 		return mav;
 	}//sungtest() end

@@ -49,7 +49,7 @@ public class KidDAO {
 			};// rowMapper end
 
 			list = jt.query(sql.toString(), rowMapper);
-			System.out.println(list);
+			//System.out.println(list);
 
 		} catch (Exception e) {
 			System.out.println("자녀 회원 목록 실패:" + e);
