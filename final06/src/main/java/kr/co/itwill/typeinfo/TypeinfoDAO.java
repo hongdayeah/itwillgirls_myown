@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+
 @Repository
 public class TypeinfoDAO {
 
@@ -29,10 +31,10 @@ public class TypeinfoDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" INSERT INTO typeinfo(typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4) ");
+			sql.append(" INSERT INTO typeinfo(typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4, typeimg) ");
 			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?) ");
 			
-			cnt = jt.update(sql.toString(), dto.getTypename(), dto.getTypeanimal(), dto.getTypeexp(), dto.getTypespec1(), dto.getTypespec2(), dto.getTypespec3(), dto.getTypespec4());
+			cnt = jt.update(sql.toString(), dto.getTypename(), dto.getTypeanimal(), dto.getTypeexp(), dto.getTypespec1(), dto.getTypespec2(), dto.getTypespec3(), dto.getTypespec4(), dto.getTypeimg());
 		}catch(Exception e) {
 			System.out.println("typeinfo 등록 실패 : " + e);
 		}
@@ -46,7 +48,7 @@ public class TypeinfoDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4 ");
+			sql.append(" SELECT typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4, typeimg ");
 			sql.append(" FROM typeinfo ");
 			sql.append(" ORDER BY typename ");
 			
@@ -63,6 +65,7 @@ public class TypeinfoDAO {
 					dto.setTypespec2(rs.getString("typespec2"));
 					dto.setTypespec3(rs.getString("typespec3"));
 					dto.setTypespec4(rs.getString("typespec4"));
+					dto.setTypeimg(rs.getString("typeimg"));
 					
 					return dto;
 				}//mapRow() end
@@ -82,7 +85,7 @@ public class TypeinfoDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4 ");
+			sql.append(" SELECT typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4, typeimg ");
 			sql.append(" FROM typeinfo ");
 			sql.append(" WHERE typename = '" + typename + "' ");
 			
@@ -99,6 +102,7 @@ public class TypeinfoDAO {
 					dto.setTypespec2(rs.getString("typespec2"));
 					dto.setTypespec3(rs.getString("typespec3"));
 					dto.setTypespec4(rs.getString("typespec4"));
+					dto.setTypeimg(rs.getString("typeimg"));
 					
 					return dto;
 				}//mapRow() end
@@ -111,4 +115,40 @@ public class TypeinfoDAO {
 		
 		return dto;
 	}//read() end
+	
+	//수정
+	public int update(TypeinfoDTO dto) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE typeinfo ");
+			sql.append(" SET typename = ?, typeanimal = ?, typeexp = ?, typespec1 = ?, typespec2 = ?, typespec3 = ?, typespec4 = ?, typeimg = ? ");
+			sql.append(" WHERE typename = ? ");
+			
+			cnt = jt.update(sql.toString(), dto.getTypename(), dto.getTypeanimal(), dto.getTypeexp(), dto.getTypespec1(), dto.getTypespec2(), dto.getTypespec3(), dto.getTypespec4(), dto.getTypeimg(), dto.getTypename());
+			
+		}catch(Exception e) {
+			System.out.println("관리자 mbti 수정 실패 : " + e);
+		}
+		
+		return cnt;
+	}//update() end
+	
+	//삭제
+	public int delete(String typename) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" DELETE FROM typeinfo ");
+			sql.append(" WHERE typename = ? ");
+			
+			cnt = jt.update(sql.toString(), typename);
+		}catch(Exception e) {
+			System.out.println("관리자 mbti 삭제 실패 : " + e);
+		}
+		
+		return cnt;
+	}//delete() end
 }//class end

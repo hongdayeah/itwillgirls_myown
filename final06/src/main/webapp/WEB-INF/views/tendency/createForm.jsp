@@ -26,7 +26,7 @@
 						</a>
 					</li>
 					<li class="">
-						MBTi 수정
+						MBTi 등록
 					</li>
 				</ol>
 			</div>
@@ -42,9 +42,9 @@
 
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
-		<h1 id="forms" class="page-header" style="text-align: center;">MBTi 수정</h1>
+		<h1 id="forms" class="page-header" style="text-align: center;">MBTi 등록</h1>
 		<div class="bs-programform">
-			<form role="form" name="mbtifrm" id="mbtifrm"  method="POST" action="update.do" enctype="multipart/form-data">
+			<form role="form" name="mbtifrm" id="mbtifrm"  method="POST" action="create.do" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>성향타입</label>
 					<input type="radio" name="typename" id="typename" value="EE" onclick="setTypeAnimal(this.value);">&nbsp;사자&nbsp;&nbsp;&nbsp;&nbsp;
@@ -54,27 +54,27 @@
 				</div>
 				<div class="form-group">
 					<label>성향이름 (자동선택)</label><br>
-					<input type="text" class="form-control" name="typeanimal" id="typeanimal" readonly value="${dto.typeanimal}">
+					<input type="text" class="form-control" name="typeanimal" id="typeanimal" readonly>
 				</div>
 				<div class="form-group">
 					<label>성향설명</label><br>
-					<textarea name="typeexp" class="form-control" id="typeexp" placeholder="설명을 입력하세요.">${dto.typeexp}</textarea>
+					<textarea name="typeexp" class="form-control" id="typeexp" placeholder="설명을 입력하세요."></textarea>
 				</div>
 				<div class="form-group">
 					<label>성향특징1(간략서술)</label><br>
-					<input type="text" class="form-control" name="typespec1" id="typespec1" value="${dto.typespec1}">
+					<input type="text" class="form-control" name="typespec1" id="typespec1" placeholder="필수X">
 				</div>
 				<div class="form-group">
 					<label>성향특징2(간략서술)</label><br>
-					<input type="text" class="form-control" name="typespec2" id="typespec2" value="${dto.typespec2}">
+					<input type="text" class="form-control" name="typespec2" id="typespec2" placeholder="필수X">
 				</div>
 				<div class="form-group">
 					<label>성향특징3(간략서술)</label><br>
-					<input type="text" class="form-control" name="typespec3" id="typespec3" value="${dto.typespec3}">
+					<input type="text" class="form-control" name="typespec3" id="typespec3" placeholder="필수X">
 				</div>
 				<div class="form-group">
 					<label>성향특징4(간략서술)</label><br>
-					<input type="text" class="form-control" name="typespec4" id="typespec4" value="${dto.typespec4}">
+					<input type="text" class="form-control" name="typespec4" id="typespec4" placeholder="필수X">
 				</div>
 				<div class="form-group">
 					<label>사진</label>

@@ -1,5 +1,7 @@
 package kr.co.itwill.typeinfo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class TypeinfoDTO {
 
 	private String typename;
@@ -9,6 +11,9 @@ public class TypeinfoDTO {
 	private String typespec2;
 	private String typespec3;
 	private String typespec4;
+	private String typeimg;
+	
+	private MultipartFile typeimgMF;
 	
 	public TypeinfoDTO() {}
 
@@ -68,10 +73,26 @@ public class TypeinfoDTO {
 		this.typespec4 = typespec4;
 	}
 
+	public String getTypeimg() {
+		return typeimg;
+	}
+
+	public void setTypeimg(String typeimg) {
+		this.typeimg = typeimg;
+	}
+
+	public MultipartFile getTypeimgMF() {
+		return typeimgMF;
+	}
+
+	public void setTypeimgMF(MultipartFile typeimgMF) {
+		this.typeimgMF = typeimgMF;
+	}
+
 	@Override
 	public String toString() {
 		return "TypeinfoDTO [typename=" + typename + ", typeanimal=" + typeanimal + ", typeexp=" + typeexp
 				+ ", typespec1=" + typespec1 + ", typespec2=" + typespec2 + ", typespec3=" + typespec3 + ", typespec4="
-				+ typespec4 + "]";
-	}	
+				+ typespec4 + ", typeimg=" + typeimg + ", typeimgMF=" + typeimgMF + "]";
+	}
 }//class end
