@@ -32,6 +32,21 @@ public class PerformanceDAO {
 		System.out.println("-----PerformanceDAO() 객체 생성됨");
 	}//end
 	
+	public List<PerformanceSeatDTO> seatList(String per_code){
+		List<PerformanceSeatDTO> seatList=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT row, col, isReserved, per_code");
+			sql.append(" FROM perSeat ");
+			sql.append(" WHERE per_code = '" + per_code + "'");
+			
+		} catch(Exception e) {
+			System.out.println("performance 목록 실패:"+e);
+		}
+		
+		return seatList;
+		
+	}// seatlist()end
 	
 	public List<PerformanceDTO> list(){
 		List<PerformanceDTO> list=null;
