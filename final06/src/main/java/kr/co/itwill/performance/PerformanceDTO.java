@@ -137,7 +137,7 @@ public class PerformanceDTO {
 	}
 
 	public String getPer_timedetail() {
-		return per_timedetail;
+		return per_timedetail; 
 	}
 
 	public void setPer_timedetail(String per_timedetail) {

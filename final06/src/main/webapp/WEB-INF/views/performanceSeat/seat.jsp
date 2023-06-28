@@ -57,31 +57,33 @@
 
 		
 	<table>
-		<thead>
-			<tr>
-				<th>제목</th>
-				<th>날짜</th>
-				<th>시간</th>
-			</tr>
-		</thead>	
+	
+		<tr>
+			<th>제목</th>
+			<td>${dto.per_name}<td>
+		</tr>
+		<tr>
+			<th>날짜</th>
+			<td>${dto.per_date}<td>
+		</tr>
+		<tr>	
+			<th>시간</th>
+			<td>${dto.per_time}<td>
+		</tr>
 		
-		<td>${dto.per_name}<td>
-		<td>${dto.per_date}<td>
-		<td>${dto.per_time}<td>
-		
-		
-		<tr><td>수량선택</td><td>
-			<select name="pernum" id="pernum">
-				<option value=0>수량을 선택하세요</option>
-				<option value=1>1</option>
-				<option value=2>2</option>
-				<option value=3>3</option>
-				<option value=4>4</option>
-				<option value=5>5</option>
-			</select>
-		</td></tr>
-		
-
+		<tr>
+			<th>수량선택</th>
+			<td>
+				<select name="pernum" id="pernum">
+					<option value=0>수량을 선택하세요</option>
+					<option value=1>1</option>
+					<option value=2>2</option>
+					<option value=3>3</option>
+					<option value=4>4</option>
+					<option value=5>5</option>
+				</select>
+			</td>
+		</tr>
 		</table>
 
 			<strong>좌석 배치도</strong>
@@ -135,6 +137,7 @@
 				  }
 				}
 			
+
 			
 			function reserveSeats() {
 				
@@ -163,9 +166,9 @@
 
 			  if (returnValue) {
 			    alert("장바구니로 이동합니다");
-			    return true; // 폼 제출
+			    return true; // confirm에서 확인 누르면 폼 제출
 			  } else {
-			    return false; // 폼 제출 취소
+			    return false; // confirm에서 취소 누르면 alert창 꺼짐
 			  }
 			}
 			</script>
@@ -173,6 +176,8 @@
 			<form name="rsvseats" id="rsvseats" method="POST" action="/performance/perInsert.do" enctype="multipart/form-data">
 			  <input type="hidden" name="per_code" id="per_code" value="${dto.per_code}">
 			  <input type="hidden" name="arrSeat"  id="arrSeat" value="${arrSeat}">
+			  <input type="hidden" name="selectNum"  id="selectNum" value="${selectNum}">
+			  <input type="hidden" name="per_fee"  id="per_fee" value="${dto.per_fee}">
 			  <input type="submit" class="btn btn-warning" value="예매하기" onclick="return reserveSeats()">
 			</form>
 

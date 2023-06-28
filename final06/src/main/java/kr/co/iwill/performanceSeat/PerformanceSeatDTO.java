@@ -8,7 +8,9 @@ public class PerformanceSeatDTO {
 		private int row;
 		private int col;
 		private int isReserved;
+		private String per_code;
 		
+	
 		public PerformanceSeatDTO() {}
 
 		public int getRow() {
@@ -34,11 +36,22 @@ public class PerformanceSeatDTO {
 		public void setIsReserved(int isReserved) {
 			this.isReserved = isReserved;
 		}
+		
+		public String getPer_code() {
+			return per_code;
+		}
+
+		public void setPer_code(String per_code) {
+			this.per_code = per_code;
+		}
 
 		@Override
 		public String toString() {
-			return "PerformanceSeatDTO [row=" + row + ", col=" + col + ", isReserved=" + isReserved + "]";
-		}						
-		
+			return "PerformanceSeatDTO [row=" + row + ", col=" + col + ", isReserved=" + isReserved + ", per_code="
+					+ per_code + "]";
+		}
+
+
+
 	
 }

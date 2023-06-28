@@ -16,10 +16,6 @@ public class PerformanceSeatCont {
 	} //end
 
 	
-			
-
-	
-	
 	}
 	
 

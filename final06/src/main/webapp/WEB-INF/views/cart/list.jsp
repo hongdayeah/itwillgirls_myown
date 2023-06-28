@@ -42,9 +42,10 @@
 			} //if end
 		} //order() end
 	</script>
+
 </head>
 
-	    <table border="1">
+	    <table border="1" table class="table table-bordered table-striped">
 	    <tr>
 	  		<th>번호</th>
 	    	<th>아이디</th>	    	
@@ -56,18 +57,18 @@
 	    
 	    <c:forEach items="${list}" var="dto">
 	    	<tr>
-			<td>${dto.cart_no}</td>
-			<td>${dto.p_id}</td>
-			<td>${dto.pro_code}</td>
-			<td>${dto.per_code}</td>
-			<td>${dto.seat_no}</td>
-			<td>${dto.k_no}</td>
-		</tr>
+				<td>${dto.cart_no}</td>
+				<td>${dto.p_id}</td>
+				<td>${dto.pro_code}</td>
+				<td>${dto.per_code}</td>
+				<td>${dto.seat_no}</td>
+				<td>${dto.k_no}</td>
+			</tr>
 		</c:forEach>
 	    </table>
 	    
 	    <br>
-	    <input type="button" value="주문하기" onclick()="order()">
+	    <input type="button" class="btn btn-success" value="주문하기" onclick()="order()" >
 	    
 
 
