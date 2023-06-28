@@ -131,6 +131,20 @@
 					<!-- 마이페이지의 경우 글자에 링크거는것보다 마이페이지 아이콘 이미지에 링크거는것도 좋을것 같음 -->
 					<c:choose>
 						<c:when test="${member_dto != null}">
+							<!-- 관리자에게만 보이는 페이지 -->
+							<c:if test="${member_dto.p_id == 'webmaster'}">
+							<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+								"dropdown" data-toggle="dropdown" href="#">관리자페이지 <i class="fa fa-angle-down"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="../member/memberList.do">회원목록</a>
+								</li>
+							</ul>
+							</c:if>
+							
+							<!-- 일반 회원에게만 보이는 페이지 -->
+							<c:if test="${member_dto.p_id != 'webmaster'}">
 							<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
 							"dropdown" data-toggle="dropdown" href="#">마이페이지 <i class="fa fa-angle-down"></i>
 							</a>
@@ -154,6 +168,7 @@
 									<a href="../member/memberWithdraw.do">회원탈퇴</a>
 								</li>
 							</ul>
+							</c:if>
 						</c:when>
 					</c:choose>
 					</li>

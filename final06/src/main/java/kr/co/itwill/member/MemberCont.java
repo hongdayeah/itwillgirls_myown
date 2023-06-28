@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.itwill.service.MemberService;
@@ -27,6 +28,9 @@ public class MemberCont {
 
 	@Autowired
 	private MemberService memberservice;
+	
+	@Autowired
+	private ParentDAO dao;
 
 	// 로그인 페이지 이동
 	@RequestMapping(value = "/memberLoginForm", method = { RequestMethod.GET, RequestMethod.POST })
@@ -262,5 +266,28 @@ public class MemberCont {
 		return result;
 	}// memberFindPW() end
 	*/
+	
+	// 관리자 계정 - 관리자 페이지(일반 회원의 마이페이지 개념) - 전체 회원 목록 보여주기
+	/*
+	@RequestMapping("/memberList.do")
+	public String memberParentList() {
+		return "member/memberParentList";
+	}// agree() end
+	*/
+	// 관리자 계정 - 관리자 페이지(일반 회원의 마이페이지 개념) - 전체 회원 목록 보여주기
+	@RequestMapping("/memberList.do")
+	public ModelAndView memberParentList(HttpSession session, String p_id) {
+		// public ModelAndView kidList(String p_id) {
+
+		// 로그인 성공 했을 때 로그인 정보는 세션에 올려진 상태
+		Object obj = session.getAttribute("member_dto");
+		MemberDTO mDto = (MemberDTO) obj;
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberParentList");
+		mav.addObject("list", dao.list(mDto.getP_id()));
+		mav.addObject("p_id", p_id);
+		return mav;
+	}// list() end	
 	
 }// class end
