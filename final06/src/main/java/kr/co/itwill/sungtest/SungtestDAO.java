@@ -2,11 +2,13 @@ package kr.co.itwill.sungtest;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -161,4 +163,21 @@ public class SungtestDAO {
 		return k_name;
 	}//knameread() end
 	
+	
+	//질문 10개 목록 랜덤 추출 조회
+	
+	public List<String> randlist(int num){
+		List<String> list = new ArrayList<>();
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT stest_name FROM sung_test ORDER BY RAND() LIMIT ? ");
+			
+			list = jt.queryForList(sql.toString(), new Object[]{num}, String.class);
+		}catch(Exception e) {
+			System.out.println("SUNG test에서 랜덤 추출 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//randlist() end
 }//class end
