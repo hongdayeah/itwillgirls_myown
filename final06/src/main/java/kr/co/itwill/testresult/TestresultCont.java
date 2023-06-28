@@ -182,4 +182,13 @@ public class TestresultCont {
 		
 		return "redirect:/test/testresult.do?k_no="+k_no; //결과 보여주는 페이지 
 	}//updateProc() end
+	
+	//테스트 결과 확인
+	@RequestMapping("/test/testresult.do")
+	public ModelAndView resultview() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("test/testresult");
+		
+		return mav;
+	}//resultview() end
 }//class end

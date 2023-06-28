@@ -4,7 +4,7 @@
 <%@ include file="../header.jsp" %>
 
 
-<!-- 본문 시작 program -- msgView.jsp -->
+<!-- 본문 시작 test -- msgView.jsp -->
 
 
 <div class="title">알림</div>
