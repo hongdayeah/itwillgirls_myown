@@ -2,11 +2,14 @@ package kr.co.itwill.typeinfo;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -40,8 +43,12 @@ public class TypeinfoCont {
 	}//createForm() end
 	
 	@RequestMapping(value="/tendency/create.do", method=RequestMethod.POST)
-	public ModelAndView createProc(@ModelAttribute TypeinfoDTO dto) {
+	public ModelAndView createProc(@ModelAttribute TypeinfoDTO dto, HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
+		
+		MultipartFile typeimgMF = dto.getTypeimgMF();
+		String typeimg = typeimgMF.getOriginalFilename();
+		dto.setTypeimg(typeimg);
 		
 		int cnt = dao.create(dto);
 		
@@ -64,4 +71,35 @@ public class TypeinfoCont {
 		//System.out.println(dto);
 		return mav;
 	}//update() end
+	
+	@RequestMapping(value="tendency/update.do", method=RequestMethod.POST)
+	public ModelAndView updateProc(@ModelAttribute TypeinfoDTO dto, HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView();
+		
+		MultipartFile typeimgMF = dto.getTypeimgMF();
+		String typeimg = typeimgMF.getOriginalFilename();
+		dto.setTypeimg(typeimg);
+		
+		int cnt = dao.update(dto);
+		if(cnt==0) {
+			System.out.println("typeinfo 수정 실패");
+		}
+		mav.setViewName("redirect:/tendency/adminlist.do");
+		return mav;
+	}//updateProc() end
+	
+	//삭제
+	@RequestMapping(value="tendency/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteProc(String typename) {
+		ModelAndView mav = new ModelAndView();
+		
+		int cnt = dao.delete(typename);
+		
+		if(cnt==0) {
+			System.out.println("typeifno 삭제 실패");
+		}
+		
+		mav.setViewName("redirect:/tendency/adminlist.do");
+		return mav;
+	}//deleteProc() end
 }//class end

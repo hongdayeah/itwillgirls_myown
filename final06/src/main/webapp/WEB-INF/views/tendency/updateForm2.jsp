@@ -26,7 +26,7 @@
                		관리자페이지
                </li>
                <li class="">
-                  MBTi 등록
+                  MBTi 수정
                </li>
             </ol>
          </div>
@@ -38,8 +38,8 @@
 <!--container start-->
 <div class="registration-bg">
 	<div class="container">
-		<form class="form-signin wow fadeInUp" method="POST" action="create.do">
-			<h2 class="form-signin-heading">MBTi 등록</h2>
+		<form class="form-signin wow fadeInUp" method="POST" action="update.do">
+			<h2 class="form-signin-heading">MBTi 수정</h2>
 			<div class="login-wrap">
 				<div>
 					<span style="font-weight: bold;">성향 타입</span><br>
@@ -51,32 +51,32 @@
 				<br>
 				<div>
 					<span style="font-weight: bold;">성향 이름 (자동선택)</span><br>
-					<input type="text" name="typeanimal" id="typeanimal" readonly>
+					<input type="text" name="typeanimal" id="typeanimal" readonly value="${dto.typeanimal}">
 				</div>
 				<br>	
 				<div>
 					<span style="font-weight: bold;">성향 설명</span><br>
-					<textarea name="typeexp" id="typeexp" placeholder="설명을 입력하세요."></textarea>
+					<textarea name="typeexp" id="typeexp" value="${dto.typeexp}">${dto.typeexp}</textarea>
 				</div>
 				<br>
 				<div>
 					<span style="font-weight: bold;">성향 특징 (10글자 이내)</span><br>
-					<input type="text" name="typespec1" id="typespec1" placeholder="필수X">
+					<input type="text" name="typespec1" id="typespec1" value="${dto.typespec1}">
 				</div>
 				<br>
 				<div>
 					<span style="font-weight: bold;">성향 특징 (10글자 이내)</span><br>
-					<input type="text" name="typespec2" id="typespec2" placeholder="필수X">
+					<input type="text" name="typespec2" id="typespec2" value="${dto.typespec2}">
 				</div>
 				<br>
 				<div>
 					<span style="font-weight: bold;">성향 특징 (10글자 이내)</span><br>
-					<input type="text" name="typespec3" id="typespec3" placeholder="필수X">
+					<input type="text" name="typespec3" id="typespec3" value="${dto.typespec3}">
 				</div>
 				<br>
 				<div>
 					<span style="font-weight: bold;">성향 특징 (10글자 이내)</span><br>
-					<input type="text" name="typespec4" id="typespec4" placeholder="필수X">
+					<input type="text" name="typespec4" id="typespec4" value="${dto.typespec4}">
 				</div>
 				<br>
 				<button class="btn btn-lg btn-login btn-block" type="submit">추가하기</button>
