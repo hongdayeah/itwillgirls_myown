@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.itwill.mapper.PerformanceMapper"><!-- mapper namespace 이름 수정 -->
+
+<!-- 가까운 날짜순 공연 정보 -->
+<select id="approachSelect" resultType="kr.co.itwill.performance.PerformanceDTO">
+	SELECT per_code, per_name, per_img, per_date
+	FROM performance
+	WHERE per_date > now()
+	ORDER BY per_date ASC
+	LIMIT 0,8
+</select>
+
+</mapper>

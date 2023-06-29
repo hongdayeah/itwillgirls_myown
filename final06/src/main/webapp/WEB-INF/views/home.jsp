@@ -329,64 +329,23 @@
             <h3 class="recent-work">
               공연
             </h3>
-            <p> <a>최신순</a> | <a>예매순?</a> </p>
+            <p> <a>임박순</a> | <a>예매순?</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
 
-              <div class="item view view-tenth">
-                <img src="img/works/img8.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img9.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img10.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img11.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img12.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img13.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-
+				<!-- 임박순(가까운 날짜순) 시작 -->
+				홈 기본: 최신순 보여주기
+				<c:forEach var="approach_dto" items="${approach}">
+	              <div class="item view view-tenth">
+	                <img class="grid-image" src="../perstorage/${approach_dto.per_img}" alt="${approach_dto.per_img}"/>
+	                <div class="mask">
+	                  <a href="../performance/read.do?per_code=${approach_dto.per_code}" class="info" data-toggle="tooltip" data-placement="top" title="${approach_dto.per_name}">
+	                    <i class="fa fa-link">
+	                    </i>
+	                  </a>
+	                </div>
+	              </div>
+				</c:forEach>
+				<!-- 임박순 종료 -->
 
             </div>
           </div>

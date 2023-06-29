@@ -7,14 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.classroom.ClassroomDTO;
-import kr.co.iwill.performanceSeat.PerformanceSeatDAO;
+import kr.co.itwill.member.MemberDTO;
+import kr.co.itwill.service.PerformanceService;
 import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
 import net.utility.UploadSaveManager;
 
@@ -24,6 +27,8 @@ public class PerformanceCont {
 	@Autowired
 	private PerformanceDAO dao;
 	
+	@Autowired
+	private PerformanceService performanceservice;
 
 	
 	public PerformanceCont() {
@@ -240,6 +245,19 @@ public class PerformanceCont {
 		
 	} //updateProc() end
 	
-	
+	// 여기서부터 추가합니다~
+	// 메인 페이지 이동(메인 기본값: 최신순 보여주기라서 이 함수가 필요함)
+	@RequestMapping(value = "/approach_performance.do", method = RequestMethod.POST)
+	public String memberFindID(Model model) {
+
+		try {
+			model.addAttribute("approach", performanceservice.approachSelect());
+		} catch (Exception e) {
+			System.out.println("공연 가까운 날짜순 조회 실패");
+			model.addAttribute("msg", "오류가 발생되었습니다.");
+		} // try~catch end
+
+		return "/home.do";
+	}// searchID() end
 	
 }
