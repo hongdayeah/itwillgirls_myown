@@ -80,6 +80,8 @@
 <!-- 본문 끝 -->
  <br>
  <div style="text-align: center;">
+ 
+		<button type="button" style="text-align:center" class="btn btn-info" onclick="location.href='http://localhost:9095/faq/create.do'">작성</button>
 <button type="button" style="text-align:center" class="btn btn-info" onclick="location.href='http://localhost:9095/faq/list.do'">FAQ 바로가기</button>
 </div>
 <br><br>
