@@ -107,7 +107,7 @@
 	
 	
 
-       <script>
+    <script>
 	function percreateCheck() {
 		//per_code 유효성 검사
 	      
@@ -140,7 +140,8 @@
 		  return true;
 	      
 	}//percreateCheck() end
-       </script>
+	
+    </script>
 	
     <!-- 본문 끝 -->
 	        
