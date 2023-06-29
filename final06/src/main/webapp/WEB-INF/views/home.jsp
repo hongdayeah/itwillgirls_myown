@@ -14,7 +14,7 @@
 	<link rel="shortcut icon" href="img/favicon.png">
 	
 	<title>
-		home_v4.jsp
+		도담도담어린이문화센터
 	</title>
 	
 	<!-- Bootstrap core CSS -->
@@ -286,14 +286,91 @@
 
 
       <!--recent work start-->
+      <!-- 아마 forEach문으로 한개만 출력되게 하는게 좋지 않을까?! -->
+      <!--    프로그램   -->
+      
     <div class="bg-lg">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 recent">
             <h3 class="recent-work">
-              Recent Work
+              프로그램
             </h3>
-            <p>Some of our work we have done earlier</p>
+            <p> <a>최신순</a> | <a>조회순</a> | <a>관심순</a> </p>
+            <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
+
+              <div class="item view view-tenth">
+                <img src="img/works/img8.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img9.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img10.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img11.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img12.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+              <div class="item view view-tenth">
+                <img src="img/works/img13.jpg" alt="work Image">
+                <div class="mask">
+                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                    <i class="fa fa-link">
+                    </i>
+                  </a>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--recent work end-->  
+    </div>
+    
+    <!--    공연    -->
+    <div class="bg-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 recent">
+            <h3 class="recent-work">
+              공연
+            </h3>
+            <p> <a>최신순</a> | <a>예매순?</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
 
               <div class="item view view-tenth">
@@ -358,6 +435,8 @@
       </div>
       <!--recent work end-->
     </div>
+    
+    
 
 	<!--footer start-->
 	<footer class="footer">
