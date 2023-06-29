@@ -64,14 +64,16 @@ public class HomeController {
 		return "redirect:/home.do";
 	}// logout() end
 
-	@RequestMapping("/agree_1")
+	// home.jsp <footer> 부분에서 이용 약관 페이지로 이동
+	@RequestMapping("/agree_1.do")
 	public String agree_footer1() {
 		return "/member/agree_footer1";
 	}// agree_footer1() end
 
-	@RequestMapping("/agree_2")
+	// home.jsp <footer> 부분에서 개인정보처리방침(개인정보수집및이용동의) 페이지로 이동
+	@RequestMapping("/agree_2.do")
 	public String agree_footer2() {
 		return "/member/agree_footer2";
-	}// agree_footer1() end
+	}// agree_footer2() end
 	
 }// class end

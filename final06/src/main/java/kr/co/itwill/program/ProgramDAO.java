@@ -23,6 +23,10 @@ public class ProgramDAO {
 	@Autowired
 	private JdbcTemplate jt;
 	
+	// 추가 (home.jsp에서 좋아요순으로 프로그램 보여주기 위함)
+	@Autowired
+	SqlSession sqlSession;
+	
 	StringBuilder sql = null;
 	
 	public ProgramDAO() {
@@ -251,4 +255,10 @@ public class ProgramDAO {
 		
 		return cnt;
 	}//likecnt() end
+	
+	// 관심순 프로그램 보여주기 추가
+	public List<Map<String, Object>> list2(){
+		return sqlSession.selectList("kr.co.itwill.mapper.ProgramMapper.likeSelect");
+	}//list() end	
+	
 }//class end
