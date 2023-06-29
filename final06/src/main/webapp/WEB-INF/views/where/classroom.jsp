@@ -2,16 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
-<head>
-<style>
-	li {
-		 font-size: 1.3em; 
-		}
-	blockquote {
-		 font-size: 1.5em;
-		}
-</style>
-</head>
 
 <!-- 본문 시작 template.jsp -->
  <!--breadcrumbs start-->
@@ -20,7 +10,7 @@
         <div class="row">
           <div class="col-lg-4 col-sm-4">
             <h1>
-              About us
+              공간소개 - 체험시설
             </h1>
           </div>
           <div class="col-lg-8 col-sm-8">
@@ -31,12 +21,12 @@
                 </a>
               </li>
               <li>
-                <a href="#">
-                  Pages
+                <a href="./classroom.do">
+                  소식
                 </a>
               </li>
               <li class="active">
-                About
+                공간소개
               </li>
             </ol>
           </div>
@@ -102,9 +92,9 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
-		    꿈으로 향하는 첫걸음을 내딛을 수 있는 교실
+		    꿈으로 향하는 첫걸음을 내딛을 수 있는 교실입니다.
 		  </li>
 		</ul><br>
           <blockquote>
@@ -138,9 +128,9 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
-		    우리 아이의 창의력을 내뿜을 수 있는 교실
+		    우리 아이의 창의력을 내뿜을 수 있는 교실입니다.
 		  </li>
 		</ul><br>
           <blockquote>
@@ -174,9 +164,9 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
-		    바다처럼 넓은 우리 아이의 생각을 넓게 펼칠 수 있는 교실
+		    바다처럼 넓은 우리 아이의 생각을 넓게 펼칠 수 있는 교실입니다.
 		  </li>
 		</ul><br>
           <blockquote>
@@ -210,7 +200,7 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    아이들이 제약없이 공연을 볼 수 있는 공연장입니다.
 		  </li>
@@ -249,9 +239,9 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
-		    공연을 볼 수 있는 공연장
+		    공연을 볼 수 있는 공연장입니다.
 		  </li>
 		</ul><br>
           <blockquote>
