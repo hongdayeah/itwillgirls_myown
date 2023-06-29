@@ -2,7 +2,6 @@ package kr.co.itwill.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,6 @@ public class ProgramServiceImpl implements ProgramService {
 
 	@Autowired
 	ProgramMapper programmapper;
-
-	@Autowired
-	SqlSession sqlSession;
 
 	// 조회순(조회 많이한 순서부터 내림차순 정렬) 프로그램 정보
 	@Override
@@ -47,6 +43,6 @@ public class ProgramServiceImpl implements ProgramService {
 		});
 
 		return list;
-	}// currentSelect() end
+	}// currentSelect() end	
 
 }// class end

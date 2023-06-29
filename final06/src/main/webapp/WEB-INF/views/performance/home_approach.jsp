@@ -285,34 +285,32 @@
 
 
 
-      <!--recent work start-->
-      <!-- 아마 forEach문으로 한개만 출력되게 하는게 좋지 않을까?! -->
-      <!--    프로그램   -->
+    <!--recent work start-->
+     <!-- 공연 -->
       
     <div class="bg-lg">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 recent">
             <h3 class="recent-work">
-              프로그램 | <a href="../approachSelect.do">공연</a>
+              <a href="../home.do">프로그램</a> | 공연
             </h3>
-            <p> <a href="../currentSelect.do">최신순</a> | <a href="../clickSelect.do">조회순</a> | <a href="../likeSelect.do">관심순</a> </p>
+            <p> 임박 날짜순 | <a href="">조회순</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
             
-				<!-- 최신순 시작 -->
-				홈 기본: 최신순 보여주기
-				<c:forEach var="current_dto" items="${current}">
+				<!-- 임박 날짜순 시작 -->
+				<c:forEach var="approach_dto" items="${approach}">
 	              <div class="item view view-tenth">
-	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${current_dto.pro_poster}" alt="${current_dto.pro_poster}"/>
+	                <img class="grid-image" src="../perstorage/${approach_dto.per_img}" />
 	                <div class="mask">
-	                  <a href="../program/read.do?pro_obj=${current_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${current_dto.pro_name}">
+	                  <a href="../performance/read.do?per_code=${approach_dto.per_code}" class="info" data-toggle="tooltip" data-placement="top" title="${approach_dto.per_name}">
 	                    <i class="fa fa-link">
 	                    </i>
 	                  </a>
 	                </div>
 	              </div>
 				</c:forEach>
-				<!-- 최신순 종료 -->
+				<!-- 임박 날짜순 종료 -->
 
             </div>
           </div>
@@ -320,6 +318,7 @@
       </div>
     </div>
     <!--recent work end-->
+    
     
 
 	<!--footer start-->
