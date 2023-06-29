@@ -2,16 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
-<head>
-<style>
-	li {
-		 font-size: 1.3em; 
-		}
-	blockquote {
-		 font-size: 1.5em;
-		}
-</style>
-</head>
 
 <!-- 본문 시작 template.jsp -->
  <!--breadcrumbs start-->
@@ -20,23 +10,23 @@
         <div class="row">
           <div class="col-lg-4 col-sm-4">
             <h1>
-              About us
+              공간소개 - 편의시설
             </h1>
           </div>
           <div class="col-lg-8 col-sm-8">
             <ol class="breadcrumb pull-right">
               <li>
                 <a href="#">
-                  Home
+                  HOME
                 </a>
               </li>
               <li>
-                <a href="#">
-                  Pages
+                <a href="./facility.do">
+                  소식
                 </a>
               </li>
               <li class="active">
-                About
+                공간소개
               </li>
             </ol>
           </div>
@@ -102,11 +92,11 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    자율적으로 개인물품 밀 유모차를 보관할 수 있는 공간이 준비되어 있습니다.
 		  </li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    현금 및 귀중품은 분실 위험이 있으니 보관을 삼가해주시기 바랍니다.
 		  </li>
@@ -148,11 +138,11 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    휴식을 취할 수 있으며, 식음료가 가능한 공간입니다.
 		  </li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    모두가 이용한 가능한 공간으로, 취식 후 뒷정리 부탁드립니다.
 		  </li>
@@ -197,11 +187,11 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    프리라운지는 아이와 함께 할 수 있는 휴식공간입니다.
 		  </li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    프리라운지는 취식이 불가하므로, 취식은 카페테리아 이용 부탁드립니다.
 		  </li>
@@ -246,11 +236,11 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    안내센터에서는 프로그램과 극장 발권을 진행할 수 있습니다.
 		  </li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    핸드폰 충전도 이용 가능합니다.
 		  </li>
@@ -292,8 +282,7 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    간단한 응급치료를 받으실 수 있는 공간입니다.
 		  </li>
@@ -338,10 +327,10 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    자유롭게 아이들이 놀이를 즐길 수 있는 공간입니다.
-		  </li>
+		  </li style="font-size: 1.3em;">
 		  <li>
 		    <i class="fa fa-angle-right pr-10"></i>
 		    아이들이 안전하게 이용할 수 있도록 지도 부탁드립니다.
@@ -387,11 +376,11 @@
           <br>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    지하 두 개의 층에 총 150대의 차량을 주차할 수 있는 공간입니다.
 		  </li>
-		  <li>
+		  <li style="font-size: 1.3em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    자전거 보관시설도 함께 이용할 수 있습니다.
 		  </li>

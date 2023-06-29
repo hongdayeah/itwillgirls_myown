@@ -2,13 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../header.jsp" %>
-<head>
-<style>
-	li {
-		 font-size: 0.9em; 
-		}
-</style>
-</head>
 
 <!-- 본문 시작 template.jsp -->
  <!--breadcrumbs start-->
@@ -17,7 +10,7 @@
         <div class="row">
           <div class="col-lg-4 col-sm-4">
             <h1>
-              About us
+              공간소개 - 입주기관
             </h1>
           </div>
           <div class="col-lg-8 col-sm-8">
@@ -28,12 +21,12 @@
                 </a>
               </li>
               <li>
-                <a href="#">
-                  Pages
+                <a href="./company.do">
+                  소식
                 </a>
               </li>
               <li class="active">
-                About
+                공간소개
               </li>
             </ol>
           </div>
@@ -98,7 +91,7 @@
           </p>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 0.9em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    즐겁고 행복한 놀이공간 및 다양한 놀이프로그램 제공, 장난감 및 도서대여 서비스를 제공하는 가정양육 지원기관
 		  </li>
@@ -148,7 +141,7 @@
           </p>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 0.9em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    아동과 가족에게 전문적인 상담·치료프로그램을 제공하여 아동의 건강한 성장 발달을 지원하는 아동복지시설
 		  </li>
@@ -199,7 +192,7 @@
           </p>
 		
 		<ul class="list-unstyled">
-		  <li>
+		  <li style="font-size: 0.9em;">
 		    <i class="fa fa-angle-right pr-10"></i>
 		    방과 후 돌봄이 필요한 아동청소년에게 학습지도, 문화체험, 체육활동, 상담 등 종합적인 복지서비스 제공
 		  </li>
