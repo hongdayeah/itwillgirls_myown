@@ -57,7 +57,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../home.do" style="text-align:center;">어린이<br>문화센터</span></a>
+				<a class="navbar-brand" href="../home.do" style="text-align:center;">도담도담<br>어린이문화센터</span></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				

@@ -53,17 +53,17 @@
 </c:if>                                      
                                         
                                    
-<div>
-	<section id="main">
-		<h1>MBTi 테스트하기</h1>
-		<div>
-			<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/testmain.jpg" alt="mainImage">
+<div style="display: flex;justify-content: center;align-items: center;">
+	<section>
+		<h1 style="display: flex;justify-content: center;align-items: center;">MBTi 테스트하기</h1>
+		<div style="display: flex;justify-content: center;align-items: center;">
+			<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/testmain.jpg" alt="mainImage" style="display: flex;justify-content: center;align-items: center;">
 		</div>
-		<p>
+		<p style="text-align: center;">
 			우리 아이의 MBTi는 뭘까? <br>
-			자녀의 이름을 입력하고 아래의 시작하기 버튼을 눌러 시작해 주세요.
+			테스트 할 자녀의 이름을 선택하고 아래의 시작하기 버튼을 눌러 시작해 주세요.
 		</p>
-		<form name="testfrm" id="testfrm" method="POST" action="create.do" onsubmit="return loginCheck()">
+		<form name="testfrm" id="testfrm" method="POST" action="create.do" onsubmit="return loginCheck()" style="display: flex;justify-content: center;align-items: center;">
 			<select id="k_no" name="k_no">
 				<option value="0" selected>--나의 자녀목록--</option> <!-- 이거 선택하면 form 안넘어가게 하기 -->
 				<c:forEach var="i" items="${klist}">
@@ -75,6 +75,7 @@
 		</form>
 	</section>
 </div>
+<br><br>
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
 <script>
