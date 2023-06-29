@@ -174,7 +174,7 @@ public class ProgramDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT pro_time, t_code ");
+			sql.append(" SELECT pro_time, t_code, pro_code ");
 			sql.append(" FROM program_time ");
 			sql.append(" WHERE pro_obj = ? ");
 			
@@ -186,6 +186,7 @@ public class ProgramDAO {
 					
 					dto.setPro_time(rs.getString("pro_time"));
 					dto.setT_code(rs.getString("t_code"));
+					dto.setPro_code(rs.getString("pro_code"));
 					
 					return dto;
 				}//mapRow() end
