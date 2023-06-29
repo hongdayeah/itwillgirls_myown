@@ -16,5 +16,10 @@ public class whereCont {
 	public String company() {
 		return "where/company";
 	}//company() end
+	
+	@RequestMapping("/classroom.do")
+	public String classroom() {
+		return "where/classroom";
+	}//class() end
 }
  
