@@ -42,7 +42,7 @@
 		<div class="bs-programform">
 				<div class="form-group">
 					<label>작성자</label><br>
-					<input type="text" class="form-control short" name="p_id" id="p_id" placeholder="${member_dto.p_id}" readonly>
+					<input type="text" class="form-control short" name="p_id" id="p_id" placeholder="작성자의 이름을 작성해주세요.">
 				</div>
 			<div class="form-group">
 			  <label for="f_answer">제목</label><br>
@@ -62,10 +62,6 @@
 	
 <!-- 본문 끝 -->
         
-
-
-
-<%@ include file="../footer.jsp" %>
 
 
         
