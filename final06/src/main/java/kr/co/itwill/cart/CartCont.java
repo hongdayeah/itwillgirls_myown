@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.member.MemberDTO;
@@ -82,12 +83,30 @@ public class CartCont {
 	    return mav;
 	} //list() end
     
-      	
-	
-	
 
-
+    //프로그램 정보 장바구니에 담기
+    @RequestMapping(value="program/proInsert.do", method=RequestMethod.POST)
+    @ResponseBody
+    public String proInsert(@RequestParam("pro_code") String pro_code, @RequestParam("pro_cnt") int pro_cnt, HttpSession session) {
+    	
+    	//로그인 한 p_id 가져오기
+    	Object obj = session.getAttribute("member_dto");
+    	MemberDTO memdto = (MemberDTO) obj;
+    	
+    	String p_id = memdto.getP_id();
+    	//System.out.println(p_id);
+    	//System.out.println(pro_code);
+    	//int pro_cnt = Integer.parseInt(selectcnt);
+    	System.out.println(pro_cnt);
+    	
+    	int cnt = dao.proInsert(p_id, pro_code, pro_cnt);
+    	
+    	if(cnt==0) {
+    		return "프로그램 장바구니에 담기 실패";
+    	}else {
+    		return "장바구니에 담았습니다\n장바구니로 이동합니다.";
+    	}
+    	
+    }//proInsert() end
 	
-	
-	
-}
+}//class end

@@ -30,7 +30,7 @@ public class LikeCont {
 		System.out.println("-----LikeCont()객체 생성됨");
 	}
 	
-	/*
+	
 	//관심프로그램 등록(찜 insert)
 	@RequestMapping("program/likeInsert.do")
 	@ResponseBody //성공하면 본문의 ajax -> success로 이동 ??
@@ -53,6 +53,7 @@ public class LikeCont {
 		//LikeDAO에 선언한 proread()함수 추가
 		//ProgramDTO prodto = dao.proread(pro_obj);
 		
+		
 		//찜 추가
 		int cnt = dao.create(likedto);
 		
@@ -62,15 +63,15 @@ public class LikeCont {
 			return "관심프로그램으로 등록되었습니다.\n마이페이지에서 확인 가능합니다.";
 		}//if end		
 	}//likeInsert() end
-	*/
+	
 	
 	//관심프로그램 취소(찜 delete)
 	@RequestMapping("program/likeDelete.do")
 	@ResponseBody
 	public String likeDelete(@RequestParam("pro_obj") String pro_obj, @RequestParam("p_id") String p_id, @ModelAttribute LikeDTO likedto) {
 		
-		System.out.println(pro_obj);
-		System.out.println(p_id);
+		//System.out.println(pro_obj);
+		//System.out.println(p_id);
 		//찜 삭제
 		int cnt = dao.delete(pro_obj, p_id);
 		
@@ -98,6 +99,7 @@ public class LikeCont {
 	
 	// 여기서 부터 추가했습니다~
 	// 찜 추가하기
+	/*
 	//@RequestMapping(value = "/program/likeInsert.do", method = RequestMethod.POST)
 	@RequestMapping("/program/likeInsert.do")
 	public ModelAndView createProc(@ModelAttribute LikeDTO like_dto) {
@@ -122,5 +124,5 @@ public class LikeCont {
 
 		return mav;
 	}// createProc() end	
-	
+	*/
 }//class end

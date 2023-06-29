@@ -75,7 +75,7 @@
 				<div class="row">
 					<div class="col-lg-12 col-sm-12">
 						<h1 style="font-weight:bold;">${dto.pro_name}</h1>
-							<form>
+							<form name="proinfofrm" id=proinfofrm method="post" action="proInsert.do">
 							<div class="table-responsive">
 								수업 성향 : ${dto.prochar_no} <br><br>
 								
@@ -112,7 +112,7 @@
 													</c:when>
 													<c:otherwise>
 														<input type="radio" name="pro_code" id="pro_code" value="${i.pro_code}">&nbsp;${i.pro_time} : ${i.t_code} 강사님 
-														<select id="selectcnt">
+														<select id="selectcnt_${i.pro_code}">
 															<!-- radio 선택하지 않은 수량을 선택하면 안넘어가게 하기 -->
 															<option value=0>수량선택</option>
 															<option value=1>1명</option>
@@ -171,7 +171,8 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							
 							<!-- ---------- 장바구니 담기 시작 ---------- -->
-							<button class="btn btn-success" onclick="return cartCheck()">예매하기</button>
+							<input type="hidden" name="pro_cnt" id="pro_cnt" value="">
+							<button class="btn btn-success" onclick="return cartCheck()">장바구니담기</button>
 							<!-- ---------- 장바구니 담기 끝 ----------- -->
 							</form>
 							
@@ -308,35 +309,40 @@
 </script>
 <script>
 	function cartCheck(){
+		event.preventDefault();
+		
 		let pro_code = document.querySelector('input[name="pro_code"]:checked').value;
-		let selectcnt = document.getElementById("selectcnt").value;
-	    let p_id = $("#p_id").val();
+		let selectOption = document.getElementById("selectcnt_" + pro_code);
+		let pro_cnt = selectOption ? selectOption.value : "";
+		document.getElementById("pro_cnt").value = pro_cnt;
+		
+		let p_id = $("#p_id").val();
 	
 	    //alert(pro_code);
 	    //alert(selectcnt);
 	    //alert(p_id);
 	    
 	    if (p_id === null || p_id === "") {
-	        alert("관심프로그램 등록은 로그인 상태에서만 가능합니다.");
+	        alert("장바구니 담기는 로그인 상태에서만 가능합니다.");
 	        return false;
 	    } else{
-	    	let message = "수강하시겠습니까?"
+	    	let message = "장바구니에 담으시겠습니까??"
 	    	if(confirm(message)){
 	    		$.ajax({
 	                url: "/program/proInsert.do", // 컨트롤러에 대한 URL 매핑
 	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "pro_code": pro_obj, "p_id": p_id, "selectcnt": selectcnt }, // 전송할 데이터 설정
+	                data: { "pro_code": pro_code, "p_id": p_id, "pro_cnt": pro_cnt }, // 전송할 데이터 설정
 	                success: function(response) {
 	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 	                    // 처리 결과에 따른 후속 작업 수행
 	                    alert(response);
-	                    // 이미지 변경
-	                    //$("#resetAnchor").attr("src", "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png");
+	                    //장바구니로 이동
+	                    window.location.href = "../cart/list";
 	                },
 	                error: function(xhr, status, error) {
 	                    // 요청이 실패한 경우 실행될 콜백 함수
 	                    // 에러 처리 로직 구현
-	                    alert("관심프로그램 취소 실패");
+	                    alert("장바구니 담기 실패");
 	                }
 	            });
 	    		return true;
