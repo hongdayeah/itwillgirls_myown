@@ -38,7 +38,8 @@
 	<div class="row">
 	<!--blog start-->
 				<div class="row">
-						<h3 style="font-weight:bold; text-align:center;'">공지사항</h3>
+						<h2 style="font-weight:bold; text-align:center;'">공지사항</h2>
+						<br>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<tbody>

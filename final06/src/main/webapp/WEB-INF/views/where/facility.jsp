@@ -55,34 +55,6 @@
     </tr>
 </table>
 <hr>
-<!--container start-->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-5">
-			<div class="about-carousel wow fadeInLeft">
-				<div id="myCarousel">
-					<!-- Carousel items -->
-					<div class="carousel-inner">
-						<div class="active item">
-							<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/1.png" alt="kidcarou1" width="300px" height="300px">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-7 about wow fadeInRight">
-			<h3 style="font-weight: bold;">4F 단체 식사공간</h3>
-			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;키즈체험관 단체 이용객을 위한 식사공간입니다. 
-			</p>
-			<br><br>
-			<p>
-				<ul>운영시간&nbsp;|&nbsp;화~금요일 운영</ul>
-				<ul></ul>
-				<ul></ul>
-			</p>
-		</div>
-	</div>
 	
 
 
