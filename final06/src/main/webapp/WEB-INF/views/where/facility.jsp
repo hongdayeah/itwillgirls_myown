@@ -50,7 +50,7 @@
     <table class="tab" width="50%" style="margin: auto; table-layout: fixed;">
     <tr style="text-align:center">
         <td style="color: #f1f1f1; font-size: 15px; font-weight: bold; vertical-align: middle; text-align: center; width: 20%;">
-            <a href="/where/class.do">
+            <a href="/where/classroom.do">
                 <img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/free-icon-university-6309120.png" height="20" width="20" style="vertical-align: bottom; margin-bottom: 4px;">
                 &nbsp;체험시설
             </a>
