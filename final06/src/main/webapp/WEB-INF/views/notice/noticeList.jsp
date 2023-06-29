@@ -21,6 +21,7 @@
 						</a>
 					</li>
 					<li>
+					
 						<a href="list.do">
 						소식
 						</a>
