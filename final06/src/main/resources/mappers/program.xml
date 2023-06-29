@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="program">
+<!-- <mapper namespace="program"> -->
+<mapper namespace="kr.co.itwill.mapper.ProgramMapper"><!-- 매퍼 이름 수정 -->
 
 <select id="list" resultType="java.util.Map">
 	SELECT pro_name, prochar_no
 	FROM program_info
+</select>
+
+<!-- 조회순(조회 많이한 순서부터 내림차순 정렬) 프로그램 정보 -->
+<select id="clickSelect" resultType="kr.co.itwill.program.ProgramDTO">
+	SELECT pro_obj, pro_name, pro_poster, proper_start, pro_readcnt 
+	FROM program_info
+	ORDER BY pro_readcnt is null ASC, pro_readcnt DESC
+	LIMIT 0,8
 </select>
 
 </mapper>
