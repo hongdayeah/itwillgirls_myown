@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.protime.ProtimeDTO;
+import kr.co.itwill.service.PerformanceService;
 import kr.co.itwill.service.ProgramService;
 import net.utility.UploadSaveManager;
 
@@ -30,6 +31,7 @@ public class ProgramCont {
 
 	@Autowired
 	private ProgramService programservice;
+	PerformanceService performanceservice;
 
 	public ProgramCont() {
 		System.out.println("-----ProgramCont()객체 생성됨");
@@ -179,8 +181,9 @@ public class ProgramCont {
 	// 여기서부터 추가합니다~
 	// 메인 페이지 이동(메인 기본값: 최신순 보여주기라서 이 함수가 필요함)
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-	public void mainPageGET(Model model) {
+	public void mainPageGET(Model model) throws Exception {
 		model.addAttribute("current", programservice.currentSelect());
+		// System.out.println(model);
 	}// mainPageGET() end
 	
 	// 좋아요순 보여주기 페이지 이동

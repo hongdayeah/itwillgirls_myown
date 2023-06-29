@@ -25,8 +25,8 @@ public class PerformanceServiceImpl implements PerformanceService {
 
 			dto.setPer_img(per_img);
 		});
-
+		System.out.println(list); // null
 		return list;
 	}// approachSelect() end
-	
+
 }//class end
