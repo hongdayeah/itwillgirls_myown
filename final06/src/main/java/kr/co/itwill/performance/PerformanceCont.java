@@ -40,10 +40,13 @@ public class PerformanceCont {
 		PerformanceDTO dto=dao.read(per_code);
 		mav.addObject("dto",dto);
 		
-
 		//performance DAO에 선언한 seatInfo() 함수 추가
 		ClassroomDTO seatInfo = dao.seatInfo();
 		mav.addObject("perSeatdto", seatInfo); 
+		
+		//performance DAO에 선언한 seatList() 함수 추가
+		List<PerformanceSeatDTO> seatList = dao.seatList(per_code);
+		mav.addObject("seatList", seatList);
 
 		return mav;
 		

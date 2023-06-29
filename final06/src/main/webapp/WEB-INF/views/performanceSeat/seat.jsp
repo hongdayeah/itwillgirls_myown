@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 	<style>
@@ -12,21 +13,13 @@
 		  background-color : pink;	
 		  margin : 5px;  
 		}
-		.selectedSeat {
-		  display: inline;
-		  justify-content : center;
-		  width : 50px;
-		  height : 50px;
-		  background-color : green;	
-		  margin : 5px;  
-		}
 		.occupiedSeat {
 		  display: inline;
 		  justify-content : center;
 		  width : 50px;
 		  height : 50px;
-		  background-color : blue;	
-		  margin : 5px;  
+		  background-color : gray;	
+		  margin : 5px;
 		}
 	</style>
 	
@@ -112,11 +105,22 @@
 			<div class="seatcontainer">
 			  <c:forEach var="i" begin="1" end="${perSeatdto.class_row}" step="1">
 			    <c:forEach var="j" begin="1" end="${perSeatdto.class_column}" step="1">
-			      <button class='seat' id="${i}${j}" onclick="buttons(this.id)" >${i}${j}</button>
+			      <c:set var="occupied" value="false" />
+			      <c:forEach var="seat" items="${seatList}">
+			        <c:if test="${seat.row == i && seat.col == j && seat.isReserved == 1}">
+			          <c:set var="occupied" value="true" />
+			        </c:if>
+			      </c:forEach>
+			      <!-- occupied 값이 true일 경우 클래스를 occupiedSeat 으로 지정하고 아닐경우 클래스를 seat으로 지정한다
+			      	   occupied 값이 true일 경우 disable 시켜서 버튼에 disabled 속성이 추가되도록 함
+			      	   occupied 값이 false일 경우 buttons(this.id)함수가 클릭이벤트를 처리함 -->
+			   		<button class="seat ${occupied ? 'occupiedSeat' : 'seat'}" id="${i}${j}" ${occupied ? 'disabled' : ''} onclick="${occupied ? '' : 'buttons(this.id)'}">
+					 	${i}${j}
+			     	</button>
 			    </c:forEach><br/>
 			  </c:forEach>
 			</div>
-			
+						
 			<script>
 			//수량 변수 설정
 			var seatNum=document.getElementById('pernum');
@@ -148,7 +152,7 @@
 				    } else {
 				      // 선택되지 않은 버튼인 경우 선택 추가
 				      if (arrSeat.length < selectNum) {
-				        button.style.backgroundColor = 'green';
+				        button.style.backgroundColor = 'orange';
 				        arrSeat.push(id);
 				      } else {
 				        alert("좌석은 최대 " + selectNum + "석까지만 선택 가능합니다.");
