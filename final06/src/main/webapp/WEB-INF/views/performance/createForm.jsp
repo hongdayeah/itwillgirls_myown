@@ -43,39 +43,41 @@
 	    <h1 id="forms" class="page-header" style="text-align: center;">공연 등록하기</h1>
 		<div class="bs-programform">
 		
-			<form name="per" method="POST" action="create.do" enctype="multipart/form-data">
+			<form name="per" method="POST" action="create.do" enctype="multipart/form-data"  onsubmit="return percreateCheck()">
 		    
 		        <div class="per-group">
 		          <label>공연코드</label>
-		          <input type="text" class="form-control short" name="per_code" size="20">
+		          <input type="text" class="form-control short" id="per_code" name="per_code" size="20">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연이름</label>
-		          <input type="text" class="form-control short" name="per_name" size="50">
+		          <input type="text" class="form-control short" id="per_name" name="per_name" size="50">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연설명</label><br>
-		          <textarea class="form-control short" rows="5" cols="50" name='per_exp'></textarea>
+		          <textarea class="form-control short" rows="5" cols="50" id=per_exp' name='per_exp'></textarea>
 		        </div>
 		        <div class="per-group">
 		          <label><br>상영날짜</label>
-		          <input type="date" class="form-control short" name="per_date" min="2020-01-01" max="2029-12-31">
+		          <input type="date" class="form-control short" id="per_date" name="per_date" min="2020-01-01" max="2029-12-31">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연시간</label>
-		          <input type="time" class="form-control short" name="per_time" >
+		          <input type="time" class="form-control short" id="per_time" name="per_time" >
 		        </div>
 		        <div class="per-group">
 		          <label><br>상영시간</label>
-		          <input type="text" class="form-control short" name="per_timedetail" size="50">
+		          <input type="text" class="form-control short" id="per_timedetail" name="per_timedetail" size="50">
 		        </div>
 		        <div class="per-group">
 		          <label><br>공연료</label>
-		          <input type="text" class="form-control short" name="per_fee" size="20">
+		          <p>(무료일 경우 0 입력)</p>
+		          <input type="text" class="form-control short" id="per_fee" name="per_fee" size="20">
 		        </div>
 		        <div class="per-group">
 		          <label><br>정원</label>
-		          <input type="text" class="form-control short" name="per_limit" size="20">
+		          <p>(정원 없을 경우 0 입력)<p>
+		          <input type="text" class="form-control short" id="per_limit" name="per_limit" size="20">
 		        </div>
 		        <div class="per-group">
 		          <label><br>장소</label>
@@ -97,11 +99,49 @@
 			      <input type='submit' class="btn btn-success" value='등록'>
 			      <button type="reset" class="btn btn-warning">초기화</button>
 			    </div>
+			    </form>
 		    </div>
 		</div>    
 	</div>	    
-	</form>
-		
-	    <!-- 본문 끝 -->
+	
+	
+	
+
+       <script>
+	function percreateCheck() {
+		//per_code 유효성 검사
+	      
+	      //1) per_code가 P로 시작하는지?
+	      let per_code=document.getElementById("per_code").value;
+	      let first=per_code.substr(0,1);
+	      if(first !== "P") {
+	          alert("공연코드는 P로 시작됩니다");
+	          document.getElementById("per_code").focus();
+	          return false; //전송하지 않음
+	      }//if end
+
+	      //2) 공연료가 숫자인지?
+	      let per_fee=document.getElementById("per_fee").value;
+	      if(isNaN(per_fee)){
+	    	  alert("공연료에는 숫자만 입력해 주세요");
+	    	  document.getElementById("per_fee").focus();
+	    	  return false;
+	      }
+	      
+		  //3) 정원이 숫자인지?
+	      let per_limit=document.getElementById("per_limit").value;
+	      if(isNaN(per_limit)){
+	    	  alert("정원칸에는 숫자만 입력해 주세요");
+	    	  document.getElementById("per_limit").focus();
+	    	  return false;
+	      }
+	      
+	    		  
+		  return true;
+	      
+	}//percreateCheck() end
+       </script>
+	
+    <!-- 본문 끝 -->
 	        
 	<%@ include file="../footer.jsp" %>

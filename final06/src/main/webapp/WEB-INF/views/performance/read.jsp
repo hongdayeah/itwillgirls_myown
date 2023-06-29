@@ -136,6 +136,27 @@
 	</div>
 	</div>
 			
+	<script>
+/*
+function product_delete() {
+	if (confirm("첨부된 파일은 영구히 삭제됩니다.\n진행할까요?")) {
+		$.ajax({
+			url: "delete.do",
+			type: "POST",
+			success: function(response) {
+			  // 서버 응답에 대한 처리
+			  console.log("파일 삭제 요청 성공");
+			},
+			error: function(xhr, status, error) {
+			  // 요청이 실패했을 때 처리
+			  console.log("파일 삭제 요청 실패");
+			  console.log("Error: " + error);
+			}
+		});
+	}
+}
+*/
+</script> 		
 
     <!-- 본문 끝 -->
         
