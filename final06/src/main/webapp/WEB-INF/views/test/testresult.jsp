@@ -39,14 +39,15 @@
 <div class="container">
 	<div>
 		<h2 style="text-align: center; color: #3A3A3A;">
-		자녀의 MBTi는 <span style="font-weight: bold; color:#15B285;">사자</span>
+		${k_name}의 MBTi는 <span style="font-weight: bold; color:#15B285;">${infodto.typeanimal}</span>
 		입니다.</h2>
 	</div>
-	<br>
+	<h5 style="text-align: center;">결과는 자녀정보에서 재확인 가능합니다.</h5>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div style="display: flex; justify-content: center; align-items: center;">
-				<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/lion.jpg" alt="" height="500">
+				<img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${infodto.typeimg}" alt="${infodto.typeimg}" height="500">
 			</div>
 		</div>
 	</div>
@@ -59,53 +60,56 @@
 	    <!--portfolio-single start-->
 		<div class="col-lg-9 ">
 			<div class="title">
-				<h3 style="font-weight: bold;">사자의 특성</h3>
+				<h3 style="font-weight: bold;">${infodto.typeanimal}의 특성</h3>
 				<hr>
 			</div>
 			<div class="pf-detail">
-				<p style="font-size: '100px';"> 다른 사람의 주목과 관심을 받는 것을 좋아합니다. 타인에게서의 인정 욕구가 강한 편이고 경쟁하는 것을 좋아합니다.
-				<br>반장이나 선생님을 도와주는 주도자의 역할이 어울리고 다양한 경험에서 오는 자극을 좋아하는 편입니다.
-				<br>발표나 연극형식의 프로그램이나 신체활동을 많이 필요로 하는 프로그램을 추천합니다.
-				<br>
+				<p style="font-size: '100px'; white-space: pre-line;"> ${infodto.typeexp}
 				</p>
 			</div>
 		</div>
 		
 		<div class="col-lg-3">
 		    <div class="title">
-		        <h4>사자형 어린이는 이렇습니다!</h4>
+		        <h4>[${infodto.typeanimal}] 타입의 어린이는 이렇습니다!</h4>
 		        <hr>
 		    </div>
 			<ul class="list-unstyled pf-list">
-				<li><i class="fa fa-arrow-circle-right pr-10"></i><b>Client: </b> <span><a href="#">wrapbootstrap</a></span></li>
-				<li><i class="fa fa-arrow-circle-right pr-10"></i><b>Skills: </b><span><a href="#">WordPress</a>, <a href="#">HTML5</a></span></li>
-				<li><i class="fa fa-arrow-circle-right pr-10"></i><b>Colors: </b><span>blue, gray, purple</span></li>
-				<li><i class="fa fa-arrow-circle-right pr-10"></i><b>Release Date: </b><span>06 January, 2014</span></li>
-				<li><i class="fa fa-arrow-circle-right pr-10"></i><b>Launch Project: </b><span><a href="www.wrapbootstrap.com">wrapbootstrap</a></span></li>
+			<c:if test="${not empty infodto.typespec1}">
+				<li><i class="fa fa-arrow-circle-right pr-10"></i><span>${infodto.typespec1}</span></li>
+			</c:if>
+			<c:if test="${not empty infodto.typespec2}">
+				<li><i class="fa fa-arrow-circle-right pr-10"></i><span>${infodto.typespec2}</span></li>
+			</c:if>
+			<c:if test="${not empty infodto.typespec3}">
+				<li><i class="fa fa-arrow-circle-right pr-10"></i><span>${infodto.typespec3}</span></li>
+			</c:if>
+			<c:if test="${not empty infodto.typespec4}">
+				<li><i class="fa fa-arrow-circle-right pr-10"></i><span>${infodto.typespec4}</span></li>
+			</c:if>
 			</ul>
 		</div>
 	</div>
-	<ul class="pager">
-		<li class="previous"><a href="#">&larr; Older</a></li>
-		<li class="next"><a href="#">Newer &rarr;</a></li>
-	</ul>
 	<hr>
 </div>
 <div class="container">
 	<!--recent work start-->
 	<div class="row">
 		<div class="col-lg-12 recent">
-			<h3>Related Work</h3>
-			<p>Some of our work we have done earlier</p>
+			<h3>[${infodto.typeanimal}] 타입 프로그램</h3>
+			<p>해당 프로그램은 [${infodto.typeanimal}] 타입의 어린이들에게 추천해요!</p>
 			<div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
+			<c:forEach var="i" items="${prolist}">
 				<div class="item view view-tenth">
-					<img src="img/works/img8.jpg" alt="work Image">
+					<img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${i.pro_poster}" alt="${i.pro_poster}"/>
 					<div class="mask">
-						<a href="portfolio-single-image.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-						<i class="fa fa-link"></i>
+						<a href="../program/read.do?pro_obj=${i.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${i.pro_name}">
+							<i class="fa fa-link"></i>
 						</a>
 					</div>
 				</div>
+			</c:forEach>
+				<!-- 
 				<div class="item view view-tenth">
 					<img src="img/works/img9.jpg" alt="work Image">
 					<div class="mask">
@@ -146,6 +150,7 @@
 						</a>
 					</div>
 				</div>
+				-->
 			</div>
 		</div>
 	</div>

@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.itwill.member.kid.MemberKidDTO;
+import kr.co.itwill.program.ProgramDTO;
+import kr.co.itwill.typeinfo.TypeinfoDTO;
 
 @Repository
 public class TestresultDAO {
@@ -199,4 +201,74 @@ public class TestresultDAO {
 		
 		return cnt;
 	}//kidtypeupdate() end
+	
+	//typename = typeresult인 행 전부 가져오기
+	public TypeinfoDTO inforead(String resulttype) {
+		TypeinfoDTO dto = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append( "SELECT typename, typeanimal, typeexp, typespec1, typespec2, typespec3, typespec4, typeimg ");
+			sql.append(" FROM typeinfo ");
+			sql.append(" WHERE typename = '" + resulttype + "' ");
+			
+			RowMapper<TypeinfoDTO> rowMapper = new RowMapper<TypeinfoDTO>() {
+				@Override
+				public TypeinfoDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+					TypeinfoDTO dto = new TypeinfoDTO();
+					
+					dto.setTypename(rs.getString("typename"));
+					dto.setTypeanimal(rs.getString("typeanimal"));
+					dto.setTypeexp(rs.getString("typeexp"));
+					dto.setTypespec1(rs.getString("typespec1"));
+					dto.setTypespec2(rs.getString("typespec2"));
+					dto.setTypespec3(rs.getString("typespec3"));
+					dto.setTypespec4(rs.getString("typespec4"));
+					dto.setTypeimg(rs.getString("typeimg"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("Typeinfo에서 일치하는 행 조회 실패 : " + e);
+		}
+		
+		return dto;
+	}//inforead() end
+	
+	//prochar_no LIKE '%resulttype%' 에 해당되는 프로그램 정보 목록 조회
+	public List<ProgramDTO> prolist(String resulttype){
+		List<ProgramDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_obj, pro_name, pro_poster, prochar_no ");
+			sql.append(" FROM program_info ");
+			sql.append(" WHERE prochar_no LIKE '%" + resulttype + "%' ");
+			
+			RowMapper<ProgramDTO> rowMapper = new RowMapper<ProgramDTO>() {
+				@Override
+				public ProgramDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+					ProgramDTO dto = new ProgramDTO();
+					
+					dto.setPro_obj(rs.getString("pro_obj"));
+					dto.setPro_name(rs.getString("pro_name"));
+					dto.setPro_poster(rs.getString("pro_poster"));
+					dto.setProchar_no(rs.getString("prochar_no"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), new Object[]{resulttype}, rowMapper);
+		}catch(Exception e) {
+			System.out.println("program_info에서 typeresult 일치하는 목록 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//prolist() end
 }//class end

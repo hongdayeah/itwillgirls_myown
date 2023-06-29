@@ -139,4 +139,19 @@ public class KidDAO {
 		return cnt;
 	} // delete() end
 
+	// 자녀 타입의 동물이름 조회
+	public String animalread(int k_no) {
+		String typeanimal = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT typeanimal FROM typeinfo ");
+			sql.append(" WHERE typename = (SELECT typename FROM member_kid WHERE k_no = " + k_no + ") ");
+			
+			typeanimal = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
+		}catch(Exception e) {
+			System.out.println("자녀 회원 타입이름 조회 실패 : " + e);
+		}
+		return typeanimal;
+	}//animalread() end
 }// class end

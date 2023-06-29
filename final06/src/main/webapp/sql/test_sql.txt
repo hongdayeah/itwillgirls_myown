@@ -22,3 +22,8 @@ SELECT typename FROM testresult WHERE k_no=17;
 UPDATE member_kid
 SET typename = (SELECT typename FROM testresult WHERE k_no=17)
 WHERE k_no=17;
+
+
+SELECT pro_name, pro_obj
+FROM program_info
+WHERE prochar_no LIKE '%IE%';

@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.member.kid.MemberKidDTO;
+import kr.co.itwill.program.ProgramDTO;
+import kr.co.itwill.typeinfo.TypeinfoDTO;
 
 @Controller
 public class TestresultCont {
@@ -185,9 +187,27 @@ public class TestresultCont {
 	
 	//테스트 결과 확인
 	@RequestMapping("/test/testresult.do")
-	public ModelAndView resultview() {
+	public ModelAndView resultview(@RequestParam("k_no") int k_no) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("test/testresult");
+		
+		//자녀 이름 가져오기
+		//System.out.println(k_no);
+		String k_name = dao.kread(k_no);
+		mav.addObject("k_name", k_name);
+		
+		//해당 자녀의 테스트결과 가져오기
+		String resulttype = dao.tread(k_no);
+		mav.addObject("resulttype", resulttype);
+		//해당 테스트 결과의 typename과 일치하는 행을 typeinfo테이블에서 가져오기
+		TypeinfoDTO infodto = dao.inforead(resulttype);
+		mav.addObject("infodto", infodto);
+		//System.out.println("infodto : " + infodto);
+		
+		//program_info 테이블에서 결과와 매칭되는 프로그램 리스트 가져오기
+		List<ProgramDTO> prolist = dao.prolist(resulttype);
+		mav.addObject("prolist", prolist);
+		//System.out.println("prolist : " + prolist);
 		
 		return mav;
 	}//resultview() end
