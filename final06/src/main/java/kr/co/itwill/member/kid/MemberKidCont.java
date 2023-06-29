@@ -37,6 +37,11 @@ public class MemberKidCont {
 		mav.addObject("list", dao.list(mDto.getP_id()));
 		// mav.addObject("p_id", p_id); // 부모아이디 넘기기 -> 세션값은 넘기지 않아도 됨
 		mav.addObject("k_no", k_no);
+		
+		//자녀의 타입을 동물이름으로 보이게하기
+		String typeanimal = dao.animalread(k_no);
+		mav.addObject("typeanimal", typeanimal);
+		
 		return mav;
 	}// list() end
 

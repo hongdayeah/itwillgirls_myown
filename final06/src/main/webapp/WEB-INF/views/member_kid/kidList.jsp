@@ -86,7 +86,22 @@
 											여성
 										</c:if>
 									</td>
-									<td>${kid_dto.typename}</td>
+									<td>
+										<c:choose>
+											<c:when test="${kid_dto.typename == 'EE'}">
+											<a href="../test/testresult.do?k_no=${kid_dto.k_no}">사자</a>
+											</c:when>
+											<c:when test="${kid_dto.typename == 'EI'}">
+											<a href="../test/testresult.do?k_no=${kid_dto.k_no}">양</a>
+											</c:when>
+											<c:when test="${kid_dto.typename == 'IE'}">
+											<a href="../test/testresult.do?k_no=${kid_dto.k_no}">기린</a>
+											</c:when>
+											<c:when test="${kid_dto.typename == 'II'}">
+											<a href="../test/testresult.do?k_no=${kid_dto.k_no}">늑대</a>
+											</c:when>
+										</c:choose>
+									</td>
 									<!-- <td>${kid_dto.k_no}</td> -->
 									<td><input type="button" class="btn btn-warning" value="수정" onclick="location.href='kidModify.do?k_no=${kid_dto.k_no}'"></td>
 									<td><input type="button" class="btn btn-danger" value="삭제" onclick="location.href='kidDelete.do?k_no=${kid_dto.k_no}'"></td>
