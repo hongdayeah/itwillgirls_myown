@@ -296,24 +296,24 @@
             <h3 class="recent-work">
               프로그램
             </h3>
-            <p> <a href="../currentSelect.do">최신순</a> | <a href="../clickSelect.do">조회순</a> | <a href="../likeSelect.do">관심순</a> </p>
+            <p> <a href="/currentSelect.do">최신순</a> | <a>조회순</a> | <a href="/likeSelect.do">관심순</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
             
-				<!-- 최신순 시작 -->
-				홈 기본: 최신순 보여주기
-				<c:forEach var="current_dto" items="${current}">
+				<!-- 조회순 시작 -->
+				조회순 잘 보이나요?
+				<c:forEach var="click_dto" items="${click}">
 	              <div class="item view view-tenth">
-	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${current_dto.pro_poster}" alt="${current_dto.pro_poster}"/>
+	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${click_dto.pro_poster}" alt="${click_dto.pro_poster}"/>
 	                <div class="mask">
-	                  <a href="../program/read.do?pro_obj=${current_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${current_dto.pro_name}">
+	                  <a href="../program/read.do?pro_obj=${click_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${click_dto.pro_name}">
 	                    <i class="fa fa-link">
 	                    </i>
 	                  </a>
 	                </div>
 	              </div>
 				</c:forEach>
-				<!-- 최신순 종료 -->
-
+				<!-- 조회순 종료 -->
+	
             </div>
           </div>
         </div>

@@ -296,11 +296,11 @@
             <h3 class="recent-work">
               프로그램
             </h3>
-            <p> <a href="../currentSelect.do">최신순</a> | <a href="../clickSelect.do">조회순</a> | <a href="../likeSelect.do">관심순</a> </p>
+            <p> <a>최신순</a> | <a href="/clickSelect.do">조회순</a> | <a href="/likeSelect.do">관심순</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
             
 				<!-- 최신순 시작 -->
-				홈 기본: 최신순 보여주기
+				최신순(페이지 이동) 잘 보이나요?
 				<c:forEach var="current_dto" items="${current}">
 	              <div class="item view view-tenth">
 	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${current_dto.pro_poster}" alt="${current_dto.pro_poster}"/>
@@ -313,7 +313,7 @@
 	              </div>
 				</c:forEach>
 				<!-- 최신순 종료 -->
-
+	
             </div>
           </div>
         </div>
