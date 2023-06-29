@@ -40,6 +40,20 @@ public class PerformanceDAO {
 			sql.append(" FROM perSeat ");
 			sql.append(" WHERE per_code = '" + per_code + "'");
 			
+			RowMapper<PerformanceSeatDTO> rowMapper=new RowMapper<PerformanceSeatDTO>() {
+				@Override
+				public PerformanceSeatDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+					PerformanceSeatDTO dto=new PerformanceSeatDTO();
+					dto.setRow(rs.getInt("row"));
+					dto.setCol(rs.getInt("col"));
+					dto.setIsReserved(rs.getInt("isReserved"));
+					dto.setPer_code(rs.getString("per_code"));
+					return dto;
+				} //mapRow() end
+			}; //rowMapper end
+			
+			seatList = jt.query(sql.toString(), rowMapper);
+			
 		} catch(Exception e) {
 			System.out.println("performance 목록 실패:"+e);
 		}
@@ -47,6 +61,7 @@ public class PerformanceDAO {
 		return seatList;
 		
 	}// seatlist()end
+	
 	
 	public List<PerformanceDTO> list(){
 		List<PerformanceDTO> list=null;
