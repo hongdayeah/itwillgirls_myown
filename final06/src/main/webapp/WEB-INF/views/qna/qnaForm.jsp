@@ -3,38 +3,70 @@
 
 <%@ include file="../header.jsp" %>
 
-<head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+<!-- 본문시작 program -- createForm.jsp -->
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>
+					자주묻는질문
+				</h1>
+			</div>
+			<div class="col-lg-8 col-sm-8">
+				<ol class="breadcrumb pull-right">
+					<li>
+						<a href="../home.do">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="list.do">
+							소식
+						</a>
+					</li>
+					<li class="create">
+						문의하기
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
 
-<body>
-<h3>글쓰기</h3>
-<p><a href='/qna/list.do'>[문의게시판]</a></p>
+<h1 id="forms" class="page-header" style="text-align: center;">문의글 작성</h1>
+<div class="container privacy-terms">
+	<div class="bs-docs-section mar-b-30">
+	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="create.do" onsubmit="return qnaCheck()">
+		<div class="bs-programform">
+				<div class="form-group">
+					<label>작성자</label><br>
+					<input type="text" class="form-control short" name="p_id" id="p_id" placeholder="${member_dto.p_id}" readonly>
+				</div>
+			<div class="form-group">
+			  <label for="f_answer">제목</label><br>
+			  <input type="text" name="q_sub" id="q_sub" class="form-control" maxlength="100" required>
+			</div>
+			<div class="form-group">
+			  <label for="f_answer">내용</label><br>
+			  <textarea class="form-control" name="q_con" id="q_con" rows="10" required></textarea>
+			</div>	
+				
+				<button type="submit" class="btn btn-success">등록</button>
+				<button type="reset" class="btn btn-warning">취소</button>
+			</div>
+			</form>
+		</div>
+	</div>
+	
+<!-- 본문 끝 -->
+        
 
-<form name="qnaForm" id="qnaForm" method="post" action="create.do" onsubmit="return qnaCheck()">
-<table class="table" align="center" width="98%" height="350px">
-<tr>
-	<th class="success">작성자</th>
-	<td><input type="text" name="p_id" id="p_id" class="form-control" maxlength="20" required></td>
-</tr>
-<tr>
-	<th class="success">제목</th>
-	<td><input type="text" name="q_sub" id="q_sub" class="form-control" maxlength="100" required></td>
-</tr>
-<tr>
-	<th class="success">내용</th>
-	<td><textarea row="5" class="form-control" name="q_con" id="q_con"></textarea></td>
-</tr>
-<tr>
-	<td colspan="2" align="center">
-		<input type="submit" value="쓰기" class="btn btn-sucess">
-		<input type="reset"  value="취소" class="btn btn-danger">
-	</td>
-</tr>
-</table>
-</form>
-</body>
+
+
+<%@ include file="../footer.jsp" %>
+
+
         
 <%@ include file="../footer.jsp" %>
