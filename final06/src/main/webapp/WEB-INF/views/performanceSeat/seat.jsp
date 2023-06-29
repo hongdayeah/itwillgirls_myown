@@ -111,11 +111,22 @@
 			          <c:set var="occupied" value="true" />
 			        </c:if>
 			      </c:forEach>
+			      
 			      <!-- occupied 값이 true일 경우 클래스를 occupiedSeat 으로 지정하고 아닐경우 클래스를 seat으로 지정한다
 			      	   occupied 값이 true일 경우 disable 시켜서 버튼에 disabled 속성이 추가되도록 함
 			      	   occupied 값이 false일 경우 buttons(this.id)함수가 클릭이벤트를 처리함 -->
 			   		<button class="seat ${occupied ? 'occupiedSeat' : 'seat'}" id="${i}${j}" ${occupied ? 'disabled' : ''} onclick="${occupied ? '' : 'buttons(this.id)'}">
-					 	${i}${j}
+					 	<c:choose>
+					        <c:when test="${i == 1}">A</c:when>
+					        <c:when test="${i == 2}">B</c:when>
+					        <c:when test="${i == 3}">C</c:when>
+					        <c:when test="${i == 4}">D</c:when>
+					        <c:when test="${i == 5}">E</c:when>
+					        <c:when test="${i == 6}">F</c:when>
+					        <c:when test="${i == 7}">G</c:when>
+					      </c:choose>
+					 	${j}
+					 	
 			     	</button>
 			    </c:forEach><br/>
 			  </c:forEach>
@@ -128,6 +139,8 @@
 			
 			//좌석을 담을 배열 생성
 			var arrSeat=[]; 
+			
+
 			
 			//수량 변경시 이벤트 리스너
 			seatNum.addEventListener('change', function(){
@@ -179,12 +192,22 @@
 			  // join() 메서드는 배열의 모든 요소를 연결해 하나의 문자열로 만든다.
 			  document.getElementById('arrSeat').value = arrSeat.join(',');
 			  
+			  // alert창에서 보일 좌석 라벨 출력
+			  var alertSeat = [];
+			  for (var i = 0; i < arrSeat.length; i++) {
+			    var seatNum1 = parseInt(arrSeat[i].substring(0, 1));
+			    var seatNum2 = arrSeat[i].substring(1);
+			    var seatNum = String.fromCharCode(seatNum1 + 64);
+			    var seatLabel = seatNum + seatNum2;
+			    alertSeat.push(seatLabel);
+			  }
+			  
 			  var returnValue = confirm(
 			    "예매 정보\n" +
 			    "공연 : " + "${dto.per_name}" + "\n" +
 			    "공연 날짜: " + "${dto.per_date}" + "\n" +
 			    "공연 시간: " + "${dto.per_time}" + "\n" +
-			    "선택된 좌석: " + arrSeat + "\n" +
+			    "선택된 좌석: " + alertSeat + "\n" +
 			    "선택된 수량: " + selectNum
 			  );
 
