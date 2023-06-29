@@ -65,7 +65,7 @@ public class CartDAO {
 		
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no ");
+			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, pro_cnt ");
 			sql.append(" FROM cart ");
 			sql.append(" WHERE p_id = ? ");
 			
@@ -81,6 +81,7 @@ public class CartDAO {
 					dto.setPer_code(rs.getString("per_code"));
 					dto.setSeat_no(rs.getString("seat_no"));
 					dto.setK_no(rs.getInt("k_no"));
+					dto.setPro_cnt(rs.getInt("pro_cnt"));
 					
 					return dto;				
 				} //mapRow() end
@@ -95,4 +96,21 @@ public class CartDAO {
 		return list;
 	}// cartList() end
 
+	//프로그램 장바구니 담기
+	public int proInsert(String p_id, String pro_code, int pro_cnt) {
+		int cnt=0;
+		
+		try{
+			sql=new StringBuilder();
+			
+			sql.append(" INSERT INTO cart(cart_no, p_id, pro_code, pro_cnt)");
+			sql.append(" VALUES(null,?,?,?) ");
+			
+			//SQL문 (insert, update, delete) 실행
+			cnt=jt.update(sql.toString(), p_id, pro_code, pro_cnt);
+		} catch (Exception e) {
+			System.out.println("프로그램 장바구니 등록 실패 : " + e);			
+		}		
+		return cnt;		
+	} //perInsert() end
 } //CartDAO() end
