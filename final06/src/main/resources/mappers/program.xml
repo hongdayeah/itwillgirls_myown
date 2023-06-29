@@ -22,7 +22,7 @@
 	SELECT pro_obj, pro_name, pro_regdate, prorec_start, pro_poster
 	FROM program_info
 	ORDER BY pro_regdate DESC, prorec_start ASC
-	LIMIT 0,8;
+	LIMIT 0,8
 </select>
 
 <select id="likeSelect" resultType="java.util.Map">
