@@ -298,63 +298,18 @@
             </h3>
             <p> <a>최신순</a> | <a>조회순</a> | <a>관심순</a> </p>
             <div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
-
+            
+			<c:forEach var="click_dto" items="${click}"><!-- 추가한 코드(테스트 중) -->
               <div class="item view view-tenth">
-                <img src="img/works/img8.jpg" alt="work Image">
+                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${click_dto.pro_poster}" alt="${click_dto.pro_poster}"/>
                 <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
+                  <a href="../program/read.do?pro_obj=${click_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${click_dto.pro_name}">
                     <i class="fa fa-link">
                     </i>
                   </a>
                 </div>
               </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img9.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img10.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img11.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img12.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-              <div class="item view view-tenth">
-                <img src="img/works/img13.jpg" alt="work Image">
-                <div class="mask">
-                  <a href="blog-detail.html" class="info" data-toggle="tooltip" data-placement="top" title="Details">
-                    <i class="fa fa-link">
-                    </i>
-                  </a>
-                </div>
-              </div>
-
-
+			</c:forEach><!-- 추가한 코드(테스트 중) -->
             </div>
           </div>
         </div>

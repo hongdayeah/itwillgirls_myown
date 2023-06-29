@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.protime.ProtimeDTO;
+import kr.co.itwill.service.ProgramService;
 import net.utility.UploadSaveManager;
 
 @Controller
@@ -25,6 +27,9 @@ public class ProgramCont {
 	
 	@Autowired
 	private ProgramDAO dao;
+	
+	@Autowired
+	private ProgramService programservice;
 	
 	public ProgramCont() {
 		System.out.println("-----ProgramCont()객체 생성됨");
@@ -168,5 +173,12 @@ public class ProgramCont {
 		
 		return mav;
 	}//updateProc() end
+	
+	// 여기서부터 추가합니다~
+	// 메인 페이지 이동
+	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
+	public void mainPageGET(Model model) {
+		model.addAttribute("click", programservice.clickSelect());
+	}// mainPageGET() end
 	
 }//class end
