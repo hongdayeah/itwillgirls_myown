@@ -72,26 +72,9 @@
 </div>
 
 <script>
-/*
-$(document).ready(function(){
-
-	// 자녀 회원 정보 삭제
-	$("#delete_button").on("click", function(){
-		
-		var deleteYN = confirm("확인을 누르면 자녀회원이 완전히 삭제됩니다. 정말 삭제하시겠습니까?");
-		if(deleteYN){
-			//$("#deletefrm").attr("action", "/member_kid/kidDelete.do");
-			$("#deletefrm").submit();
-		} else {
-			$("#deletefrm").attr("action", "javascript:history.back()");
-		}//if end
-	});
-});
-*/
 function deleteCheck() {
 	var deleteYN = confirm("확인을 누르면 자녀회원이 완전히 삭제됩니다. 정말 삭제하시겠습니까?");
 	if(deleteYN){
-		//$("#deletefrm").attr("action", "/member_kid/kidDelete.do");
 		return true;
 	} else {
 		$("#deletefrm").attr("action", "javascript:history.back()");

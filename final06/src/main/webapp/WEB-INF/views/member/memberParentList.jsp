@@ -77,7 +77,7 @@
 									<td>${member_dto.p_email}</td>
 									<td>
 										<c:if test="${member_dto.p_grade == 'P'}">
-											일반 회원<!-- 일반/관리자 등급만 구분할 거면 빼는 게 나으려나? -->
+											일반 회원<!-- 일반/관리자 등급만 구분할 거면 빼는 게 나으려나? 고민 중입니다~ -->
 										</c:if>
 									</td>
 									<td>${member_dto.p_date}</td>

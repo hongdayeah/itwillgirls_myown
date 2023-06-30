@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
-
 <%@ include file="../header.jsp" %>
 
 
@@ -45,7 +43,6 @@
             <label class="checkbox">
                 <input type="checkbox" id="rememberId" name="rememberId" ${empty cookie.id.value ? "":"checked"}> ID 기억하기
                 <span class="pull-right">
-                	<!-- <a data-toggle="modal" href="#myModal" onclick="location.href='/member/findID.do'"> Forgot ID?</a> -->
                 	<a href="/member/findID.do"> 아이디 찾기 </a>
                 </span>
             </label>
@@ -68,8 +65,6 @@
       </div>
     </div>
 </div>
-<!--container end-->
-<!-- 본문 끝 -->
 
 
 <script>
@@ -154,7 +149,7 @@ $(document).ready(function() {
 		
 		return unescape(cookieValue);
 </script>
-
-    <!-- 본문 끝 -->
+<!--container end-->
+<!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

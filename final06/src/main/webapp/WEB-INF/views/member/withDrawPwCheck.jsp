@@ -58,7 +58,7 @@
       </div>
     </div>
 </div>
-<!-- 본문 끝 -->
+
 
 <script>
 $(document).ready(function(){
@@ -87,5 +87,7 @@ $(document).ready(function(){
 	});
 });
 </script>
+<!--container end-->
+<!-- 본문 끝 -->
 
 <%@ include file="../footer.jsp"%>

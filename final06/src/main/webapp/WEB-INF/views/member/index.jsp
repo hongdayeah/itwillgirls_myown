@@ -10,10 +10,10 @@
 <title>index.jsp</title>
 </head>
 <body>
-
+<!-- 아직 구현 관련 공부 중인 페이지 입니다~ -->
 	<c:if test="${userId == null}">
 		<a href="https://kauth.kakao.com/oauth/authorize
-			?client_id=94054c25c9582d1022fd7d35f17d794e
+			?client_id=수정중
 			&redirect_uri=http://localhost:9095/member/kakao
 			&response_type=code">
             <img src="/img/kakao_login_button.png">

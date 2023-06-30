@@ -111,8 +111,6 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- /example -->
-
 			</div>
 		</form>
 	</div>

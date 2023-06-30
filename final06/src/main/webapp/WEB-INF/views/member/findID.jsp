@@ -27,8 +27,8 @@
       </div>
    </div>
 </div>
-
 <!--breadcrumbs end-->
+
 <!--container start-->
 <div class="login-bg">
     <div class="container">
@@ -69,6 +69,6 @@ function findIDCheck() {
 	  return true;
 }//findIDCheck() end
 </script>
-    <!-- 본문 끝 -->
+<!--container end-->
         
 <%@ include file="../footer.jsp" %>
