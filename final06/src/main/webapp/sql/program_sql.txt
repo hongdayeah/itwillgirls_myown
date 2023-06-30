@@ -24,3 +24,9 @@ CREATE TABLE  program_info  (
 --프로그램 목록 조회
 SELECT * FROM program_info
 ORDER BY pro_regdate DESC;
+
+
+
+SELECT t_code, t_name FROM (SELECT teacher.t_code, teacher.t_name, program_time.pro_obj
+FROM teacher
+INNER JOIN program_time ON teacher.t_code = program_time.t_code WHERE program_time.pro_obj='A01')AS subquery;

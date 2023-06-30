@@ -59,43 +59,46 @@
 						<div class="col-md-12">
 							<div class="blog-two-info">
 								<p>
-								<!-- 강사님 이름 -->
-									<i class="fa fa-user"></i>
-									<span style="font-weight: bold;">강사</span> 
-									<!-- for문 돌려서 -->
-									<a href="#"> 강사</a> <!-- 해당 pro_obj의 강사 리스트 불러오기 -->
-									|
-									
 									<!-- 등록일 -->
 									<i class="fa fa-calendar"></i>
 									<span style="font-weight: bold;">수강기간</span>
 									<c:set var="proStart" value="${fn:substring(dto.proper_start, 5, 10)}" />
 									<c:set var="proEnd" value="${fn:substring(dto.proper_end, 5, 10)}" />
 									${proStart} ~ ${proEnd}
-									|
+									|&nbsp;
 									
 									<!-- 리뷰 개수 -->
 									<i class="fa fa-comment"></i>
 									<span style="font-weight: bold;">후기</span>
 									<a href="#">n개</a> <!-- 해당 pro_obj의 리뷰 개수 불러오기 -->
-									|
+									|&nbsp;
 									
 									<!-- 찜 개수? 찜으로 한다면 하트 이미지 쓰기 -->
-									<i class="fa fa-share"></i>
-									<span style="font-weight: bold;">공유</span>
-									<a href="#">n번</a> <!-- pro_obj의 찜 개수 가져오기 -->
+									<i class="fa fa-heart"></i>
+									<span style="font-weight: bold;">관심등록</span>
+									<a href="#">${likeCnts[status.index]}번</a> <!-- pro_obj의 찜 개수 가져오기 -->
 									<br>
 									
 									<!-- 해당 프로그램의 성향 타입 개수만큼 -->
 									<i class="fa fa-tags"></i>
-									성향 :
+									MBTi :
 									<!-- pro_obj의 성향 for문 돌리기 -->
-									<a href="#">
-									  <span class="label label-info"> IE</span>
-									</a>
-									<a href="#">
-									  <span class="label label-info">II </span>
-									</a>
+									<c:forEach var="type" items="${dto.prochar_no}">	
+										<c:choose>
+										<c:when test="${type eq 'pro_II'}">
+											<span class="label label-info">늑대</span>
+										</c:when>
+										<c:when test="${type eq 'pro_EE'}">
+											<span class="label label-info">사자</span>
+										</c:when>
+										<c:when test="${type eq 'pro_IE'}">
+											<span class="label label-info">양</span>
+										</c:when>
+										<c:otherwise>
+											<span class="label label-info">기린</span>
+										</c:otherwise>
+										</c:choose>
+									</c:forEach>
 								</p>
 							</div>
 						</div>

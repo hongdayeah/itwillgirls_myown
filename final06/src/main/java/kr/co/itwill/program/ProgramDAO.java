@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.protime.ProtimeDTO;
+import kr.co.itwill.teacher.TeacherDTO;
 
 @Repository
 public class ProgramDAO {
@@ -261,5 +262,38 @@ public class ProgramDAO {
 	public List<Map<String, Object>> list2(){
 		return sqlSession.selectList("kr.co.itwill.mapper.ProgramMapper.likeSelect");
 	}//list() end	
+	
+	//강사코드와 이름 조회
+	public TeacherDTO tread(String pro_obj) {
+		TeacherDTO dto = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT t_code, t_name ");
+			sql.append(" FROM (SELECT teacher.t_code, teacher.t_name, program_time.pro_obj ");
+			sql.append(" 	   FROM teacher ");
+			sql.append(" 	   INNER JOIN program_time ON teacher.t_code = program_time.t_code ");
+			sql.append(" 	   WHERE program_time.pro_obj='" + pro_obj + "')AS subquery ");
+			
+			RowMapper<TeacherDTO> rowMapper = new RowMapper<TeacherDTO>() {
+				@Override
+				public TeacherDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					TeacherDTO dto = new TeacherDTO();
+					
+					dto.setT_code(rs.getString("t_code"));
+					dto.setT_name(rs.getString("t_name"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			dto = jt.queryForObject(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("ProgramDAO에서 강사 정보 조회 실패 : " + e);
+		}
+		
+		return dto;
+	}//tread() end
 	
 }//class end
