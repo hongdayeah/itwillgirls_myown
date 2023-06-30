@@ -302,7 +302,7 @@
 				<!-- 조회순 시작 -->
 				<c:forEach var="click_dto" items="${click}">
 	              <div class="item view view-tenth">
-	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${click_dto.pro_poster}" alt="${click_dto.pro_poster}"/>
+	                <img class="grid-image" style="height: 180px; width: 230px;" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${click_dto.pro_poster}" alt="${click_dto.pro_poster}"/>
 	                <div class="mask">
 	                  <a href="../program/read.do?pro_obj=${click_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${click_dto.pro_name}">
 	                    <i class="fa fa-link">

@@ -301,7 +301,7 @@
 				<!-- 최신순 시작 -->
 				<c:forEach var="current_dto" items="${current}">
 	              <div class="item view view-tenth">
-	                <img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${current_dto.pro_poster}" alt="${current_dto.pro_poster}"/>
+	                <img class="grid-image" style="height: 180px; width: 230px;" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${current_dto.pro_poster}" alt="${current_dto.pro_poster}"/>
 	                <div class="mask">
 	                  <a href="../program/read.do?pro_obj=${current_dto.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${current_dto.pro_name}">
 	                    <i class="fa fa-link">
