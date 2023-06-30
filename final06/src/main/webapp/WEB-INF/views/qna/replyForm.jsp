@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					자주묻는질문
+					QNA
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
@@ -45,11 +45,11 @@
 					<input type="text" class="form-control short" name="p_id" id="p_id" placeholder="작성자의 이름을 작성해주세요.">
 				</div>
 			<div class="form-group">
-			  <label for="f_answer">제목</label><br>
+			  <label>제목</label><br>
 			  <input type="text" name="q_sub" id="q_sub" class="form-control" maxlength="100" required>
 			</div>
 			<div class="form-group">
-			  <label for="f_answer">내용</label><br>
+			  <label>내용</label><br>
 			  <textarea class="form-control" name="q_con" id="q_con" rows="10" required></textarea>
 			</div>	
 				

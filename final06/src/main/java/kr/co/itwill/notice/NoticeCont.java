@@ -60,17 +60,18 @@ public class NoticeCont {
 		//////////////////////
 		int cnt=dao.create(dto); 
 		if(cnt==0) {
+			mav.setViewName("notice/msgView");
 			String msg1="<p>공지 등록실패</p>";
-			String link1="<input type='button' value='다시시도'' onclick='javascript:history.back()'>";
-			String link2="<input type='button' value='목록으로' onclick='location.href='/notice/list.do'>";
+			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2="<input type='button' value='목록으로' onclick=\"location.href='list.do'\">";
 	        mav.addObject("msg1", msg1);
 	        mav.addObject("link1", link1); 
 	        mav.addObject("link2", link2); 
 		} else {
 			 String msg1="<p>공지 등록완료</p>";
 			 mav.addObject("msg1", msg1);
-			 String link1="<input type='button' value='목록으로' onclick='location.href='/notice/list.do'>";
-			 mav.addObject("link1", link1); 
+			 String link2="<input type='button' value='목록으로' onclick=\"location.href='list.do'\">";
+			 mav.addObject("link2", link2); 
 			}//if end
 		return mav; 
 		}//createProc() end

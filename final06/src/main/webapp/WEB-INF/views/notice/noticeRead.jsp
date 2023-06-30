@@ -26,7 +26,7 @@
 						</a>
 					</li>
 					<li class="create">
-						문의하기
+						공지사항
 					</li>
 				</ol>
 			</div>
@@ -38,7 +38,7 @@
 	<div class="row">
 	<!--blog start-->
 				<div class="row">
-						<h3 style="font-weight:bold; text-align:center;">문의사항 상세보기</h3>
+						<h3 style="font-weight:bold; text-align:center;">공지사항 상세보기</h3>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<tbody>
@@ -60,14 +60,15 @@
 									 </tr>
 									 <tr align="center">
 									 	<td colspan="4" style="text-align: center; vertical-align: middle;">
-									 	<br>${dto.not_con}<br>
-									 	<script>
-										  if ("${dto.not_filename}" === "") {
-										    document.write(" ");
-										  } else {
-										    document.write('<img src="../noticeimg/${dto.not_filename}" width="500">');
-										  }
-										</script>
+									 	<br><pre>${dto.not_con}</pre><br><br> 
+									 	 <script>
+				      // 
+				      if ("${dto.not_filename}" === "") {
+				        document.write("");
+				      } else {
+				    	 document.write('<img src="../noticeimg/${dto.not_filename}">');
+				      }
+				    </script>
 									 	</td>
 									 </tr>
 									
