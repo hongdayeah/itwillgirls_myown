@@ -3,57 +3,89 @@
 
 <%@ include file="../header.jsp" %>
 
-<!-- 본문시작 teacher -- createForm.jsp -->
-<button type="button" class="btn btn-outline-secondary" onclick="location.href='list.do'">강사 목록가기</button>
-<br>
-강사 등록
+<!-- 본문시작 program -- createForm.jsp -->
+<!--breadcrumbs start-->
+<div class="breadcrumbs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-sm-4">
+				<h1>
+					우리센터 강사님을 소개합니다
+				</h1>
+			</div>
+			<div class="col-lg-8 col-sm-8">
+				<ol class="breadcrumb pull-right">
+					<li>
+						<a href="../home.do">
+							Home
+						</a>
+					</li>
+					<li>
+						<a href="list.do">
+							강사
+						</a>
+					</li>
+					<li class="">
+						강사 등록
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<!--breadcrumbs end-->
+<div class="btn-position">
+	<button class="btn btn-default" onclick="location.href='list.do'">목록돌아가기</button>
+</div>
+<br>    
 <br>
 
-<form name="teacherfrm" id="teacherfrm" method="POST" action="create.do" enctype="multipart/form-data">
-	<table border="1">
-	 	<tr>
-	 		<th>강사코드</th>
-	 		<td>
-	 			<input type="text" name="t_code">
-	 		</td>
-	 	</tr>
-	 	<tr>
-	 		<th>강사 이름</th>
-	 		<td>
-	 			<input type="text" name="t_name">
-	 		</td>
-	 	</tr>
-	 	<tr>
-	 		<th>연락처</th>
-	 		<td>
-	 			<input type="text" name="t_phone">
-	 		</td>
-	 	</tr>
-	 	<tr>
-	 		<th>생년월일</th>
-	 		<td>
-	 			<input type="text" name="t_birth" placeholder="6자리 숫자">
-	 		</td>
-	 	</tr>
-	 	<tr>
-	 		<th>성별</th>
-	 		<td>
-	 			<input type="radio" name="t_gender" value="1">남자
-	 			<input type="radio" name="t_gender" value="2">여자
-	 		</td>
-	 	</tr>
-	 	<tr>
-			<th>사진</th>
-			<td>
-				<input type="file" name="t_photoMF">
-			</td>
-		</tr>
-	</table>
-	<div>
-		<input type="submit" value="등록">
-		<input type="reset" value="초기화">
+<div class="container privacy-terms">
+	<div class="bs-docs-section mar-b-30">
+		<h1 id="forms" class="page-header" style="text-align: center;">강사 등록하기</h1>
+		<div class="bs-programform">
+			<form role="form" name="teacherfrm" id="teacherfrm"  method="POST" action="create.do" enctype="multipart/form-data" onsubmit="return createCheck()">
+				<div class="form-group">
+					<label>강사 코드</label>
+					<input type="text" class="form-control short" name="t_code" id="t_code">
+				</div>
+				<div class="form-group">
+					<label>강사 이름</label><br>
+					<input type="text" class="form-control short" name="t_name" id="t_name">
+				</div>
+				<div class="form-group">
+					<label>연락처</label><br>
+					<input type="text" class="form-control short" name="t_phone" id="t_phone">
+				</div>
+				<div class="form-group">
+					<label>생년월일</label><br>
+					<input type="text" class="form-control short" name="t_birth" id="t_birth" placeholder="ex)901231">
+				</div>
+				<div class="form-group">
+					<label>성별</label><br>
+					<input type="radio" name="t_gender" id="t_gender" value="1">남자
+					<input type="radio" name="t_gender" id="t_gender" value="2">여자
+				</div>
+				<div class="form-group">
+					<label>사진</label>
+					<input type="file" id="t_photoMF" name="t_photoMF">
+				</div>
+				<button type="submit" class="btn btn-success">등록</button>
+				<button type="reset" class="btn btn-warning">초기화</button>
+			</form>
+		</div>
 	</div>
-</form>
+</div>
 <!-- 본문 끝 -->
-        
+<!-- JavaScript함수 -->
+<script>
+	function createCheck(){
+		if(confirm("등록하시겠습니까?")){
+			alert("등록이 완료되었습니다.");
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>        
 <%@ include file="../footer.jsp" %>

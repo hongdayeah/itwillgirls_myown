@@ -74,19 +74,18 @@
 		</form>
 	</div>
 </div>
-<br><br><br>
 <!--container end-->
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
 <script>
-function deleteCheck(typename){
-	
-	//alert(typename);
-	if(confirm("삭제하면 복구되지 않습니다.\n삭제하시겠습니까?")){
-		window.location.href = "/tendency/delete.do?typename=" + typename;
-	}else{
-		return false;
+	function deleteCheck(typename){
+		
+		//alert(typename);
+		if(confirm("삭제하면 복구되지 않습니다.\n삭제하시겠습니까?")){
+			window.location.href = "/tendency/delete.do?typename=" + typename;
+		}else{
+			return false;
+		}
 	}
-}
 </script>
 <%@ include file="../footer.jsp"%>
