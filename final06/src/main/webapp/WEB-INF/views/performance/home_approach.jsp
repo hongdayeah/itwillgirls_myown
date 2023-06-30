@@ -301,7 +301,7 @@
 				<!-- 임박 날짜순 시작 -->
 				<c:forEach var="approach_dto" items="${approach}">
 	              <div class="item view view-tenth">
-	                <img class="grid-image" src="../perstorage/${approach_dto.per_img}" />
+	                <img class="grid-image" style="height: 180px; width: 230px;" src="../perstorage/${approach_dto.per_img}" />
 	                <div class="mask">
 	                  <a href="../performance/read.do?per_code=${approach_dto.per_code}" class="info" data-toggle="tooltip" data-placement="top" title="${approach_dto.per_name}">
 	                    <i class="fa fa-link">
