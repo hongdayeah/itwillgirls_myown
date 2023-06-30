@@ -27,6 +27,7 @@ public class CartCont {
 	   
 	   
 	   @RequestMapping(value="performance/perInsert.do")
+	   @ResponseBody
 	   public String perInsert(@ModelAttribute CartDTO dto,@ModelAttribute PerformanceSeatDTO perseatdto,HttpSession session,HttpServletRequest request) {
 	      
 	      // 로그인 성공 했을 때 로그인 정보는 세션에 올려진 상태
@@ -34,14 +35,23 @@ public class CartCont {
 	      Object obj = session.getAttribute("member_dto");
 	       MemberDTO mDto = (MemberDTO) obj;
 	       //System.out.println(mDto);
-	         
+	     
+	       
          if(mDto==null) {
+        	//만약 로그인되어 있지 않다면 로그인 창으로 감
             return "redirect:/member/login.do";        
-         }else { 
+         }	else { 
+        	 
             String p_id = mDto.getP_id(); 						// mDto에서 p_id값 가져옴    
             
             String per_code=request.getParameter("per_code");   //HttpServletRequest 통해서 per_code 받아옴
             String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
+            int per_cnt=Integer.parseInt(request.getParameter("pernum"));
+            String alertSeat=request.getParameter("alertSeat");
+            String per_fee=request.getParameter("per_fee");
+            
+            System.out.println("d "+per_cnt+"d "+alertSeat+"d "+per_code+"d "+seat_no+"d"+per_fee);
+            
             
             //seat_no값을 장바구니에 보이려고 하나의 문자열로 받아왔기 때문에 쉼표로 구분하여 배열에 저장한다
             String[] seatArray=seat_no.split(","); 				
@@ -61,9 +71,16 @@ public class CartCont {
 	       dto.setP_id(p_id);          // dto에 p_id 설정
 	       dto.setPer_code(per_code);   // dto에 per_code 설정
 	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
-            
-	       dao.perInsert(dto);
-           return "redirect:/cart/list";   
+
+	       //dao.perInsert(dto);
+	       int cnt=dao.perInsert2(p_id, per_code, seat_no, per_cnt);
+	       
+	       if(cnt==0) {
+	    		return "프로그램 장바구니에 담기 실패";
+	    	}else {
+	    		return "장바구니에 담았습니다\n장바구니로 이동합니다.";
+	    	}
+              
 	            
 	         }//cartInsert() end
 	   }//perInsert end   	

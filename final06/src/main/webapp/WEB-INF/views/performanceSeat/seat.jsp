@@ -140,6 +140,8 @@
 			//좌석을 담을 배열 생성
 			var arrSeat=[]; 
 			
+			// alert창에서 보일 좌석 라벨 배열 생성
+			var alertSeat = [];
 
 			
 			//수량 변경시 이벤트 리스너
@@ -192,8 +194,7 @@
 			  // join() 메서드는 배열의 모든 요소를 연결해 하나의 문자열로 만든다.
 			  document.getElementById('arrSeat').value = arrSeat.join(',');
 			  
-			  // alert창에서 보일 좌석 라벨 출력
-			  var alertSeat = [];
+			  // alert창에서 보일 좌석 라벨 출력			  
 			  for (var i = 0; i < arrSeat.length; i++) {
 			    var seatNum1 = parseInt(arrSeat[i].substring(0, 1));
 			    var seatNum2 = arrSeat[i].substring(1);
@@ -201,6 +202,9 @@
 			    var seatLabel = seatNum + seatNum2;
 			    alertSeat.push(seatLabel);
 			  }
+			  
+			  
+				
 			  
 			  var returnValue = confirm(
 			    "예매 정보\n" +
@@ -213,18 +217,62 @@
 
 			  if (returnValue) {
 			    alert("장바구니로 이동합니다");
-			    return true; // confirm에서 확인 누르면 폼 제출
+			    document.getElementById('pernum').value=selectNum;
+			    alert(document.getElementById('pernum').value);
+			    
+			    cartCheck();
+			   // return true; // confirm에서 확인 누르면 폼 제출
 			  } else {
 			    return false; // confirm에서 취소 누르면 alert창 꺼짐
 			  }
 			}
+			
+			function cartCheck(){
+				event.preventDefault();
+				
+				let pernum = document.getElementById("pernum").value;
+				let per_code = document.getElementById("per_code").value;
+				let arrSeat = document.getElementById("arrSeat").value;
+				let per_fee = document.getElementById("per_fee").value;
+				//let alertSeat = document.getElementById("alertSeat").value;
+				
+				
+			
+			    alert(pernum);
+				
+				$.ajax({
+	                url: "/performance/perInsert.do", // 컨트롤러에 대한 URL 매핑
+	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
+	                data: { "pernum": pernum , "per_code": per_code, "arrSeat": arrSeat, "per_fee": per_fee }, // 전송할 데이터 설정
+	                success: function(response) {
+	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
+	                    // 처리 결과에 따른 후속 작업 수행
+	                    alert(response);
+	                    //장바구니로 이동
+	                    window.location.href = "../cart/list";
+	                },
+	                error: function(xhr, status, error) {
+	                    // 요청이 실패한 경우 실행될 콜백 함수
+	                    // 에러 처리 로직 구현
+	                    //alert(xhr);
+	                    //alert(status);
+	                    //alert(error);
+	                    
+	                    alert("장바구니 담기 실패");
+	                }
+	            });
+	    		return true;
+			    
+			}
+			
 			</script>
 			
 			<form name="rsvseats" id="rsvseats" method="POST" action="/performance/perInsert.do" enctype="multipart/form-data">
 			  <input type="hidden" name="per_code" id="per_code" value="${dto.per_code}">
 			  <input type="hidden" name="arrSeat"  id="arrSeat" value="${arrSeat}">
-			  <input type="hidden" name="selectNum"  id="selectNum" value="${selectNum}">
+			  <input type="hidden" name="pernum"  id="pernum" value="${pernum}">
 			  <input type="hidden" name="per_fee"  id="per_fee" value="${dto.per_fee}">
+			  <input type="hidden" name="alertSeat"  id="alertSeat" value="${alertSeat}">
 			  <input type="submit" class="btn btn-warning" value="예매하기" onclick="return reserveSeats()">
 			</form>
 

@@ -53,6 +53,7 @@
 	    	<th>공연코드</th>
 	    	<th>좌석번호</th>
 	    	<th>수강인원</th>
+	    	<th>좌석인원</th>
 	    	<th>자녀회원번호</th>
 	    </tr>
 	    
@@ -64,6 +65,7 @@
 				<td>${dto.per_code}</td>
 				<td>${dto.seat_no}</td>
 				<td>${dto.pro_cnt}</td>
+				<td>${dto.per_cnt}</td>
 				<td>${dto.k_no}</td>
 			</tr>
 		</c:forEach>
