@@ -40,8 +40,8 @@
 <h1 id="forms" class="page-header" style="text-align: center;">공지 수정</h1>
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
-	<form role="form" name="notfrm" id="notfrm"  method="POST" action="update.do" onsubmit="return qnaCheck()">
-	 <input type="hidden" name="not_no" id="not_no" value=${requestScope.not_no}>
+	<form role="form" name="notfrm" id="notfrm"  method="POST" action="update.do" onsubmit="return updateCheck()" enctype="multipart/form-data">
+	 <input type="hidden" name="not_no" id="not_no" value="${requestScope.not_no}">
 		<div class="bs-programform">
 				<div class="form-group">
 					<label>카테고리</label><br>
@@ -51,13 +51,16 @@
 				  </select>
 				</div>
 			<div class="form-group">
-			  <label for="not_sub">제목</label><br>
+			  <label>제목</label><br>
 			  <input type="text" name="not_sub" id="not_sub" value="${dto.not_sub}" class="form-control" maxlength="20">
 			</div>
 			<div class="form-group">
-			  <label for="not_con">내용</label><br>
+			  <label>내용</label><br>
 			  <textarea class="form-control" name="not_con" id="not_con" rows="15">${dto.not_con}</textarea>
 			<br>
+			<div class="form-group">
+			<label>포스터</label>
+			<img src="../noticeimg/${dto.not_filename}" width="100" >
  			<input type="file" name="not_filenameMF" size="100">
  			
  			</div>
@@ -65,7 +68,7 @@
 			 		<input type="submit" value="등록" class="btn btn-success" style="align:center;">&nbsp;&nbsp;&nbsp;&nbsp;
 			 		<input type="reset" value="취소" class="btn btn-danger" style="align:center;">
 			</div>
-			
+			</div>
 			 <br>
 			  <br>
 			</form>

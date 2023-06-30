@@ -40,7 +40,7 @@
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
 	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="update.do" onsubmit="return updateCheck()">
-	 <input type="hidden" name="q_no" id="q_no" value=${requestScope.q_no}>
+	 <input type="hidden" name="q_no" id="q_no" value=${requestScope.q_no};>
 		<div class="bs-programform">
 				<div class="form-group">
 					<label>작성자</label><br>
