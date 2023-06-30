@@ -5,7 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class ProgramDTO {
-	private String pro_obj; 	//프로그램 구분
+	private String obj_code; 	//프로그램 구분(A,S,E,M)
+	private String pro_obj; 	//프로그램 코드
 	private String pro_name;	//프로그램 명
 	private String prochar_no;	//성향정보
 	private int pro_limit;		//정원
@@ -49,6 +50,14 @@ public class ProgramDTO {
 		this.pro_imgMF = pro_imgMF;
 	}
 	/////////////////////////////////////////////////
+
+	public String getObj_code() {
+		return obj_code;
+	}
+
+	public void setObj_code(String obj_code) {
+		this.obj_code = obj_code;
+	}
 
 	public String getPro_obj() {
 		return pro_obj;
@@ -180,8 +189,8 @@ public class ProgramDTO {
 
 	@Override
 	public String toString() {
-		return "ProgramDTO [pro_obj=" + pro_obj + ", pro_name=" + pro_name + ", prochar_no=" + prochar_no
-				+ ", pro_limit=" + pro_limit + ", pro_fee=" + pro_fee + ", prorec_start=" + prorec_start
+		return "ProgramDTO [obj_code=" + obj_code + ", pro_obj=" + pro_obj + ", pro_name=" + pro_name + ", prochar_no="
+				+ prochar_no + ", pro_limit=" + pro_limit + ", pro_fee=" + pro_fee + ", prorec_start=" + prorec_start
 				+ ", prorec_end=" + prorec_end + ", proper_start=" + proper_start + ", proper_end=" + proper_end
 				+ ", pro_day=" + pro_day + ", pro_age=" + pro_age + ", pro_exp=" + pro_exp + ", pro_poster="
 				+ pro_poster + ", pro_img=" + pro_img + ", pro_regdate=" + pro_regdate + ", pro_readcnt=" + pro_readcnt

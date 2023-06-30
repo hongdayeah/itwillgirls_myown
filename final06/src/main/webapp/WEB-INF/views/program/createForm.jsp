@@ -44,22 +44,25 @@
 	<div class="bs-docs-section mar-b-30">
 		<h1 id="forms" class="page-header" style="text-align: center;">프로그램 등록하기</h1>
 		<div class="bs-programform">
-			<form role="form" name="programfrm" id="programfrm"  method="POST" action="create.do" enctype="multipart/form-data">
+			<form role="form" name="programfrm" id="programfrm"  method="POST" action="create.do" enctype="multipart/form-data" onsubmit="return createCheck()">
 				<div class="form-group">
-					<label>프로그램코드<br>
-					(A:미술  S:체육  E:교육  M:음악)</label>
-					<input type="text" class="form-control short" name="pro_obj" id="pro_obj">
+					<label>프로그램코드</label><br>
+					<input type="radio" name="obj_code" id="obj_code" value="A">&nbsp;미술&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="S">&nbsp;체육&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="E">&nbsp;교육&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="M">&nbsp;음악&nbsp;&nbsp;&nbsp;
+					<!-- pro_obj값은 controller에서 생성할 예정 -->
 				</div>
 				<div class="form-group">
 					<label>프로그램 이름</label><br>
 					<input type="text" class="form-control short" name="pro_name" id="pro_name">
 				</div>
 				<div class="form-group">
-					<label>프로그램 성향</label><br>
-					<input type="checkbox" name="prochar_no" value="pro_IE">&nbsp;주변참여형(IE형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_II">&nbsp;혼자할래요형(II형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_EE">&nbsp;함께할래요형(EE형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_EI">&nbsp;조용한인싸형(EI형)&nbsp;&nbsp;&nbsp;
+					<label>프로그램 성향 (중복선택 가능)</label><br>
+					<input type="checkbox" name="prochar_no" value="pro_IE">&nbsp;기린(IE형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_II">&nbsp;늑대(II형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_EE">&nbsp;사자(EE형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_EI">&nbsp;양(EI형)&nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="form-group">
 					<label>프로그램 정원</label><br>
@@ -90,7 +93,7 @@
 				</div>
 				<div class="form-group">
 					<label>수강 적정 연령</label><br>
-					<input type="text" class="form-control short" name="pro_age" id="pro_age" placeholder="만 3~4세">
+					<input type="text" class="form-control short" name="pro_age" id="pro_age" placeholder="만 3세 ~ 만 4세">
 				</div>
 				<div class="form-group">
 					<label>프로그램 설명</label><br>
@@ -111,5 +114,15 @@
 	</div>
 </div>
 <!-- 본문 끝 -->
-        
+<!-- JavaScript함수 -->
+<script>
+	function createCheck(){
+		if(confirm("등록하시겠습니까?")){
+			alert("등록이 완료되었습니다.");
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>        
 <%@ include file="../footer.jsp" %>
