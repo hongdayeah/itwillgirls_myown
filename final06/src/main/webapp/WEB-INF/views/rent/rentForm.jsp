@@ -265,5 +265,4 @@ function rentCheck() {
 	return true;
 }
 </script>
-
 <%@ include file="../footer.jsp" %>
