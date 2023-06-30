@@ -14,13 +14,13 @@
       type="text/javascript"
       src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
     ></script>
-	<script>
-	 const IMP = window.IMP; // 생략 가능
+	<script type="text/javascript">
+	 var IMP = window.IMP; // 생략 가능
 	 IMP.init("imp63451281"); // 예: imp00000000a
 	 
 	 function requestPay() {
 		    IMP.request_pay({
-		      pg: "kcp.{TC0ONETIME}",
+		      pg: "html5_inicis",
 		      pay_method: "card",
 		      merchant_uid: "ORD20180131-0000011",   // 주문번호
 		      name: "노르웨이 회전 의자",
@@ -35,7 +35,7 @@
 		    		alert('결제 성공 ');
 		    	}else{
 		    		alert('결제 실패 ');
-		    	})
+		    	}
 		      //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
 		    });
 		  }
