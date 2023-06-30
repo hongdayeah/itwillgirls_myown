@@ -25,6 +25,7 @@
 	LIMIT 0,8
 </select>
 
+<!-- 관심순(좋아요 많은 순부터 내림차순 정렬, 좋아요 수가 같을 경우 프로그램 이름 오름차순 정렬) 프로그램 정보 -->
 <select id="likeSelect" resultType="java.util.Map">
 	SELECT A.pro_obj, COUNT(*) AS CNT, pro_name, pro_poster
 	FROM like_program A JOIN program_info B

@@ -268,13 +268,6 @@ public class MemberCont {
 	*/
 	
 	// 관리자 계정 - 관리자 페이지(일반 회원의 마이페이지 개념) - 전체 회원 목록 보여주기
-	/*
-	@RequestMapping("/memberList.do")
-	public String memberParentList() {
-		return "member/memberParentList";
-	}// agree() end
-	*/
-	// 관리자 계정 - 관리자 페이지(일반 회원의 마이페이지 개념) - 전체 회원 목록 보여주기
 	@RequestMapping("/memberList.do")
 	public ModelAndView memberParentList(HttpSession session, String p_id) {
 		// public ModelAndView kidList(String p_id) {
