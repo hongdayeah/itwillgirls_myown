@@ -9,6 +9,7 @@ public class CartDTO {
 	private String 	per_code;
 	private int 	k_no;
 	private int  pro_cnt;
+	private int per_cnt;
 	
 	public CartDTO() {}
 
@@ -68,9 +69,19 @@ public class CartDTO {
 		this.pro_cnt = pro_cnt;
 	}
 
+	public int getPer_cnt() {
+		return per_cnt;
+	}
+
+	public void setPer_cnt(int per_cnt) {
+		this.per_cnt = per_cnt;
+	}
+
 	@Override
 	public String toString() {
 		return "CartDTO [cart_no=" + cart_no + ", seat_no=" + seat_no + ", p_id=" + p_id + ", pro_code=" + pro_code
-				+ ", per_code=" + per_code + ", k_no=" + k_no + ", pro_cnt=" + pro_cnt + "]";
+				+ ", per_code=" + per_code + ", k_no=" + k_no + ", pro_cnt=" + pro_cnt + ", per_cnt=" + per_cnt + "]";
 	}
+
+	
 }//class end
