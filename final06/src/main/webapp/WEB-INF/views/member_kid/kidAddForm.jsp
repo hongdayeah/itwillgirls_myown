@@ -47,9 +47,8 @@
         <h2 class="form-signin-heading">자녀 회원 등록</h2>
         <div class="login-wrap">
         	
-        	<!-- 부모 코드(로그인한 세션 아이디 가져오기 완료), typename 참조 해야 함 / type 테이블 만들어서 참조해야 하나?! -->
         	<input type="text" class="form-control" placeholder="부모 아이디" value="${member_dto.p_id}" id="p_id" name="p_id" maxlength="20" readonly>
-            <!-- 자녀 회원번호는 시퀀스 사용으로 주석 처리함
+            <!-- 자녀 회원번호는 입력받는 값이 아닌 숫자 시퀀스 사용으로 주석 처리함
             <input type="text" class="form-control" placeholder="자녀 회원번호" id="k_no" name="k_no" maxlength="9"> -->
             <input type="text" class="form-control" placeholder="자녀 이름" id="k_name" name="k_name" maxlength="20">
             <input type="text" class="form-control" placeholder="자녀 생년월일 ex) 210310" id="k_birth" name="k_birth" maxlength="6">

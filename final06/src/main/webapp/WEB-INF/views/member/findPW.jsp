@@ -33,8 +33,10 @@
    </div>
 </div>
 <!--breadcrumbs end-->
-	
-<!-- 본문 시작 findPW.jsp -->	
+
+
+<!-- 아직 구현 관련 공부 중인 페이지 입니다~ -->
+<!-- 본문 시작 findPW.jsp -->
 <!--container start-->
 <div class="login-bg">
     <div class="container">
@@ -110,6 +112,7 @@ $(function(){
 	});//click() end
 });//$(function) end
 </script>
-    <!-- 본문 끝 -->
+<!--container end-->
+<!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>

@@ -170,6 +170,6 @@
 		});
 	});
 </script>
-
 <!-- 본문 끝 -->
+
 <%@ include file="../footer.jsp"%>

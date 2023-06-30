@@ -74,7 +74,7 @@ $(document).ready(function() {
 	
 });//ready() end
 </script>
-
-    <!-- 본문 끝 -->
+<!--container end-->
+<!-- 본문 끝 -->
         
 <%@ include file="../footer.jsp" %>
