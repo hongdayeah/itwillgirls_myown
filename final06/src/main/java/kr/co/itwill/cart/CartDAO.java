@@ -66,7 +66,7 @@ public class CartDAO {
 		
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, pro_cnt, per_cnt, cart_price ");
+			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, cart_cnt, cart_price ");
 			sql.append(" FROM cart ");
 			sql.append(" WHERE p_id = ? ");
 			
@@ -82,8 +82,7 @@ public class CartDAO {
 					dto.setPer_code(rs.getString("per_code"));
 					dto.setSeat_no(rs.getString("seat_no"));
 					dto.setK_no(rs.getInt("k_no"));
-					dto.setPro_cnt(rs.getInt("pro_cnt"));
-					dto.setPer_cnt(rs.getInt("per_cnt"));
+					dto.setCart_cnt(rs.getInt("cart_cnt"));
 					dto.setCart_price(rs.getInt("cart_price"));
 					
 					return dto;				
@@ -100,17 +99,17 @@ public class CartDAO {
 	}// cartList() end
 
 	//프로그램 장바구니 담기
-	public int proInsert(String p_id, String pro_code, int pro_cnt) {
+	public int proInsert(String p_id, String pro_code, int cart_cnt, int pro_fee) {
 		int cnt=0;
 		
 		try{
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO cart(cart_no, p_id, pro_code, pro_cnt)");
-			sql.append(" VALUES(null,?,?,?) ");
+			sql.append(" INSERT INTO cart(cart_no, p_id, pro_code, cart_cnt, cart_price)");
+			sql.append(" VALUES(null, ?, ?, ?, ?) ");
 			
 			//SQL문 (insert, update, delete) 실행
-			cnt=jt.update(sql.toString(), p_id, pro_code, pro_cnt);
+			cnt=jt.update(sql.toString(), p_id, pro_code, cart_cnt, pro_fee);
 		} catch (Exception e) {
 			System.out.println("프로그램 장바구니 등록 실패 : " + e);			
 		}		
@@ -118,17 +117,17 @@ public class CartDAO {
 	} //perInsert() end
 	
 	
-	public int perInsert2(String p_id, String per_code, String seat_no, int per_cnt, int per_fee) {
+	public int perInsert2(String p_id, String per_code, String seat_no, int cart_cnt, int per_fee) {
 		int cnt=0;
 		
 		try{
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no, per_cnt, cart_price)");
+			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no, cart_cnt, cart_price)");
 			sql.append(" VALUES(null,?,?,?,?,?) ");
 			
 			//SQL문 (insert, update, delete) 실행
-			cnt=jt.update(sql.toString(), p_id, per_code, seat_no, per_cnt, per_fee );
+			cnt=jt.update(sql.toString(), p_id, per_code, seat_no, cart_cnt, per_fee );
 		} catch (Exception e) {
 			System.out.println("등록 실패"+e);			
 		}		

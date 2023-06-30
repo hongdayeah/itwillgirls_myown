@@ -53,10 +53,9 @@
 	    	<th>프로그램코드</th>
 	    	<th>공연코드</th>
 	    	<th>좌석번호</th>
-	    	<th>수강인원</th>
-	    	<th>좌석인원</th>
+	    	<th>인원수</th>
 	    	<th>자녀회원번호</th>
-	    	<th>총금액</th>
+	    	<th>총 금액</th>
 	    </tr>
 	    
 	    <c:forEach items="${list}" var="dto">
@@ -66,15 +65,17 @@
 				<td>${dto.pro_code}</td>
 				<td>${dto.per_code}</td>
 				<td>${dto.seat_no}</td>
-				<td>${dto.pro_cnt}</td>
-				<td>${dto.per_cnt}</td>
+				<td>${dto.cart_cnt}</td>
 				<td>${dto.k_no}</td>
-				<td>${dto.cart_price}</td>
+				<td>
+					<c:set var="total" value="${dto.cart_cnt * dto.cart_price}"></c:set>
+					${total}
+				</td>
 			</tr>
 		</c:forEach>
 	    </table>
 	    </div>
-	    총 금액 : per + pro
+	    총 금액 : 
 	    
 	    <br>
 	    <input type="button" class="btn btn-success" value="주문하기" onclick()="order()" >

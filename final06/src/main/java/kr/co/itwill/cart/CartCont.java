@@ -47,7 +47,7 @@ public class CartCont {
             
             String per_code=request.getParameter("per_code");   //HttpServletRequest 통해서 per_code 받아옴
             String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
-            int per_cnt=Integer.parseInt(request.getParameter("pernum"));
+            int cart_cnt=Integer.parseInt(request.getParameter("pernum"));
             String alertSeat=request.getParameter("alertSeat");
             int per_fee=Integer.parseInt(request.getParameter("per_fee"));
             
@@ -74,7 +74,7 @@ public class CartCont {
 	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
 
 	       //dao.perInsert(dto);
-	       int cnt=dao.perInsert2(p_id, per_code, seat_no, per_cnt, per_fee);
+	       int cnt=dao.perInsert2(p_id, per_code, seat_no, cart_cnt, per_fee);
 	       
 	       if(cnt==0) {
 	    		return "프로그램 장바구니에 담기 실패";
@@ -112,7 +112,7 @@ public class CartCont {
     //프로그램 정보 장바구니에 담기
     @RequestMapping(value="program/proInsert.do", method=RequestMethod.POST)
     @ResponseBody
-    public String proInsert(@RequestParam("pro_code") String pro_code, @RequestParam("pro_cnt") int pro_cnt, HttpSession session) {
+    public String proInsert(@RequestParam("pro_code") String pro_code, @RequestParam("pro_cnt") int cart_cnt, @RequestParam("pro_fee") int pro_fee,  HttpSession session) {
     	
     	//로그인 한 p_id 가져오기
     	Object obj = session.getAttribute("member_dto");
@@ -122,9 +122,9 @@ public class CartCont {
     	//System.out.println(p_id);
     	//System.out.println(pro_code);
     	//int pro_cnt = Integer.parseInt(selectcnt);
-    	System.out.println(pro_cnt);
+    	//System.out.println(pro_cnt);
     	
-    	int cnt = dao.proInsert(p_id, pro_code, pro_cnt);
+    	int cnt = dao.proInsert(p_id, pro_code, cart_cnt, pro_fee);
     	
     	if(cnt==0) {
     		return "프로그램 장바구니에 담기 실패";
@@ -134,9 +134,4 @@ public class CartCont {
     	
     }//proInsert() end
 	
-    
-    	
-
-    
-    
 }//class end

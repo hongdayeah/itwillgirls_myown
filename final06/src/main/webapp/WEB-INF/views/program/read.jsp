@@ -133,6 +133,13 @@
 										</td>
 									</tr>
 									<tr>
+										<td>수강료</td>
+										<td>
+											<input type="hidden" id="pro_fee" name="pro_fee" value="${dto.pro_fee}">
+											${dto.pro_fee}원
+										</td>
+									</tr>
+									<tr>
 										<td> 접수기간</td>
 										<td>
 											<c:set var="proStart" value="${fn:substring(dto.proper_start, 5, 10)}" />
@@ -317,8 +324,8 @@
 		document.getElementById("pro_cnt").value = pro_cnt;
 		
 		let p_id = $("#p_id").val();
-	
-	    //alert(pro_code);
+		let pro_fee = document.getElementById("pro_fee").value; 
+	    //alert(pro_fee);
 	    //alert(selectcnt);
 	    //alert(p_id);
 	    
@@ -331,7 +338,7 @@
 	    		$.ajax({
 	                url: "/program/proInsert.do", // 컨트롤러에 대한 URL 매핑
 	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "pro_code": pro_code, "p_id": p_id, "pro_cnt": pro_cnt }, // 전송할 데이터 설정
+	                data: { "pro_code": pro_code, "p_id": p_id, "pro_cnt": pro_cnt, "pro_fee": pro_fee }, // 전송할 데이터 설정
 	                success: function(response) {
 	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 	                    // 처리 결과에 따른 후속 작업 수행
