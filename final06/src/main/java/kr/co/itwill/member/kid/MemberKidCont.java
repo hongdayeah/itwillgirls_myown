@@ -26,8 +26,7 @@ public class MemberKidCont {
 	// 자녀 회원 목록 보여주기
 	@RequestMapping("/kidList.do")
 	public ModelAndView kidList(HttpSession session, Integer k_no) {
-		// public ModelAndView kidList(String p_id) {
-
+		
 		// 로그인 성공 했을 때 로그인 정보는 세션에 올려진 상태
 		Object obj = session.getAttribute("member_dto");
 		MemberDTO mDto = (MemberDTO) obj;
@@ -39,9 +38,10 @@ public class MemberKidCont {
 		mav.addObject("k_no", k_no);
 		
 		//자녀의 타입을 동물이름으로 보이게하기
+		/*
 		String typeanimal = dao.animalread(k_no);
 		mav.addObject("typeanimal", typeanimal);
-		
+		*/
 		return mav;
 	}// list() end
 
