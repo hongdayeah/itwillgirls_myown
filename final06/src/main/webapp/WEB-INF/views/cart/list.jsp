@@ -55,7 +55,27 @@
 				<td>${dto.p_id}</td>
 				<td>${dto.pro_code}</td>
 				<td>${dto.per_code}</td>
-				<td>${dto.seat_no}</td>
+				<td>
+				  <script>
+			        function seatLabel() {
+			            var alertSeat = [];
+			            var seat_no = "${dto.seat_no}";
+			            var seatArray = seat_no.split(",");
+			            
+			            for (var i = 0; i < seatArray.length; i++) {
+			                var seatNum1 = parseInt(seatArray[i].substring(0, 1));
+			                var seatNum2 = seatArray[i].substring(1);
+			                var seatNum = String.fromCharCode(seatNum1 + 64);
+			                var seatLabel = seatNum + seatNum2;
+			                alertSeat.push(seatLabel);
+			            }
+			            
+			            document.write(alertSeat);
+			        }
+			        
+			        seatLabel(); // 함수 호출
+   				 </script>
+				</td>
 				<td>${dto.cart_cnt}</td>
 				<td>${dto.k_no}</td>
 				<td>
@@ -127,9 +147,6 @@
 	    	}
 	    }
 	}
-</script>
-
-
 
         
 <%@ include file="../footer.jsp" %>
