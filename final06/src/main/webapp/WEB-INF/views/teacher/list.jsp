@@ -37,8 +37,6 @@
 
 <div class="btn-position">
 	<button class="btn btn-primary" onclick="location.href='create.do'">강사등록</button>
-	<button class="btn btn-warning" onclick="location.href='update.do?t_code=${dto.t_code}'">강사수정</button>
-	<button class="btn btn-danger" onclick="return deleteCheck()">강사삭제</button>
 </div>
 <br>
 <br>
@@ -58,16 +56,18 @@
 						<img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${dto.t_photo}" alt="${dto.t_photo}"/>
 					</div>
 					
-				<div class="blog-content">
-				  <!-- 프로그램 사진, 이름, 정원, 접수기간, 수강기간, 금액, 연령 -->
-				 <h3>
-				   ${dto.t_name}
-				 </h3>
-				 <p>
-				   담당과목 : 뭐뭐뭐
-				  </p>
-				</div>
-				
+					<div class="blog-content">
+					  <!-- 프로그램 사진, 이름, 정원, 접수기간, 수강기간, 금액, 연령 -->
+					 <h3>
+					   ${dto.t_name}
+					 </h3>
+					 <p>
+					   담당과목 : 뭐뭐뭐
+					  </p>
+					  
+					</div>
+					<button class="btn btn-warning" onclick="location.href='update.do?t_code=${dto.t_code}'">강사수정</button>
+					<button class="btn btn-danger" onclick="return deleteCheck(${dto.t_code})">강사삭제</button>
 				</div>
 			</div>
 			
@@ -81,33 +81,14 @@
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
 <script>
-/*
-   function deleteCheck(){
-	if(confirm("내용은 복구되지 않습니다.\n삭제하시겠습니까?")){
-		location.href = "delete.do";
-	}else{
-		return false;
+	function deleteCheck(t_code){
+		
+		alert(t_code);
+		if(confirm("삭제하면 복구되지 않습니다.\n삭제하시겠습니까?")){
+			window.location.href = "/tendency/delete.do?typename=" + typename;
+		}else{
+			return false;
+		}
 	}
-}//product_delete() end
-*/
-/*
-function deleteCheck(t_code) {
-	if (confirm("첨부된 파일은 영구히 삭제됩니다.\n진행할까요?")) {
-		$.ajax({
-			url: "delete.do?t_code=" + t_code,
-			type: "POST",
-			success: function(response) {
-				// 서버 응답에 대한 처리
-				console.log("파일 삭제 요청 성공");
-			},
-			error: function(xhr, status, error) {
-				// 요청이 실패했을 때 처리
-				console.log("파일 삭제 요청 실패");
-				console.log("Error: " + error);
-			}
-		});
-	}
-}
-*/
 </script>
 <%@ include file="../footer.jsp" %>

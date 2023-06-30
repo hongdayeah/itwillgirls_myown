@@ -75,10 +75,7 @@ public class TeacherCont {
 			mav.addObject("link1", link1);
 			mav.addObject("link2", link2);
 		}else {
-			String msg1 = "<p>강사 등록 성공</p>";
-			mav.addObject("msg1", msg1);
-			String link1 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
-			mav.addObject("link1",link1);
+			mav.setViewName("redirect:/teacher/list.do");
 		}//if end
 		
 		return mav;
