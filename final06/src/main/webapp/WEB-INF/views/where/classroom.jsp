@@ -98,7 +98,7 @@
 		  </li>
 		</ul><br>
           <blockquote>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2층
             </p>
           </blockquote>
@@ -134,7 +134,7 @@
 		  </li>
 		</ul><br>
           <blockquote>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2층
             </p>
           </blockquote>
@@ -170,7 +170,7 @@
 		  </li>
 		</ul><br>
           <blockquote>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2층
             </p>
           </blockquote>
@@ -206,10 +206,10 @@
 		  </li>
 		</ul><br>
           <blockquote>
-             <p style="font-size: 0.9em;">
+             <p style="font-size: 1.3em;">
               위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1층 야외
             </p>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               대관안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://localhost:9095/rent/info.do">바로가기</a>
             </p>
           </blockquote>
@@ -245,13 +245,13 @@
 		  </li>
 		</ul><br>
           <blockquote>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;3층
             </p>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               관람좌석&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;총 40석
             </p>
-            <p style="font-size: 0.9em;">
+            <p style="font-size: 1.3em;">
               대관안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://localhost:9095/rent/info.do">바로가기</a>
             </p>
           </blockquote>

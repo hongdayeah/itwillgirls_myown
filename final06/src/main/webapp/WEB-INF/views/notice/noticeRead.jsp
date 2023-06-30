@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					예약 - 대관신청
+					NOTICE
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
@@ -22,11 +22,11 @@
 					</li>
 					<li>
 						<a href="list.do">
-							예약
+							소식
 						</a>
 					</li>
 					<li class="create">
-						대관안내
+						문의하기
 					</li>
 				</ol>
 			</div>
@@ -38,7 +38,7 @@
 	<div class="row">
 	<!--blog start-->
 				<div class="row">
-						<h3 style="font-weight:bold; text-align:center;">대관신청서 상세보기</h3>
+						<h3 style="font-weight:bold; text-align:center;">문의사항 상세보기</h3>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<tbody>

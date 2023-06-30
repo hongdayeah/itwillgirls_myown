@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					예약 - 대관신청
+					FAQ
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
@@ -22,11 +22,11 @@
 					</li>
 					<li>
 						<a href="list.do">
-							예약
+							소식
 						</a>
 					</li>
 					<li class="create">
-						대관안내
+						자주묻는 질문
 					</li>
 				</ol>
 			</div>

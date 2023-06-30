@@ -74,7 +74,8 @@
 									 </tr>
 									 <tr align="center">
 										<th style="text-align: center; vertical-align: middle;">대관신청서</th>
-										<td colspan="3"><script>
+										<td colspan="3">
+										<script>
 									  // 대관신청서 파일이 없을 경우 "제출안함" 텍스트로 대체
 								        <%-- 첨부 파일 이름과 확장명을 표시하고 클릭 시 다운로드 --%>
 								        if ("${dto.rent_form}" === "") {

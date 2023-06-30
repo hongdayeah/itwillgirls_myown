@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					예약 - 대관신청
+					NOTICE
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
