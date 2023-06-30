@@ -1,5 +1,6 @@
 package kr.co.itwill.program;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.protime.ProtimeDTO;
 import kr.co.itwill.service.PerformanceService;
 import kr.co.itwill.service.ProgramService;
+import kr.co.itwill.teacher.TeacherDTO;
 import net.utility.UploadSaveManager;
 
 @Controller
@@ -44,7 +46,15 @@ public class ProgramCont {
 		mav.setViewName("program/list");
 		List<ProgramDTO> list = dao.list();
 		mav.addObject("list", list);
-
+		
+		//각 프로그램의 찜 개수 가져오기
+		List<Integer> likeCnts = new ArrayList<>();
+		for(ProgramDTO program : list) {
+			int likecnt = dao.likecnt(program.getPro_obj());
+			likeCnts.add(likecnt);
+		}//for end
+		mav.addObject("likeCnts", likeCnts);
+		
 		return mav;
 	}// list() end
 
