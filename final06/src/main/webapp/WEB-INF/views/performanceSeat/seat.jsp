@@ -218,7 +218,7 @@
 			  if (returnValue) {
 			    alert("장바구니로 이동합니다");
 			    document.getElementById('pernum').value=selectNum;
-			    alert(document.getElementById('pernum').value);
+			    //alert(document.getElementById('pernum').value);
 			    
 			    cartCheck();
 			   // return true; // confirm에서 확인 누르면 폼 제출
@@ -238,7 +238,7 @@
 				
 				
 			
-			    alert(pernum);
+			    //alert(pernum);
 				
 				$.ajax({
 	                url: "/performance/perInsert.do", // 컨트롤러에 대한 URL 매핑
