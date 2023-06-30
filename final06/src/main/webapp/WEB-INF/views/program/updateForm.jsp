@@ -46,20 +46,23 @@
 		<div class="bs-programform">
 			<form role="form" name="programfrm" id="programfrm"  method="POST" action="update.do" onsubmit="return updateCheck()" enctype="multipart/form-data">
 				<div class="form-group">
-					<label>프로그램코드<br>
-					(A:미술  S:체육  E:교육  M:음악)</label>
-					<input type="text" class="form-control short" name="pro_obj" id="pro_obj" value="${dto.pro_obj}">
+					<label>프로그램코드 (수정불가)</label><br>
+					<input type="radio" name="obj_code" id="obj_code" value="A" ${dto.obj_code eq 'A' ? 'checked' : ''} onclick="return false;" readonly>&nbsp;미술&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="S" ${dto.obj_code eq 'S' ? 'checked' : ''} onclick="return false;" readonly>&nbsp;체육&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="E" ${dto.obj_code eq 'E' ? 'checked' : ''} onclick="return false;" readonly>&nbsp;교육&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="obj_code" id="obj_code" value="M" ${dto.obj_code eq 'M' ? 'checked' : ''} onclick="return false;" readonly>&nbsp;음악&nbsp;&nbsp;&nbsp;
+					<input type="hidden" name="pro_obj" id="pro_obj" value="${dto.pro_obj}">
 				</div>
 				<div class="form-group">
 					<label>프로그램 이름</label><br>
 					<input type="text" class="form-control short" name="pro_name" id="pro_name" value="${dto.pro_name}">
 				</div>
 				<div class="form-group">
-					<label>프로그램 성향</label><br>
-					<input type="checkbox" name="prochar_no" value="pro_IE">&nbsp;주변참여형(IE형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_II">&nbsp;혼자할래요형(II형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_EE">&nbsp;함께할래요형(EE형)&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="prochar_no" value="pro_EI">&nbsp;조용한인싸형(EI형)&nbsp;&nbsp;&nbsp;
+					<label>프로그램 성향 (중복선택 가능)</label><br>
+					<input type="checkbox" name="prochar_no" value="pro_IE" ${dto.prochar_no.contains('pro_IE') ? 'checked' : ''}>&nbsp;기린(IE형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_II" ${dto.prochar_no.contains('pro_II') ? 'checked' : ''}>&nbsp;늑대(II형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_EE" ${dto.prochar_no.contains('pro_EE') ? 'checked' : ''}>&nbsp;사자(EE형)&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="prochar_no" value="pro_EI" ${dto.prochar_no.contains('pro_EI') ? 'checked' : ''}>&nbsp;양(EI형)&nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="form-group">
 					<label>프로그램 정원</label><br>
@@ -81,12 +84,12 @@
 				</div>
 				<div class="form-group">
 					<label>수강요일</label><br>
-					<input type="checkbox" name="pro_day" id="pro_day" value="Tue">&nbsp;화&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="pro_day" id="pro_day" value="Wed">&nbsp;수&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="pro_day" id="pro_day" value="Thu">&nbsp;목&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="pro_day" id="pro_day" value="Fri">&nbsp;금&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="pro_day" id="pro_day" value="Sat">&nbsp;토&nbsp;&nbsp;&nbsp;
-					<input type="checkbox" name="pro_day" id="pro_day" value="Sun">&nbsp;일&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Tue" ${dto.pro_day.contains('Tue') ? 'checked' : ''}>&nbsp;화&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Wed" ${dto.pro_day.contains('Wed') ? 'checked' : ''}>&nbsp;수&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Thu" ${dto.pro_day.contains('Thu') ? 'checked' : ''}>&nbsp;목&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Fri" ${dto.pro_day.contains('Fri') ? 'checked' : ''}>&nbsp;금&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Sat" ${dto.pro_day.contains('Sat') ? 'checked' : ''}>&nbsp;토&nbsp;&nbsp;&nbsp;
+					<input type="checkbox" name="pro_day" id="pro_day" value="Sun" ${dto.pro_day.contains('Sun') ? 'checked' : ''}>&nbsp;일&nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="form-group">
 					<label>수강 적정 연령</label><br>

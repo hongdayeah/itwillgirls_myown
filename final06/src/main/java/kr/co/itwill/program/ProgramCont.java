@@ -54,7 +54,7 @@ public class ProgramCont {
 			likeCnts.add(likecnt);
 		}//for end
 		mav.addObject("likeCnts", likeCnts);
-		
+
 		return mav;
 	}// list() end
 
@@ -79,8 +79,33 @@ public class ProgramCont {
 		String pro_img = pro_imgMF.getOriginalFilename();
 		dto.setPro_poster(pro_poster);
 		dto.setPro_img(pro_img);
-
-		int cnt = dao.create(dto);
+		
+		//입력받은 obj_code로 pro_obj생성하기
+		String obj_code = req.getParameter("obj_code");
+		//System.out.println(obj_code);
+		
+		//prefix라는 문자열에 라디오버튼이 해당되는 문자값 대입
+		String prefix;
+		if (obj_code.equals("A")) {
+		    prefix = "A";
+		} else if (obj_code.equals("S")) {
+		    prefix = "S";
+		} else if (obj_code.equals("E")) {
+		    prefix = "E";
+		} else if (obj_code.equals("M")) {
+		    prefix = "M";
+		} else {
+		    // 예외 처리: 잘못된 obj_code 값인 경우
+		    throw new IllegalArgumentException("Invalid obj_code");
+		}
+		
+		String pro_obj;
+		//기존 데이터와 해당 prefix로 시작하는 코드 중 가장 큰 숫자를 찾아 다음 숫자 계산
+		int nextNum = dao.getNextnum(prefix);
+		pro_obj = prefix + String.format("%02d", nextNum); //pro_obj의 형식 (A01)
+		
+		
+		int cnt = dao.create(dto, pro_obj);
 
 		if (cnt == 0) {
 			mav.setViewName("program/msgView");
@@ -91,10 +116,7 @@ public class ProgramCont {
 			mav.addObject("link1", link1);
 			mav.addObject("link2", link2);
 		} else {
-			String msg1 = "<p>프로그램 등록 성공</p>";
-			mav.addObject("msg1", msg1);
-			String link1 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
-			mav.addObject("link1", link1);
+			mav.setViewName("redirect:/program/list.do");
 		} // if end
 
 		return mav;
@@ -187,6 +209,28 @@ public class ProgramCont {
 
 		return mav;
 	}// updateProc() end
+	
+	//삭제
+	@RequestMapping(value="/program/delete.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView deleteProc(String pro_obj) {
+		ModelAndView mav = new ModelAndView();
+		
+		int cnt = dao.delete(pro_obj);
+		
+		if(cnt==0) {
+			String msg1 = "<p>프로그램 삭제 실패</p>";
+			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2 = "<input type='button' value='목록으로' onclick='location.href=\"list.do\"'>";
+			
+			mav.addObject("msg1", msg1);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		}else {
+			mav.setViewName("redirect:/program/list.do");
+		}
+		return mav;
+	}//deleteProc() end
+	
 
 	// 여기서부터 추가합니다~
 	// 메인 페이지 이동(메인 기본값: 최신순 보여주기라서 이 함수가 필요함)

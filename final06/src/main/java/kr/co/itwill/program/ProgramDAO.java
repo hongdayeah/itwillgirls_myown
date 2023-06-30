@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +36,17 @@ public class ProgramDAO {
 	}
 	
 	//등록
-	public int create(ProgramDTO dto) {
+	public int create(ProgramDTO dto, String pro_obj) {
 		
 		int cnt = 0;
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" INSERT INTO program_info(pro_obj, pro_name, prochar_no, pro_limit, pro_fee, ");
+			sql.append(" INSERT INTO program_info(obj_code, pro_obj, pro_name, prochar_no, pro_limit, pro_fee, ");
 			sql.append(" prorec_start, prorec_end, proper_start, proper_end, pro_day, pro_age, pro_exp, pro_poster, pro_img, pro_regdate) ");
-			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now()) ");
+			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now()) ");
 			
-			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_regdate());			
+			cnt = jt.update(sql.toString(), dto.getObj_code(), pro_obj, dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_regdate());			
 		}catch(Exception e) {
 			System.out.println("프로그램 등록 실패 : " + e);
 		}
@@ -106,7 +107,7 @@ public class ProgramDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT pro_obj, pro_name, prochar_no, pro_limit, pro_fee, prorec_start, prorec_end, ");
+			sql.append(" SELECT obj_code, pro_obj, pro_name, prochar_no, pro_limit, pro_fee, prorec_start, prorec_end, ");
 			sql.append(" proper_start, proper_end, pro_day, pro_age, pro_exp, ");
 			sql.append(" pro_poster, pro_img, pro_regdate, pro_readcnt ");
 			sql.append(" FROM program_info ");
@@ -118,6 +119,7 @@ public class ProgramDAO {
 					
 					ProgramDTO dto = new ProgramDTO();
 					
+					dto.setObj_code(rs.getString("obj_code"));
 					dto.setPro_obj(rs.getString("pro_obj"));
 					dto.setPro_name(rs.getString("pro_name"));
 					dto.setProchar_no(rs.getString("prochar_no"));
@@ -154,12 +156,12 @@ public class ProgramDAO {
 		try {
 			sql = new StringBuilder();
 			sql.append(" UPDATE program_info ");
-			sql.append(" SET pro_obj = ?, pro_name = ?, prochar_no =?, pro_limit =?, pro_fee =?, ");
+			sql.append(" SET pro_name = ?, prochar_no =?, pro_limit =?, pro_fee =?, ");
 			sql.append(" prorec_start = ?, prorec_end = ?, proper_start = ?, proper_end = ?, pro_day = ?, ");
 			sql.append(" pro_age = ?, pro_exp = ?, pro_poster = ?, pro_img = ?, pro_regdate = now() ");
 			sql.append(" WHERE pro_obj = ? ");
 			
-			cnt = jt.update(sql.toString(), dto.getPro_obj(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_obj());
+			cnt = jt.update(sql.toString(), dto.getPro_name(), dto.getProchar_no(), dto.getPro_limit(), dto.getPro_fee(), dto.getProrec_start(), dto.getProrec_end(), dto.getProper_start(), dto.getProper_end(), dto.getPro_day(), dto.getPro_age(), dto.getPro_exp(), dto.getPro_poster(), dto.getPro_img(), dto.getPro_obj());
 			
 		}catch(Exception e) {
 			System.out.println("프로그램 수정 실패 : " + e);
@@ -296,4 +298,52 @@ public class ProgramDAO {
 		return dto;
 	}//tread() end
 	
+	//prefix의 다음 값 계산
+	public int getNextnum(String prefix) {
+		int nextnum = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT MAX(CAST(SUBSTRING(pro_obj, 2) AS UNSIGNED)) AS maxNumber ");
+			sql.append(" FROM program_info ");
+			sql.append(" WHERE pro_obj LIKE '" + prefix + "%'");
+			
+			Integer maxNumber = jt.queryForObject(sql.toString(), Integer.class, prefix);
+			
+			if(maxNumber != null) {
+				nextnum = maxNumber + 1;
+			} else {
+				//maxNumber에 null값이 들어오면 오류가 안뜨게 랜덤한 값을 넣어준다.
+				nextnum = getRandnum();
+			}
+		}catch(Exception e) {
+			System.out.println("programDTO에서 prefix의 다음 값 찾기 실패 : " + e);
+		}
+		return nextnum;
+	}//getNextnum() end
+	
+	
+	private int getRandnum() {
+		int min = 1;
+		int max = 99;
+		Random rand = new Random();
+		
+		return rand.nextInt(max - min + 1) + min;
+	}//getRandnum() end
+	
+	//삭제
+	public int delete(String pro_obj) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" DELETE FROM program_info");
+			sql.append(" WHERE pro_obj = ? " );
+			
+			cnt = jt.update(sql.toString(), pro_obj);
+		}catch(Exception e) {
+			System.out.println("programDTO에서 삭제 실패 : " + e);
+		}
+		return cnt;
+	}//delete() end
 }//class end

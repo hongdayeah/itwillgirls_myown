@@ -38,7 +38,7 @@
 <div class="btn-position">
 	<button class="btn btn-primary" onclick="location.href='../programtime/create.do?pro_obj=${dto.pro_obj}'">시간표 등록</button>
 	<button class="btn btn-warning" onclick="location.href='update.do?pro_obj=${dto.pro_obj}'">프로그램수정</button>
-	<button class="btn btn-danger" onclick="return deleteCheck()">프로그램삭제</button>
+	<button class="btn btn-danger" onclick="return deleteCheck('${dto.pro_obj}')">프로그램삭제</button>
 </div>
 
 <!--container start-->
@@ -388,5 +388,16 @@
 	}//likeCheck() end
 	*/
 </script>
-        
+<script>
+	function deleteCheck(pro_obj){
+		
+		//alert(pro_obj);
+		if(confirm("삭제하면 복구되지 않습니다.\n삭제하시겠습니까?")){
+			alert("삭제되었습니다.");
+			window.location.href = "/program/delete.do?pro_obj=" + pro_obj;
+		}else{
+			return false;
+		}
+	}
+</script>
 <%@ include file="../footer.jsp" %>
