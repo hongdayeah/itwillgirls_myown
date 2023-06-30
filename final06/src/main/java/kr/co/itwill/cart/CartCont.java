@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.member.MemberDTO;
+import kr.co.itwill.performance.PerformanceDTO;
 import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
 
 @Controller
@@ -48,9 +49,9 @@ public class CartCont {
             String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
             int per_cnt=Integer.parseInt(request.getParameter("pernum"));
             String alertSeat=request.getParameter("alertSeat");
-            String per_fee=request.getParameter("per_fee");
+            int per_fee=Integer.parseInt(request.getParameter("per_fee"));
             
-            System.out.println("d "+per_cnt+"d "+alertSeat+"d "+per_code+"d "+seat_no+"d"+per_fee);
+            //System.out.println("d "+per_cnt+"d "+alertSeat+"d "+per_code+"d "+seat_no+"d"+per_fee);
             
             
             //seat_no값을 장바구니에 보이려고 하나의 문자열로 받아왔기 때문에 쉼표로 구분하여 배열에 저장한다
@@ -73,7 +74,7 @@ public class CartCont {
 	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
 
 	       //dao.perInsert(dto);
-	       int cnt=dao.perInsert2(p_id, per_code, seat_no, per_cnt);
+	       int cnt=dao.perInsert2(p_id, per_code, seat_no, per_cnt, per_fee);
 	       
 	       if(cnt==0) {
 	    		return "프로그램 장바구니에 담기 실패";
@@ -92,10 +93,17 @@ public class CartCont {
 	    MemberDTO mDto = (MemberDTO) obj;
 	    
 	    String p_id = mDto.getP_id();
-	    
+	   
 	    ModelAndView mav=new ModelAndView();
 	    mav.setViewName("cart/list");
 	    mav.addObject("list", dao.cartList(p_id));
+	    
+	    //pro_code or per_code의 값 read 불러오기
+	    //String per_code = dao.cartperRead()
+	    //String per_fee = dao.readPer_fee(per_code);
+	    
+	    //
+	    //mav.addObject("per_fee", per_fee);
 	    
 	    return mav;
 	} //list() end
@@ -126,4 +134,9 @@ public class CartCont {
     	
     }//proInsert() end
 	
+    
+    	
+
+    
+    
 }//class end

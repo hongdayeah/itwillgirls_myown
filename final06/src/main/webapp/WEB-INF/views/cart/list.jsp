@@ -45,6 +45,7 @@
 
 </head>
 
+		<div class=container>
 	    <table border="1" table class="table table-bordered table-striped">
 	    <tr>
 	  		<th>번호</th>
@@ -55,6 +56,7 @@
 	    	<th>수강인원</th>
 	    	<th>좌석인원</th>
 	    	<th>자녀회원번호</th>
+	    	<th>총금액</th>
 	    </tr>
 	    
 	    <c:forEach items="${list}" var="dto">
@@ -67,9 +69,12 @@
 				<td>${dto.pro_cnt}</td>
 				<td>${dto.per_cnt}</td>
 				<td>${dto.k_no}</td>
+				<td>${dto.cart_price}</td>
 			</tr>
 		</c:forEach>
 	    </table>
+	    </div>
+	    총 금액 : per + pro
 	    
 	    <br>
 	    <input type="button" class="btn btn-success" value="주문하기" onclick()="order()" >
