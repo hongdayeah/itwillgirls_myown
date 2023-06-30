@@ -211,7 +211,7 @@ public class PerformanceDAO {
 				dto.setClass_row(rs.getInt("class_row"));
 				dto.setClass_column(rs.getInt("class_column")); 
 				
-				System.out.println(dto);
+				//System.out.println(dto);
 				
 				return dto;
 			} //mapRow() end
