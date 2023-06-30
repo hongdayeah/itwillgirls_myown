@@ -37,7 +37,6 @@
 <!--breadcrumbs end-->
 
 <div class="btn-position">
-	<button onclick="location.href='../payment/importTest.jsp'">
 	<button class="btn btn-primary" onclick="location.href='create.do'">공연등록</button>
 </div>
 <br>
