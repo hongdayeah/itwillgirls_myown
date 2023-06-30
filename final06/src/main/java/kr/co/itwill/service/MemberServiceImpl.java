@@ -1,21 +1,14 @@
 package kr.co.itwill.service;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.itwill.mapper.MemberMapper;
-import kr.co.itwill.member.MemberDAO;
 import kr.co.itwill.member.MemberDTO;
-import kr.co.itwill.member.kid.MemberKidDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-
-	@Autowired
-	private MemberDAO dao;
 
 	@Autowired
 	MemberMapper membermapper;
@@ -150,21 +143,5 @@ public class MemberServiceImpl implements MemberService {
 
 		return dto;
 	}// readMember() end
-	
-	////////////////////////////////////////////////////////////////////////////////////////////
-		
-	// ★ 자녀 ★
-	// 자녀 회원 등록
-	@Override
-	public void addKid(MemberKidDTO kid_dto) throws Exception {
-		membermapper.addKid(kid_dto);
-	}// addKid() end
-	
-	// 자녀 회원 목록
-	@Override
-	public List<MemberKidDTO> kidList() throws Exception {
-		return membermapper.kidList();
-	}// kidList() end
-	
 
 }// class end
