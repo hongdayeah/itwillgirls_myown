@@ -164,4 +164,23 @@ public class CartCont {
     	}
     }//cartDelete() end
     
+	//orderForm으로 넘어갔을 때 cart의 order_no 업데이트하기
+    @RequestMapping(value="/cart/updateOrderNo.do", method=RequestMethod.POST)
+    @ResponseBody
+    public String updateOrderNo(@RequestParam("cartNos") String[] cartNos,
+    							@RequestParam("orderNo") String order_no,
+    							HttpSession session) {
+    	//로그인 한 p_id 가져오기
+    	Object obj = session.getAttribute("member_dto");
+    	MemberDTO memdto = (MemberDTO) obj;
+    	
+    	String p_id = memdto.getP_id();
+    	//System.out.println(p_id);
+    	
+    	String order_no_value = dao.readorderno(p_id);
+    	System.out.println(order_no_value);
+    	
+    	return null;
+    }//updateOrderNo() end
+    
 }//class end

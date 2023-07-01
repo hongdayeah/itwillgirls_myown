@@ -193,19 +193,49 @@
 	        
 	    	let message = "총 " + order_cnt + "건 주문하시겠습니까??"
 	    	if(confirm(message)){
+	    		
 	    		$.ajax({
 	                url: "/cart/orderForm.do", // 컨트롤러에 대한 URL 매핑
 	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
 	                data: { "order_cnt": order_cnt, "p_id": p_id, "tot_price": tot_price,
-	                		"prolist": JSON.stringify(prolist),
-	                		"perlist": JSON.stringify(perlist)
+	                		//"prolist": JSON.stringify(prolist),
+	                		//"perlist": JSON.stringify(perlist)
 	                }, // 전송할 데이터 설정
 	                success: function(response) {
 	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 	                    // 처리 결과에 따른 후속 작업 수행
 	                    alert(response);
 	                    //장바구니로 이동
-	                    window.location.href = "/order/formRead";
+	                    // 선택한 카트 항목들의 order_no 업데이트를 위한 데이터 전송
+						let selectedCartNos = [];
+						for (let i = 0; i < prolist.length; i++) {
+						    selectedCartNos.push(prolist[i].cart_no);
+						}
+						for (let i = 0; i < perlist.length; i++) {
+						    selectedCartNos.push(perlist[i].cart_no);
+						}
+						
+						// 선택한 카트 항목들의 order_no 업데이트 요청
+	                    $.ajax({
+	                        url: "/cart/updateOrderNo.do",
+	                        type: "POST",
+	                        data: {
+	                            "cartNos": JSON.stringify(selectedCartNos),
+	                            "orderNo": response // 서버에서 생성된 주문번호를 전달
+	                        },
+	                        success: function (updateResponse) {
+	                            // 업데이트 성공 시 실행할 코드
+	                            alert(updateResponse);
+
+	                            // 장바구니로 이동
+	                            window.location.href = "/order/formRead";
+	                        },
+	                        error: function (xhr, status, error) {
+	                            // 업데이트 실패 시 실행할 코드
+	                            alert("주문 항목 업데이트 실패");
+	                        }
+	                    });
+	                    //window.location.href = "/order/formRead";
 	                },
 	                error: function(xhr, status, error) {
 	                    // 요청이 실패한 경우 실행될 콜백 함수

@@ -238,7 +238,7 @@ public class CartDAO {
 		return list;
 	}//perlist() end
 	
-	//장바구니 삭제
+	//장바구니 삭제 (결제 전)
 	public int delete(int cart_no) {
 		int cnt = 0;
 		
@@ -254,4 +254,22 @@ public class CartDAO {
 		
 		return cnt;
 	}//delete() end
+	
+	//orderform에서 p_id=?인 행의 order_no 조회
+	public String readorderno(String p_id) {
+		String order_no = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT order_no ");
+			sql.append(" FROM orderform ");
+			sql.append(" WHERE p_id = '" + p_id + "' ");
+			
+			order_no = jt.queryForObject(sql.toString(), new Object[]{order_no}, String.class);
+		}catch(Exception e) {
+			System.out.println("CartDAO에서 order_no 조회 실패 : " + e);
+		}
+		
+		return order_no;
+	}//readorderno() end
 } //CartDAO() end
