@@ -1,5 +1,7 @@
 package kr.co.itwill.cart;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.performance.PerformanceDTO;
+import kr.co.itwill.program.ProgramDTO;
 import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
 
 @Controller
@@ -50,6 +53,7 @@ public class CartCont {
             int cart_cnt=Integer.parseInt(request.getParameter("pernum"));
             String alertSeat=request.getParameter("alertSeat");
             int per_fee=Integer.parseInt(request.getParameter("per_fee"));
+            String per_name = request.getParameter("per_name");
             
             //System.out.println("d "+per_cnt+"d "+alertSeat+"d "+per_code+"d "+seat_no+"d"+per_fee);
             
@@ -74,7 +78,8 @@ public class CartCont {
 	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
 
 	       //dao.perInsert(dto);
-	       int cnt=dao.perInsert2(p_id, per_code, seat_no, cart_cnt, per_fee);
+	       int cnt=dao.perInsert2(p_id, per_code, seat_no, cart_cnt, per_fee, per_name);
+	       //System.out.println(per_name);
 	       
 	       if(cnt==0) {
 	    		return "프로그램 장바구니에 담기 실패";
@@ -96,15 +101,23 @@ public class CartCont {
 	   
 	    ModelAndView mav=new ModelAndView();
 	    mav.setViewName("cart/list");
-	    mav.addObject("list", dao.cartList(p_id));
+	    //mav.addObject("list", dao.cartList(p_id));
 	    
-	    //pro_code or per_code의 값 read 불러오기
-	    //String per_code = dao.cartperRead()
-	    //String per_fee = dao.readPer_fee(per_code);
+	    mav.addObject("p_id", p_id);
 	    
-	    //
-	    //mav.addObject("per_fee", per_fee);
+	    //p_id가 예매한 pro_code에 해당하는 pro_name,pro_fee 가져오기
+	    //List<ProgramDTO> pronamelist = dao.pronamelist(p_id);
+	    //System.out.println(pronamelist);
+	    //mav.addObject("pronamelist", pronamelist);
 	    
+	    //p_id = ? 이고 pro_code가 not null인 cartlist 조회
+	    List<CartDTO> prolist = dao.prolist(p_id);
+	    mav.addObject("prolist", prolist);
+	    
+	    //p_id = ? 이고 per_code가 not null인 cartlist 조회
+	    List<CartDTO> perlist = dao.perlist(p_id);
+	    mav.addObject("perlist", perlist);
+	    //System.out.println(perlist);
 	    return mav;
 	} //list() end
     
@@ -112,19 +125,20 @@ public class CartCont {
     //프로그램 정보 장바구니에 담기
     @RequestMapping(value="program/proInsert.do", method=RequestMethod.POST)
     @ResponseBody
-    public String proInsert(@RequestParam("pro_code") String pro_code, @RequestParam("pro_cnt") int cart_cnt, @RequestParam("pro_fee") int pro_fee,  HttpSession session) {
+    public String proInsert(@RequestParam("pro_code") String pro_code, @RequestParam("pro_cnt") int cart_cnt, @RequestParam("pro_fee") int pro_fee, @RequestParam("pro_name") String pro_name,  HttpSession session) {
     	
     	//로그인 한 p_id 가져오기
     	Object obj = session.getAttribute("member_dto");
     	MemberDTO memdto = (MemberDTO) obj;
     	
     	String p_id = memdto.getP_id();
+    	
     	//System.out.println(p_id);
     	//System.out.println(pro_code);
     	//int pro_cnt = Integer.parseInt(selectcnt);
-    	//System.out.println(pro_cnt);
+    	//System.out.println(pro_name);
     	
-    	int cnt = dao.proInsert(p_id, pro_code, cart_cnt, pro_fee);
+    	int cnt = dao.proInsert(p_id, pro_code, cart_cnt, pro_fee, pro_name);
     	
     	if(cnt==0) {
     		return "프로그램 장바구니에 담기 실패";
@@ -134,4 +148,20 @@ public class CartCont {
     	
     }//proInsert() end
 	
+    
+    //장바구니 삭제
+    @RequestMapping(value="/cart/cartDelete.do", method= {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String cartDelete(@RequestParam("cart_no") int cart_no) {
+    	//System.out.println(cart_no);
+    	
+    	int cnt = dao.delete(cart_no);
+    	
+    	if(cnt==0) {
+    		return "장바구니에서 삭제 실패했습니다";
+    	}else {
+    		return "장바구니에서 삭제됐습니다.";
+    	}
+    	
+    }//cartDelete() end
 }//class end

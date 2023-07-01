@@ -30,3 +30,18 @@ ORDER BY pro_regdate DESC;
 SELECT t_code, t_name FROM (SELECT teacher.t_code, teacher.t_name, program_time.pro_obj
 FROM teacher
 INNER JOIN program_time ON teacher.t_code = program_time.t_code WHERE program_time.pro_obj='A01')AS subquery;
+
+
+INSERT INTO test (obj_code, pro_obj)
+SELECT 'S', CONCAT('S', LPAD(COALESCE(MAX(CAST(SUBSTRING(pro_obj, 2) AS UNSIGNED)), 0) + 1, 2, '0'))
+FROM test;
+
+
+SELECT pro_name
+FROM program_info
+WHERE pro_obj IN (
+  SELECT program_time.pro_obj
+  FROM program_time
+  JOIN cart ON program_time.pro_code = cart.pro_code
+  WHERE cart.p_id = 'test1234' AND cart.pro_code IS NOT NULL
+);

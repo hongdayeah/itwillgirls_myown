@@ -83,7 +83,10 @@
 	
 		<tr>
 			<th>제목</th>
-			<td>${dto.per_name}<td>
+			<td>
+				${dto.per_name}
+				<input type="hidden" name="per_name" id="per_name" value="${dto.per_name}">
+			<td>
 		</tr>
 		<tr>
 			<th>날짜</th>
@@ -248,8 +251,9 @@
 				let per_code = document.getElementById("per_code").value;
 				let arrSeat = document.getElementById("arrSeat").value;
 				let per_fee = document.getElementById("per_fee").value;
+				let per_name = document.getElementById("per_name").value;
 				//let alertSeat = document.getElementById("alertSeat").value;
-				
+				//alert(per_name);
 				
 			
 			    //alert(pernum);
@@ -257,7 +261,7 @@
 				$.ajax({
 	                url: "/performance/perInsert.do", // 컨트롤러에 대한 URL 매핑
 	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "pernum": pernum , "per_code": per_code, "arrSeat": arrSeat, "per_fee": per_fee }, // 전송할 데이터 설정
+	                data: { "pernum": pernum , "per_code": per_code, "arrSeat": arrSeat, "per_fee": per_fee, "per_name": per_name }, // 전송할 데이터 설정
 	                success: function(response) {
 	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 	                    // 처리 결과에 따른 후속 작업 수행
