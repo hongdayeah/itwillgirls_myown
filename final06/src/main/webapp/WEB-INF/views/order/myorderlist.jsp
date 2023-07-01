@@ -34,7 +34,8 @@
 	</div>
 </div>
 <!--breadcrumbs end-->
-
+예매내역입니다
+<!-- 
 <div class=container>
 	<form id="cartfrm" name="cartfrm" method="post" action="orderForm.do" onsubmit="return orderCheck()">
 		<span style="font-weight: bold;">아이디 | ${p_id}</span>
@@ -131,7 +132,7 @@
 		</div>
 	</form>
 </div>
-
+ -->
 <br><br>
 
 <!-- 본문 끝 -->

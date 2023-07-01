@@ -73,20 +73,38 @@ public class OrderformDAO {
 		return dto;
 	}//formlist() end
 	
-	//cart테이블에 order_no업데이트하기
-	/*
-	public int cartupdate(String order_no) {
+	//p_id=? 인 order_no 가져오기
+	public String getorderno(String p_id) {
+		String order_no = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT order_no ");
+			sql.append(" FROM orderform ");
+			sql.append(" WHERE p_id = '" + p_id + "' ");
+			
+			order_no = jt.queryForObject(sql.toString(), new Object[]{p_id}, String.class);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 order_no 조회 실패 : " + e);
+		}
+		
+		return order_no;
+	}//getorderno() end
+	
+	//장바구니 삭제(결제 후)
+	public int delete(String order_no) {
 		int cnt = 0;
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" UPDATE cart ");
-			sql.append(" SET order_no = ? ");
-			sql.append(" WHERE ")
+			sql.append(" DELETE FROM cart ");
+			sql.append(" WHERE order_no = ? ");
+			
+			cnt = jt.update(sql.toString(), order_no);
+			
 		}catch(Exception e) {
-			System.out.println("orderformDAO에서 cart테이블 order_no 수정 실패 : " + e);
+			System.out.println("OrderformDAO에서 결제 후 장바구니 삭제 실패 : " + e);
 		}
-		
-	}//cartupdate() end
-	*/
+		return cnt;
+	}//delete() end
 }//OrderformDAO() end

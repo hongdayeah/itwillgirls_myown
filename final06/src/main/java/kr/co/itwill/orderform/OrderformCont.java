@@ -49,15 +49,19 @@ public class OrderformCont {
         	 String p_id = memdto.getP_id();
         	 int order_cnt = Integer.parseInt(req.getParameter("order_cnt"));
         	 int tot_price = Integer.parseInt(req.getParameter("tot_price"));
-        	 
+        	
         	 //System.out.println("pid = " + p_id + " order_cnt = " + order_cnt + " tot_price = " + tot_price);
         	 
         	 int cnt = dao.orderInsert(p_id, order_cnt, tot_price);
         	 
+        	 String order_no = dto.getOrder_no();
+        	 
         	 if(cnt==0) {
         		 return "orderform에 정보 입력 실패";
         	 }else {
-        		 return "주문 창으로 넘어갑니다.";
+        		 order_no = dao.getorderno(p_id);
+            	 //System.out.println(order_no);
+        		 return order_no;
         	 }
         	 
          }//if end
@@ -144,21 +148,19 @@ public class OrderformCont {
 	}//list() end
 	
 	//결제 성공시 장바구니에서 자동삭제
-	//장바구니 삭제
-	/*
     @RequestMapping(value="/orderform/delete.do", method= {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String cartDelete(@RequestParam("order_no") int order_no) {
-    	//System.out.println(order_no);
+    public String cartDelete(@RequestParam("order_no") String order_no) {
+    	System.out.println(order_no);
     	
     	int cnt = dao.delete(order_no);
     	
     	if(cnt==0) {
     		return "장바구니에서 삭제 실패했습니다";
     	}else {
-    		return "장바구니에서 삭제됐습니다.";
+    		return "주문한 건은 장바구니에서 자동삭제 됩니다.";
     	}
     	
     }//cartDelete() end
-	*/
+	
 }//class end
