@@ -134,9 +134,9 @@ public class OrderformCont {
 		*/
 		
 		//orderForm으로 넘어갔을 때 orderform의 order_no 업데이트하기
-		//1.p_id의 order_no 갖고오기
+		//1.해당 p_id의  
 		String order_no = dto.getOrder_no();
-		int cnt = dao.cartupdate(order_no);
+		//int cnt = dao.cartupdate(order_no);
 		
 		mav.setViewName("order/formRead");
 		

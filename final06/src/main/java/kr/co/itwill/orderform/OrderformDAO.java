@@ -72,4 +72,21 @@ public class OrderformDAO {
 		
 		return dto;
 	}//formlist() end
+	
+	//cart테이블에 order_no업데이트하기
+	/*
+	public int cartupdate(String order_no) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE cart ");
+			sql.append(" SET order_no = ? ");
+			sql.append(" WHERE ")
+		}catch(Exception e) {
+			System.out.println("orderformDAO에서 cart테이블 order_no 수정 실패 : " + e);
+		}
+		
+	}//cartupdate() end
+	*/
 }//OrderformDAO() end
