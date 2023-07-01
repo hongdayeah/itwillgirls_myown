@@ -1,6 +1,7 @@
 package kr.co.itwill.cart;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -165,22 +167,32 @@ public class CartCont {
     }//cartDelete() end
     
 	//orderForm으로 넘어갔을 때 cart의 order_no 업데이트하기
-    @RequestMapping(value="/cart/updateOrderNo.do", method=RequestMethod.POST)
+    @RequestMapping(value="cart/updateOrderNo.do", method=RequestMethod.POST)
     @ResponseBody
-    public String updateOrderNo(@RequestParam("cartNos") String[] cartNos,
-    							@RequestParam("orderNo") String order_no,
-    							HttpSession session) {
+    public String updateOrderNo(@RequestBody Map<String, Object> requestData, HttpSession session) {
     	//로그인 한 p_id 가져오기
     	Object obj = session.getAttribute("member_dto");
     	MemberDTO memdto = (MemberDTO) obj;
     	
     	String p_id = memdto.getP_id();
-    	//System.out.println(p_id);
+    	String order_no = (String) requestData.get("orderNo");
+    	@SuppressWarnings("unchecked")
+		int[] cartNos = ((List<Integer>) requestData.get("cartNos")).stream().mapToInt(Integer::intValue).toArray();
+    	//System.out.println(p_id +" ");
+    	//System.out.println(order_no + " ");
     	
-    	String order_no_value = dao.readorderno(p_id);
-    	System.out.println(order_no_value);
+    	int cnt = 0;
+    	for(int cart_no : cartNos) {
+    		//System.out.println(cart_no);
+    		cnt += dao.updatecart(p_id, cart_no, order_no);
+    	}
     	
-    	return null;
+    	if(cnt!= cartNos.length) {
+    		return "주문창 이동실패";
+    	}else {
+    		return "주문창으로 이동합니다.";
+    	}
+    	
     }//updateOrderNo() end
     
 }//class end

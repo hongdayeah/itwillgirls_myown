@@ -152,7 +152,7 @@
 		// 주문할 상품 정보를 배열로 저장
 		let prolist = [];
 		$("input[name='pro_checkbox']:checked").each(function() {
-		    let cart_no = $(this).val();
+		    let cart_no = parseInt($(this).val());
 		    let pro_name = $(this).closest("tr").find("td:eq(1)").text();
 		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
 		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
@@ -170,7 +170,7 @@
 		// 주문할 공연 정보를 배열로 저장
 		let perlist = [];
 		$("input[name='per_checkbox']:checked").each(function() {
-		    let cart_no = $(this).val();
+		    let cart_no = parseInt($(this).val());
 		    let per_name = $(this).closest("tr").find("td:eq(1)").text();
 		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
 		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
@@ -185,6 +185,14 @@
 		    });
 		});
 		
+		let selectedCartNos = [];
+		for (let i = 0; i < prolist.length; i++) {
+		    selectedCartNos.push(prolist[i].cart_no);
+		}
+		for (let i = 0; i < perlist.length; i++) {
+		    selectedCartNos.push(perlist[i].cart_no);
+		}
+		
 	    if (p_id === null || p_id === "") {
 	        alert("주문은 로그인 상태에서만 가능합니다.");
 	        return false;
@@ -195,54 +203,44 @@
 	    	if(confirm(message)){
 	    		
 	    		$.ajax({
-	                url: "/cart/orderForm.do", // 컨트롤러에 대한 URL 매핑
-	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "order_cnt": order_cnt, "p_id": p_id, "tot_price": tot_price,
-	                		//"prolist": JSON.stringify(prolist),
-	                		//"perlist": JSON.stringify(perlist)
-	                }, // 전송할 데이터 설정
-	                success: function(response) {
-	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
-	                    // 처리 결과에 따른 후속 작업 수행
-	                    alert(response);
-	                    //장바구니로 이동
-	                    // 선택한 카트 항목들의 order_no 업데이트를 위한 데이터 전송
-						let selectedCartNos = [];
-						for (let i = 0; i < prolist.length; i++) {
-						    selectedCartNos.push(prolist[i].cart_no);
-						}
-						for (let i = 0; i < perlist.length; i++) {
-						    selectedCartNos.push(perlist[i].cart_no);
-						}
-						
-						// 선택한 카트 항목들의 order_no 업데이트 요청
-	                    $.ajax({
-	                        url: "/cart/updateOrderNo.do",
-	                        type: "POST",
-	                        data: {
-	                            "cartNos": JSON.stringify(selectedCartNos),
-	                            "orderNo": response // 서버에서 생성된 주문번호를 전달
-	                        },
-	                        success: function (updateResponse) {
-	                            // 업데이트 성공 시 실행할 코드
-	                            alert(updateResponse);
+	    	        url: "/cart/orderForm.do",
+	    	        type: "POST",
+	    	        data: {
+	    	          order_cnt: order_cnt,
+	    	          p_id: p_id,
+	    	          tot_price: tot_price,
+	    	        },
+	    	        success: function (response) {
+	    	          // orderForm.do로부터 생성된 order_no 값을 받아옴
+	    	          let order_no = response;
+	    	          //alert(order_no);
 
-	                            // 장바구니로 이동
-	                            window.location.href = "/order/formRead";
-	                        },
-	                        error: function (xhr, status, error) {
-	                            // 업데이트 실패 시 실행할 코드
-	                            alert("주문 항목 업데이트 실패");
-	                        }
-	                    });
-	                    //window.location.href = "/order/formRead";
-	                },
-	                error: function(xhr, status, error) {
-	                    // 요청이 실패한 경우 실행될 콜백 함수
-	                    // 에러 처리 로직 구현
-	                    alert("주문 폼 조회 실패");
-	                }
-	            });
+	    	          // updateOrderNo.do로 order_no 값을 전달
+	    	          $.ajax({
+	    	        	    url: "/cart/updateOrderNo.do",
+	    	        	    type: "POST",
+	    	        	    data: JSON.stringify({
+	    	        	        cartNos: selectedCartNos,
+	    	        	        orderNo: order_no
+	    	        	    }),
+	    	        	    contentType: "application/json",
+	    	        	    success: function (updateResponse) {
+	    	        	        // 업데이트 성공 시 실행할 코드
+	    	        	        alert(updateResponse);
+
+	    	        	        // 장바구니로 이동
+	    	        	        window.location.href = "/order/formRead";
+	    	        	    },
+	    	        	    error: function (xhr, status, error) {
+	    	        	        // 업데이트 실패 시 실행할 코드
+	    	        	        alert("주문 항목 업데이트 실패");
+	    	        	    },
+	    	        	});
+	    	        },
+	    	        error: function (xhr, status, error) {
+	    	          alert("주문 폼 조회 실패");
+	    	        },
+	    	      });
 	    		return true;
 	    	}else{
 	    		return false;

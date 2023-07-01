@@ -272,4 +272,22 @@ public class CartDAO {
 		
 		return order_no;
 	}//readorderno() end
+	
+	//cart테이블에 order_no update하기
+	public int updatecart(String p_id, int cart_no, String order_no) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE cart ");
+			sql.append(" SET order_no = ? ");
+			sql.append(" WHERE p_id = ? ");
+			sql.append(" AND cart_no = ? ");
+			
+			cnt = jt.update(sql.toString(), order_no, p_id, cart_no);
+		}catch(Exception e) {
+			System.out.println("cart 테이블에 order_no 추가 실패 : " + e);
+		}
+		return cnt;
+	}//updatecart() end
 } //CartDAO() end
