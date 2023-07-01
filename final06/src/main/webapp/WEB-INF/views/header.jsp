@@ -72,7 +72,7 @@
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-					"dropdown" data-toggle="dropdown" href="/">프로그램 <i class="fa fa-angle-down"></i>
+					"dropdown" data-toggle="dropdown" href="#">프로그램 <i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
 						<li>

@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.itwill.performance.PerformanceDTO;
+import kr.co.itwill.program.ProgramDTO;
 import kr.co.iwill.performanceSeat.PerformanceSeatDTO;
 
 @Repository
@@ -66,7 +67,7 @@ public class CartDAO {
 		
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, cart_cnt, cart_price ");
+			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, cart_cnt, cart_price, pro_name, per_name ");
 			sql.append(" FROM cart ");
 			sql.append(" WHERE p_id = ? ");
 			
@@ -84,6 +85,8 @@ public class CartDAO {
 					dto.setK_no(rs.getInt("k_no"));
 					dto.setCart_cnt(rs.getInt("cart_cnt"));
 					dto.setCart_price(rs.getInt("cart_price"));
+					dto.setPro_name(rs.getString("pro_name"));
+					dto.setPer_name(rs.getString("per_name"));
 					
 					return dto;				
 				} //mapRow() end
@@ -99,17 +102,17 @@ public class CartDAO {
 	}// cartList() end
 
 	//프로그램 장바구니 담기
-	public int proInsert(String p_id, String pro_code, int cart_cnt, int pro_fee) {
+	public int proInsert(String p_id, String pro_code, int cart_cnt, int pro_fee, String pro_name) {
 		int cnt=0;
 		
 		try{
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO cart(cart_no, p_id, pro_code, cart_cnt, cart_price)");
-			sql.append(" VALUES(null, ?, ?, ?, ?) ");
+			sql.append(" INSERT INTO cart(cart_no, p_id, pro_code, cart_cnt, cart_price, pro_name) ");
+			sql.append(" VALUES(null, ?, ?, ?, ?, ?) ");
 			
 			//SQL문 (insert, update, delete) 실행
-			cnt=jt.update(sql.toString(), p_id, pro_code, cart_cnt, pro_fee);
+			cnt=jt.update(sql.toString(), p_id, pro_code, cart_cnt, pro_fee, pro_name);
 		} catch (Exception e) {
 			System.out.println("프로그램 장바구니 등록 실패 : " + e);			
 		}		
@@ -117,22 +120,138 @@ public class CartDAO {
 	} //perInsert() end
 	
 	
-	public int perInsert2(String p_id, String per_code, String seat_no, int cart_cnt, int per_fee) {
+	public int perInsert2(String p_id, String per_code, String seat_no, int cart_cnt, int per_fee, String per_name) {
 		int cnt=0;
 		
 		try{
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no, cart_cnt, cart_price)");
-			sql.append(" VALUES(null,?,?,?,?,?) ");
+			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no, cart_cnt, cart_price, per_name) ");
+			sql.append(" VALUES(null,?,?,?,?,?,?) ");
 			
 			//SQL문 (insert, update, delete) 실행
-			cnt=jt.update(sql.toString(), p_id, per_code, seat_no, cart_cnt, per_fee );
+			cnt=jt.update(sql.toString(), p_id, per_code, seat_no, cart_cnt, per_fee, per_name );
 		} catch (Exception e) {
 			System.out.println("등록 실패"+e);			
 		}		
 		return cnt;		
 	}
 	
+	//p_id가 장바구니에 담은 pro_code의 pro_name가져오기
+	public List<ProgramDTO> pronamelist(String p_id){
+		List<ProgramDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_name FROM program_info ");
+			sql.append(" WHERE pro_obj IN ( ");
+			sql.append(" 					SELECT program_time.pro_obj ");
+			sql.append(" 					FROM program_time ");
+			sql.append(" 					JOIN cart ON program_time.pro_code = cart.pro_code ");
+			sql.append(" 					WHERE cart.p_id = '" + p_id + "' AND cart.pro_code IS NOT NULL ");
+			sql.append(" 					) ");
+			
+			RowMapper<ProgramDTO> rowMapper = new RowMapper<ProgramDTO>() {
+				@Override
+				public ProgramDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					ProgramDTO dto = new ProgramDTO();
+					dto.setPro_name(rs.getString("pro_name"));
+					
+					return dto;					
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("CartDAO에서 pro_name 조회하기실패 : " + e);
+		}
+		return list;
+	}//pronamelist() end
 	
+	//p_id=? 이면서 pro_code가 not null인 목록 조회
+	public List<CartDTO> prolist(String p_id){
+		List<CartDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT cart_no, p_id, pro_code, cart_cnt, cart_price, pro_name ");
+			sql.append(" FROM cart ");
+			sql.append(" WHERE p_id = '" + p_id + "' AND pro_code IS NOT NULL ");
+			
+			RowMapper<CartDTO> rowMapper = new RowMapper<CartDTO>() {
+				@Override
+				public CartDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					CartDTO dto = new CartDTO();
+					
+					dto.setCart_no(rs.getInt("cart_no"));
+					dto.setP_id(rs.getString("p_id"));
+					dto.setPro_code(rs.getString("pro_code"));
+					dto.setCart_cnt(rs.getInt("cart_cnt"));
+					dto.setCart_price(rs.getInt("cart_price"));
+					dto.setPro_name(rs.getString("pro_name"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("CartDAO에서 program cartlist 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//prolist() end
+	
+	public List<CartDTO> perlist(String p_id){
+		List<CartDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT cart_no, p_id, per_code, seat_no, cart_cnt, cart_price, per_name ");
+			sql.append(" FROM cart ");
+			sql.append(" WHERE p_id = '" + p_id + "' AND per_code IS NOT NULL ");
+			
+			RowMapper<CartDTO> rowMapper = new RowMapper<CartDTO>() {
+				@Override
+				public CartDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					CartDTO dto = new CartDTO();
+					
+					dto.setCart_no(rs.getInt("cart_no"));
+					dto.setP_id(rs.getString("p_id"));
+					dto.setPer_code(rs.getString("per_code"));
+					dto.setSeat_no(rs.getString("seat_no"));
+					dto.setCart_cnt(rs.getInt("cart_cnt"));
+					dto.setCart_price(rs.getInt("cart_price"));
+					dto.setPer_name(rs.getString("per_name"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("CartDAO에서 performance cartlist 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//perlist() end
+	
+	//장바구니 삭제
+	public int delete(int cart_no) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" DELETE FROM cart ");
+			sql.append(" WHERE cart_no = " + cart_no);
+			
+			cnt = jt.update(sql.toString(), cart_no);
+		}catch(Exception e) {
+			System.out.println("장바구니 행 삭제 실패 : " + e);
+		}
+		
+		return cnt;
+	}//delete() end
 } //CartDAO() end
