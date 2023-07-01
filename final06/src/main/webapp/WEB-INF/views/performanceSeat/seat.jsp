@@ -12,6 +12,8 @@
 		  height : 50px;
 		  background-color : pink;	
 		  margin : 5px;  
+		  border-top-left-radius: 10px;
+   		  border-top-right-radius: 10px;
 		}
 		.occupiedSeat {
 		  display: inline;
@@ -20,7 +22,15 @@
 		  height : 50px;
 		  background-color : gray;	
 		  margin : 5px;
+		  border-top-left-radius: 10px;
+   		  border-top-right-radius: 10px;
 		}
+		table{
+			margin:auto;
+		}
+		.seatcontainer{
+		  text-align: center;
+			}
 	</style>
 	
 	
@@ -60,8 +70,8 @@
 	<html>
   
   
-    <h3>좌석 예매</h3>
-    <h4>예매 할 좌석을 선택 해 주세요</h4>
+    <h3 style="text-align:center">좌석 예매</h3>
+    <h4 style="text-align:center">예매 할 좌석을 선택 해 주세요</h4>
 		
 	<div class="seatList">
 		<div class="availableSeat"></div>
@@ -98,8 +108,11 @@
 			</td>
 		</tr>
 		</table>
-
-			<strong>좌석 배치도</strong>
+		
+			<br>
+			<div style="text-align: center;">
+			  <strong>좌석 배치도</strong>
+			</div>
 			<br>
 
 			<div class="seatcontainer">
@@ -131,6 +144,7 @@
 			    </c:forEach><br/>
 			  </c:forEach>
 			</div>
+			<br>
 						
 			<script>
 			//수량 변수 설정
@@ -273,8 +287,9 @@
 			  <input type="hidden" name="pernum"  id="pernum" value="${pernum}">
 			  <input type="hidden" name="per_fee"  id="per_fee" value="${dto.per_fee}">
 			  <input type="hidden" name="alertSeat"  id="alertSeat" value="${alertSeat}">
-			  <input type="submit" class="btn btn-warning" value="예매하기" onclick="return reserveSeats()">
+			  <input type="submit" class="btn btn-warning" style="display: block; margin: 0 auto;" value="예매하기" onclick="return reserveSeats()">
 			</form>
+			<br>
 
 			</html>
 
