@@ -1,0 +1,2 @@
+INSERT INTO orderform (order_no, tot_price, order_cnt, p_id)
+SELECT CONCAT(YEAR(NOW()), DATE_FORMAT(NOW(), '%m%d%H%i%s'), '-', LPAD((SELECT COUNT(*) + 1 FROM orderform), 3, '0')), 10000, 20, 'teset1234';

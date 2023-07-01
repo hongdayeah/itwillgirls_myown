@@ -27,8 +27,9 @@ public class OrderformDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" INSERT INTO orderform(order_no, p_id, order_cnt, tot_price) ");
-			sql.append(" VALUES (null, ?, ?, ?) ");
+			sql.append(" INSERT INTO orderform (order_no, tot_price, order_cnt, p_id) ");
+			sql.append(" 						SELECT CONCAT(YEAR(NOW()), DATE_FORMAT(NOW(), '%m%d%H%i%s'), ");
+			sql.append(" 						'-', LPAD((SELECT COUNT(*) + 1 FROM orderform), 3, '0')), " + tot_price + ", " + order_cnt + " , '" + p_id + "' ");			
 			
 			cnt = jt.update(sql.toString(), p_id, order_cnt, tot_price);
 		}catch(Exception e) {
@@ -54,7 +55,7 @@ public class OrderformDAO {
 					
 					OrderformDTO dto = new OrderformDTO();
 					
-					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_no(rs.getString("order_no"));
 					dto.setP_id(rs.getString("p_id"));
 					dto.setOrder_cnt(rs.getInt("order_cnt"));
 					dto.setTot_price(rs.getInt("tot_price"));

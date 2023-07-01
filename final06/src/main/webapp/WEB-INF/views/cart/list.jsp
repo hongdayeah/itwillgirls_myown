@@ -146,9 +146,45 @@
 		let order_cnt = parseInt($("#totalCount").text());
 		let tot_price = updateTotal();
 		//alert(p_id);
-		alert(order_cnt);
-		alert(tot_price);
+		//alert(order_cnt);
+		//alert(tot_price);
 	    
+		// 주문할 상품 정보를 배열로 저장
+		let prolist = [];
+		$("input[name='pro_checkbox']:checked").each(function() {
+		    let cart_no = $(this).val();
+		    let pro_name = $(this).closest("tr").find("td:eq(1)").text();
+		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
+		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
+		    
+		    
+		    prolist.push({
+		        cart_no: cart_no,
+		        pro_name: pro_name,
+		        cart_cnt: cart_cnt,
+		        cart_price: cart_price,
+		        
+		    });
+		});
+		
+		// 주문할 공연 정보를 배열로 저장
+		let perlist = [];
+		$("input[name='per_checkbox']:checked").each(function() {
+		    let cart_no = $(this).val();
+		    let per_name = $(this).closest("tr").find("td:eq(1)").text();
+		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
+		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
+		    
+		    
+		    perlist.push({
+		        cart_no: cart_no,
+		        per_name: per_name,
+		        cart_cnt: cart_cnt,
+		        cart_price: cart_price,
+		        
+		    });
+		});
+		
 	    if (p_id === null || p_id === "") {
 	        alert("주문은 로그인 상태에서만 가능합니다.");
 	        return false;
@@ -160,7 +196,10 @@
 	    		$.ajax({
 	                url: "/cart/orderForm.do", // 컨트롤러에 대한 URL 매핑
 	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "order_cnt": order_cnt, "p_id": p_id, "tot_price": tot_price }, // 전송할 데이터 설정
+	                data: { "order_cnt": order_cnt, "p_id": p_id, "tot_price": tot_price,
+	                		"prolist": JSON.stringify(prolist),
+	                		"perlist": JSON.stringify(perlist)
+	                }, // 전송할 데이터 설정
 	                success: function(response) {
 	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 	                    // 처리 결과에 따른 후속 작업 수행

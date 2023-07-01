@@ -2,7 +2,7 @@ package kr.co.itwill.orderform;
 
 public class OrderformDTO {
 
-	private int order_no;
+	private String order_no;
 	private int tot_price;
 	private int order_cnt;
 	private String payc;
@@ -10,11 +10,11 @@ public class OrderformDTO {
 	
 	public OrderformDTO() {}
 
-	public int getOrder_no() {
+	public String getOrder_no() {
 		return order_no;
 	}
 
-	public void setOrder_no(int order_no) {
+	public void setOrder_no(String order_no) {
 		this.order_no = order_no;
 	}
 
