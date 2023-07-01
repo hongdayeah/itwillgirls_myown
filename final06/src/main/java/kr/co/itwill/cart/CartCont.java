@@ -149,7 +149,7 @@ public class CartCont {
     }//proInsert() end
 	
     
-    //장바구니 삭제
+    //장바구니 삭제(결제전)
     @RequestMapping(value="/cart/cartDelete.do", method= {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String cartDelete(@RequestParam("cart_no") int cart_no) {
@@ -162,6 +162,6 @@ public class CartCont {
     	}else {
     		return "장바구니에서 삭제됐습니다.";
     	}
-    	
     }//cartDelete() end
+    
 }//class end
