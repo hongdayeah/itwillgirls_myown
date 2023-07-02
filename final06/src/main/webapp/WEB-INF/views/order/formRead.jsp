@@ -103,11 +103,11 @@
 		    		$.ajax({
 		                url: "/orderform/delete.do",
 		                method: "POST",
-		                data: {"order_no": order_no },
+		                data: {"order_no": order_no, "order_cnt": order_cnt, "tot_price": tot_price },
 		                success: function (response) {
 		                    // 성공적으로 삭제되었을 때 실행할 코드
 		                    alert(response);
-		                    window.location.href = "/order/myorderlist"; // myorderlist로 이동
+		                    window.location.href = "/order/myorderlist?order_no="+ order_no + "&order_cnt=" + order_cnt + "&tot_price=" + tot_price; // myorderlist로 이동
 		                },
 		                error: function (xhr, status, error) {
 		                    // 삭제 실패 시 실행할 코드

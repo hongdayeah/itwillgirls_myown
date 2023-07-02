@@ -228,7 +228,7 @@
 	    	        	        // 업데이트 성공 시 실행할 코드
 	    	        	        alert(updateResponse);
 
-	    	        	        // 장바구니로 이동
+	    	        	        // 주문폼으로 이동
 	    	        	        window.location.href = "/order/formRead";
 	    	        	    },
 	    	        	    error: function (xhr, status, error) {

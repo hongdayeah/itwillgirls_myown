@@ -54,8 +54,8 @@ public class OrderformCont {
         	 
         	 int cnt = dao.orderInsert(p_id, order_cnt, tot_price);
         	 
-        	 String order_no = dto.getOrder_no();
-        	 
+        	 //String order_no = dto.getOrder_no();
+        	 String order_no = null;
         	 if(cnt==0) {
         		 return "orderform에 정보 입력 실패";
         	 }else {
@@ -77,7 +77,7 @@ public class OrderformCont {
 		//System.out.println(memdto);
 		
 		String p_id = memdto.getP_id();
-		
+		//System.out.println(p_id);
 		ModelAndView mav = new ModelAndView();
 		
 		
@@ -151,16 +151,30 @@ public class OrderformCont {
     @RequestMapping(value="/orderform/delete.do", method= {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String cartDelete(@RequestParam("order_no") String order_no) {
-    	System.out.println(order_no);
+    	//System.out.println(order_no);
     	
-    	int cnt = dao.delete(order_no);
+    	int cnt1 = dao.delete(order_no);
     	
-    	if(cnt==0) {
-    		return "장바구니에서 삭제 실패했습니다";
+    	int cnt2 = dao.update(order_no);
+    	
+    	if(cnt1==0 && cnt2==0) {
+    		return "장바구니에서 삭제 및 오더폼 결제상태 수정 실패했습니다";
     	}else {
     		return "주문한 건은 장바구니에서 자동삭제 됩니다.";
     	}
     	
     }//cartDelete() end
 	
+    @RequestMapping(value="order/myorderlist", method=RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView myorderlist(@RequestParam("order_no") String order_no,
+    								@RequestParam("order_cnt") int order_cnt,
+    								@RequestParam("tot_price") int tot_price, HttpSession session) {
+    	
+    	ModelAndView mav = new ModelAndView();
+    	
+    	mav.setViewName("order/myorderlist");
+    	
+    	return mav;    	
+    }//myorderlist() end
 }//class end

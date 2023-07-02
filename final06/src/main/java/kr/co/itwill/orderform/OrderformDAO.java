@@ -47,7 +47,7 @@ public class OrderformDAO {
 			sql = new StringBuilder();
 			sql.append(" SELECT order_no, p_id, order_cnt, tot_price, payc");
 			sql.append(" FROM orderform ");
-			sql.append(" WHERE p_id = '" + p_id + "' ");
+			sql.append(" WHERE p_id = '" + p_id + "' AND payc='N'");
 			
 			RowMapper<OrderformDTO> rowMapper = new RowMapper<OrderformDTO>() {
 				@Override
@@ -71,7 +71,7 @@ public class OrderformDAO {
 		}
 		
 		return dto;
-	}//formlist() end
+	}//orderRead() end
 	
 	//p_id=? 인 order_no 가져오기
 	public String getorderno(String p_id) {
@@ -81,7 +81,7 @@ public class OrderformDAO {
 			sql = new StringBuilder();
 			sql.append(" SELECT order_no ");
 			sql.append(" FROM orderform ");
-			sql.append(" WHERE p_id = '" + p_id + "' ");
+			sql.append(" WHERE p_id = '" + p_id + "' AND payc='N'");
 			
 			order_no = jt.queryForObject(sql.toString(), new Object[]{p_id}, String.class);
 		}catch(Exception e) {
@@ -107,4 +107,22 @@ public class OrderformDAO {
 		}
 		return cnt;
 	}//delete() end
+	
+	//orderform의 결제상태 'Y'로 업데이트
+	public int update(String order_no) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" UPDATE orderform ");
+			sql.append(" SET payc = 'Y' ");
+			sql.append(" WHERE order_no = ? ");
+			
+			cnt = jt.update(sql.toString(), order_no);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 결제상태 수정 실패 : " + e);
+		}
+		
+		return cnt;
+	}//update() end
 }//OrderformDAO() end
