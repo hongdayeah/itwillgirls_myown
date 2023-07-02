@@ -142,4 +142,56 @@ public class OrderformDAO {
 		}
 		return pro_obj;
 	}//pobjeread() end
-}//OrderformDAO() end
+	
+	//order_prodetail에 행 추가
+	public int prodetail(int cart_price, String order_no, String pro_obj, int cart_cnt, String pro_name) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" INSERT INTO order_prodetail (order_prodetailno, pro_fee, order_no, pro_obj, pro_cnt, pro_name) ");
+			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?) ");
+			
+			cnt = jt.update(sql.toString(), cart_price, order_no, pro_obj, cart_cnt, pro_name);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 prodetail행 삽입 실패 : " + e);
+		}
+		
+		return cnt;
+	}//prodetail() end
+	
+	//performance의 p_code읽는 함수
+	public String pcoderead(String per_name) {
+		String per_code = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT per_code ");
+			sql.append(" FROM performance ");
+			sql.append(" WHERE per_name = '" + per_name + "' ");
+			
+			per_code = jt.queryForObject(sql.toString(), new Object[]{per_name}, String.class);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 p_code 조회 실패 : " + e);
+		}
+		
+		return per_code;
+	}//pcoderead() end
+	
+	//order_perdetail에 행 추가
+	public int perdetail(int cart_price, String order_no, String per_code, String seat_no, int cart_cnt, String per_name) {
+		int cnt = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" INSERT INTO order_perdetail (order_perdetailno, per_fee, order_no, per_code, seat_no, per_cnt, per_name) ");
+			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?, ?) ");
+			
+			cnt = jt.update(sql.toString(), cart_price, order_no, per_code, seat_no, cart_cnt, per_name);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 perdetail 행 삽입 실패 : " + e);
+		}
+		
+		return cnt;
+	}//perdetail() end
+}//Class end

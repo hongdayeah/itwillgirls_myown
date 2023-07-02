@@ -1,14 +1,14 @@
-package kr.co.itwill.proorder;
+package kr.co.itwill.perorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProorderDAO {
+public class PerorderDAO {
 
-	public ProorderDAO() {
-		System.out.println("-----ProorderDAO()객체 생성됨");
+	public PerorderDAO() {
+		System.out.println("-----PerorderDAO()객체 생성됨");
 	}
 	
 	@Autowired
@@ -16,5 +16,4 @@ public class ProorderDAO {
 	
 	StringBuilder sql = null;
 	
-	
-} //class end
+}//class end
