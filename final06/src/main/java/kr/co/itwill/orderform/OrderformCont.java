@@ -73,34 +73,8 @@ public class OrderformCont {
         	 //String per_name = requestData.get("pro_name").toString();
         	 //String pro_name = requestData.get("per_name").toString();
         	 //System.out.println("pid = " + p_id + " order_cnt = " + order_cnt + " tot_price = " + tot_price);
-        	// prolist 처리
-        	 for (Map<String, Object> pro : prolist) {
-        	     // prolist의 각 항목에서 필요한 값을 추출
-        	     String cart_no = pro.get("cart_no").toString();
-        	     String pro_name = pro.get("pro_name").toString();
-        	     String cart_cnt = pro.get("cart_cnt").toString();
-        	     String cart_price = pro.get("cart_price").toString();
-        	     String pro_obj = dao.pobjread(pro_name);
-
-        	     // dao.insertprolist()를 호출하여 값 전달
-        	     //dao.prodetail(cart_no, pro_name, pro_obj, cart_cnt, cart_price);
-        	 }
-        	 
-        	// perlist 처리
-        	 /*
-        	 for (Map<String, Object> per : perlist) {
-        	     // perlist의 각 항목에서 필요한 값을 추출
-        	     String cart_no = per.get("cart_no").toString();
-        	     String per_name = per.get("per_name").toString();
-        	     String cart_cnt = per.get("cart_cnt").toString();
-        	     String seat_no = per.get("seat_no").toString();
-        	     String cart_price = per.get("cart_price").toString();
-
-        	     // dao.insertperlist()를 호출하여 값 전달
-        	     dao.perdetail(cart_no, per_name, cart_cnt, seat_no, cart_price);
-        	 }
-        	 */
-        	 System.out.println(p_id);
+        	
+        	 //System.out.println(p_id);
         	 //System.out.println(per_name);
         	 //System.out.println(pro_name);
         	 int cnt = dao.orderInsert(p_id, order_cnt, tot_price);
@@ -112,6 +86,42 @@ public class OrderformCont {
         	 }else {
         		 order_no = dao.getorderno(p_id);
             	 //System.out.println(order_no);
+        		 
+        		// prolist 처리
+            	 for (Map<String, Object> pro : prolist) {
+            	     // prolist의 각 항목에서 필요한 값을 추출
+            	     int cart_no = Integer.parseInt(pro.get("cart_no").toString());
+            	     String pro_name = pro.get("pro_name").toString();
+            	     int cart_cnt = Integer.parseInt(pro.get("cart_cnt").toString());
+            	     int cart_price = Integer.parseInt(pro.get("cart_price").toString());
+            	     String pro_obj = dao.pobjread(pro_name);
+            	     
+            	     //order_prodetail테이블에 행 삽입
+            	     int pro_cnt = dao.prodetail(cart_price, order_no, pro_obj, cart_cnt, pro_name);
+            	     
+            	     if(pro_cnt==0) {
+            	    	 System.out.println("prolist에서 order_prodetail 행 삽입 실패");
+            	     }
+            	 }
+            	 
+            	// perlist 처리
+            	 
+            	 for (Map<String, Object> per : perlist) {
+            	     // perlist의 각 항목에서 필요한 값을 추출
+            	     int cart_no = Integer.parseInt(per.get("cart_no").toString());
+            	     String per_name = per.get("per_name").toString();
+            	     int cart_cnt = Integer.parseInt(per.get("cart_cnt").toString());
+            	     String seat_no = per.get("seat_no").toString();
+            	     int cart_price = Integer.parseInt(per.get("cart_price").toString());
+            	     String per_code = dao.pcoderead(per_name);
+
+            	     // dao.insertperlist()를 호출하여 값 전달
+            	     int per_cnt = dao.perdetail(cart_price, order_no, per_code, seat_no, cart_cnt, per_name);
+            	     if(per_cnt==0) {
+            	    	 System.out.println("perlist에서 order_perdetail 행 삽입 실패");
+            	     }
+            	 }
+            	 
         		 return order_no;
         	 }
         	 

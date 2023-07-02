@@ -2,7 +2,7 @@ package kr.co.itwill.proorder;
 
 public class ProorderDTO {
 
-	private int order_prodetailno;
+	private String order_prodetailno;
 	private int pro_fee;
 	private String order_no;
 	private String pro_obj;
@@ -11,11 +11,11 @@ public class ProorderDTO {
 	
 	public ProorderDTO() {}
 
-	public int getOrder_prodetailno() {
+	public String getOrder_prodetailno() {
 		return order_prodetailno;
 	}
 
-	public void setOrder_prodetailno(int order_prodetailno) {
+	public void setOrder_prodetailno(String order_prodetailno) {
 		this.order_prodetailno = order_prodetailno;
 	}
 
@@ -64,5 +64,4 @@ public class ProorderDTO {
 		return "ProorderDTO [order_prodetailno=" + order_prodetailno + ", pro_fee=" + pro_fee + ", order_no=" + order_no
 				+ ", pro_obj=" + pro_obj + ", pro_cnt=" + pro_cnt + ", pro_name=" + pro_name + "]";
 	}
-
 }//class end
