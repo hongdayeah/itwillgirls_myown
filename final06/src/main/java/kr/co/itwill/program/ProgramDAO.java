@@ -346,4 +346,34 @@ public class ProgramDAO {
 		}
 		return cnt;
 	}//delete() end
+	
+	//강사목록 조회
+	public List<TeacherDTO> tlist(){
+		List<TeacherDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT t_code, t_name ");
+			sql.append(" FROM teacher ");
+			
+			RowMapper<TeacherDTO> rowMapper = new RowMapper<TeacherDTO>() {
+				@Override
+				public TeacherDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					TeacherDTO dto = new TeacherDTO();
+					
+					dto.setT_code(rs.getString("t_code"));
+					dto.setT_name(rs.getString("t_name"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), rowMapper);
+		}catch(Exception e) {
+			System.out.println("ProgramDAO에서 강사 목록 조회 실패 : ");
+		}
+		
+		return list;
+	}//tlist() end
 }//class end

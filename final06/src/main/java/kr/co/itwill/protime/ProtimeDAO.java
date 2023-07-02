@@ -1,8 +1,10 @@
 package kr.co.itwill.protime;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -116,4 +118,25 @@ public class ProtimeDAO {
 		return cnt;
 	}//create() end
 	
+	//pro_obj_n의 다음 시퀀스값 찾기
+	public int getNextnum(String pro_obj) {
+		int seq = 0;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT MAX(SUBSTRING_INDEX(pro_code, '_', -1)) FROM program_time WHERE pro_obj = ? ");
+			
+			Integer maxSeq = jt.queryForObject(sql.toString(), Integer.class, pro_obj);
+			
+			if(maxSeq != null) {
+				seq = maxSeq + 1;
+			}else {
+				seq = 1;
+			}
+		}catch(Exception e) {
+			System.out.println("ProtimeDAO 에서 시퀀스 값 찾기 실패 : " + e);
+		}
+		
+		return seq;
+	}//getNextnum() end
 }//class end

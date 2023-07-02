@@ -78,7 +78,23 @@
 						<h1 style="font-weight:bold;">${dto.pro_name}</h1>
 						<input type="hidden" name="pro_name" id="pro_name" value="${dto.pro_name}">
 							<div class="table-responsive">
-								수업 성향 : ${dto.prochar_no} <br><br>
+								수업 성향 : <c:forEach var="type" items="${dto.prochar_no}">	
+											<c:choose>
+											<c:when test="${type eq 'pro_II'}">
+												<span class="label label-info">늑대</span>
+											</c:when>
+											<c:when test="${type eq 'pro_EE'}">
+												<span class="label label-info">사자</span>
+											</c:when>
+											<c:when test="${type eq 'pro_IE'}">
+												<span class="label label-info">양</span>
+											</c:when>
+											<c:otherwise>
+												<span class="label label-info">기린</span>
+											</c:otherwise>
+											</c:choose>
+										 </c:forEach> 
+									<br><br>
 								
 								<table class="table table-bordered table-striped">
 									<colgroup>
@@ -100,7 +116,8 @@
 										<td>
 											<c:set var="proStart" value="${fn:substring(dto.proper_start, 5, 10)}" />
 											<c:set var="proEnd" value="${fn:substring(dto.proper_end, 5, 10)}" />
-											${proStart} ~ ${proEnd}
+											
+											${proStart} ~ ${proEnd} (매 주 ${pro_day})
 										</td>
 									</tr>
 									<tr>
@@ -112,7 +129,14 @@
 														아직 추가되지 않았습니다 <!-- 안되는데 -->
 													</c:when>
 													<c:otherwise>
-														<input type="radio" name="pro_code" id="pro_code" value="${i.pro_code}">&nbsp;${i.pro_time} : ${i.t_code} 강사님 
+														<input type="radio" name="pro_code" id="pro_code" value="${i.pro_code}">&nbsp;
+														<c:set var="t_name" value=""/>
+														<c:forEach var="teacher" items="${tlist}">
+															<c:if test="${teacher.t_code eq i.t_code}">
+																<c:set var="t_name" value="${teacher.t_name}"></c:set>
+															</c:if>
+														</c:forEach>
+														${i.pro_time} : ${t_name} 강사님 &nbsp;
 														<select id="selectcnt_${i.pro_code}">
 															<!-- radio 선택하지 않은 수량을 선택하면 안넘어가게 하기 -->
 															<option value=0>수량선택</option>
@@ -137,7 +161,8 @@
 										<td>수강료</td>
 										<td>
 											<input type="hidden" id="pro_fee" name="pro_fee" value="${dto.pro_fee}">
-											${dto.pro_fee}원
+											<fmt:formatNumber var="profee" value="${dto.pro_fee}" pattern="#,###" />
+											${profee}원
 										</td>
 									</tr>
 									<tr>
