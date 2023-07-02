@@ -125,4 +125,21 @@ public class OrderformDAO {
 		
 		return cnt;
 	}//update() end
+	
+	//program의 pro_obj읽는 함수
+	public String pobjread(String pro_name) {
+		String pro_obj = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_obj ");
+			sql.append(" FROM program_info ");
+			sql.append(" WHERE pro_name = '" + pro_name +"' ");
+			
+			pro_obj = jt.queryForObject(sql.toString(), new Object[]{pro_name}, String.class);
+		}catch(Exception e) {
+			System.out.println("OrderformDAO에서 pro_obj 조회 실패 : " + e);
+		}
+		return pro_obj;
+	}//pobjeread() end
 }//OrderformDAO() end

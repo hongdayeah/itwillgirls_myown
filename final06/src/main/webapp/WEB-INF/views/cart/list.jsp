@@ -158,6 +158,7 @@
 
 <!-- 본문 끝 -->
 <!-- JavaScript 함수 -->
+
 <script>
 	function orderCheck(){
 		event.preventDefault();
@@ -177,8 +178,10 @@
 		    let cart_no = parseInt($(this).val());
 		    let pro_name = $(this).closest("tr").find("td:eq(1)").text();
 		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
-		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
+		    let cart_price = $(this).closest("tr").find("td:eq(3)").text().trim(); //trim을 안붙였더니 엄청난 공백
 		    
+		    //숫자 부분만 추출하여 저장, null일 경우 0
+		    cart_price = cart_price ? parseInt(cart_price.replace(/[^0-9]/g, '')) : 0;
 		    
 		    prolist.push({
 		        cart_no: cart_no,
@@ -195,13 +198,18 @@
 		    let cart_no = parseInt($(this).val());
 		    let per_name = $(this).closest("tr").find("td:eq(1)").text();
 		    let cart_cnt = $(this).closest("tr").find("td:eq(2)").text();
-		    let cart_price = $(this).closest("tr").find("td:eq(3)").text();
+		    let seat_no =  $(this).closest("tr").find("td:eq(3)").html().trim();
+		    seat_no = seat_no ? seat_no.match(/\d+/g)?.slice(0, 2)?.join(",") : '';
 		    
+		    let cart_price = $(this).closest("tr").find("td:eq(4)").text().trim();
+		    
+		    cart_price = cart_price ? parseInt(cart_price.replace(/[^0-9]/g, '')) : 0;
 		    
 		    perlist.push({
 		        cart_no: cart_no,
 		        per_name: per_name,
 		        cart_cnt: cart_cnt,
+		        seat_no: seat_no,
 		        cart_price: cart_price,
 		        
 		    });
@@ -215,6 +223,8 @@
 		    selectedCartNos.push(perlist[i].cart_no);
 		}
 		
+		//console.log(prolist[0]);
+		//console.log(perlist);
 	    if (p_id === null || p_id === "") {
 	        alert("주문은 로그인 상태에서만 가능합니다.");
 	        return false;
@@ -227,15 +237,19 @@
 	    		$.ajax({
 	    	        url: "/cart/orderForm.do",
 	    	        type: "POST",
-	    	        data: {
+	    	        data:  JSON.stringify({
 	    	          order_cnt: order_cnt,
 	    	          p_id: p_id,
 	    	          tot_price: tot_price,
-	    	        },
+	    	          prolist: prolist, //배열상태
+	    	          perlist: perlist //배열상태
+	    	        }),
+	    	        contentType: "application/json",
 	    	        success: function (response) {
 	    	          // orderForm.do로부터 생성된 order_no 값을 받아옴
 	    	          let order_no = response;
 	    	          //alert(order_no);
+	    	          
 
 	    	          // updateOrderNo.do로 order_no 값을 전달
 	    	          $.ajax({
@@ -261,6 +275,7 @@
 	    	        },
 	    	        error: function (xhr, status, error) {
 	    	          alert("주문 폼 조회 실패");
+	    	          return false;
 	    	        },
 	    	      });
 	    		return true;
