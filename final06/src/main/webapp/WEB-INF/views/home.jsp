@@ -97,12 +97,14 @@
 						"dropdown" data-toggle="dropdown" href="#">예약 <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
+							<!-- 
 							<li>
 								<a href="../#">프로그램 예약</a>
 							</li>
 							<li>
 								<a href="../#">공연 예매</a>
 							</li>
+							 -->
 							<li>
 								<a href="../rent/create.do">대관 신청</a>
 							</li>
@@ -159,7 +161,7 @@
 									<a href="../cart/list">나의 장바구니</a>
 								</li>
 								<li>
-									<a href="../#">나의 예매내역</a>
+									<a href="../order/myorderlist">나의 예매내역</a>
 								</li>
 								<li>
 									<a href="../member_kid/kidList.do">자녀회원 등록/목록</a>

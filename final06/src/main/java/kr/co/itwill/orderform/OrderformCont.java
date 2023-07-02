@@ -97,7 +97,7 @@ public class OrderformCont {
             	     String pro_obj = dao.pobjread(pro_name);
             	     
             	     //order_prodetail테이블에 행 삽입
-            	     int pro_cnt = dao.prodetail(cart_price, order_no, pro_obj, cart_cnt, pro_name);
+            	     int pro_cnt = dao.prodetail(cart_price, order_no, pro_obj, cart_cnt, pro_name, p_id);
             	     
             	     if(pro_cnt==0) {
             	    	 System.out.println("prolist에서 order_prodetail 행 삽입 실패");
@@ -116,7 +116,7 @@ public class OrderformCont {
             	     String per_code = dao.pcoderead(per_name);
 
             	     // dao.insertperlist()를 호출하여 값 전달
-            	     int per_cnt = dao.perdetail(cart_price, order_no, per_code, seat_no, cart_cnt, per_name);
+            	     int per_cnt = dao.perdetail(cart_price, order_no, per_code, seat_no, cart_cnt, per_name, p_id);
             	     if(per_cnt==0) {
             	    	 System.out.println("perlist에서 order_perdetail 행 삽입 실패");
             	     }
@@ -226,16 +226,4 @@ public class OrderformCont {
     	
     }//cartDelete() end
 	
-    @RequestMapping(value="order/myorderlist", method=RequestMethod.GET)
-    @ResponseBody
-    public ModelAndView myorderlist(@RequestParam("order_no") String order_no,
-    								@RequestParam("order_cnt") int order_cnt,
-    								@RequestParam("tot_price") int tot_price, HttpSession session) {
-    	
-    	ModelAndView mav = new ModelAndView();
-    	
-    	mav.setViewName("order/myorderlist");
-    	
-    	return mav;
-    }//myorderlist() end
 }//class end
