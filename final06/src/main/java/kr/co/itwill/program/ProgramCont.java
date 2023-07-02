@@ -1,7 +1,9 @@
 package kr.co.itwill.program;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -137,6 +139,11 @@ public class ProgramCont {
 		////////////// ProramDAO에 선언한 ptread()함수 추가 (program_time에서 pro_obj=?인 행 조회)
 		List<ProtimeDTO> ptlist = dao.ptlist(pro_obj);
 		mav.addObject("ptlist", ptlist);
+		//System.out.println(ptlist);
+		
+		//강사코드와 이름 목록 조회
+		List<TeacherDTO> tlist = dao.tlist();
+		mav.addObject("tlist", tlist);
 
 		////////////// 조회수 증가하는 함수
 		dao.incrementCnt(pro_obj);
@@ -164,9 +171,45 @@ public class ProgramCont {
 		////////////// ProgramDAO에 선언한 pro_obj=?의 likecnt()함수 추가 (해당 pro_obj의 찜 개수)
 		int likecnt = dao.likecnt(pro_obj);
 		mav.addObject("likecnt", likecnt);
+		
+		//pro_day의 값을 한글로 바꿔서 뷰단에 보여주기
+		//1. dto.pro_day의 값을 한글로 변환하기
+		String pro_day = kor_proday(dto.getPro_day());
+		mav.addObject("pro_day", pro_day);
+		
+		
 
 		return mav;
 	}// read() end
+	
+	//dto.pro_day를 한글로 변환
+	private String kor_proday(String pro_day) {
+		Map<String, String> prodayMap = new HashMap<>();
+		prodayMap.put("Tue", "화요일");
+		prodayMap.put("Wed", "수요일");
+		prodayMap.put("Thu", "목요일");
+		prodayMap.put("Fri", "금요일");
+		prodayMap.put("Sat", "토요일");
+		prodayMap.put("Sun", "일요일");
+		
+		//쉼표 구분
+		String[] days = pro_day.split(",");
+		
+		//각 요일을 한글로 변환하여 새로운 문자열로 조합
+		StringBuilder kor_proday = new StringBuilder();
+		
+		for(String day : days) {
+			String korday = prodayMap.getOrDefault(day.trim(), day);
+			kor_proday.append(korday).append(", ");
+		}
+		
+		//마지막 쉼표와 공백 제거
+		if(kor_proday.length()>0) {
+			kor_proday.delete(kor_proday.length()-2, kor_proday.length());
+		}
+		
+		return kor_proday.toString();
+	}//kor_proday() end
 
 	// 수정
 	@RequestMapping(value = "/program/update.do", method = RequestMethod.GET)

@@ -50,6 +50,15 @@ public class ProtimeCont {
 	public ModelAndView createProc(String pro_obj, @ModelAttribute ProtimeDTO ptdto) {
 		ModelAndView mav = new ModelAndView();
 		
+		//입력받은 pro_obj뒤에 '_01', '_02' 와 같은 increment값 생성
+		int seq = dao.getNextnum(pro_obj);
+		String pro_code = pro_obj + "_" + seq;
+		
+		//System.out.println(seq);
+		//System.out.println(pro_code);
+		
+		ptdto.setPro_code(pro_code);
+		
 		int cnt = dao.create(ptdto);
 		
 		if(cnt==0) {

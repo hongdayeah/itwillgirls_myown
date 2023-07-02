@@ -54,10 +54,6 @@
 					<input type="text" class="form-control short" name="pro_obj" id="pro_obj" value="${requestScope.pro_obj}" readonly>
 				</div>
 				<div class="form-group">
-					<label>프로그램 시간표 코드</label><br>
-					<input type="text" class="form-control short" name="pro_code" id="pro_code">
-				</div>
-				<div class="form-group">
 					<label>장소</label><br>
 					<input type="radio" id="pro_time" name="pro_time" value="10:00">&nbsp;10:00&nbsp;&nbsp;&nbsp;
 					<input type="radio" id="pro_time" name="pro_time" value="14:00">&nbsp;14:00&nbsp;&nbsp;&nbsp;

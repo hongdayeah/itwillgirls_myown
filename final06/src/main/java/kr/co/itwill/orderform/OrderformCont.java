@@ -175,6 +175,6 @@ public class OrderformCont {
     	
     	mav.setViewName("order/myorderlist");
     	
-    	return mav;    	
+    	return mav;
     }//myorderlist() end
 }//class end
