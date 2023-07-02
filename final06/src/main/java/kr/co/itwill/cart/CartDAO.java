@@ -290,4 +290,24 @@ public class CartDAO {
 		}
 		return cnt;
 	}//updatecart() end
+	
+	//장바구니에 같은 per_code있는지 확인
+	public boolean isPercode(String p_id, String per_code) {
+		int cnt=0;
+		
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT COUNT(*) ");
+			sql.append(" FROM cart");
+			sql.append(" WHERE  p_id = ? AND per_code = ?" );
+			
+			cnt= jt.queryForObject(sql.toString(), Integer.class,p_id, per_code); //Integer.class 는 쿼리결과를 정수로 변환하기 위해 사용되는 매개변수
+			return cnt>0;
+		} catch (Exception e) {
+			System.out.println("조회 실패: "+e);
+			return false;
+		}
+	} //isPercode() end
+	
+	
 } //CartDAO() end

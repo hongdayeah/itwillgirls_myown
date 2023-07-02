@@ -69,9 +69,8 @@
 	  
 	<html>
   
-  
-    <h3 style="text-align:center">좌석 예매</h3>
-    <h4 style="text-align:center">예매 할 좌석을 선택 해 주세요</h4>
+
+    <h3 style="text-align:center">예매 할 좌석을 선택 해 주세요</h4>
 		
 	<div class="seatList">
 		<div class="availableSeat"></div>
