@@ -102,12 +102,12 @@
 		    		alert('결제에 성공했습니다. 예매내역으로 이동합니다.');
 		    		$.ajax({
 		                url: "/orderform/delete.do",
-		                method: "POST",
+		                method: "GET",
 		                data: {"order_no": order_no, "order_cnt": order_cnt, "tot_price": tot_price },
 		                success: function (response) {
 		                    // 성공적으로 삭제되었을 때 실행할 코드
 		                    alert(response);
-		                    window.location.href = "/order/myorderlist?order_no="+ order_no + "&order_cnt=" + order_cnt + "&tot_price=" + tot_price; // myorderlist로 이동
+		                    window.location.href = "/order/myorderlist"
 		                },
 		                error: function (xhr, status, error) {
 		                    // 삭제 실패 시 실행할 코드

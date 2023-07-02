@@ -9,6 +9,7 @@ public class PerorderDTO {
 	private String per_code;
 	private String per_name;
 	private int per_cnt;
+	private String p_id;
 	
 	public PerorderDTO() {}
 
@@ -68,14 +69,18 @@ public class PerorderDTO {
 		this.per_cnt = per_cnt;
 	}
 
+	public String getP_id() {
+		return p_id;
+	}
+
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
+	}
+
 	@Override
 	public String toString() {
 		return "PerorderDTO [order_perdetailno=" + order_perdetailno + ", per_fee=" + per_fee + ", seat_no=" + seat_no
 				+ ", order_no=" + order_no + ", per_code=" + per_code + ", per_name=" + per_name + ", per_cnt="
-				+ per_cnt + ", getOrder_perdetailno()=" + getOrder_perdetailno() + ", getPer_fee()=" + getPer_fee()
-				+ ", getSeat_no()=" + getSeat_no() + ", getOrder_no()=" + getOrder_no() + ", getPer_code()="
-				+ getPer_code() + ", getPer_name()=" + getPer_name() + ", getPer_cnt()=" + getPer_cnt()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ per_cnt + ", p_id=" + p_id + "]";
 	}
 }//class end

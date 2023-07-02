@@ -8,6 +8,7 @@ public class ProorderDTO {
 	private String pro_obj;
 	private int pro_cnt;
 	private String pro_name;
+	private String p_id;
 	
 	public ProorderDTO() {}
 
@@ -59,9 +60,17 @@ public class ProorderDTO {
 		this.pro_name = pro_name;
 	}
 
+	public String getP_id() {
+		return p_id;
+	}
+
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
+	}
+
 	@Override
 	public String toString() {
 		return "ProorderDTO [order_prodetailno=" + order_prodetailno + ", pro_fee=" + pro_fee + ", order_no=" + order_no
-				+ ", pro_obj=" + pro_obj + ", pro_cnt=" + pro_cnt + ", pro_name=" + pro_name + "]";
+				+ ", pro_obj=" + pro_obj + ", pro_cnt=" + pro_cnt + ", pro_name=" + pro_name + ", p_id=" + p_id + "]";
 	}
 }//class end
