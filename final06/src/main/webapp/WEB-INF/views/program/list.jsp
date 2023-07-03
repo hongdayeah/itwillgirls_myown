@@ -92,10 +92,10 @@
 											<span class="label label-info">사자</span>
 										</c:when>
 										<c:when test="${type eq 'pro_IE'}">
-											<span class="label label-info">양</span>
+											<span class="label label-info">기린</span>
 										</c:when>
 										<c:otherwise>
-											<span class="label label-info">기린</span>
+											<span class="label label-info">양</span>
 										</c:otherwise>
 										</c:choose>
 									</c:forEach>

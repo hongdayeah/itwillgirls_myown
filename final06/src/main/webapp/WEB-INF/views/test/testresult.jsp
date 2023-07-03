@@ -101,7 +101,7 @@
 			<div id="owl-demo" class="owl-carousel owl-theme wow fadeIn">
 			<c:forEach var="i" items="${prolist}">
 				<div class="item view view-tenth">
-					<img class="grid-image" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${i.pro_poster}" alt="${i.pro_poster}"/>
+					<img class="grid-image" style="height: 180px; width: 230px;" src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/${i.pro_poster}" alt="${i.pro_poster}"/>
 					<div class="mask">
 						<a href="../program/read.do?pro_obj=${i.pro_obj}" class="info" data-toggle="tooltip" data-placement="top" title="${i.pro_name}">
 							<i class="fa fa-link"></i>

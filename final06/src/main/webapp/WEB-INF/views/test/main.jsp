@@ -81,8 +81,15 @@
 <script>
 	function loginCheck(){
 		let p_id = "${member_dto.p_id}";
+		let selectNum = document.getElementById("k_no").value;
+		
 		if(p_id===null || p_id===""){
 			alert("로그인 후 이용하실 수 있습니다.");
+			return false;
+		}
+		
+		if(selectNum == 0){
+			alert("자녀를 선택해주세요.");
 			return false;
 		}
 		return true;

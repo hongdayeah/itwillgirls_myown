@@ -60,7 +60,7 @@ public class LikeCont {
 		if(cnt==0) {
 			return "관심프로그램 등록 실패!!";
 		}else {
-			return "관심프로그램으로 등록되었습니다.\n마이페이지에서 확인 가능합니다.";
+			return "관심프로그램으로 등록되었습니다.\n마이페이지로 이동합니다.";
 		}//if end		
 	}//likeInsert() end
 	
