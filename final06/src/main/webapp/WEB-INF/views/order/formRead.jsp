@@ -91,7 +91,7 @@
 		      pay_method: "card",
 		      merchant_uid: order_no,   // 주문번호
 		      name: "도담도담 어린이문화센터",
-		      amount: 100,                         // 숫자 타입
+		      amount: tot_price,                         // 숫자 타입
 		      buyer_email: "구매자이메일",
 		      buyer_name: "구매자명",
 		      buyer_tel: "구매자휴대폰번호",
