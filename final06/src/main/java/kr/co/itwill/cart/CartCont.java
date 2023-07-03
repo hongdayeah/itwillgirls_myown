@@ -70,7 +70,13 @@ public class CartCont {
  	            perseatdto.setRow(row);
  	            perseatdto.setCol(col);
  	            
+ 	            //예매하기 눌렀을 때 좌석 누르는 사이 다른 사람이 고른 좌석인지 확인
+ 	            if(dao.isSeat(row, col, per_code)) {
+ 	            	return "이미 결제된 좌석입니다. 다른 좌석을 선택해주세요"; 	            	
+ 	            }
+ 	            
  	            dao.seatInsert(perseatdto);
+ 	            
            }        
             
 	       dto.setP_id(p_id);          // dto에 p_id 설정
