@@ -37,9 +37,11 @@
 <!--breadcrumbs end-->
     
 	<div class="btn-position">
-		<button class="btn btn-success" onclick="location.href='list.do'">프로그램 목록</button>
+	<c:if test="${member_dto.p_id == 'webmaster'}">
+		<button class="btn btn-success" onclick="location.href='list.do'">공연 목록</button>
 		<button class="btn btn-warning" onclick="location.href='update.do?per_code=${dto.per_code}'">공연 수정</button>
-		<button class="btn btn-danger" onclick="location.href='delete.do?per_code=${dto.per_code}'">프로그램 삭제</button>
+		<button class="btn btn-danger" onclick="location.href='delete.do?per_code=${dto.per_code}'">공연 삭제</button>
+	</c:if>
 	</div>
 
 	<!--container start-->

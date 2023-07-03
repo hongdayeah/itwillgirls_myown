@@ -36,7 +36,9 @@
 <!--breadcrumbs end-->
 
 <div class="btn-position">
+<c:if test="${member_dto.p_id == 'webmaster'}">
 	<button class="btn btn-primary" onclick="location.href='create.do'">강사등록</button>
+</c:if>
 </div>
 <br>
 <br>
@@ -66,8 +68,10 @@
 					  </p>
 					  
 					</div>
+					<c:if test="${member_dto.p_id == 'webmaster'}">
 					<button class="btn btn-warning" onclick="location.href='update.do?t_code=${dto.t_code}'">강사수정</button>
 					<button class="btn btn-danger" onclick="return deleteCheck(${dto.t_code})">강사삭제</button>
+					</c:if>
 				</div>
 			</div>
 			

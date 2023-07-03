@@ -37,7 +37,9 @@
 <!--breadcrumbs end-->
 
 <div class="btn-position">
+<c:if test="${member_dto.p_id == 'webmaster'}">
 	<button class="btn btn-primary" onclick="location.href='create.do'">프로그램등록</button>
+</c:if>
 </div>
 <br>
 <br>
