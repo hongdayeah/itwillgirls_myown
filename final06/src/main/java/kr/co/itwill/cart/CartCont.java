@@ -189,6 +189,40 @@ public class CartCont {
     	}
     }//cartDelete() end
     
+    //장바구니 삭제(결제전)
+    @RequestMapping(value="/cart/deleteItem.do", method= {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String deleteItem(@ModelAttribute CartDTO dto,@RequestParam("cart_no") int cart_no,@ModelAttribute PerformanceSeatDTO perseatdto) {
+    	//System.out.println(cart_no);
+
+		CartDTO cartdto= dao.getpercode(cart_no);
+    	String seat_no=cartdto.getSeat_no();
+    	String per_code=cartdto.getPer_code();
+
+    	
+    	int cnt = dao.delete(cart_no);
+    	  	
+    	
+    	String[] seatArray=seat_no.split(","); 		
+        //seat변수는 seatArray 배열의 각요소를 순회하며 해당 요소를 나타내는 변수임
+        for(String seat : seatArray) {
+        	int row=Integer.parseInt(seat.substring(0,1)); 	//좌석 번호의 첫번째 문자 (행)
+        	int col=Integer.parseInt(seat.substring(1)); 	//좌석 번호의 두번째 문자 (열)
+        	
+    		perseatdto.setPer_code(per_code);
+            perseatdto.setRow(row);
+            perseatdto.setCol(col);
+            
+            dao.seatDelete(row,col,per_code );
+       }       
+    	
+    	if(cnt==0) {
+    		return "장바구니에서 삭제 실패했습니다";
+    	}else {
+    		return "장바구니에서 삭제됐습니다.";
+    	}
+    }//cartDelete() end
+    
 	//orderForm으로 넘어갔을 때 cart의 order_no 업데이트하기
     @RequestMapping(value="cart/updateOrderNo.do", method=RequestMethod.POST)
     @ResponseBody
