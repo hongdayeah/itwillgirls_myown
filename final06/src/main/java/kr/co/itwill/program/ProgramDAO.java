@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.protime.ProtimeDTO;
+import kr.co.itwill.review.ReviewDTO;
 import kr.co.itwill.teacher.TeacherDTO;
 
 @Repository
@@ -376,4 +377,41 @@ public class ProgramDAO {
 		
 		return list;
 	}//tlist() end
+	
+	//pro_obj=?의 댓글목록
+	public List<ReviewDTO> rvlist(String pro_obj){
+		List<ReviewDTO> list = null;
+		
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT rev_no, rev_con, rev_regdt, p_id, pro_obj, p_passwd ");
+			sql.append(" FROM pro_review ");
+			sql.append(" WHERE pro_obj = '" + pro_obj + "' ");
+			sql.append(" ORDER BY rev_regdt DESC ");
+			
+			RowMapper<ReviewDTO> rowMapper = new RowMapper<ReviewDTO>() {
+				@Override
+				public ReviewDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					ReviewDTO dto = new ReviewDTO();
+					
+					dto.setRev_no(rs.getInt("rev_no"));
+					dto.setRev_con(rs.getString("rev_con"));
+					dto.setRev_regdt(rs.getString("rev_regdt"));
+					dto.setP_id(rs.getString("p_id"));
+					dto.setPro_obj(rs.getString("pro_obj"));
+					dto.setP_passwd(rs.getString("p_passwd"));
+					
+					return dto;
+				}//mapRow() end
+			};//rowMapper end
+			
+			list = jt.query(sql.toString(), rowMapper);
+			
+		}catch(Exception e) {
+			System.out.println("ProgramDAO에서 댓글 목록 조회 실패 : " + e);
+		}
+		
+		return list;
+	}//rvlist() end
 }//class end

@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					
+					성향을 소개합니다
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
@@ -134,12 +134,14 @@
 		</div>
 	</div>
 </div>
-
+<!-- 
 <div class="gray-box">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-5">
+			 -->
 				<!--testimonial start-->
+				<!-- 
 				<div class="about-testimonial boxed-style about-flexslider ">
 					<section class="slider wow fadeInRight">
 						<div class="flexslider">
@@ -172,7 +174,9 @@
 						</div>
 					</section>
 				</div>
+				 -->
 				<!--testimonial end-->
+				<!-- 
 			</div>
 			<div class="col-lg-7" id="skillz">
 				<h3 class="skills">Our Crazy Skills</h3>
@@ -200,6 +204,7 @@
 		</div>
 	</div>
 </div>
+ -->
 <!--container end-->
 <!-- 본문 끝 -->
         

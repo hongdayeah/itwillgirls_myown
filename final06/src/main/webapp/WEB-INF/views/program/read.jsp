@@ -227,14 +227,14 @@
 							</div>
 					        <!-- 리뷰 리스트 for문 -->
 							<div class="media">
-								<c:forEach var="review" items="${reviewList}">
+								<c:forEach var="rdto" items="${rvlist}">
 									<div class="media-body">
 										<h4 class="media-heading">
-											작성자 아이디 들어가는 곳 <!-- dto.p_id -->
+											${rdto.p_id} <!-- dto.p_id -->
 											<span> | </span>
-											<span>댓글 단 날짜 <!-- dto.regdate --></span>
+											<span>${rdto.rev_regdt} <!-- dto.regdate --></span>
 										</h4>
-										<p>리뷰 내용 <!-- dto.review --></p>
+										<p>${rdto.rev_con} <!-- dto.review --></p>
 									  	<hr>
 									</div>
 								</c:forEach>
@@ -326,15 +326,11 @@
 	}//end
 	
 	
-	function responseProc(data) {
-		alert(data);
-	}//end
-	
 </script>
 <script>
 	//likedto가 0인 상태에서 찜 버튼 눌렀을때 실행
-	document.getElementById("myAnchor").addEventListener("click", function(event){
-		event.preventDefault();
+	$("#myAnchor").click(function() {
+		//event.preventDefault();
 	
 		let pro_obj=$("#pro_obj").val();
 		let p_id   =$("#p_id").val();
@@ -366,47 +362,47 @@
 				return false;
 			}//if end
 		}//if end
-	});//ajax end
+	});//click end
 </script>
 <script>
 	//likedto가 1인 상태에서 찜 버튼 눌렀을 때 실행
-	document.getElementById("resetAnchor").addEventListener("click", function(event) {
-    event.preventDefault();
-
-    let pro_obj = $("#pro_obj").val();
-    let p_id = $("#p_id").val();
-
-    if (p_id === null || p_id === "") {
-        alert("관심프로그램 등록은 로그인 상태에서만 가능합니다.");
-        return false;
-    } else {
-        if (confirm("관심프로그램을 취소하시겠습니까?")) {
-            $.ajax({
-                url: "/program/likeDelete.do", // 컨트롤러에 대한 URL 매핑
-                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-                data: { "pro_obj": pro_obj, "p_id": p_id }, // 전송할 데이터 설정
-                success: function(response) {
-                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
-                    // 처리 결과에 따른 후속 작업 수행
-                    alert(response);
-                    // 이미지 변경
-                    $("#resetAnchor").attr("src", "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png");
-                },
-                error: function(xhr, status, error) {
-                    // 요청이 실패한 경우 실행될 콜백 함수
-                    // 에러 처리 로직 구현
-                    alert("관심프로그램 취소 실패");
-                }
-            });
-        } else {
-            return false;
-        }
-    }
-});
+	$("#resetAnchor").click(function(){
+	    //event.preventDefault();
+	
+	    let pro_obj = $("#pro_obj").val();
+	    let p_id = $("#p_id").val();
+	
+	    if (p_id === null || p_id === "") {
+	        alert("관심프로그램 등록은 로그인 상태에서만 가능합니다.");
+	        return false;
+	    } else {
+	        if (confirm("관심프로그램을 취소하시겠습니까?")) {
+	            $.ajax({
+	                url: "/program/likeDelete.do", // 컨트롤러에 대한 URL 매핑
+	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
+	                data: { "pro_obj": pro_obj, "p_id": p_id }, // 전송할 데이터 설정
+	                success: function(response) {
+	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
+	                    // 처리 결과에 따른 후속 작업 수행
+	                    alert(response);
+	                    // 이미지 변경
+	                    $("#resetAnchor").attr("src", "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png");
+	                },
+	                error: function(xhr, status, error) {
+	                    // 요청이 실패한 경우 실행될 콜백 함수
+	                    // 에러 처리 로직 구현
+	                    alert("관심프로그램 취소 실패");
+	                }
+	            });
+	        } else {
+	            return false;
+	        }
+	    }
+	});
 </script>
 <script>
 	function cartCheck(){
-		event.preventDefault();
+		//event.preventDefault();
 		
 		let pro_code = document.querySelector('input[name="pro_code"]:checked').value;
 		let selectOption = document.getElementById("selectcnt_" + pro_code);
@@ -492,13 +488,13 @@
 	}
 </script>
 <script>
-  $(document).ready(function() {
+
     $('.pro_code').change(function() {
       var selectedProCode = $(this).val();
       $('.selectcnt').prop('disabled', true);
       $(this).closest('label').next('.selectcnt').prop('disabled', false);
       $(this).closest('label').next('.selectcnt').val(0);
     });
-  });
+
 </script>
 <%@ include file="../footer.jsp" %>

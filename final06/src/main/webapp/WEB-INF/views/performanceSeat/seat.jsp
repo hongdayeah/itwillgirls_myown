@@ -42,7 +42,7 @@
 	      <div class="row">
 	         <div class="col-lg-4 col-sm-4">
 	            <h1>
-	               우리센터 프로그램을 소개합니다
+	               우리센터 공연을 소개합니다
 	            </h1>
 	         </div>
 	         <div class="col-lg-8 col-sm-8">
@@ -262,6 +262,7 @@
 		                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
 		                    // 처리 결과에 따른 후속 작업 수행
 		                    alert(response);
+		                    
 		                    //장바구니로 이동
 		                    window.location.href = "../cart/list";
 		                },
@@ -277,6 +278,7 @@
 			}
 			
 			</script>
+	
 			
 			<form name="rsvseats" id="rsvseats" method="POST" action="/performance/perInsert.do" enctype="multipart/form-data">
 			  <input type="hidden" name="per_code" id="per_code" value="${dto.per_code}">

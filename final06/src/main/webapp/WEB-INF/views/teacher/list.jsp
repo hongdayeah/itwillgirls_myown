@@ -60,13 +60,10 @@
 					
 					<div class="blog-content">
 					  <!-- 프로그램 사진, 이름, 정원, 접수기간, 수강기간, 금액, 연령 -->
-					 <h3>
+					 <h3 style="text-align: center;">
 					   ${dto.t_name}
 					 </h3>
-					 <p>
-					   담당과목 : 뭐뭐뭐
-					  </p>
-					  
+					 
 					</div>
 					<c:if test="${member_dto.p_id == 'webmaster'}">
 					<button class="btn btn-warning" onclick="location.href='update.do?t_code=${dto.t_code}'">강사수정</button>

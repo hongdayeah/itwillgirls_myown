@@ -70,10 +70,11 @@
 									|&nbsp;
 									
 									<!-- 리뷰 개수 -->
+									<!-- 
 									<i class="fa fa-comment"></i>
 									<span style="font-weight: bold;">후기</span>
-									<a href="#">n개</a> <!-- 해당 pro_obj의 리뷰 개수 불러오기 -->
-									|&nbsp;
+									<a href="#">n개</a> --> <!-- 해당 pro_obj의 리뷰 개수 불러오기 -->
+									<!-- |&nbsp;  -->
 									
 									<!-- 찜 개수? 찜으로 한다면 하트 이미지 쓰기 -->
 									<i class="fa fa-heart"></i>

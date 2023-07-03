@@ -185,7 +185,7 @@ public class OrderformDAO {
 		try {
 			sql = new StringBuilder();
 			sql.append(" INSERT INTO order_perdetail (order_perdetailno, per_fee, order_no, per_code, seat_no, per_cnt, per_name, p_id) ");
-			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?, ?) ");
+			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?, ?, ?) ");
 			
 			cnt = jt.update(sql.toString(), cart_price, order_no, per_code, seat_no, cart_cnt, per_name, p_id);
 		}catch(Exception e) {

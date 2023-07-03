@@ -2,6 +2,7 @@ package kr.co.itwill.cart;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -97,8 +98,8 @@ public class CartDAO {
 		try{
 			sql=new StringBuilder();
 			
-			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no)");
-			sql.append(" VALUES(null,?,?,?) ");
+			sql.append(" INSERT INTO cart(cart_no, p_id, per_code, seat_no, cart_time)");
+			sql.append(" VALUES(null,?,?,?,null) ");
 			
 			//SQL문 (insert, update, delete) 실행
 			cnt=jt.update(sql.toString(), dto.getP_id(), dto.getPer_code(), dto.getSeat_no() );
@@ -113,7 +114,7 @@ public class CartDAO {
 		
 		try {
 			sql=new StringBuilder();
-			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, cart_cnt, cart_price, pro_name, per_name ");
+			sql.append(" SELECT cart_no, p_id, pro_code, per_code, seat_no, k_no, cart_cnt, cart_price, pro_name, per_name, cart_time ");
 			sql.append(" FROM cart ");
 			sql.append(" WHERE p_id = ? ");
 			
@@ -133,7 +134,7 @@ public class CartDAO {
 					dto.setCart_price(rs.getInt("cart_price"));
 					dto.setPro_name(rs.getString("pro_name"));
 					dto.setPer_name(rs.getString("per_name"));
-					
+					dto.setCart_time(rs.getString("cart_time"));
 					return dto;				
 				} //mapRow() end
 			}; //rowMapper end

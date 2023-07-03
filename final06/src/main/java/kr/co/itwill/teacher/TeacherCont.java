@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.itwill.protime.ProtimeDTO;
 import net.utility.UploadSaveManager;
 
 @Controller
@@ -32,6 +33,11 @@ public class TeacherCont {
 		mav.setViewName("teacher/list");
 		List<TeacherDTO> list = dao.list();
 		mav.addObject("list", list);
+
+		//한 강사가 맡고있는 수업의 이름 조회
+		
+		//List<ProtimeDTO> pro_obj = dao.readproname(t_code);
+		
 		
 		return mav;
 	}//list() end

@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.co.itwill.like.LikeDTO;
 import kr.co.itwill.member.MemberDTO;
 import kr.co.itwill.protime.ProtimeDTO;
+import kr.co.itwill.review.ReviewDTO;
 import kr.co.itwill.service.PerformanceService;
 import kr.co.itwill.service.ProgramService;
 import kr.co.itwill.teacher.TeacherDTO;
@@ -178,6 +179,9 @@ public class ProgramCont {
 		mav.addObject("pro_day", pro_day);
 		
 		
+		//해당 pro_obj의 댓글리스트 불러오기
+		List<ReviewDTO> rvlist = dao.rvlist(pro_obj);
+		mav.addObject("rvlist", rvlist);
 
 		return mav;
 	}// read() end
