@@ -39,15 +39,15 @@
 <h1 id="forms" class="page-header" style="text-align: center;">문의글 작성</h1>
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
-	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="update.do" onsubmit="return updateCheck()">
-	 <input type="hidden" name="q_no" id="q_no" value=${requestScope.q_no};>
+	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="update.do">
+	 <input type="hidden" name="q_no" id="q_no" value="${q_no}">
 		<div class="bs-programform">
 				<div class="form-group">
 					<label>작성자</label><br>
 					<input type="text" class="form-control short" name="p_id" id="p_id" placeholder="작성자의 이름을 작성해주세요.">
 				</div>
 			<div class="form-group">
-			  <label for="f_answer">제목</label><br>
+			  <label for="f_answer">아이디</label><br>
 			  <input type="text" name="p_id" id="p_id" value="${dto.p_id}" class="form-control" maxlength="20" readonly>
 			</div>
 			<div class="form-group">

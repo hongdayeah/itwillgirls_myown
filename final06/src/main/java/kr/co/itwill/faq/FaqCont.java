@@ -67,15 +67,15 @@ public class FaqCont {
 		if(cnt==0) {
 			String msg1="<p>FAQ 등록실패</p>";
 			String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			String link2="<input type='button' value='목록으로' onclick='location.href='/faq/list2.do'>";
+			String link2="<input type='button' value='목록으로' onclick=\"location.href='list2.do'\">";
 	        mav.addObject("msg1", msg1);
 	        mav.addObject("link1", link1); 
 	        mav.addObject("link2", link2); 
 		} else {
 			 String msg1="<p>FAQ 등록완료</p>";
 			 mav.addObject("msg1", msg1);
-			 String link1="<input type='button' value='목록으로' onclick='location.href='/faq/list2.do'>";
-			 mav.addObject("link1", link1); 
+			 String link2="<input type='button' value='목록으로' onclick=\"location.href='list2.do'\">";
+			 mav.addObject("link2", link2); 
 			}//if end
 		return mav; 
 		}//createProc() end

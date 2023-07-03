@@ -124,7 +124,7 @@
 								<a href="../faq/list.do">자주 묻는 질문</a>
 							</li>
 							<li>
-								<a href="../#">문의하기</a>
+								<a href="../qna/list.do">문의하기</a>
 							</li>
 						</ul>
 					</li>

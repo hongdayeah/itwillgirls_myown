@@ -38,7 +38,8 @@
 <h1 id="forms" class="page-header" style="text-align: center;">답변작성</h1>
 <div class="container privacy-terms">
 	<div class="bs-docs-section mar-b-30">
-	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="reply.do" onsubmit="return qnaCheck()">
+	<form role="form" name="qnafrm" id="qnafrm"  method="POST" action="reply.do">
+	<input type="hidden" name="q_no" id="q_no" value="${q_no}">
 		<div class="bs-programform">
 				<div class="form-group">
 					<label>작성자</label><br>

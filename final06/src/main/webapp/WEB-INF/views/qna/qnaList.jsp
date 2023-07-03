@@ -45,14 +45,14 @@
 								<table class="table table-bordered table-striped">
 									<tbody>
 									<tr>
-									  <th style="text-align: center;">번호</th>
+									  <!--<th style="text-align: center;">번호</th>  -->
 									  <th style="text-align: center;">제목</th>
 									  <th style="text-align: center;">작성자</th>
 									  <th style="text-align: center;">작성일</th>
 									</tr>
 										<c:forEach var="dto" items="${list}">
 										<tr>
-											<td style="text-align: center;">${dto.q_no}</td>
+											<!-- <td style="text-align: center;">${dto.q_no}</td> -->
 											<td>	<c:if test="${dto.q_indent > 0}">
 												<c:forEach begin="1" end="${dto.q_indent}">
 												&nbsp;

@@ -46,15 +46,12 @@
 								<table class="table table-bordered table-striped">
 									<tbody>
 									<tr>
-									  <th style="text-align: center;">번호</th>
 									  <th style="text-align: center;">카테고리</th>
 									  <th style="text-align: center;">질문</th>
 									  <th style="text-align: center;">답변</th>
 									</tr>
 									<c:forEach var="dto" items="${list2}">
 									<tr>
-										<td style="text-align: center;">${dto.f_no}
-										</td>
 										<td style="text-align: center;">
 										<script>
 											  if ("${dto.f_cate}" === "C") {

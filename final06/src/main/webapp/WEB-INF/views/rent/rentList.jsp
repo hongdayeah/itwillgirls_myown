@@ -73,7 +73,6 @@
 								<table class="table table-bordered table-striped">
 									<tbody>
 									<tr>
-									  <th style="text-align: center;">번호</th>
 									  <th style="text-align: center;">신청날짜</th>
 									  <th style="text-align: center;">단체명</th>
 									  <th style="text-align: center;">담당자</th>
@@ -83,13 +82,20 @@
 									</tr>
 									<c:forEach var="dto" items="${list}">
 									 	<tr align="center">
-									 		<td>${dto.rent_code}</td> 
 									 		<td>${dto.rent_app}</td>
 									 		<td><a href="read.do?rent_code=${dto.rent_code}">${dto.rent_group}</a></td> 
 									 		<td>${dto.rent_name}</td>
 									 		<td>${dto.rent_date}</td>
 									 		<td>${dto.rent_per}</td>
-									 		<td>${dto.class_code}</td>
+									 		<td>
+									 		<script>
+									 		if("${dto.class_code}"==="theater"){
+									 			document.write("극장");
+									 		}else if ("${dto.class_code}"==="outdoor"){
+									 			document.write("야외");
+									 		}
+									 		</script>
+									 		</td>
 									 	</tr>
 								 </c:forEach>
 									</tbody>

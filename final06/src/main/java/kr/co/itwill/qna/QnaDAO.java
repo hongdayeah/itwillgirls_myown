@@ -93,7 +93,6 @@ public class QnaDAO {
 		}catch(Exception e) {
 			System.out.println("상세보기 실패: " + e);
 		}
-		System.out.println(dto);
 		return dto;
 	}//read() end
 	
