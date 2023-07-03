@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-4">
 				<h1>
-					MBTi테스트를 해보세요.
+					MBTi테스트를 해보세요
 				</h1>
 			</div>
 			<div class="col-lg-8 col-sm-8">
