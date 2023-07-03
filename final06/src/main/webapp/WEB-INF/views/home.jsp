@@ -212,7 +212,7 @@
                 테스트하기
               </a>
               <div class="da-img">
-                <img src="img/parallax-slider/images/2.png" alt="image01" />
+                <img style="width: 400px;" src="img/parallax-slider/images/TEST.png" alt="image01" />
               </div>
             </div>
           </div>
@@ -225,22 +225,20 @@
         <div class="row">
           <div class="col-md-12">
         <h2>
-          <i>RESPONSIVE VIDEO</i>
-            <br />
-          <i>SUPPORT AND</i>
-            <br />
-          <i>MANY MORE</i>
+          <i>이 달의 추천 공연</i>
         </h2>
         <p>
-          <i>Lorem ipsum dolor amet</i>
-            <br />
-          <i>tempor incididunt ut</i>
+          <i>2023. 07. 29(토)</i>
+          <br>
+          <i>17:00</i>
+          <br>          
+          <i>발레와 국악의 조합 <마블링></i>
         </p>
-        <a href="#" class="btn btn-info btn-lg da-link">
-          Read more
+        <a href="../performance/read.do?per_code=P002" class="btn btn-info btn-lg da-link">
+          보러 가기
         </a>
         <div class="da-img">
-          <img src="img/parallax-slider/images/3.png" alt="image01" />
+          <img style="width: 350px;" src="../perstorage/마블링포스터.png" alt="performance" />
         </div>
       </div>
           </div>
@@ -253,24 +251,20 @@
         <div class="row">
           <div class="col-md-12">
         <h2>
-          <i>USING BEST WEB</i>
-            </br>
-          <i>SOLUTIONS WITH</i>
-            </br>
-          <i>HTML5/CSS3</i>
+          <i>시설 대관을 원하시나요?</i>
         </h2>
         <p>
-          <i>Lorem ipsum dolor amet</i>
+          <i>자세한 사항은 '대관 안내'를 통해 확인하세요.</i>
           <br />
-          <i>tempor incididunt ut</i>
+          <i></i>
           <br />
-          <i>veniam omnis </i>
+          <i></i>
         </p>
-        <a href="#" class="btn btn-info btn-lg da-link">
-          Read more
+        <a href="../rent/info.do" class="btn btn-info btn-lg da-link">
+          대관 안내
         </a>
         <div class="da-img">
-          <img src="img/parallax-slider/images/1.png" alt="image01" />
+          <img style="width: 350px;" src="img/parallax-slider/images/seat_color.png" alt="rent" />
         </div>
       </div>
       </div>
