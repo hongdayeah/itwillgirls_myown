@@ -428,4 +428,14 @@
 		}
 	}
 </script>
+<script>
+  $(document).ready(function() {
+    $('.pro_code').change(function() {
+      var selectedProCode = $(this).val();
+      $('.selectcnt').prop('disabled', true);
+      $(this).closest('label').next('.selectcnt').prop('disabled', false);
+      $(this).closest('label').next('.selectcnt').val(0);
+    });
+  });
+</script>
 <%@ include file="../footer.jsp" %>
