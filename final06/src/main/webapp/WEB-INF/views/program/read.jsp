@@ -217,14 +217,7 @@
 							
 							<h3 style="font-weight:bold;">프로그램 후기</h3>
 							<hr>
-							<div class="media-body">
-								<h4 class="media-heading">
-									작성자이름 
-									<span>  | </span>	
-									<span>  날짜	</span>
-								</h4>
-								<p>내용</p>
-							</div>
+							
 					        <!-- 리뷰 리스트 for문 -->
 							<div class="media">
 								<c:forEach var="rdto" items="${rvlist}">

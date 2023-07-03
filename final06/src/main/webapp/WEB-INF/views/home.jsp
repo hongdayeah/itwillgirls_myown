@@ -82,10 +82,10 @@
 								<a href="../teacher/list.do">강사 소개</a>
 							</li>
 							<li>
-								<a href="../tendency/list.do">어린이 성향이란?</a>
+								<a href="../tendency/list.do">MBTi란?</a>
 							</li>
 							<li>
-								<a href="../test/main.do">성향테스트하기</a>
+								<a href="../test/main.do">MBTi테스트하기</a>
 							</li>
 						</ul>
 					</li>
