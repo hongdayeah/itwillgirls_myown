@@ -36,9 +36,11 @@
 <!--breadcrumbs end-->
 
 <div class="btn-position">
+<c:if test="${member_dto.p_id == 'webmaster'}">
 	<button class="btn btn-primary" onclick="location.href='../programtime/create.do?pro_obj=${dto.pro_obj}'">시간표 등록</button>
 	<button class="btn btn-warning" onclick="location.href='update.do?pro_obj=${dto.pro_obj}'">프로그램수정</button>
 	<button class="btn btn-danger" onclick="return deleteCheck('${dto.pro_obj}')">프로그램삭제</button>
+</c:if>
 </div>
 
 <!--container start-->
