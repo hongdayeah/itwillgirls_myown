@@ -40,7 +40,7 @@
 	<div class="row">
 	<!--blog start-->
 				<div class="row">
-						<h3 style="font-weight:bold; text-align:center;'">FAQ 관리자리스트</h3>
+						<h3 style="font-weight:bold; text-align:center;'">문의하기</h3>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped">
 									<tbody>
