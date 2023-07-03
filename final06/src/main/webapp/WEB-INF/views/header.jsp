@@ -17,7 +17,8 @@
 	<title>
 		도담도담어린이문화센터
 	</title>
-	
+
+		
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	<link href="../css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
 	<link href="../css/style-responsive.css" rel="stylesheet" />
 	
 	<link rel="stylesheet" type="text/css" href="../css/parallax-slider/parallax-slider.css" />
-	<script type="text/javascript" src="../js/parallax-slider/modernizr.custom.28468.js">
-	</script>
+	<script type="text/javascript" src="../js/parallax-slider/modernizr.custom.28468.js"></script>
+	<script src="../js/jquery-1.8.3.min.js"></script>	
 </head>
 
 <body>
