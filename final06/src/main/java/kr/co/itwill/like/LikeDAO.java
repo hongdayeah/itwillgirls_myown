@@ -152,6 +152,37 @@ public class LikeDAO {
 	
 	// 여기서 부터 추가했습니다~
 	// 내가 찜한 목록 보기
+	public List<ProgramDTO> llist(String p_id) {
+
+		List<ProgramDTO> list = null;
+		try {
+			sql = new StringBuilder();
+			sql.append(" SELECT pro_name ");
+			sql.append(" FROM program_info ");
+			sql.append(" WHERE pro_obj IN (SELECT pro_obj FROM like_program WHERE p_id = '" + p_id + "') ");
+
+			RowMapper<ProgramDTO> rowMapper = new RowMapper<ProgramDTO>() {
+				@Override
+				public ProgramDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					ProgramDTO dto = new ProgramDTO();
+					
+					dto.setPro_name(rs.getString("pro_name"));
+					
+					return dto;
+				}// mapRow() end
+			};// rowMapper end
+
+			list = jt.query(sql.toString(), rowMapper);
+			// System.out.println(list);
+
+		} catch (Exception e) {
+			System.out.println("찜 목록조회 실패:" + e);
+		} // end
+		return list;
+	}// list() end
+	
+	/*
+	//// 내가 찜한 목록 보기
 	public List<LikeDTO> list(String p_id) {
 
 		List<LikeDTO> list = null;
@@ -180,5 +211,5 @@ public class LikeDAO {
 		} // end
 		return list;
 	}// list() end
-		
+	*/
 }//class end

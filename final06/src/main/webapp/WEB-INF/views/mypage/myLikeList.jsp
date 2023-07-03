@@ -52,38 +52,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="like_dto" items="${list}">
-							<c:if test="${member_dto.p_id == like_dto.p_id}">
-								<input type="hidden" name="p_id" value="${like_dto.p_id}">
+						<c:forEach var="like_dto" items="${llist}">
 									<tr>
 										<td style="text-align: center;">
 											<a href="/program/read.do?pro_obj=${like_dto.pro_obj}">
-											<c:if test="${like_dto.pro_obj == 'A01'}">
-												푸른별 구출 대작전
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'A02'}">
-												움직이는 선
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'A03'}">
-												숲의 멜로디
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'E01'}">
-												보이지 않는 거대한 미생물의 세계
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'S01'}">
-												키즈놀이터
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'E02'}">
-												지구를 위한 멈춤
-											</c:if>
-											<c:if test="${like_dto.pro_obj == 'E03'}">
-												미래자동차 연구센터
-											</c:if>											
-											
+											${like_dto.pro_name}
 											</a>										
 										</td>
 									</tr>
-							</c:if>
 						</c:forEach>
 					</tbody>
 				</table>
