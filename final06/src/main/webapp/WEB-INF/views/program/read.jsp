@@ -214,7 +214,7 @@
 							</form>
 							
 							<!-- ---------- 후기 list 시작 ---------- -->
-							<!--  
+							
 							<h3 style="font-weight:bold;">프로그램 후기</h3>
 							<hr>
 							<div class="media-body">
@@ -225,39 +225,33 @@
 								</h4>
 								<p>내용</p>
 							</div>
-							-->
 					        <!-- 리뷰 리스트 for문 -->
-					        <!-- 
 							<div class="media">
-								<c:forEach var="review" items="${reviewList}">
+								<c:forEach var="rdto" items="${rvlist}">
 									<div class="media-body">
 										<h4 class="media-heading">
-											작성자 아이디 들어가는 곳  --><!-- dto.p_id -->
-											<!-- <span> | </span>
-											<span>댓글 단 날짜  --><!-- dto.regdate --><!-- </span>
+											${rdto.p_id} <!-- dto.p_id -->
+											<span> | </span>
+											<span>${rdto.rev_regdt} <!-- dto.regdate --></span>
 										</h4>
-										<p>리뷰 내용  --><!-- dto.review --><!-- </p>
+										<p>${rdto.rev_con} <!-- dto.review --></p>
 									  	<hr>
 									</div>
 								</c:forEach>
 							</div>
-					</div> -->
+					</div>
 					<!-- ---------- 후기 작성 시작 ---------- -->
-					<!-- 
+					
 					<div class="post-comment">
 						<h3 class="skills">후기 남기기</h3>
+						<form class="form-horizontal" role="form" name="reviewfrm" id="reviewfrm" method="POST" action="reviewcreate.do" onsubmit="return reviewCheck()">
 							<div class="form-group">
 								<div class="col-lg-6">
-								 -->
 								<!-- 현재 로그인한 값의 아이디 readonly로 넣어두기 -->
-								<!-- 
 									<input type="hidden" name="rev_obj" id="rev_obj" value="${dto.pro_obj}">
 									<input type="text" name="rev_id" id="rev_id" placeholder="${member_dto.p_id}" class="col-lg-12 form-control" readonly>
 								</div>
-								 -->
-								 <!-- 
-								<div class="col-lg-6">  --> <!-- p_id의 비밀번호 입력 -->
-								<!-- 
+								<div class="col-lg-6"> <!-- p_id의 비밀번호 입력 -->
 									<input type="hidden" name="mempasswd" id="mempasswd" value="${member_dto.p_passwd}">
 									<input type="text" name="p_passwd" id="p_passwd" placeholder="비밀번호" class="col-lg-12 form-control">
 								</div>
@@ -268,11 +262,11 @@
 								</div>
 							</div>
 							<p>
-								<input type="button" class="btn btn-info pull-right" onclick="reviewCheck()" value="등록하기">
-							</p>					
- -->
+								<button type="submit" class="btn btn-info pull-right">등록하기</button>
+							</p>
+						</form>
+
 					</div>
-					
 					<!-- ---------- 후기 작성 끝 ---------- -->
 				</div>
 			</div>
