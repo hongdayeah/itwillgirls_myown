@@ -62,7 +62,7 @@
 									 </tr>
 									 <tr align="center">
 									 	<th style="text-align: center; vertical-align: middle;">답변</th>
-									 	<td colspan="3">${dto.f_answer}</td>
+									 	<td colspan="3"><br><pre>${dto.f_answer}</pre><br><br> </td>
 									 </tr>
 									
 									</tbody>

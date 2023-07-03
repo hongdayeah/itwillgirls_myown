@@ -59,7 +59,7 @@
                             </div>
                             <div id="collapse-${status.index}" class="panel-collapse collapse">
                                 <div class="panel-body panel-faq">
-                                    <p>${dto.f_answer}</p>
+                                    <pre>${dto.f_answer}</pre>
                                 </div>
                             </div>
                         </div>

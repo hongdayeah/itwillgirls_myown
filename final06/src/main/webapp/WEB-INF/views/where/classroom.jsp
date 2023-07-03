@@ -70,6 +70,46 @@
 
 
     <!--container start-->
+    
+     <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="about-carousel wow fadeInLeft">
+            <div id="myCarousel" class="carousel slide">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="active item">
+                  <img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/outdoor.png" alt="outdoor">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 about wow fadeInRight">
+
+          <p>
+           <h2>야외(극장)</h2>
+          </p>
+          <br>
+		
+		<ul class="list-unstyled">
+		  <li style="font-size: 1.3em;">
+		    <i class="fa fa-angle-right pr-10"></i>
+		    아이들이 제약없이 공연을 볼 수 있는 공연장입니다.
+		  </li>
+		</ul><br>
+          <blockquote>
+             <p style="font-size: 1.3em;">
+              위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1층 야외
+            </p>
+            <p style="font-size: 1.3em;">
+              대관안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://localhost:9095/rent/info.do">바로가기</a>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      </div>
+      <br>
     <div class="container">
       <div class="row">
         <div class="col-lg-5">
@@ -178,45 +218,7 @@
       </div>
       </div>
        <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="about-carousel wow fadeInLeft">
-            <div id="myCarousel" class="carousel slide">
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-                <div class="active item">
-                  <img src="https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/outdoor.png" alt="outdoor">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7 about wow fadeInRight">
-
-          <p>
-           <h2>야외(극장)</h2>
-          </p>
-          <br>
-		
-		<ul class="list-unstyled">
-		  <li style="font-size: 1.3em;">
-		    <i class="fa fa-angle-right pr-10"></i>
-		    아이들이 제약없이 공연을 볼 수 있는 공연장입니다.
-		  </li>
-		</ul><br>
-          <blockquote>
-             <p style="font-size: 1.3em;">
-              위치안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1층 야외
-            </p>
-            <p style="font-size: 1.3em;">
-              대관안내&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://localhost:9095/rent/info.do">바로가기</a>
-            </p>
-          </blockquote>
-        </div>
-      </div>
-      </div>
-      <br>
+   
     <div class="container">
       <div class="row">
         <div class="col-lg-5">
