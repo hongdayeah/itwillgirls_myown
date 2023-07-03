@@ -150,7 +150,7 @@ public class OrderformDAO {
 		try {
 			sql = new StringBuilder();
 			sql.append(" INSERT INTO order_prodetail (order_prodetailno, pro_fee, order_no, pro_obj, pro_cnt, pro_name, p_id) ");
-			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?) ");
+			sql.append(" VALUES (CONCAT(DATE_FORMAT(NOW(), '%Y%m%d%H%i%s')), ?, ?, ?, ?, ?, ?) ");
 			
 			cnt = jt.update(sql.toString(), cart_price, order_no, pro_obj, cart_cnt, pro_name, p_id);
 		}catch(Exception e) {

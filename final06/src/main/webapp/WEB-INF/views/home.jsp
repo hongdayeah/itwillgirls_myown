@@ -186,7 +186,8 @@
 							</c:otherwise>
 						</c:choose>
 					</li>
-					<li><input class="form-control search" placeholder=" Search" type="text" style="cursor:pointer;"></li>
+					<!-- 
+					<li><input class="form-control search" placeholder=" Search" type="text" style="cursor:pointer;"></li>  -->
 				</ul>
 			</div>
 		</div>
