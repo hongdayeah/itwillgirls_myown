@@ -53,7 +53,7 @@
 									 	<td colspan="4" style="text-align: center; vertical-align: middle;">${dto.q_sub}</td>
 									 </tr>
 									 <tr align="center">
-									 	<th style="text-align: center; vertical-align: middle;">답변</th>
+									 	<th style="text-align: center; vertical-align: middle;">내용</th>
 									 	<td colspan="4" style="text-align: center; vertical-align: middle;">${dto.q_con}</td>
 									 </tr>
 									

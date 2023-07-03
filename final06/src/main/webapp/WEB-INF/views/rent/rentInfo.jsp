@@ -50,6 +50,8 @@
                 &nbsp;대관신청
             </a>
         </td>
+        
+        <c:if test="${member_dto.p_id == 'webmaster'}">
         <td style="font-size: 25px; font-weight: bold; vertical-align: middle; width: 20%;">|</td>
         <td style="color: #f1f1f1; font-size: 15px; font-weight: bold; vertical-align: middle; width: 20%;">
             <a href="/rent/list.do">
@@ -57,6 +59,7 @@
                 &nbsp;신청내역
             </a>
         </td>
+        </c:if>
     </tr>
 </table>
   </div>
