@@ -87,10 +87,10 @@
 												<span class="label label-info">사자</span>
 											</c:when>
 											<c:when test="${type eq 'pro_IE'}">
-												<span class="label label-info">양</span>
+												<span class="label label-info">기린</span>
 											</c:when>
 											<c:otherwise>
-												<span class="label label-info">기린</span>
+												<span class="label label-info">양</span>
 											</c:otherwise>
 											</c:choose>
 										 </c:forEach> 
@@ -291,6 +291,7 @@
 						alert(response);
 						// 이미지 변경
 						$("#myAnchor").attr("src", "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/likeheart.png");
+						window.location.href = "/program/myLikeList.do";
 					},
 					error: function(xhr, status, error) {
 						// 요청이 실패한 경우 실행될 콜백 함수

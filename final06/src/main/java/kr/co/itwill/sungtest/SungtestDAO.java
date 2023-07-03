@@ -151,7 +151,7 @@ public class SungtestDAO {
 		try {
 			sql = new StringBuilder();
 			sql.append(" SELECT k_name ");
-			sql.append(" FROM testresult ");
+			sql.append(" FROM member_kid ");
 			sql.append(" WHERE k_no = " + k_no);
 			
 			k_name = jt.queryForObject(sql.toString(), new Object[]{k_no}, String.class);
