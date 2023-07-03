@@ -103,7 +103,7 @@
 								<a href="../#">공연 예매</a>
 							</li>
 							<li>
-								<a href="../rent/create.do">대관 신청</a>
+								<a href="../rent/info.do">대관 신청</a>
 							</li>
 						</ul>
 					</li>
@@ -116,7 +116,7 @@
 								<a href="../notice/list.do">공지사항</a>
 							</li>
 							<li>
-								<a href="../#">공간 소개</a> <!-- where/about.do -->
+								<a href="../where/classroom.do">공간 소개</a> <!-- where/about.do -->
 							</li>
 							<li>
 								<a href="../faq/list.do">자주 묻는 질문</a>
