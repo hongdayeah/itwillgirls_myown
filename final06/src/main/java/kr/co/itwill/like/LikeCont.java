@@ -92,7 +92,8 @@ public class LikeCont {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/mypage/myLikeList");
-		mav.addObject("list", dao.list(mDto.getP_id()));
+		mav.addObject("llist", dao.llist(mDto.getP_id()));
+		
 		mav.addObject("like_no", like_no);
 		return mav;
 	}// list() end
