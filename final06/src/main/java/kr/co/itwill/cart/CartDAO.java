@@ -255,7 +255,7 @@ public class CartDAO {
 		
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT cart_no, p_id, per_code, seat_no, cart_cnt, cart_price, per_name ");
+			sql.append(" SELECT cart_no, p_id, per_code, seat_no, cart_cnt, cart_price, per_name, cart_time ");
 			sql.append(" FROM cart ");
 			sql.append(" WHERE p_id = '" + p_id + "' AND per_code IS NOT NULL ");
 			
@@ -272,6 +272,7 @@ public class CartDAO {
 					dto.setCart_cnt(rs.getInt("cart_cnt"));
 					dto.setCart_price(rs.getInt("cart_price"));
 					dto.setPer_name(rs.getString("per_name"));
+					dto.setCart_time(rs.getString("cart_time"));
 					
 					return dto;
 				}//mapRow() end

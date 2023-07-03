@@ -84,8 +84,6 @@ public class CartCont {
 	       dto.setPer_code(per_code);   // dto에 per_code 설정
 	       dto.setSeat_no(seat_no);   // dto에 seat_no 설정
    
-	       //장바구니에 담긴 시간을 cart_time필드에 저장
-	       
 	       
 	       //dao.perInsert(dto);
 	       int cnt=dao.perInsert2(p_id, per_code, seat_no, cart_cnt, per_fee, per_name);
