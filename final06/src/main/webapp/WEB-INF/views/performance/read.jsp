@@ -98,7 +98,15 @@
 								</tr>
 								<tr>
 									<td>공연료</td>
-									<td>${dto.per_fee}원</td>
+									<td>
+									<script>
+									if("${dto.per_fee}" === "0"){
+										document.write("무료");
+									} else {
+										document.write(${dto.per_fee}+"원");
+									}								
+									</script>
+									</td>
 								</tr>
 							
 								
@@ -114,7 +122,7 @@
               if ("${dto.class_code}" === "theater") {
                 document.write('<input type="button" class="btn btn-success" value="좌석예매" onclick="location.href=\'seat.do?per_code=${dto.per_code}\'">');
               } else {
-            	  document.write("야외공연은 현장에서 선착순으로 접수가능합니다. ");
+            	  document.write("야외공연은 현장에서 선착순으로 접수 가능합니다. ");
               }
             </script>
 		
