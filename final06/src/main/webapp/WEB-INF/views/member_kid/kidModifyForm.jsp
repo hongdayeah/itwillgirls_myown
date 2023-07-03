@@ -65,8 +65,19 @@
 				</c:if>
 			</div>
             
-            <!-- 테스트 하면 typename에 결과값이 자동 입력될 수 있게 하기, 입력되지 않았을 때는 테스트하기 링크 연결할까? -->
-            <input type="text" class="form-control" placeholder="자녀 성향 ex) 테스트를 진행해 주세요" value="${dto.typename}" id="typename" name="typename" maxlength="5">
+            <!-- 테스트는 최초 1번만 가능하다고 가정, 자녀의 성향정보는 확인만 가능하며 수기로 수정 불가능하도록 제어 -->
+           	<c:if test="${dto.typename == 'EE'}">
+				<input type="text" class="form-control" id="k_typename" name="k_typename" value="사자" readonly>
+			</c:if>
+			<c:if test="${dto.typename == 'EI'}">
+				<input type="text" class="form-control" id="k_typename" name="k_typename" value="양" readonly>
+			</c:if>
+			<c:if test="${dto.typename == 'IE'}">
+				<input type="text" class="form-control" id="k_typename" name="k_typename" value="기린" readonly>
+			</c:if>
+			<c:if test="${dto.typename == 'II'}">
+				<input type="text" class="form-control" id="k_typename" name="k_typename" value="늑대" readonly>
+			</c:if>
             
             <button class="btn btn-lg btn-login btn-block" type="submit" id="modify_button">수정</button>
         </div>
