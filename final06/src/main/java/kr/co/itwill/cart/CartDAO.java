@@ -355,5 +355,22 @@ public class CartDAO {
 		}
 	} //isPercode() end
 	
+	//seat 테이블에 선택한 좌석이 있는지 확인
+	public boolean isSeat(int row, int col, String per_code) {
+		int cnt=0;
+		
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT COUNT(*) ");
+			sql.append(" FROM perSeat");
+			sql.append(" WHERE row=? AND col=? AND per_code=? ");
+			
+			cnt=jt.queryForObject(sql.toString(), Integer.class,row, col, per_code);
+			return cnt>0;	
+		} catch(Exception e) {
+			System.out.println("조회 실패: "+e);
+			return false;
+		}
+	} //isSeat() end
 	
 } //CartDAO() end
