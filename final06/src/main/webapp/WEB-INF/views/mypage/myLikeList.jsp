@@ -59,20 +59,27 @@
 										<td style="text-align: center;">
 											<a href="/program/read.do?pro_obj=${like_dto.pro_obj}">
 											<c:if test="${like_dto.pro_obj == 'A01'}">
-												알록달록아트전시회
+												푸른별 구출 대작전
 											</c:if>
 											<c:if test="${like_dto.pro_obj == 'A02'}">
-												캐릭터디자인스쿨
+												움직이는 선
 											</c:if>
 											<c:if test="${like_dto.pro_obj == 'A03'}">
-												미술미술수업
+												숲의 멜로디
 											</c:if>
 											<c:if test="${like_dto.pro_obj == 'E01'}">
-												영어수업
+												보이지 않는 거대한 미생물의 세계
 											</c:if>
 											<c:if test="${like_dto.pro_obj == 'S01'}">
-												체육수업
+												키즈놀이터
 											</c:if>
+											<c:if test="${like_dto.pro_obj == 'E02'}">
+												지구를 위한 멈춤
+											</c:if>
+											<c:if test="${like_dto.pro_obj == 'E03'}">
+												미래자동차 연구센터
+											</c:if>											
+											
 											</a>										
 										</td>
 									</tr>
