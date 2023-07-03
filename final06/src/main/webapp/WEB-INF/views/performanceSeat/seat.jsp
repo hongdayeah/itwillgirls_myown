@@ -219,9 +219,6 @@
 			    alertSeat.push(seatLabel);
 			  }
 			  
-			  
-				
-			  
 			  var returnValue = confirm(
 			    "예매 정보\n" +
 			    "공연 : " + "${dto.per_name}" + "\n" +
@@ -234,9 +231,8 @@
 			  if (returnValue) {
 			    alert("장바구니로 이동합니다");
 			    document.getElementById('pernum').value=selectNum;
-			    //alert(document.getElementById('pernum').value);
 			    
-			    cartCheck();
+			    cartCheck(); //cartCheck 함수 실행
 			   // return true; // confirm에서 확인 누르면 폼 제출
 			  } else {
 			    return false; // confirm에서 취소 누르면 alert창 꺼짐
@@ -246,40 +242,39 @@
 			function cartCheck(){
 				event.preventDefault();
 				
+				let p_id   ="${member_dto.p_id}";
+				
 				let pernum = document.getElementById("pernum").value;
 				let per_code = document.getElementById("per_code").value;
 				let arrSeat = document.getElementById("arrSeat").value;
 				let per_fee = document.getElementById("per_fee").value;
 				let per_name = document.getElementById("per_name").value;
-				//let alertSeat = document.getElementById("alertSeat").value;
-				//alert(per_name);
-				
-			
-			    //alert(pernum);
-				
-				$.ajax({
-	                url: "/performance/perInsert.do", // 컨트롤러에 대한 URL 매핑
-	                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
-	                data: { "pernum": pernum , "per_code": per_code, "arrSeat": arrSeat, "per_fee": per_fee, "per_name": per_name }, // 전송할 데이터 설정
-	                success: function(response) {
-	                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
-	                    // 처리 결과에 따른 후속 작업 수행
-	                    alert(response);
-	                    //장바구니로 이동
-	                    window.location.href = "../cart/list";
-	                },
-	                error: function(xhr, status, error) {
-	                    // 요청이 실패한 경우 실행될 콜백 함수
-	                    // 에러 처리 로직 구현
-	                    //alert(xhr);
-	                    //alert(status);
-	                    //alert(error);
-	                    
-	                    alert("장바구니 담기 실패");
+	
+				if(p_id === null ||  p_id === "" ||  p_id === "undefined" ){
+					alert("로그인 후 이용하세요");
+					window.location.href="../member/login.do";
+				}else{
+			    
+					$.ajax({
+		                url: "/performance/perInsert.do", // 컨트롤러에 대한 URL 매핑
+		                type: "POST", // 요청 메소드 설정 (POST 또는 GET)
+		                data: { "pernum": pernum , "per_code": per_code, "arrSeat": arrSeat, "per_fee": per_fee, "per_name": per_name }, // 전송할 데이터 설정
+		                success: function(response) {
+		                    // 요청이 성공적으로 처리된 후 실행될 콜백 함수
+		                    // 처리 결과에 따른 후속 작업 수행
+		                    alert(response);
+		                    //장바구니로 이동
+		                    window.location.href = "../cart/list";
+		                },
+		                error: function(xhr, status, error) {
+		                    // 요청이 실패한 경우 실행될 콜백 함수
+		                    // 에러 처리 로직 구현
+		                    
+		                    alert("장바구니 담기 실패");
 	                }
 	            });
 	    		return true;
-			    
+				}
 			}
 			
 			</script>
