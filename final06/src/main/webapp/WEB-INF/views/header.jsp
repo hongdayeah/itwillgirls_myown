@@ -17,7 +17,8 @@
 	<title>
 		도담도담어린이문화센터
 	</title>
-	
+
+		
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	<link href="../css/theme.css" rel="stylesheet">
@@ -43,8 +44,8 @@
 	<link href="../css/style-responsive.css" rel="stylesheet" />
 	
 	<link rel="stylesheet" type="text/css" href="../css/parallax-slider/parallax-slider.css" />
-	<script type="text/javascript" src="../js/parallax-slider/modernizr.custom.28468.js">
-	</script>
+	<script type="text/javascript" src="../js/parallax-slider/modernizr.custom.28468.js"></script>
+	<script src="../js/jquery-1.8.3.min.js"></script>	
 </head>
 
 <body>
@@ -94,7 +95,7 @@
 				</li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-					"dropdown" data-toggle="dropdown" href="#">예약 <i class="fa fa-angle-down"></i>
+					"dropdown" data-toggle="dropdown" href="#">시설 <i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
 					<!-- 
@@ -105,6 +106,10 @@
 							<a href="../#">공연 예매</a>
 						</li>
 						 -->
+						 
+						<li>
+							<a href="../where/classroom.do">공간 소개</a> <!-- where/about.do -->
+						</li>
 						<li>
 							<a href="../rent/info.do">대관 신청</a>
 						</li>
@@ -117,9 +122,6 @@
 					<ul class="dropdown-menu">
 						<li>
 							<a href="../notice/list.do">공지사항</a>
-						</li>
-						<li>
-							<a href="../where/classroom.do">공간 소개</a> <!-- where/about.do -->
 						</li>
 						<li>
 							<a href="../faq/list.do">자주 묻는 질문</a>

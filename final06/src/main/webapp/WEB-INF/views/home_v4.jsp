@@ -93,7 +93,7 @@
 					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-						"dropdown" data-toggle="dropdown" href="#">예약 <i class="fa fa-angle-down"></i>
+						"dropdown" data-toggle="dropdown" href="#">시설 <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
 							<li>
@@ -101,10 +101,12 @@
 							</li>
 							<li>
 								<a href="../#">공연 예매</a>
-							</li>
-							<li>
-								<a href="../rent/info.do">대관 신청</a>
-							</li>
+							</li><li>
+							<a href="../where/classroom.do">공간 소개</a> <!-- where/about.do -->
+						</li>
+						<li>
+							<a href="../rent/info.do">대관 신청</a>
+						</li>
 						</ul>
 					</li>
 					<li class="dropdown">
