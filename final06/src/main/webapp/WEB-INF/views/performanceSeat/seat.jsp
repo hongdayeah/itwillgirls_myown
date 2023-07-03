@@ -229,7 +229,6 @@
 			  );
 
 			  if (returnValue) {
-			    alert("장바구니로 이동합니다");
 			    document.getElementById('pernum').value=selectNum;
 			    
 			    cartCheck(); //cartCheck 함수 실행
