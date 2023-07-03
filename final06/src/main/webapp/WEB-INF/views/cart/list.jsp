@@ -304,7 +304,7 @@ function deleteCheck(cart_no){
             error: function(xhr, status, error) {
                 // 요청이 실패한 경우 실행될 콜백 함수
                 // 에러 처리 로직 구현
-                alert("장바구니 담기 실패");
+                alert("장바구니 삭제 실패");
             }
         });
 		return false;

@@ -43,7 +43,53 @@ public class CartDAO {
 		return cnt;
 	} //perInsert() end
 
+	public int seatDelete (int row, int col , String per_code) {
+		int cnt=0;
+		
+		try {
+			sql=new StringBuilder();
+			
+			sql.append(" DELETE FROM perSeat");
+			sql.append(" WHERE row=? AND col=? AND per_code=?" );
+			
+			cnt=jt.update(sql.toString(), row, col, per_code);
+			
+		} catch(Exception e) {
+			System.out.println("삭제 실패"+e);
+		}
+		return cnt;
+	}
 	
+	public CartDTO getpercode(int cart_no) {
+		CartDTO dto=null;
+		try {
+			sql=new StringBuilder();
+			sql.append(" SELECT per_code, seat_no, cart_no");
+			sql.append(" FROM cart");
+			sql.append(" WHERE cart_no= '" + cart_no + "'");
+			
+			RowMapper<CartDTO> rowMapper=new RowMapper<CartDTO>() {
+				@Override
+				public CartDTO mapRow(ResultSet rs, int rowNum) throws SQLException{
+				CartDTO dto=new CartDTO();
+				dto.setPer_code(rs.getString("per_code"));
+				dto.setSeat_no(rs.getString("seat_no"));
+				dto.setCart_no(rs.getInt("cart_no"));
+				
+				return dto;
+				
+				} //mapRow() end
+			}; //rowMapper end
+			
+			dto=jt.queryForObject(sql.toString(), rowMapper);
+			
+		}catch(Exception e) {
+			System.out.println("불러오기 실패"+ e );
+		}
+		
+		return dto;
+		
+	} //read() end
 	
 	public int perInsert(CartDTO dto) {
 		int cnt=0;

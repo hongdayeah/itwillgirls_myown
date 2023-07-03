@@ -43,18 +43,12 @@ public class CartCont {
 	      //System.out.println(mDto);
 	     
 	       
-         if(mDto==null) {
-        	//만약 로그인되어 있지 않다면 로그인 창으로 감
-            return "redirect:/member/login.do";  
-            
-         }	else { 
-        	 
+
             String p_id = mDto.getP_id(); 						// mDto에서 p_id값 가져옴    
             
             String per_code=request.getParameter("per_code");   //HttpServletRequest 통해서 per_code 받아옴
             String seat_no=request.getParameter("arrSeat");     //HttpServletRequest 통해서 arrSeat 받아옴
             int cart_cnt=Integer.parseInt(request.getParameter("pernum"));
-            String alertSeat=request.getParameter("alertSeat");
             int per_fee=Integer.parseInt(request.getParameter("per_fee"));
             String per_name = request.getParameter("per_name");
             
@@ -77,7 +71,7 @@ public class CartCont {
  	            perseatdto.setCol(col);
  	            
  	            dao.seatInsert(perseatdto);
-           }	            
+           }        
             
 	       dto.setP_id(p_id);          // dto에 p_id 설정
 	       dto.setPer_code(per_code);   // dto에 per_code 설정
@@ -92,7 +86,7 @@ public class CartCont {
 	    	}else {
 	    		return "장바구니에 담았습니다\n장바구니로 이동합니다.";
 	    	}
-          }
+          
 	            
 	         }//cartInsert() end
 	   }//perInsert end   	
@@ -155,13 +149,32 @@ public class CartCont {
     }//proInsert() end
 	
     
-    //장바구니 삭제(결제전)
+  //장바구니 삭제(결제전)
     @RequestMapping(value="/cart/cartDelete.do", method= {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String cartDelete(@RequestParam("cart_no") int cart_no) {
+    public String cartDelete(@ModelAttribute CartDTO dto,@RequestParam("cart_no") int cart_no,@ModelAttribute PerformanceSeatDTO perseatdto) {
     	//System.out.println(cart_no);
+
+		CartDTO cartdto= dao.getpercode(cart_no);
+    	String seat_no=cartdto.getSeat_no();
+    	String per_code=cartdto.getPer_code();
+
     	
     	int cnt = dao.delete(cart_no);
+    	  	
+    	
+    	String[] seatArray=seat_no.split(","); 		
+        //seat변수는 seatArray 배열의 각요소를 순회하며 해당 요소를 나타내는 변수임
+        for(String seat : seatArray) {
+        	int row=Integer.parseInt(seat.substring(0,1)); 	//좌석 번호의 첫번째 문자 (행)
+        	int col=Integer.parseInt(seat.substring(1)); 	//좌석 번호의 두번째 문자 (열)
+        	
+    		perseatdto.setPer_code(per_code);
+            perseatdto.setRow(row);
+            perseatdto.setCol(col);
+            
+            dao.seatDelete(row,col,per_code );
+       }       
     	
     	if(cnt==0) {
     		return "장바구니에서 삭제 실패했습니다";
