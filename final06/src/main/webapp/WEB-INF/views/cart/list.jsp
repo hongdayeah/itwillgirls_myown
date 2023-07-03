@@ -312,32 +312,8 @@ function deleteCheck(cart_no){
 		return false;
 	}
 }
+
 </script>
-<script>
-	//장바구니에서 특정항목 삭제
-	function deleteItems(){
-		//perlist 배열에 있는 항목만 삭제
-		for(let i=0; i<perlist.length; i++){
-			let cart_no=perlist[i].cart_no;
-			
-			 // AJAX 요청을 통해 서버에서 해당 항목을 삭제하는 로직
-			$.ajax({
-			      url: "/cart/deleteItem.do",
-			      method: "POST",
-			      data: { cart_no: cart_no },
-			      success: function(response) {
-			        // 삭제 성공 시 처리할 로직
-			        console.log("항목이 삭제되었습니다.");
-			      },
-			      error: function(xhr, status, error) {
-			        // 삭제 실패 시 처리할 로직
-			        console.log("항목 삭제 실패");
-			      }
-			    });
-			
-		}
-	}
-	</script>
 <script>
 function updateTotal() {
 	  let totalCount = 0;
