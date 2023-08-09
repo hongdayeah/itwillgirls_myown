@@ -15,16 +15,6 @@
 - 테스트, 공연좌석선택, 장바구니, 주문 등의 주요 기능을 구현하며 구현에 필요한 부분들을 공부할 수 있음.
 - ajax 등 많이 다뤄보지 않은 기술들을 접해볼 수 있음.
 
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
-
-
-
-This text you see here is *actually- written in Markdown! To get a feel
-for Markdown's syntax, type some text into the left window and
-watch the results in the right.
-
 ## 팀원소개
 
     홍다예 (PM) : 프로그램 정보 / 강사정보 / 성향정보 / 테스트 / 결과 및 프로그램 매칭 / 장바구니 / 주문내역
