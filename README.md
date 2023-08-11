@@ -80,14 +80,35 @@
     설명하는 칸
 이미지
 
+### 공연정보 리스트
+    설명하는 칸
+    
+이미지
+### 공연정보 상세보기
+    설명하는 칸
+    
+이미지
+### 공연예매하기
+    공연예매를 들어가면 공연정보가 적혀있고 수량을 선택할 수 있습니다.
+    원하는 선택 수량 후 좌석을 수량(1-5) 선택 후 예매를 진행합니다.
+    좌석은 판매가능한좌석/ 불가능한좌석/ 선택한 좌석이 표시됩니다.
+    선택한 좌석은 한번 더 선택시 선택이 취소됩니다.
+    예매하기를 누르면 공연명/ 날짜/ 시간/ 선택좌석 및 수량 정보가 표시됩니다.
+    확인을 누르면 예매 정보가 장바구니로 넘어갑니다.
+    
+    
+이미지
+### 공연 등록하기
+    설명하는 칸
+
+이미지
+
 각자 원하는 만큼 작성
 
 ## 최종산출물
 #### 발표 PPT
 ![슬라이드1](https://github.com/hongdayeah/itwillgirls/assets/132259579/5d13fb77-d3f1-4f35-8d1b-324be824286c)
 ![슬라이드3](https://github.com/hongdayeah/itwillgirls/assets/132259579/772b8f90-d1f5-404b-b6bd-136d88a7c9d9)
-![슬라이드3](https://github.com/hongdayeah/itwillgirls/assets/132259579/54fd8c52-1233-4b06-bd1b-a1f04ba3031f)
-![슬라이드3](https://github.com/hongdayeah/itwillgirls/assets/132259579/663b6c74-6327-481b-9407-33038792f645)
 ![슬라이드12](https://github.com/hongdayeah/itwillgirls/assets/132259579/d42dc412-9139-420f-8080-b3dbe4c76fbb)
 ![슬라이드13](https://github.com/hongdayeah/itwillgirls/assets/132259579/7e652f3c-30d9-4dd8-b26d-4bc1362435cf)
 ![슬라이드14](https://github.com/hongdayeah/itwillgirls/assets/132259579/c38d94a5-6d53-4bc1-9106-e2a3c4ec316e)
@@ -97,5 +118,4 @@
 ![슬라이드18](https://github.com/hongdayeah/itwillgirls/assets/132259579/dfc8786b-d274-458c-a224-cfde2bf22052)
 ![슬라이드19](https://github.com/hongdayeah/itwillgirls/assets/132259579/ec7e9311-1e08-4f37-a542-eb6f9c2e44cc)
 ![슬라이드20](https://github.com/hongdayeah/itwillgirls/assets/132259579/81cf00ec-a5f9-44e1-8f5f-1c680dc15711)
-![슬라이드20](https://github.com/hongdayeah/itwillgirls/assets/132259579/feb766bc-9310-4af1-8441-7353383d810f)
 ![슬라이드28](https://github.com/hongdayeah/itwillgirls/assets/132259579/d5e479f8-fb7a-456a-94ac-f8a05f6d1246)
