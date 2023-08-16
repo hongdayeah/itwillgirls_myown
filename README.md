@@ -190,12 +190,6 @@ https://github.com/hongdayeah/itwillgirls/assets/135087145/0f0ddc26-c7f2-4ba5-ad
     관리자 로그인 시 공연 등록, 수정, 삭제가 가능합니다.
 
 
-#### 장바구니
-
-#### 결제
-
-
-각자 원하는 만큼 작성
 
 ## 최종산출물
 #### 발표 PPT
