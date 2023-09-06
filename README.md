@@ -68,7 +68,7 @@
 
 ## 기능설명
 #### 프로그램정보 목록보기 (회원)
-![11](https://github.com/hongdayeah/daye/assets/132259579/066d03e6-95cd-4f66-8a06-52985caf3176)
+![11](https://github.com/hongdayeah/Study/assets/132259579/66d881db-8f9f-4b5a-a8ca-9ce5039d8a57)
     
     - 목록에서는 센터에서 진행하는 프로그램의 전체 목록을 볼 수 있습니다
     - 수강기간, 해당 프로그램을 찜한 횟수 (관심등록), 프로그램의 MBTi성향(동물 이름)이 표시됩니다.
@@ -77,7 +77,7 @@
     - 관리자는 목록 화면의 우측에 [등록하기] 버튼이 보여지고 해당 버튼을 통해 프로그램을 등록할 수 있습니다.
 
 #### 프로그램 등록하기 (관리자)
-![66](https://github.com/hongdayeah/daye/assets/132259579/1eb39ec7-14dd-4a57-9253-48adf4a7a2ab)
+![66](https://github.com/hongdayeah/Study/assets/132259579/3ae03cbd-942c-4a06-97df-5e95f02dea1a)
 
     - 새 프로그램을 등록할 수 있습니다.
     - 프로그램 코드는 4가지 과목으로 구분할 수 있고 해당 코드는 program_info 테이블의 기본키가 됩니다.
@@ -85,7 +85,7 @@
       등록하기를 누르면 코드는 A01, A02, S01, S02 ...의 형식으로 저장됩니다. 해당 형식은 Controller에서 해당 알파벳 코드를 먼저 찾은 후 그 코드에 붙은 숫자들 목록 중에서 가장 큰 수를 찾아 그 다음 숫자(+1을 한)를 반환하여 프로그램 코드 컬럼에 추가하는 방식을 사용했습니다.
 
 #### 프로그램정보 상세보기 (회원)
-![22](https://github.com/hongdayeah/daye/assets/132259579/5d2c56cc-ad60-4181-b37a-48d4205ab659)
+![22](https://github.com/hongdayeah/Study/assets/132259579/d139dc41-3f8d-49da-8ad6-d6520bae5e51)
 
     - 목록에서 원하는 프로그램을 클릭하면 상세보기 페이지로 이동합니다.
     - 한번 클릭 하면 해당 프로그램의 조회수가 카운트되고 총 조회수가 왼쪽에 표시됩니다.
@@ -98,7 +98,7 @@
     - 관리자는 해당 페이지의 우측에서 [시간표등록], [수정], [삭제] 버튼이 표시되고 해당 작업을 수행할 수 있습니다.
 
 #### 프로그램 시간표 등록하기 (관리자)
-![77](https://github.com/hongdayeah/daye/assets/132259579/a004a3aa-0efe-4925-bb2c-2009825408d9)
+![77](https://github.com/hongdayeah/Study/assets/132259579/6ea6780e-f453-48ba-a35c-d34e614da1ce)
 
     - 원하는 프로그램의 시간표를 두 개까지 등록할 수 있습니다.
     - 프로그램코드는 클릭한 프로그램의 코드로 고정되어 있고 readonly 제약으로 인해 수정할 수 없습니다.
@@ -108,13 +108,13 @@
     - 담당강사 역시 teacher테이블의 모든 행을 가져오도록 되어있습니다.
 
 #### 테스트하기(1)
-![99](https://github.com/hongdayeah/daye/assets/132259579/1ea3d62a-30ed-4253-ba38-e729073b6c7b)
+![99](https://github.com/hongdayeah/Study/assets/132259579/7c19e9da-2b79-41b2-93d8-4bf9a2ef0bf5)
 
     - 테스트 시작화면에서는 로그인한 회원이 등록해둔 자녀 중 한명을 선택해서 테스트를 할 수 있습니다.
     - 자녀목록 select리스트는 자녀테이블에서 로그인 한 아이디에 해당하는 자녀 목록을 가져와서 보여줄 수 있습니다.
 
 #### 테스트하기(2)
-![111](https://github.com/hongdayeah/daye/assets/132259579/1af31b9a-ee11-44d4-bda1-bd8ff52b36cb)
+![111](https://github.com/hongdayeah/Study/assets/132259579/f172bf7b-940b-48ed-819b-dc0c46d28a01)
 
     - 테스트는 1부 / 2부로 나뉘어 있습니다. DB의 테스트 성향정보를 담고 있는 테이블과 문제의 정보를 담고 있는 테이블 역시 두개로 나뉘어 있습니다. 
     - 자녀의 테스트 결과를 저장하는 테이블이 있습니다. 1부 결과 컬럼과 2부 결과 컬럼이 있습니다.
@@ -122,7 +122,7 @@
     - 다음으로 넘어가면 해당 자녀의 테스트 2부가 진행됩니다.
 
 #### 테스트하기(3)
-![222](https://github.com/hongdayeah/daye/assets/132259579/4bf984fe-065d-4a64-972b-32edabfe62de)
+![222](https://github.com/hongdayeah/Study/assets/132259579/b118b196-1ce5-4397-a7cb-afdc3a175798)
 
     - 테스트 2부의 결과에서 그렇다가 6개 이상이면 2부 테스트의 결과컬럼에 "E"(외향적임)으로 저장됩니다. 그렇지않을 경우
       "I"(내향적임)으로 저장됩니다.
@@ -132,7 +132,7 @@
       EI / EE / II / IE 네 가지 중 하나로 나옵니다.
 
 #### 테스트결과
-![333](https://github.com/hongdayeah/daye/assets/132259579/77d7f58a-5a84-45c5-a88e-836f762456c8)
+![333](https://github.com/hongdayeah/Study/assets/132259579/a1ba198d-a83a-4f0d-8ace-be83d8c12149)
 
     - 테스트 결과에서는 해당 자녀의 테스트 결과를 확인할 수 있습니다.
     - EI / EE / II / IE 는 각각 양 / 사자 / 늑대 / 기린 으로 사용자가 알기 쉽게 표현했습니다.
@@ -140,7 +140,7 @@
     - 결과에 나온 타입에 해당하는 프로그램들을 아래에 목록형태로 불러왔습니다. 클릭하면 상세페이지로 바로 이동합니다.
     
 #### 장바구니
-![33](https://github.com/hongdayeah/daye/assets/132259579/07e198d5-e78e-4240-94c5-3d9618ff44c3)
+![33](https://github.com/hongdayeah/Study/assets/132259579/f861299b-b970-4b8a-97f9-e2017b0a7f6b)
 
     - 장바구니 목록은 프로그램 / 공연 각각 볼 수 있게 나뉘어 있습니다.
     - 삭제 버튼을 통해 개별 삭제가 가능합니다.
@@ -148,14 +148,14 @@
     - 주문하기 버튼을 누르면 체크된 건만 주문확인 폼으로 넘어갑니다.
 
 #### 주문확인 폼(결제 전)
-![44](https://github.com/hongdayeah/daye/assets/132259579/b1bd02df-553b-4374-9902-81c42016f553)
+![44](https://github.com/hongdayeah/Study/assets/132259579/297e3b90-9890-46ad-a011-fe865a9b427f)
 
     - 결제 전 주문을 확인하는 창입니다.
     - 주문번호는 "연+월+일+시+분+초"-"주문테이블의 총 건수"로 구성하는 sql문을 활용했습니다.
     - 결제를 누르면 카카오결제 api창이 뜹니다.
 
 #### 결제 내역(결제 후)
-![55](https://github.com/hongdayeah/daye/assets/132259579/d57a2322-56da-45a0-9956-9e8e001987ac)
+![55](https://github.com/hongdayeah/Study/assets/132259579/e6d2305a-7101-48e0-b4ff-8d7754432176)
 
     - 결제 내역은 장바구니와 동일하게 프로그램 / 공연 각각 볼 수 있게 나뉘어 있습니다.
     - 주문번호, 프로그램명, 예매 수량, 금액, 합계를 확인 할 수 있습니다.
