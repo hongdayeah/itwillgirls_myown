@@ -380,6 +380,7 @@
 	                    alert(response);
 	                    // 이미지 변경
 	                    $("#resetAnchor").attr("src", "https://myabcdebucket.s3.ap-northeast-2.amazonaws.com/binheart.png");
+	                    document.location.reload();
 	                },
 	                error: function(xhr, status, error) {
 	                    // 요청이 실패한 경우 실행될 콜백 함수
