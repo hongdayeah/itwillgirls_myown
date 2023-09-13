@@ -157,7 +157,7 @@ public class LikeDAO {
 		List<ProgramDTO> list = null;
 		try {
 			sql = new StringBuilder();
-			sql.append(" SELECT pro_name ");
+			sql.append(" SELECT pro_obj, pro_name ");
 			sql.append(" FROM program_info ");
 			sql.append(" WHERE pro_obj IN (SELECT pro_obj FROM like_program WHERE p_id = '" + p_id + "') ");
 
@@ -166,6 +166,7 @@ public class LikeDAO {
 				public ProgramDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 					ProgramDTO dto = new ProgramDTO();
 					
+					dto.setPro_obj(rs.getString("pro_obj"));
 					dto.setPro_name(rs.getString("pro_name"));
 					
 					return dto;
