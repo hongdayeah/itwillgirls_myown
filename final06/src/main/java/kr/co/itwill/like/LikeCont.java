@@ -96,9 +96,6 @@ public class LikeCont {
 		
 		mav.addObject("like_no", like_no);
 		
-		//pro_obj를 넘겨야하니까 likedto 전체 넘기기
-		//LikeDTO dto = dao.read(null, null)
-		
 		return mav;
 	}// list() end
 	
